@@ -1,10 +1,7 @@
 ---
-layout: layouts/base.njk
-title: Eleventy with Vite
+layout: layouts/home.njk
+title: David's Home Page
+active_nav: home
 ---
 
-# Eleventy with Vite
-
-This is a starter template to showcase integrating Eleventy with Vite.
-
-Try navigating  to another page, for example the [about page](/about).
+Strategic thinker, web coder, writer, & photographer. Product manager for [Google Fonts](https://fonts.google.com/). Author of [_Git for Humans_](/git-for-humans). Lover of keyboards and coffee. {.homepage-lede}

@@ -2,6 +2,9 @@ const fs = require("fs/promises");
 const path = require("path");
 const markdownIt = require("markdown-it");
 
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 const INPUT_DIR = "src";
 const OUTPUT_DIR = "_site";
 
@@ -10,8 +13,16 @@ const OUTPUT_DIR = "_site";
 const PATH_PREFIX = "/";
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("./src/**/*.{jpg,jpeg,png,gif}");
+
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(pluginRss);
+
   // Disable whitespace-as-code-indicator, which breaks a lot of markup
-  const configuredMdLibrary = markdownIt({ html: true }).disable("code");
+  const configuredMdLibrary = markdownIt({ html: true })
+    .disable("code")
+    .use(require('markdown-it-attrs'))
+    .use(require('markdown-it-footnote'));
   eleventyConfig.setLibrary("md", configuredMdLibrary);
 
   // Read Vite's manifest.json, and add script tags for the entry files
