@@ -62,6 +62,7 @@ module.exports = {
 	],
 	theme: {
 		screens: {
+			'xs': '374px',
 			'sm': '660px',
 			'md': '880px',
 		},
@@ -93,6 +94,9 @@ module.exports = {
 			width: {
 				['full-inset']: `calc(100% - (2 * var(--inset-x, ${defaultTheme.spacing[6]})))`,
 				'hc': `min(calc(100vw - 3rem), 20rem)`
+			},
+			maxWidth: {
+				'prose-narrow': '35ch'
 			},
 			minHeight: {
 				['screen-inset']: `calc(100vh - var(--header-height, ${defaultTheme.spacing[20]}))`

@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+---
+<main>
+<article class="dd-prose py-12 items-center">
+  <header class="post-header text-center contents">
+    <h1 class="dd-title w-full-inset">{{ title }}</h1>
+    {% if subtitle or excerpt %}
+    <p class="dd-subtitle deorphan w-full-inset max-w-prose-narrow">{{ subtitle or excerpt }}</p>
+    {% endif %}
+    <p class="mt-4 text-base text-ink-medium font-medium">{{ date }}</p>
+  </header>
+  {{ content | safe }}
+  {% set tagBan = ['featured','selected','posts', 'event'] %}
+  {% if tags %}
+  <div class="post-tags my-8 text-sm flex gap-4">
+    {% for tag in tags %}
+      {% if tag not in tagBan %}
+        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+        <a class="t-tag tag leading-none font-medium flex gap-1 items-center no-underline" href="{{ tagUrl | url }}">
+          <i class="fal fa-tag fa-sm"></i>
+          <span>{{ tag }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>
+</main>

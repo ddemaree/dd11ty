@@ -1,25 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './vendor/tailwind.css';
+@import './base.css';
+@import './components';
 
-@layer components {
-  .homepage-lede {
-    @apply font-roslindale-2 text-4xl sm:text-5xl md:text-6xl;
-    line-height: 1.25 !important;
-    font-variation-settings: 'wdth' 94;
-  
-    a {
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-    }  
-  }
 
-  .home-cols {
-    @apply flex flex-wrap w-full-inset mx-auto gap-12;
-    
-    > * {
-      flex: 1;
-      width: min(22rem, 50vw);
-    }
-  }
-}

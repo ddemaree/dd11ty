@@ -10,7 +10,9 @@ subtitle: A step-by-step guide to making any workplace crisis about you.
 excerpt: A step-by-step guide to making any workplace crisis about you.
 ---
 
-![Cover image](/static/img/the-full-coinbase/cover.jpeg)
+<figure class="alignwide">
+  {% imgix "2021/the-full-coinbase/cover-circus.jpeg", 900, 675, "Some kind of circus act" %}
+</figure>
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 
@@ -41,7 +43,9 @@ Conte also, I guess to his credit, didn’t announce a big change to how the com
 
 <hr class="wp-block-separator"/>
 
-<figure class="wp-block-image size-large"><img loading="lazy" width="680" height="513" alt="" class="wp-image-4319" src="gnome-ceos.jpg" /></figure>
+<figure>
+  <img loading="lazy" width="680" height="513" alt="" class="lazyload" src="https://ddimg.imgix.net/2021/the-full-coinbase/gnome-ceos.jpg?w=680" ix-src="https://ddimg.imgix.net/2021/the-full-coinbase/gnome-ceos.jpg" />
+</figure>
 
 Even so, I would still say that with this video and the changes it discusses, Jack Conte and Patreon have done the thing I have termed <strong>The Full Coinbase</strong>:
 

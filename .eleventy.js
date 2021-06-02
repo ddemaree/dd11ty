@@ -1,6 +1,13 @@
 const fs = require("fs/promises");
 const path = require("path");
 const markdownIt = require("markdown-it");
+const Imgix = require("@imgix/js-core");
+const _ = require('lodash');
+
+const imgixClient = new Imgix({
+  domain: 'ddimg.imgix.net',
+  useHTTPS: true
+});
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -24,6 +31,39 @@ module.exports = function (eleventyConfig) {
     .use(require('markdown-it-attrs'))
     .use(require('markdown-it-footnote'));
   eleventyConfig.setLibrary("md", configuredMdLibrary);
+
+  eleventyConfig.addShortcode("imgix", (path, width=null, height=null, alt="Image for post") => {
+    let attrs = {}
+
+    const src = imgixClient.buildURL(path, {
+      w: width,
+      h: height
+    })
+
+    const srcset = imgixClient.buildSrcSet(
+      path, 
+      {}, 
+      {
+        minWidth: 300,
+        maxWidth: 2400,
+        widthTolerance: 0.1
+      }
+    )
+
+    attrs = _.pickBy({
+      src,
+      srcset,
+      height,
+      width,
+      alt,
+      class: "lazyload",
+      sizes: "(max-width: 675px) 100vw, 1200px"
+    })
+
+    const attrsString = _.entries(attrs).map(([k, v]) => `${k}="${v}"`).join(' ')
+
+    return `<img ${attrsString}>`;
+  })
 
   // Read Vite's manifest.json, and add script tags for the entry files
   // You could decide to do more things here, such as adding preload/prefetch tags

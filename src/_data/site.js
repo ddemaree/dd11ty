@@ -17,6 +17,12 @@ module.exports = {
       icon: "user-ninja",
       url: "/about",
       identifier: "about"
+    },
+    {
+      text: "Writing",
+      icon: "feather-alt",
+      url: "/writing",
+      identifier: "writing"
     }
   ]
 }
