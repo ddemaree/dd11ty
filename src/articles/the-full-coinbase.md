@@ -10,7 +10,7 @@ subtitle: A step-by-step guide to making any workplace crisis about you.
 excerpt: A step-by-step guide to making any workplace crisis about you.
 ---
 
-![Cover image](cover__the-full-coinbase.jpeg)
+![Cover image](/static/img/the-full-coinbase/cover.jpeg)
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 
