@@ -8,17 +8,17 @@ layout: layouts/base.njk
     {% if subtitle or excerpt %}
     <p class="dd-subtitle deorphan w-full-inset max-w-prose-narrow">{{ subtitle or excerpt }}</p>
     {% endif %}
-    <p class="mt-4 text-base text-ink-medium font-medium">{{ date }}</p>
+    <p class="mt-4 text-base text-ink-medium font-medium">{{ date | prettyDate }}</p>
   </header>
   {{ content | safe }}
   {% set tagBan = ['featured','selected','posts', 'event'] %}
   {% if tags %}
-  <div class="post-tags my-8 text-sm flex gap-4">
+  <div class="post-tags my-8 text-base flex flex-wrap gap-4">
     {% for tag in tags %}
       {% if tag not in tagBan %}
         {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-        <a class="t-tag tag leading-none font-medium flex gap-1 items-center no-underline" href="{{ tagUrl | url }}">
-          <i class="fal fa-tag fa-sm"></i>
+        <a class="t-tag tag leading-none font-medium flex gap-2 items-baseline no-underline" href="{{ tagUrl | url }}">
+          <i class="fal fa-tag fa-xs"></i>
           <span>{{ tag }}</span>
         </a>
       {% endif %}

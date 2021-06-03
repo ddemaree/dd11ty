@@ -2,8 +2,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{title or metadata.title}}</title>
+  
+  {# <link rel="icon" href="{% iconAsset 'static/dd-logo-square.svg', 'png-180' %}" type="image/png"> #}
+  <link rel="icon" href="/dynamic-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{% iconAsset 'static/dd-logo-square.svg', 'png-180' %}"><!-- 180×180 -->
+  <title>{{ metadata.title or title | default("David Demaree's web site") }}</title>
   <script async src="https://kit.fontawesome.com/f0afb61fe2.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.usefathom.com/script.js" data-site="TOFIAIKB" data-included-domains="demaree.me,demaree.space" defer></script>
   {% for set in site.fontSets %}
   <link data-dd-fontset="{{ set }}" rel="stylesheet" href="https://cdn.demaree.net/fonts/{{ set }}/index.css" type="text/css" />
   {% endfor %}

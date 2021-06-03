@@ -71,11 +71,12 @@ module.exports = {
 			ink: {
 				DEFAULT: `var(--col-ink-base, ${myColors.gray[80]})`,
 				bold: `var(--col-ink-bold, ${myColors.black})`,
-				medium: `var(--col-ink-medium, ${myColors.gray[50]})`,
+				medium: `var(--col-ink-medium, ${myColors.gray[60]})`,
 				light: `var(--col-ink-light, ${myColors.gray[30]})`
 			},
 			accent: {
 				DEFAULT: `var(--col-accent, ${myColors.red[50]})`,
+				bold: `var(--col-accent-bold, ${myColors.red[60]})`,
 				light: `var(--col-accent-light, ${myColors.red[30]})`
 			},
 			primary: {

@@ -3,11 +3,33 @@ const path = require("path");
 const markdownIt = require("markdown-it");
 const Imgix = require("@imgix/js-core");
 const _ = require('lodash');
+const { DateTime } = require('luxon')
 
 const imgixClient = new Imgix({
   domain: 'ddimg.imgix.net',
   useHTTPS: true
 });
+
+const Image = require("@11ty/eleventy-img");
+
+async function iconShortcode(src, size='png-192') {
+  src = path.join(__dirname, 'src', src)
+
+  let metadata = await Image(src, {
+    widths: [180, 192, 512],
+    formats: ["png", "svg"],
+    outputDir: path.join(OUTPUT_DIR, "static", "img"),
+    urlPath: "/static/img"
+  });
+
+  const { svg, png } = metadata
+  const sizes = {
+    svg: svg[0],
+    ...(_.keyBy(png, s => `png-${s.width}`))
+  }
+
+  return sizes[size].url
+}
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -21,6 +43,7 @@ const PATH_PREFIX = "/";
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/**/*.{jpg,jpeg,png,gif}");
+  eleventyConfig.addPassthroughCopy("./src/static")
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(pluginRss);
@@ -31,6 +54,13 @@ module.exports = function (eleventyConfig) {
     .use(require('markdown-it-attrs'))
     .use(require('markdown-it-footnote'));
   eleventyConfig.setLibrary("md", configuredMdLibrary);
+
+  eleventyConfig.addFilter("prettyDate", date => {
+    const dateObj = DateTime.fromISO(date) 
+    return dateObj.toLocaleString(DateTime.DATE_FULL).replace(',', '')
+  })
+
+  eleventyConfig.addNunjucksAsyncShortcode("iconAsset", iconShortcode)
 
   eleventyConfig.addShortcode("imgix", (path, width=null, height=null, alt="Image for post") => {
     let attrs = {}
