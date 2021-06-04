@@ -48,7 +48,7 @@ const myColors = {
 module.exports = {
 	darkMode: 'media',
 	important: true,
-	jit: true,
+	mode: 'jit',
 	purge: {
 		layers: ['utilities'],
 		content: [
@@ -63,6 +63,7 @@ module.exports = {
 	theme: {
 		screens: {
 			'xs': '374px',
+			'xs-2': '500px',
 			'sm': '660px',
 			'md': '880px',
 		},
@@ -92,6 +93,9 @@ module.exports = {
 			}
 		},
 		extend: {
+			gridTemplateRows: {
+				'base': 'auto 1fr auto'
+			},
 			width: {
 				['full-inset']: `calc(100% - (2 * var(--inset-x, ${defaultTheme.spacing[6]})))`,
 				'hc': `min(calc(100vw - 3rem), 20rem)`

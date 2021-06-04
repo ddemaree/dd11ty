@@ -2,13 +2,15 @@
 <html lang="en" class="bg-surface">
 {% include "head.njk" %}
 <body>
-  <div class="bg-surface text-ink min-h-screen dd-page">
+  <div class="bg-surface text-ink min-h-screen dd-page grid grid-rows-base">
   {% include 'header.njk' %}
   
+  <div>
   {{ content | safe }}
+  </div>
   
-  <footer class="py-16 flex flex-col items-center text-ink-medium">
-    <hr class="w-full-inset border-2 border-ink-medium mb-8">
+  <footer class="py-10 flex flex-col items-center text-ink-medium">
+    <hr class="w-full-inset border-2 border-ink-light mb-6">
     <div class="w-full-inset text-center text-sm grid gap-2 grid-cols-1 sm:grid-cols-2">
       <div class="sm:text-left space-y-1">
         <p><b class="inline-block text-accent"><i class="fas fa-rss"></i></b> Subscribe to articles, notes, or everything</p>

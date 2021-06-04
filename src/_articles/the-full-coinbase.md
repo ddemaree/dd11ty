@@ -6,8 +6,11 @@ tags:
   - Business
   - Coinbase
   - Work
-subtitle: A step-by-step guide to making any workplace crisis about you.
-excerpt: A step-by-step guide to making any workplace crisis about you.
+subtitle: Regarding Patreon's layoffs, and how to make any workplace crisis about you.
+thumbnail: https://ddimg.imgix.net/2021/the-full-coinbase/cover-circus.jpeg
+metadata:
+  title: Patreon's Jack Conte goes "Full Coinbase"
+  description: Patreon CEO Jack Conte announced layoffs via a confessional YouTube video, joining the ranks of tech leaders who've taken workplace issues a little too personally. 
 ---
 
 <figure class="alignwide">
@@ -44,7 +47,7 @@ Conte also, I guess to his credit, didn’t announce a big change to how the com
 <hr class="wp-block-separator"/>
 
 <figure>
-  <img loading="lazy" width="680" height="513" alt="" class="lazyload" src="https://ddimg.imgix.net/2021/the-full-coinbase/gnome-ceos.jpg?w=680" ix-src="https://ddimg.imgix.net/2021/the-full-coinbase/gnome-ceos.jpg" />
+  {% imgix "2021/the-full-coinbase/gnome-ceos.jpg", 680, 513, "Business model chart from the South Park episode 'Gnomes'" %}
 </figure>
 
 Even so, I would still say that with this video and the changes it discusses, Jack Conte and Patreon have done the thing I have termed <strong>The Full Coinbase</strong>:

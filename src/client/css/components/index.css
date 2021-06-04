@@ -125,6 +125,10 @@
     margin-top: var(--prose-spacing);
   }
 
+  .dd-prose > :not(hr) + :is(h1, h2, h3, h4) {
+    @apply mt-16;
+  }
+
   .dd-prose > hr {
     @apply my-12;
 

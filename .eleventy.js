@@ -4,6 +4,8 @@ const markdownIt = require("markdown-it");
 const Imgix = require("@imgix/js-core");
 const _ = require('lodash');
 const { DateTime } = require('luxon')
+const axios = require('axios')
+const Cache = require("@11ty/eleventy-cache-assets");
 
 const imgixClient = new Imgix({
   domain: 'ddimg.imgix.net',
@@ -42,6 +44,8 @@ const OUTPUT_DIR = "_site";
 const PATH_PREFIX = "/";
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setDataDeepMerge(true);
+  
   eleventyConfig.addPassthroughCopy("./src/**/*.{jpg,jpeg,png,gif}");
   eleventyConfig.addPassthroughCopy("./src/static")
 
@@ -56,7 +60,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setLibrary("md", configuredMdLibrary);
 
   eleventyConfig.addFilter("prettyDate", date => {
-    const dateObj = DateTime.fromISO(date) 
+    let dateObj;
+
+    if(_.isObject(date)) {
+      dateObj = DateTime.fromJSDate(date)
+    }
+    else if(_.isString(date)) {
+      dateObj = DateTime.fromISO(date)
+    }
+    else {
+      return `Invalid date ${date}`
+    }
+
     return dateObj.toLocaleString(DateTime.DATE_FULL).replace(',', '')
   })
 
@@ -93,6 +108,42 @@ module.exports = function (eleventyConfig) {
     const attrsString = _.entries(attrs).map(([k, v]) => `${k}="${v}"`).join(' ')
 
     return `<img ${attrsString}>`;
+  })
+
+  eleventyConfig.addNunjucksAsyncShortcode("twitter", async id => {
+    const tweetData = await Cache(`https://api.twitter.com/1/statuses/oembed.json?id=${id}&dnt=1`, {
+      duration: "1d", // save for 1 day
+      type: "json"    // we’ll parse JSON for you
+    })
+
+    return `<figure class="dd-embed dd-embed-tweet">${tweetData.html}</figure>`
+  })
+
+  eleventyConfig.addNunjucksAsyncShortcode("postThumbnail", async uri => {
+    const urlObj = new URL(uri, "http://localhost/")
+    
+    if(urlObj.host === 'localhost') {
+      // TODO: Handle using Eleventy Image
+    }
+    else if(urlObj.host.match(/imgix\.net$/)) {
+      // TODO: Handle as Imgix source
+      return imgixClient.buildURL(urlObj.pathname, {
+        w: 320,
+        h: 240,
+        fit: 'crop'
+      })
+    }
+    else if(urlObj.host.match('unsplash.com')) {
+      // TODO: Can also handle as Imgix! Just pass images.unsplash.com as the domain
+    }
+    else {
+      // TODO: Remote image, for now handle as Cloudinary or Eleventy Image 
+    }
+
+    // TODO: Special handling for Substack's CDN (Cloudinary)?
+
+    console.log(urlObj)
+    return urlObj
   })
 
   // Read Vite's manifest.json, and add script tags for the entry files

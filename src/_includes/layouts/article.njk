@@ -4,14 +4,15 @@ layout: layouts/base.njk
 <main>
 <article class="dd-prose py-12 items-center">
   <header class="post-header text-center contents">
-    <h1 class="dd-title w-full-inset">{{ title }}</h1>
+    <h1 class="dd-title w-full-inset">{{ display_title or title }}</h1>
     {% if subtitle or excerpt %}
     <p class="dd-subtitle deorphan w-full-inset max-w-prose-narrow">{{ subtitle or excerpt }}</p>
     {% endif %}
     <p class="mt-4 text-base text-ink-medium font-medium">{{ date | prettyDate }}</p>
   </header>
   {{ content | safe }}
-  {% set tagBan = ['featured','selected','posts', 'event'] %}
+  <i class="fak fa-dd-logo fa-2x text-ink-light"></i>
+  {% set tagBan = ['featured', 'selected', 'posts', 'event', 'articles', 'notes'] %}
   {% if tags %}
   <div class="post-tags my-8 text-base flex flex-wrap gap-4">
     {% for tag in tags %}

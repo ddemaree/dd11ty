@@ -21,8 +21,8 @@ module.exports = {
     {
       text: "Writing",
       icon: "feather-alt",
-      url: "/writing",
-      identifier: "writing"
+      url: "/articles",
+      identifier: "articles"
     }
   ]
 }
