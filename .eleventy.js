@@ -188,6 +188,10 @@ module.exports = function (eleventyConfig) {
     return `<figure class="dd-embed dd-embed-tweet">${tweetData.html}</figure>`
   })
 
+  // eleventyConfig.addNunjucksAsyncShortcode("insta", async id => {
+  //   // const instaData = await Cache(``)
+  // })
+
   eleventyConfig.addNunjucksAsyncShortcode("postThumbnail", async uri => {
     const urlObj = new URL(uri, "http://localhost/")
     

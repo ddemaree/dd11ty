@@ -25,6 +25,7 @@
     "cheerio": "*",
     "classnames": "^2.3.1",
     "concurrently": "^6.0.0",
+    "dotenv": "^10.0.0",
     "eleventy-plugin-images-responsiver": "^1.8.2",
     "image-size": "^0.9.7",
     "jsdom": "^16.6.0",

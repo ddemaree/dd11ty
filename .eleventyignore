@@ -3,3 +3,4 @@ src/client/*.js
 src/client/*.css
 
 node_modules/*
+.env

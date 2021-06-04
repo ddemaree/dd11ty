@@ -11,9 +11,7 @@ tags:
 thumbnail: https://ddimg.imgix.net/2021/web-font-hosting/cover-why-fonts-matter.jpg
 ---
 
-<figure class="alignwide">
-{% imgix "2021/web-font-hosting/cover-why-fonts-matter.jpg", 900, 600 %}
-</figure>
+![Stack of books about design, including one titled 'Why Fonts Matter'](https://ddimg.imgix.net/2021/web-font-hosting/cover-why-fonts-matter.jpg){width=900 height=600} {.alignwide}
 
 Self-hosting web fonts can be easy; just add the font files somewhere in your site’s directory structure and reference them from your CSS. But if your site’s source code is stored in a GitHub repo, and you want your code to be public (or just forget to make it private), you may accidentally be violating the fonts’ license terms! [Roel Nieskens called GitHub “the web’s largest font piracy site”](https://pixelambacht.nl/2017/github-font-piracy/) due to web developers storing font files in publicly-viewable repos:
 
@@ -27,7 +25,7 @@ But beyond that, having fonts in a Git repo is an anti-pattern because font file
 
 IMHO, the best idea is to not store web fonts in Git if you don’t have to, but where should they go instead?
 
-My friend [Stephen Nixon](arrowtype.com) — who made the excellent typefaces [Recursive](recursive.design) and [Name Sans](https://name.arrowtype.com/) — [wrote up a nice post explaining why and how he securely hosts web fonts on AWS S3](https://blog.arrowtype.com/host-webfont-on-aws/) :
+My friend [Stephen Nixon](arrowtype.com), who made the excellent typefaces [Recursive](recursive.design) and [Name Sans](https://name.arrowtype.com/), [wrote up a nice post explaining why and how he securely hosts web fonts on AWS S3](https://blog.arrowtype.com/host-webfont-on-aws/) :
 
 > With the S3 Buckets feature of Amazon Web Services (AWS), this is relatively easy & very inexpensive – unless you are making a hugely-popular website, perhaps. You can (and should) configure it to only work on specific web domains, so you don’t break your licensing or end up paying for other people to use your font hosting!
 
@@ -39,11 +37,7 @@ Another drawback to S3, less important for small projects but still worth thinki
 
 So,  for the fonts on this site, I decided to use [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), an “object” (aka file) storage service that’s patterned after S3, and compatible with S3’s API so that apps like Transmit will work with it. It’s a lot simpler, both in the product itself (nice web UI, easy-to-understand settings) and in its pricing model (a flat $5/month fee), and it has a built-in CDN that can integrate with DigitalOcean’s DNS servers to effortlessly configure custom domains and SSL certificates.
 
-<figure>
-  {% imgix "2021/web-font-hosting/screenshot-do-panel.png", 675, 477 %}
-  <figcaption>DigitalOcean's control panel makes it easy to set up and configure Spaces, including custom domains, SSL, and CORS rules</figcaption>
-</figure>
-
+![](https://ddimg.imgix.net/2021/web-font-hosting/screenshot-do-panel.png "DigitalOcean's control panel makes it easy to set up and configure Spaces, including custom domains, SSL, and CORS rules"){width=675 height=477}
 
 I keep all my fonts in the same directory of the same Spaces bucket, which I manage using Transmit:
 
