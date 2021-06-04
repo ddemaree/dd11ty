@@ -13,9 +13,7 @@ metadata:
   description: Patreon CEO Jack Conte announced layoffs via a confessional YouTube video, joining the ranks of tech leaders who've taken workplace issues a little too personally. 
 ---
 
-<figure class="alignwide">
-  {% imgix "2021/the-full-coinbase/cover-circus.jpeg", 900, 675, "Some kind of circus act" %}
-</figure>
+![Some kind of circus act](https://ddimg.imgix.net/2021/the-full-coinbase/cover-circus.jpeg){width=900 height=675} {.alignwide}
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 
@@ -46,9 +44,7 @@ Conte also, I guess to his credit, didn’t announce a big change to how the com
 
 <hr class="wp-block-separator"/>
 
-<figure>
-  {% imgix "2021/the-full-coinbase/gnome-ceos.jpg", 680, 513, "Business model chart from the South Park episode 'Gnomes'" %}
-</figure>
+![Business model chart from the South Park episode 'Gnomes'](https://ddimg.imgix.net/2021/the-full-coinbase/gnome-ceos.jpg){width=680 height=513}
 
 Even so, I would still say that with this video and the changes it discusses, Jack Conte and Patreon have done the thing I have termed <strong>The Full Coinbase</strong>:
 
@@ -84,7 +80,7 @@ In other words, it’s not that these CEOs have some inside scoop about the futu
 
 Another factor here — and the reason why this is playing out publicly — is that these CEOs are leveraging public opinion, possibly to make themselves feel better about hard choices, but also to kickstart controversy to make unambiguously dickish moves seem, well, more ambiguous. In Conte’s case, he’s getting love from his deeply loyal YouTube fan community:
 
-<!-- twitter 1387629343984295937 -->
+{% twitter "1387629343984295937" %}
 
 In the other cases, it’s a mix of pro-business fellow travelers and longtime allies — [Daring Fireball](http://daringfireball.net)’s John Gruber, who’s known Jason Fried for a long time and been a 37signals/Basecamp proponent almost since the beginning, has posted [multiple](https://daringfireball.net/linked/2021/04/28/twitter-hate-machine) [links](https://daringfireball.net/linked/2021/04/27/ride-out-the-storm) that (vaguely, like subtweets) show support for Fried and dismiss the haters.
 

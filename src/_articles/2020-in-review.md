@@ -7,9 +7,7 @@ date: 2021-01-11 18:00:00-05:00
 thumbnail: "https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-42.jpg"
 ---
 
-<figure class="alignwide">
-  {% imgix "2021/2020-in-review/2020-in-review-42.jpg", 900, 600 %}
-</figure>
+![Brick wall of a building with a COVID-19 mask mandate sign](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-42.jpg "Covid mask mandate sign at Maplewood, NJ public library"){width=900 height=600} {.alignwide}
 
 2020 was a heavy, dark, horrible year, an [_annus horribilis_](https://en.wikipedia.org/wiki/Annus_horribilis) for almost every living person. But all told it wasn't _so_ bad for me and my family. 
 
@@ -17,28 +15,26 @@ This is a privilege, I know, and the fact that my 2020 was more boring than pain
 
 A year ago I wrote [this 2019 review post](/p/2019-in-review), and it's almost cute what small things I was thinking about then. Lots of travel, lots of chatter about my cool office and my new gym routine, lots of wishing for more of the same. Ha ha ha ha ha!
 
-<figure class="alignwide">
-  <!-- gallery cols=3 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-01.jpg" width=600 height=800 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-03.jpg" width=600 height=750 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-04.jpg" width=600 height=800 -->
-  <!-- gallery -->
-  <figcaption>The Before Times — all photos from Jan-Feb 2020</figcaption>
-</figure>
+{% gallery align="wide", cols=3 %}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-01.jpg){width=600 height=800}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-03.jpg){width=600 height=750} 
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-04.jpg){width=600 height=800} 
+
+<figcaption>The Before Times — all photos from Jan-Feb 2020</figcaption>
+{% endgallery %}
 
 Instead of planned or hoped-for trips to Disney World, Munich, New Orleans, and Paris, I had a long weekend in the Catskills amid more than 300 days stuck at home. Instead of office parties and work-subsidized gym training, I bought a new standing desk and a Peloton and spent thousands of hours in my attic. 2020 was defined by a _lot_ of things, but mobility and experiencing different places was not one of them.
 
 Sheltering in place has served its purpose: none of the three of us have been infected with or exposed to COVID. And we've been pretty comfortable — my job has been stable and secure, we've watched lots of movies and built over a dozen big LEGO sets.
 
-<figure class="alignwide">
-  <!-- gallery -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-12.jpg" width=600 height=800 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-41.jpg" width=600 height=800 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-17.jpg" width=600 height=750 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-25.jpg" width=600 height=600 -->
-  <!-- gallery -->
-  <figcaption>Mask modeling: L.A. Apparel, For Days, Proper Cloth, Huntsman</figcaption>
-</figure>
+{% gallery align="wide" %}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-12.jpg){width=600 height=800}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-41.jpg){width=600 height=800}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-17.jpg){width=600 height=750}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-25.jpg){width=600 height=600}
+
+<figcaption>Mask modeling: L.A. Apparel, For Days, Proper Cloth, Huntsman</figcaption>
+{% endgallery %}
 
 ## Working from Home
 
@@ -50,9 +46,7 @@ Last January, before the lockdowns, I was asked to lead product management for [
 
 In March, we [launched a major update to the Google Fonts website](https://design.google/news/happy-anniversary-google-fonts/), featuring new ways to find and use [variable fonts](https://design.google/library/variable-fonts-are-here-to-stay/). A lot of my time this year went toward some big updates to Google's brand typeface, Google Sans, including a new text optical size which you can see on [the design.google blog](https://design.google).
 
-<figure>
-<!-- ix-img path="2021/2020-in-review/google-fonts.png" width=680 height=453 -->
-</figure>
+![](https://ddimg.imgix.net/2021/2020-in-review/google-fonts.png){width=680 height=453}
 
 I've been meaning to write about my WFH setup; to be honest a lot of my tips boil down to "have extra space at home" and "spend money on stuff."
 
@@ -64,33 +58,27 @@ In 2019 "traveling" included family trips to Disney World, Ohio, and Texas, and 
 
 We went three places last year, all within 2 hours of home: the Hudson Valley (for a masked hangout with a friend), Asbury Park (for a beach day), and the Catskills (for "glamping"). The latter two trips were during the few weeks when New York and New Jersey had exceptionally low (for the U.S.) COVID rates, and even then we were as careful as could be.
 
-<figure>
-  <!-- gallery -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-32.jpg" width=600 height=600 col-span=2 -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-28.jpg" width="600" height="600" -->
-    <!-- ix-img path="2021/2020-in-review/2020-in-review-33.jpg" width="600" height="600" -->
-  <!-- gallery -->
-</figure>
+{% gallery %}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-32.jpg){width=600 height=600} {.span-2}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-28.jpg){width=600 height=600}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-33.jpg){width=600 height=600}
+{% endgallery %}
 
 We did almost all our pandemic dining-out during our Catskills trip (and all of it was outdoors). The best thing I ate this year was a burger and onion rings from [Phoenicia Diner](http://phoeniciadiner.com/), pictured below. In our house these last few months, "support our local economy" has become a euphemism for "order takeout" — we've eagerly supported [Jackie & Son](https://jackieandson.com), [Miti Miti Latin Street Food](https://www.mitimitinj.com), [BGR](https://bgrtheburgerjoint.com), [The Red Cadillac](https://www.theredcadillacnj.com), [Arturo's](https://arturosnj.com) and [The Able Baker](https://theablebaker.com/).
 
-<figure class="alignwide">
-<!-- gallery -->
-  <!-- ix-img path="2021/2020-in-review/2020-in-review-27.jpg" width="600" height="600" -->
-  <!-- ix-img path="2021/2020-in-review/2020-in-review-26.jpg" width="600" height="600" -->
-<!-- gallery -->
-</figure>
+{% gallery align="wide" %}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-27.jpg){width=600 height=600}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-26.jpg){width=600 height=600}
+{% endgallery %}
 
 As a pandemic hobby — and _not_ as self-medication amidst existential world horror! — I've been working to up my home mixology game, which I documented as a "cocktail of the week" feature in several of this summer's newsletters. Where before I usually stuck to home cocktails consisting of such exotic ingredients as bourbon and frozen water, in 2020 I used a lot of fresh citrus and even made some homemade grenadine and blackberry shrub (the latter from David Lebovitz's [_Drinking French_](https://www.amazon.com/Drinking-French-Cocktails-Ap%C3%A9ritifs-Traditions/dp/1607749297)).
 
 Along the way I "invented" two drinks: the "Glover" (a Rob Roy with Japanese whisky and bitters, named for the first Google result for "famous Scotsman in Japan"), and a Paper Plane variation with St. George's Bruto Americano and Bigallet China-China Amer instead of Aperol and Nonino.
 
-<figure>
-<!-- gallery -->
-  <!-- ix-img path="2021/2020-in-review/2020-in-review-10.jpg" width="450" height="600" -->
-  <!-- ix-img path="2021/2020-in-review/2020-in-review-48.jpg" width="450" height="600" -->
-{<!-- gallery -->}
-</figure>
+{% gallery %}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-10.jpg){width="450" height="600"}
+- ![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-48.jpg){width="450" height="600"}
+{% endgallery %}
 
 ## Reading and Watching and Playing on Screens
 
@@ -100,9 +88,7 @@ We've watched a lot of "Nordic noir"-style British detective shows during COVID:
 
 As for many of you, for us this was the year of [the crossing of the animals](https://www.animal-crossing.com/new-horizons/).
 
-<figure>
-  <!-- ix-img path="2021/2020-in-review/animal-crossing.jpeg" width="600" height="360" -->
-</figure>
+![Screenshot from Animal Crossing: New Horizons](https://ddimg.imgix.net/2021/2020-in-review/animal-crossing.jpeg){width="600" height="360"}
 
 ## Writing
 
@@ -121,10 +107,7 @@ I haven't decided yet if the next one will be issue #14, or the first issue of a
 
 One lightbulb moment I had this week: I miss writing technical posts. I did publish one good one this year — [a tutorial on how to change your Git repo's main branch name](/p/no-more-git-masters) — and in the course of making four new iterations of this personal site I learned a ton and have some tricks to share. So watch out for more JavaScript, CSS, and static site generator content in this space.
 
-<figure class="alignwide">
-  <!-- ix-img path="2021/2020-in-review/2020-in-review-58.jpg" width="1200" height="800" -->
-  <figcaption>My attic studio space in its final WFH configuration, January 2021</figcaption>
-</figure>
+![Desk, Peloton bike, and Lego sets](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-58.jpg "My attic studio space in its final WFH configuration, January 2021"){width="1200" height="800"} {.alignwide}
 
 ## Coding Through Crisis
 
@@ -148,9 +131,7 @@ It can be hard to remember anything good related to U.S. politics in a week when
 
 But all this is happening because, two and a half months ago, we elected Joe Biden to the presidency. That day when it became real — Saturday, November 7 — was as indelible in a good way as last Wednesday was in a horrible way, a spontaneous explosion of honking car horns, cheering people, and good vibes across America and around the world. It helped that the weather was _gorgeous_ here in New Jersey.
 
-<figure class="alignwide">
-  <!-- ix-img path="2021/2020-in-review/2020-in-review-54.jpg" width="800" height="667" -->
-</figure>
+![](https://ddimg.imgix.net/2021/2020-in-review/2020-in-review-54.jpg){width="800" height="667"} {.alignwide}
 
 2021 likely has some horrors in store for us yet — COVID and its new progeny, the B.1.1.7 variant, are not done with us, nor are Donald Trump and his followers.
 

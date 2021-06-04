@@ -54,7 +54,8 @@ module.exports = {
 		content: [
 			'./src/**/*.js',
 			"./src/**/*.njk",
-			"./src/**/*.md"
+			"./src/**/*.md",
+			"./.eleventy.js"
 		]
 	},
 	plugins: [

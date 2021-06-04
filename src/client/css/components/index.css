@@ -22,6 +22,24 @@
 
 @layer components {
 
+  .dd-icon {
+    height: 1em;
+  }
+
+  .dots-divider, .dd-prose > hr {
+    @apply h-8 flex items-center justify-center text-ink-light !important;
+    border-width: 0px;
+
+    &:before {
+      @apply inline-block text-lg;
+      content: "•••";
+      letter-spacing: 1em;
+    }
+  }
+}
+
+@layer components {
+
   .dd-title,
   .dd-blog-title {
     @apply font-roslindale-2 text-4xl sm:text-5xl;
@@ -250,52 +268,43 @@
   }
 }
 
+
+
 @layer components {
 
-  .dd-icon {
-    height: 1em;
-  }
-
-  .dots-divider {
-    @apply h-8 flex items-center justify-center text-ink-light;
-    border-width: 0px;
-
-    &:before {
-      @apply inline-block text-lg;
-      content: "•••";
-      letter-spacing: 1em;
+  .dd-block-gallery {
+    > ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem; 
     }
-  }
-}
 
-@layer components {
-  .dd-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    
-    .gallery-img {
+    > ul > li {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      width: calc(50% - 1rem);
+      width: calc(50% - 1rem); 
     }
 
-    &.cols-3 .gallery-img {
-      width: calc(33% - 1rem);
+    &.cols-3 > ul > li {
+      width: calc(33% - 1rem); 
     }
 
-    .gallery-img.span-2 {
+    > ul > li > li.span-2 {
       width: 100%;
     }
 
-    .gallery-img img {
+    li > figure {
+      display: contents;
+    }
+
+    img {
       display: block;
       height: auto;
       max-width: 100%;
       width: 100%;
       object-fit: cover;
-      flex: 1;
+      flex: 1; 
     }
   }
 

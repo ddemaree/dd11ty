@@ -13,9 +13,7 @@ metadata:
   description: Basecamp's anti-"politics" stance and the folly of trying to change a team's culture via public blog post
 ---
 
-<figure class="alignwide">
-  {% imgix "2021/back-to-basic-at-basecamp/cover__back-to-basic-at-basecamp.jpeg", 900, 600, "Night falls over a base camp" %}
-</figure>
+![Night falls over a base camp](https://ddimg.imgix.net/2021/back-to-basic-at-basecamp/cover__back-to-basic-at-basecamp.jpeg){width=900 height=600} {.alignwide}
 
 Basecamp (née 37signals) founder/CEO Jason Fried,[ posting on his personal HEY World blog/newsletter yesterday](https://world.hey.com/jason/changes-at-basecamp-7f32afc5), announced some big internal changes for the company. Here’s a summary of his post, lightly edited for brevity:
 

@@ -11,18 +11,13 @@ metadata:
   description: Reactions to Apple's latest product drops — AirTags, the new Apple TV and Siri Remote, and the M1 iPad Pros.
 ---
 
-<figure class="alignwide">
-{% imgix "2021/thoughts-on-apples-spring-loaded-event/cover__thoughts-on-apples-spring-loaded-event.jpeg", 916, 611, "Apple CEO Tim Cook with many colorful iMac computers" %}
-<figcaption>Apple CEO Tim Cook with a rainbow of M1 iMacs</figcaption>
-</figure>
+![Apple CEO Tim Cook with many colorful iMac computers](https://ddimg.imgix.net/2021/thoughts-on-apples-spring-loaded-event/cover__thoughts-on-apples-spring-loaded-event.jpeg "Apple CEO Tim Cook with many colorful iMac computers"){width=900 height=600}
 
 It’s that time again — Apple has announced products, and now we will talk about the products that were announced!!! {.text-xl}
 
 I did not watch today’s event live, because I had other things going on: my newly vaccinated in-laws are visiting, I had to pick up lunch carryout, the dog needed walking, and then I had a meeting. I kept one eye on _The Verge_‘s liveblog, and have spent a chunk of the afternoon catching up on everything, so I may have missed some stuff and, if so, will update this post with additions or corrections as needed.
 
-<figure>
-{% imgix "2021/thoughts-on-apples-spring-loaded-event/tile_keychain__csyd7pmtexci_large_2x.jpg", 675, 675, "Lots of colorful Apple AirTags" %}
-</figure>
+![Lots of colorful Apple AirTags](https://ddimg.imgix.net/2021/thoughts-on-apples-spring-loaded-event/tile_keychain__csyd7pmtexci_large_2x.jpg){width=675 height=675}
 
 ---
 
@@ -40,9 +35,7 @@ If nothing else, I expect Apple to do quite a bit better at that, for only a bit
 
 Speaking of nice steel keychains, check this out hiding at the bottom of the pricing page for the very affordable and accessible AirTags:
 
-<figure class="wp-block-image size-large">
-{% imgix "2021/thoughts-on-apples-spring-loaded-event/image-1.png", 1024, 748, "" %}
-</figure>
+![](https://ddimg.imgix.net/2021/thoughts-on-apples-spring-loaded-event/image-1.png){width=600 height=546}
 
 Confession time: I actually own [an Hermès strap for my Apple Watch](https://www.apple.com/shop/product/MX2P2AM/A/apple-watch-hermès-40mm-noir-swift-leather-single-tour?fnode=baaa9e286156d9e1ee656577630c20dce49f53bd9f8648c58e904076d11f45b3ef87f60c57fe05e0d39f4c46348a1cb369256e6f14237fa1ff38ab3c50e53c2e97dc2258170db6b274a957425f5db38d). It was over $300, and it’s easily the best watch band I own — the leather is supple, and unlike some other, far cheaper leather goods I own, it actually _has_ gotten more supple and better looking with time and wear.
 
@@ -56,9 +49,7 @@ I did just pre-order [Nomad’s AirTags glasses strap](https://nomadgoods.com/pr
 
 I gotta hand it to Apple: they’ve now stuck with the same form factor and accessories for the iPad Pro for not one, not two, but _three_ years. (Well, almost.) This is the fourth iPad model that works with the Pencil 2, and the third that will work with the Magic Keyboard. If you (like me) have spent $400 or more on iPad Air/Pro accessories, but worry that someday Apple’s designers will get bored and make you buy new stuff that’s only a millimeter larger or smaller, like they do with iPhone cases every year, well, we dodged that bullet for another year.
 
-<figure class="wp-block-image size-large">
-{% imgix "2021/thoughts-on-apples-spring-loaded-event/image-2.png", 1024, 791, "iPad Pro in a white Magic Keyboard case" %}
-</figure>
+![iPad Pro in a white Magic Keyboard case](https://ddimg.imgix.net/2021/thoughts-on-apples-spring-loaded-event/image-2.png){width=675 height=520}
 
 Apple’s big headline for these iPads is that they are powered by the same M1 processors as new Macs, and in fact support the same Thunderbolt 4/USB4 connectivity. They are, in essence, tablet-shaped Macs that run iPadOS — or are the new Macs laptop-shaped iPads that run macOS?!
 
@@ -68,9 +59,7 @@ Currently, I’m using an 11″ iPad Pro from 2018. I’m a little bit intereste
 
 But you know, that’s probably fine. The iPad is what it is, and Apple seems to be OK with that.
 
-<figure class="wp-block-image alignwide size-large">
-{% imgix "2021/thoughts-on-apples-spring-loaded-event/image-3.png", 1024, 620, "An excited person making hand gestures at a yellow iMac computer" %}
-</figure>
+![An excited person making hand gestures at a yellow iMac computer](https://ddimg.imgix.net/2021/thoughts-on-apples-spring-loaded-event/image-3.png){width=900 height=544} {.alignwide}
 
 <h2>The new M1 iMac</h2>
 
@@ -96,9 +85,7 @@ Well, a few more things:
 
 <strong>There’s finally a new Apple TV remote!</strong> [And you don’t even need to buy a new Apple TV to take advantage of it](https://www.theverge.com/2021/4/20/22394196/apple-tv-4k-new-siri-remote-sold-separately-price-buttons). (But given that a new Apple TV is $180, and the remote alone is $60… I mean, you decide.)
 
-<figure class="aligncenter size-large is-resized">
-{% imgix "2021/thoughts-on-apples-spring-loaded-event/image-4.png", 313, 560, "" %}
-</figure>
+![](https://ddimg.imgix.net/2021/thoughts-on-apples-spring-loaded-event/image-4.png){width=313 height=560}
 
 <strong>Apple Card now supports family accounts</strong> — not only shared cards between spouses, which had been a common request, but the ability to share a Card account with kids, teens, or anyone else in a Family Sharing group. This is a really interesting move that is Apple’s first truly differentiated feature in the world of money and payments. Banks like Chase offer kid accounts (either traditional or prepaid) that are somewhat integrated with parents’ banking, but nowhere near this sophisticated, and without the ability for the less credit-experienced users to rely on their parents’ credit to help bootstrap their own, while also giving parents tools to monitor and control kids’ spending on the account.
 

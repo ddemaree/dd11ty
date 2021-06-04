@@ -11,7 +11,7 @@ metadata:
 ---
 
 <figure class="alignwide">
-{% imgix "2021/how-to-blog-in-2021/cover__how-to-blog-in-2021.jpeg", 900, 595, "" %}
+![](https://ddimg.imgix.net/2021/how-to-blog-in-2021/cover__how-to-blog-in-2021.jpeg){width=900 height=595}
 </figure>
 
 Sometimes I wonder if I’ve simply forgotten how to blog. Little (shit)posts about whatever interested me used to come so easily — I’m sitting on over 1,000 entries from 2002-2008, from my original Movable Type blog, along with a few hundred from my old Tumblr. Most of those were gushing about some tech company or product I liked, or complaining about something petty, or some personal in-joke where I even don’t remember what it was about.
@@ -57,7 +57,7 @@ All that to say: I’m writing and posting this using WordPress because I haven�
 ## Overcoming blogger’s block
 
 <figure>
-  <img loading="lazy" alt="Write Ideas book on brown wooden board" class="wp-image-4189 lazyload" width="1024" height="769" title="" src="https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixid=MnwyMTM5OTN8MHwxfGFsbHx8fHx8fHx8fDE2MTgxNjQ4MTk&ixlib=rb-1.2.1&fm=jpg&q=85&fit=crop&w=1024&h=769" />
+  <img loading="lazy" alt="Write Ideas book on brown wooden board" width="1024" height="769" src="https://images.unsplash.com/photo-1516414447565-b14be0adf13e?fm=jpg&q=85&fit=crop&w=1024&h=769" />
   <figcaption>Photo by <a href="https://unsplash.com/@aaronburden" rel="nofollow">Aaron Burden</a> on <a href="https://unsplash.com/?utm_source=davids-blog&utm_medium=referral" rel="nofollow">Unsplash</a> </figcaption>
 </figure>
 
@@ -74,8 +74,7 @@ Julian Shapiro [posted a few weeks ago about a mental model for generating ideas
 
 > Visualize your creativity as a backed-up pipe of water. The first mile of piping is packed with wastewater. This wastewater must be emptied before the clear water arrives. 
 > 
-> Because your pipe only has one faucet, there’s no shortcut to achieving clarity other than first emptying the wastewater.
-{.wp-block-quote}
+> Because your pipe only has one faucet, there’s no shortcut to achieving clarity other than first emptying the wastewater. {.wp-block-quote}
 
 What these two posts have in common is acknowledging that not every idea will be gold, but that the way to find the gold is to first dig through the rock that stands between you and it.
 

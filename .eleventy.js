@@ -6,13 +6,22 @@ const _ = require('lodash');
 const { DateTime } = require('luxon')
 const axios = require('axios')
 const Cache = require("@11ty/eleventy-cache-assets");
+const Image = require("@11ty/eleventy-img");
+const _c = require('classnames')
+
+const { JSDOM } = require('jsdom')
+
+// const posthtml = require('posthtml')
+// const imagesResponsiver = require('eleventy-plugin-images-responsiver');
+
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+// const pluginVue = require("@11ty/eleventy-plugin-vue");
 
 const imgixClient = new Imgix({
   domain: 'ddimg.imgix.net',
   useHTTPS: true
 });
-
-const Image = require("@11ty/eleventy-img");
 
 async function iconShortcode(src, size='png-192') {
   src = path.join(__dirname, 'src', src)
@@ -33,9 +42,6 @@ async function iconShortcode(src, size='png-192') {
   return sizes[size].url
 }
 
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-
 const INPUT_DIR = "src";
 const OUTPUT_DIR = "_site";
 
@@ -52,12 +58,75 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(pluginRss);
 
+  eleventyConfig.addTransform('responsify', async (content, outputPath) => {
+    const sizes = [380, 760, 1280, 2560]
+
+    if(path.extname(outputPath) === ".html") {
+      const dom = new JSDOM(content)
+      const { document } = dom.window
+
+      const imageNodes = document.querySelectorAll(':not(figure) > img:not([srcset], .post-thumbnail)')
+      _.forEach(imageNodes, img => {
+        let srcset = '';
+        const { parentNode } = img
+        const src = img.src
+        const srcUrl = new URL(src, (process.env.BASE_URL || "http://localhost/"))
+
+        if(path.extname(src) === '.gif') {
+          // Do nothing, a resized GIF won't animate
+        }
+        else if(srcUrl.hostname.match(/imgix\.net|unsplash\.com$/)) {
+          srcset = sizes.map(size => `${src}?w=${size} ${size}w`).join(', ')
+        }
+
+        if(srcset) img.srcset = srcset
+        img.setAttribute('loading', 'lazy')
+        img.setAttribute('sizes', `(max-width: 42rem) 100vw, 56rem`)
+
+        const newFigure = document.createElement('figure')
+        newFigure.className = img.parentNode.className
+
+        // This *moves* the image into the figure element, so we need to re-append for it to stay in the output
+        newFigure.appendChild(img)
+        
+        if(img.getAttribute('title')) {
+          const caption = document.createElement('figcaption')
+          caption.innerHTML = img.getAttribute('title') 
+          newFigure.appendChild(caption)
+        }
+
+        if(parentNode.tagName === 'P') {
+          parentNode.replaceWith(newFigure)
+        } else {
+          parentNode.appendChild(newFigure)
+        }
+      })
+
+      return dom.serialize()
+    }
+
+    return content
+  })
+
   // Disable whitespace-as-code-indicator, which breaks a lot of markup
   const configuredMdLibrary = markdownIt({ html: true })
     .disable("code")
     .use(require('markdown-it-attrs'))
     .use(require('markdown-it-footnote'));
   eleventyConfig.setLibrary("md", configuredMdLibrary);
+
+  eleventyConfig.addPairedShortcode('gallery', (content, options={}) => {
+    const classNames = _c([
+      'dd-block-gallery',
+      (options.style && `is-style-${options.style}`),
+      (options.align && `align${options.align}`),
+      (options.cols && `cols-${options.cols}`)
+    ])
+
+    const galleryItems = configuredMdLibrary.render(content)
+    const output = `<figure class="${classNames}">${galleryItems}</figure>`;
+    return output;
+  })
 
   eleventyConfig.addFilter("prettyDate", date => {
     let dateObj;

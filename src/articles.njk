@@ -19,7 +19,7 @@ active_nav: articles
     </a>
     {% if article.data.thumbnail %}
     <a href="{{ article.url }}" class="xs-2:w-40">
-      <img src="{% postThumbnail article.data.thumbnail %}" alt="" width="160" height="120" class="rounded-sm w-full object-cover" />
+      <img src="{% postThumbnail article.data.thumbnail %}" alt="" width="160" height="120" class="rounded-sm w-full object-cover post-thumbnail" />
     </a>
     {% endif %}
   </article>
