@@ -1,9 +1,16 @@
 ---
 date: 2020-01-01
 title: 2019 in Review
+subtitle: A pretty good year
+excerpt: Things were good! Work was good, travel was good, and I got a dog! 
+metadata:
+  description: A pretty good year summarized. Things were good! Work was good, travel was good, and I got a dog!  
+thumbnail: https://res.cloudinary.com/demaree/image/upload/w_300,ar_3:2,c_thumb,g_face,z_0.75/IMG_3257-2_vpsqb4.jpg 
 ---
 
-For whatever reason, while I've not hesitated to write tech/business think pieces or IT tutorials on my personal blog all these years, I've never written a simple year (or decade) in review post.
+For whatever reason, while I've not hesitated to write tech/business think pieces or IT tutorials or little rants on my personal blog all these years, I've never written a simple year (or decade) in review post. 🤷🏻‍♂️
+
+Anyway, 2019 was good! Work was good, travel was good, and I got a dog! 
 
 ![David Demaree holding up a Disney World &quot;2019&quot; pin featuring Stitch](https://res.cloudinary.com/demaree/image/upload/IMG_3257-2_vpsqb4.jpg){width=600 height=450}
 
