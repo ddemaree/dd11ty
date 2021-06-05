@@ -32,12 +32,12 @@ const postThumbnail = async uri => {
   else if(urlObj.host.match('unsplash.com')) {
     // TODO: Can also handle as Imgix! Just pass images.unsplash.com as the domain
   }
-  else if(urlObj.host.match('res.cloudinary.com')) {
-    const publicID = getCloudinaryIDFromURL(uri)
-    console.log(publicID)
+  // else if(urlObj.host.match('res.cloudinary.com')) {
+  //   const publicID = getCloudinaryIDFromURL(uri)
+  //   console.log(publicID)
 
-    return cloudinary.url(publicID, { width: 320, height: 240, crop: "thumbnail" })
-  }
+  //   return cloudinary.url(publicID, { width: 320, height: 240, crop: "thumbnail" })
+  // }
   else {
     // TODO: Remote image, for now handle as Cloudinary or Eleventy Image 
   }
