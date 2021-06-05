@@ -1,3 +1,6 @@
+---
+gridwrap: true
+---
 <!DOCTYPE html>
 <html lang="en" class="bg-surface">
 {% include "head.njk" %}
@@ -5,9 +8,9 @@
   <div class="bg-surface text-ink min-h-screen dd-page grid grid-rows-base">
   {% include 'header.njk' %}
   
-  <div>
+  {% if gridwrap %}<div>{% endif %}
   {{ content | safe }}
-  </div>
+  {% if gridwrap %}</div>{% endif %}
   
   <footer class="py-10 flex flex-col items-center text-ink-medium">
     <hr class="w-full-inset border-2 border-ink-light mb-6">

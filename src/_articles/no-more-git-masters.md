@@ -4,6 +4,7 @@ tags: ['Git for Humans', 'Web Development']
 date: 2020-07-08T13:00:00-04:00
 slug: no-more-git-masters
 excerpt: "It's time to change your Git repo's default branch."
+thumbnail: https://res.cloudinary.com/demaree/image/upload/cx/2021/no-more-masters/cover-unsplash-river.jpg
 metadata:
   description: "It's time change your Git repo's default branch name to be more inclusive — here's how."
 aliases:

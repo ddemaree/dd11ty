@@ -8,6 +8,10 @@
       text-decoration: underline;
       text-decoration-thickness: 2px;
     }  
+
+    em, i {
+      font-style: normal; /* Prevent fake italics in Safari */
+    }
   }
 
   .home-cols {
