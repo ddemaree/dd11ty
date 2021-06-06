@@ -4,14 +4,14 @@ date: '2021-04-11T17:30:00'
 tags:
   - Blogging
   - writing
-thumbnail: https://ddimg.imgix.net/2021/how-to-blog-in-2021/cover__how-to-blog-in-2021.jpeg
+thumbnail: https://res.cloudinary.com/demaree/cx/2021/how-to-blog-in-2021/cover__how-to-blog-in-2021.jpeg
 subtitle: Why, how, and where to write on the web in 2021
 metadata:
   description: Why, how, and where to write on the web in 2021
 ---
 
 <figure class="alignwide">
-![](https://ddimg.imgix.net/2021/how-to-blog-in-2021/cover__how-to-blog-in-2021.jpeg){width=900 height=595}
+![](https://res.cloudinary.com/demaree/cx/2021/how-to-blog-in-2021/cover__how-to-blog-in-2021.jpeg){width=900 height=595}
 </figure>
 
 Sometimes I wonder if I’ve simply forgotten how to blog. Little (shit)posts about whatever interested me used to come so easily — I’m sitting on over 1,000 entries from 2002-2008, from my original Movable Type blog, along with a few hundred from my old Tumblr. Most of those were gushing about some tech company or product I liked, or complaining about something petty, or some personal in-joke where I even don’t remember what it was about.

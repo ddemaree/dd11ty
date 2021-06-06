@@ -4,10 +4,10 @@ subtitle: More than you ever wanted to know about my WFH setup.
 metadata:
   description: More than you ever wanted to know about my WFH setup.
 date: 2021-02-12
-thumbnail: https://ddimg.imgix.net/2021/wfh-setup/cover-photo-wfh-2021.jpeg
+thumbnail: https://res.cloudinary.com/demaree/cx/2021/wfh-setup/cover-photo-wfh-2021.jpeg
 ---
 
-![My home-office desk, February 2021](https://ddimg.imgix.net/2021/wfh-setup/cover-photo-wfh-2021.jpeg "My home-office desk, February 2021"){width=900 height=720} {.alignwide}
+![My home-office desk, February 2021](https://res.cloudinary.com/demaree/cx/2021/wfh-setup/cover-photo-wfh-2021.jpeg "My home-office desk, February 2021"){width=900 height=720} {.alignwide}
 
 _[record scratch]_ Yep, this is <del>me</del> my desk. Perhaps you’re wondering how I got here.
 
@@ -17,7 +17,7 @@ I love gadgets, and I’m a perfectionist. I’ve tinkered with my desk setup re
 
 So here I am, with a boxful of keyboards, everything mounted on ergonomic arms that can be mounted, and a pro-level video setup. Let me tell you about my journey.
 
-![GIF of Bill Murray in 'The Life Aquatic with Steve Zissou' saying 'let me tell you about my boat'](https://ddimg.imgix.net/2021/wfh-setup/zissou.gif){width=500 height=211}
+![GIF of Bill Murray in 'The Life Aquatic with Steve Zissou' saying 'let me tell you about my boat'](https://res.cloudinary.com/demaree/cx/2021/wfh-setup/zissou.gif){width=500 height=211}
 
 
 ## The Right Laptop for a Pandemic
@@ -31,7 +31,7 @@ At the start of the pandemic, my main work laptop was a 2018 MacBook Air — an 
 
 At my desk — which is an [Uplift motorized sit-stand desk](https://www.upliftdesk.com/adjustable-height-desks/) I bought with my company’s generous WFH gear stipend — I keep the laptop in a [TwelveSouth BookArc](https://www.twelvesouth.com/products/bookarc-macbook?variant=31443535724601) stand. It’s connected to a [CalDigit Thunderbolt 3 dock](https://www.caldigit.com/ts3-plus/) (the same model [Wirecutter recommends](https://www.nytimes.com/wirecutter/reviews/best-thunderbolt-dock/#what-to-look-forward-to) and [Apple sells](https://www.apple.com/shop/product/HMX12ZM/A/caldigit-ts3-plus-dock?afid=p239%7C10078&cid=aos-us-aff-ir)) and from there to an [HP Z27 4K display](https://www.walmart.com/ip/HP-Z27-27-inch-4K-UHD-Display/834276976?irgwc=1&sourceid=imp_Uz7zeW3bjxyLW6pwUx0Mo371UkEWKJXJo2SzQ40&veh=aff&wmlspartner=imp_197432&clickid=Uz7zeW3bjxyLW6pwUx0Mo371UkEWKJXJo2SzQ40&sharedid=&affiliates_ad_id=565706&campaign_id=9383). That display is mounted to the desk with a [Fully Jarvis monitor arm](https://www.fully.com/jarvis-monitor-arm.html), which lets me position the screen higher when I’m standing and lower when I’m sitting.
 
-![My MacBook Pro docked on my desk](https://ddimg.imgix.net/2021/wfh-setup/photo-wfh-macbook-dock.jpeg "My MacBook Pro docked on my desk"){width=900 height=717}
+![My MacBook Pro docked on my desk](https://res.cloudinary.com/demaree/cx/2021/wfh-setup/photo-wfh-macbook-dock.jpeg "My MacBook Pro docked on my desk"){width=900 height=717}
 
 I am a stickler for only having to plug one wire into my laptop. Two wires are an annoyance; three are a failure. The Z27 has a built-in USB-C hub, and in theory, it should be able to connect directly to my laptop and do everything. 
 
@@ -50,7 +50,7 @@ BTW, also pictured above is [Google’s Nest Hub Max](https://store.google.com/u
 
 ## Video Conferencing
 
-![elgato Key Light, Logitech Streamcam, Sony RX100 VA](https://ddimg.imgix.net/2021/wfh-setup/photo-wfh-cameras.jpeg "elgato Key Light, Logitech Streamcam, Sony RX100 VA"){width=675 height=675}
+![elgato Key Light, Logitech Streamcam, Sony RX100 VA](https://res.cloudinary.com/demaree/cx/2021/wfh-setup/photo-wfh-cameras.jpeg "elgato Key Light, Logitech Streamcam, Sony RX100 VA"){width=675 height=675}
 
 Maybe I’m weird, but I’ve largely ignored the whole Twitch thing. Perhaps it’s part of my particular introversion, but I’m just not as into watching people’s random talking-head videos as other folks seem to be. I hadn’t really been exposed to all the ridiculous gear folks use to capture video of themselves sitting at their desks, ideally surrounded by colored accent lights. But then I read [Michael Lopp’s essay about his video conferencing setup](https://randsinrepose.com/archives/good-meetings-are-jazz/), where he writes:
 
@@ -76,7 +76,7 @@ Though I am a naturally messy person, once I’d invested in a nice camera image
 
 Seriously, don’t, we’ll be here all day.
 
-![Jabra Speak 710, Drop CTRL Keyboard, Logitech MX Ergo, Gather desk organizer w/ Baron Fig pens](https://ddimg.imgix.net/2021/wfh-setup/photo-wfh-keyboard-mouse.jpeg "Jabra Speak 710, Drop CTRL Keyboard, Logitech MX Ergo, Gather desk organizer w/ Baron Fig pens"){width=675 height=506}
+![Jabra Speak 710, Drop CTRL Keyboard, Logitech MX Ergo, Gather desk organizer w/ Baron Fig pens](https://res.cloudinary.com/demaree/cx/2021/wfh-setup/photo-wfh-keyboard-mouse.jpeg "Jabra Speak 710, Drop CTRL Keyboard, Logitech MX Ergo, Gather desk organizer w/ Baron Fig pens"){width=675 height=506}
 
 At the moment, I’m using the [Drop CTRL mechanical keyboard](https://www.amazon.com/Massdrop-CTRL-Mechanical-Keyboard-Programmable/dp/B07W4SNVXD) with Halo True switches. The CTRL is more or less identical to [Input Club’s K-Type keyboard](https://input.club/k-type/), which those two companies had co-produced before a falling-out that resulted in the keyboard and Halo switch designs being owned by Drop. My K-Type is still at Google’s NYC office, waiting for COVID rates to finally get low enough for them to let me come claim my stuff, so I bought a CTRL for my home office.
 
@@ -93,7 +93,7 @@ Don’t worry — I am totally paying attention.
 
 ## Lastly, My 15-Year-Old Chair
 
-![My first proper home office, summer 2006](https://ddimg.imgix.net/2021/wfh-setup/2009-05-desk-armitage-ave.jpg "My first proper home office, summer 2006"){width=960 height=768}
+![My first proper home office, summer 2006](https://res.cloudinary.com/demaree/cx/2021/wfh-setup/2009-05-desk-armitage-ave.jpg "My first proper home office, summer 2006"){width=960 height=768}
 
 [Ladies and gentlemen of the class of '97](https://en.wikipedia.org/wiki/Wear_Sunscreen): **buy a good chair**. If I could offer you only one tip for the future, good chair would be it.
 

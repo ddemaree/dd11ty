@@ -9,7 +9,7 @@ async function responsifyHTML(content, outputPath) {
     const dom = new JSDOM(content)
     const { document } = dom.window
 
-    const imageNodes = document.querySelectorAll('img:not([srcset], .post-thumbnail)')
+    const imageNodes = document.querySelectorAll(':not(figure) > img:not([srcset], .post-thumbnail)')
     _.forEach(imageNodes, img => {
       let srcset = '';
       const { parentNode } = img
@@ -41,7 +41,8 @@ async function responsifyHTML(content, outputPath) {
 
       if(parentNode.tagName === 'P') {
         parentNode.replaceWith(newFigure)
-      } else {
+      }
+      else {
         parentNode.appendChild(newFigure)
       }
     })

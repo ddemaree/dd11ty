@@ -1,7 +1,7 @@
 ---
 title: Blogging Is A Pain In The Ass
 date: 2018-09-07
-thumbnail: https://ddimg.imgix.net/wp/2021/03/cover-strangling-goose.jpg
+thumbnail: https://res.cloudinary.com/demaree/cx/wp/2021/03/cover-strangling-goose.jpg
 tags:
 - Blogging
 - Writing
@@ -9,7 +9,7 @@ tags:
 ---
 
 <figure class="wp-block-image alignfull size-large">
-  <img src="https://ddimg.imgix.net/wp/2021/03/cover-strangling-goose-1024x710.jpg" width="1024" height="710" alt="" class="wp-image-4104 lazyload" />
+  <img src="https://res.cloudinary.com/demaree/cx/wp/2021/03/cover-strangling-goose-1024x710.jpg" width="1024" height="710" alt="" class="wp-image-4104 lazyload" />
   <figcaption>From left: me, my blog (Photo:&nbsp;<a href="https://www.flickr.com/photos/fotoblitzcolor/5426388127">Eric Felton via Flickr</a>)</figcaption>
 </figure>
 
@@ -49,7 +49,7 @@ tags:
 <!-- /wp:paragraph -->
 
 <figure class="wp-block-image alignwide size-large">
-  <img src="https://ddimg.imgix.net/wp/2021/03/screenshot-cloud9-ide.png" alt="" class="wp-image-4106 lazyload" />
+  <img src="https://res.cloudinary.com/demaree/cx/wp/2021/03/screenshot-cloud9-ide.png" alt="" class="wp-image-4106 lazyload" />
   <figcaption>My Integrated Development Environment™ for working on a simple WordPress blog, in Amazon’s web-based IDE, Cloud9. I remember making web pages in Notepad — now I’m using a web page to code web pages</figcaption>
 </figure>
 

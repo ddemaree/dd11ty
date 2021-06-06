@@ -3,9 +3,7 @@ const imgixClient = require('../imgixClient')
 const cloudinary = require('cloudinary').v2;
 
 function getCloudinaryIDFromURL(url) {
-  // const urlMatch = url.match(/https?:\/\/res.cloudinary.com\/demaree\/image\/(?:upload|fetch)\/(?:[a-z]+_[^\/]+,*)+(?:\/[a-z]_[^\/]+)*\/(.+)/gm)
   return url.replace(/^https?:\/\/res.cloudinary.com\/demaree\/image\/upload|fetch/)
-  // console.log(urlMatch)
 
   if(urlMatch) {
     return urlMatch[0]
@@ -16,7 +14,7 @@ function getCloudinaryIDFromURL(url) {
 
 const postThumbnail = async uri => {
   const urlObj = new URL(uri, "http://localhost/")
-  console.log(urlObj)
+  // console.log(urlObj)
   
   if(urlObj.host === 'localhost') {
     // TODO: Handle using Eleventy Image

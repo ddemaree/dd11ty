@@ -7,13 +7,16 @@ tags:
   - Coinbase
   - Work
 subtitle: Regarding Patreon's layoffs, and how to make any workplace crisis about you.
-thumbnail: https://ddimg.imgix.net/2021/the-full-coinbase/cover-circus.jpeg
+thumbnail: https://images.unsplash.com/photo-1611424564096-3b8838e8438b
+thumbnail_meta:
+  source: https://unsplash.com/photos/DToXMncNxlc
+  alt: red and white neon light signage
 metadata:
   title: Patreon's Jack Conte goes "Full Coinbase"
   description: Patreon CEO Jack Conte announced layoffs via a confessional YouTube video, joining the ranks of tech leaders who've taken workplace issues a little too personally. 
 ---
 
-![Some kind of circus act](https://ddimg.imgix.net/2021/the-full-coinbase/cover-circus.jpeg){width=900 height=675} {.alignwide}
+![Some kind of circus act](https://res.cloudinary.com/demaree/cx/2021/the-full-coinbase/cover-circus.jpeg){width=900 height=675} {.alignwide}
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 
@@ -44,7 +47,7 @@ Conte also, I guess to his credit, didn’t announce a big change to how the com
 
 <hr class="wp-block-separator"/>
 
-![Business model chart from the South Park episode 'Gnomes'](https://ddimg.imgix.net/2021/the-full-coinbase/gnome-ceos.jpg){width=680 height=513}
+![Business model chart from the South Park episode 'Gnomes'](https://res.cloudinary.com/demaree/cx/2021/the-full-coinbase/gnome-ceos.jpg){width=680 height=513}
 
 Even so, I would still say that with this video and the changes it discusses, Jack Conte and Patreon have done the thing I have termed <strong>The Full Coinbase</strong>:
 

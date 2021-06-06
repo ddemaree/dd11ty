@@ -5,7 +5,7 @@ subtitle: A pretty good year
 excerpt: Things were good! Work was good, travel was good, and I got a dog! 
 metadata:
   description: A pretty good year summarized. Things were good! Work was good, travel was good, and I got a dog!  
-thumbnail: https://res.cloudinary.com/demaree/image/upload/w_300,ar_3:2,c_thumb,g_face,z_0.75/IMG_3257-2_vpsqb4.jpg 
+thumbnail: https://res.cloudinary.com/demaree/IMG_3257-2_vpsqb4.jpg 
 ---
 
 For whatever reason, while I've not hesitated to write tech/business think pieces or IT tutorials or little rants on my personal blog all these years, I've never written a simple year (or decade) in review post. 🤷🏻‍♂️
@@ -71,11 +71,11 @@ Melbourne was far too short of a trip; it came right after my daughter's 5th bir
 ![](https://res.cloudinary.com/demaree/image/upload/bitsandletters-assets/L2090117.jpg "Tourists watching a street artist in one of Melbourne's famous laneways"){width=1200 height=745} {.alignwide}
 
 {% gallery align="wide", cols=3 %}
-- ![](https://ddimg.imgix.net/wp/2020/01/L2090133-1024x1024.jpg){width=1024 height=1024}
-- ![](https://ddimg.imgix.net/wp/2020/01/L2090144-1024x683.jpg){width="1024" height="683"}
-- ![](https://ddimg.imgix.net/wp/2020/01/L2090127-1024x819.jpg){width="1024" height="819"}
-- ![](https://ddimg.imgix.net/wp/2020/01/L2090164-1024x732.jpg){width="1024" height="732"}
-- ![](https://ddimg.imgix.net/wp/2020/01/IMG_1581-819x1024.jpg){width="819" height="1024"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090133-1024x1024.jpg){width=1024 height=1024}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090144-1024x683.jpg){width="1024" height="683"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090127-1024x819.jpg){width="1024" height="819"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090164-1024x732.jpg){width="1024" height="732"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_1581-819x1024.jpg){width="819" height="1024"}
 
 <figcaption>Shots from my walking tour of hidden cocktail bars</figcaption>
 {% endgallery %}
@@ -89,11 +89,11 @@ I stayed at a beautiful little apartment-style hotel called <a href="http://unit
 Last March we made our first family Disney trip, and we discovered we are Wilderness Lodge people.
 
 {% gallery align="wide", cols=3 %}
-- ![](https://ddimg.imgix.net/wp/2020/01/2e824696-5ab4-4098-97d7-bc8a68471509-683x1024.jpg){width="683" height="1024"}
-- ![](https://ddimg.imgix.net/wp/2020/01/8c34b923-3825-4cf4-ae87-4c72623b26af.jpg){width="683" height="1024"}
-- ![](https://ddimg.imgix.net/wp/2020/01/8e663344-d644-4ea0-9d7a-90a300a77fb7.jpg){width="1024" height="925"}
-- ![](https://ddimg.imgix.net/wp/2020/01/DSC00215.jpg){width="1024" height="765"}
-- ![](https://ddimg.imgix.net/wp/2020/01/DSC00397.jpg){width="1024" height="849"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/2e824696-5ab4-4098-97d7-bc8a68471509-683x1024.jpg){width="683" height="1024"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/8c34b923-3825-4cf4-ae87-4c72623b26af.jpg){width="683" height="1024"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/8e663344-d644-4ea0-9d7a-90a300a77fb7.jpg){width="1024" height="925"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/DSC00215.jpg){width="1024" height="765"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/DSC00397.jpg){width="1024" height="849"}
 {% endgallery %}
 
 June is still little and doesn't love rides, and my wife Jody has chronic back pain, so we kept our park itineraries pretty chill, with lots of slow dark rides (Journey of the Little Mermaid, it's a small world, Na'vi River Journey), photo ops, and character meals.
@@ -108,11 +108,11 @@ I seem to be alone in this, but I really like the iPad-driven food service at EW
 
 Probably the biggest thing that happened this year was this little guy joining our family—we got a French bulldog puppy, who we named Johnny Cash.
 
-![](https://ddimg.imgix.net/wp/2020/01/IMG_1505-819x1024.jpg){width="640" height="800"}
+![](https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_1505-819x1024.jpg){width="640" height="800"}
 
 {% gallery align="wide", cols=3 %}
-- ![](https://ddimg.imgix.net/wp/2020/01/IMG_0320.jpg){width="1024" height="1024"}
-- ![](https://ddimg.imgix.net/wp/2020/01/L2070624.jpg){width="768" height="1024"
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_0320.jpg){width="1024" height="1024"}
+- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2070624.jpg){width="768" height="1024"
 {% endgallery %}
 
 At least for the first few weeks, raising a puppy was about as hard as taking care of a new baby. But now that he's older (8 months) we're finding our groove as dog parents, and Johnny is settling into being a snuggly, playful little sausage.

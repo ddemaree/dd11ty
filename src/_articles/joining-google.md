@@ -2,10 +2,10 @@
 date: 2018-02-05
 title: Something New
 excerpt: After seven years working on Typekit, I’m moving on to do something new at Google 
-thumbnail: https://ddimg.imgix.net/wp/2021/03/0-Lfx5b8jSS9n6uG5x.jpg
+thumbnail: https://res.cloudinary.com/demaree/cx/wp/2021/03/0-Lfx5b8jSS9n6uG5x.jpg
 ---
 
-![Google's NYC office](https://ddimg.imgix.net/wp/2021/03/0-Lfx5b8jSS9n6uG5x.jpg)
+![Google's NYC office](https://res.cloudinary.com/demaree/cx/wp/2021/03/0-Lfx5b8jSS9n6uG5x.jpg)
 
 <!-- wp:paragraph -->
 <p><strong>22 February 2011 was my first day on the Typekit team. 23 February 2018 will be my last one. After seven years, I’m moving on from Adobe to do something new.</strong></p>

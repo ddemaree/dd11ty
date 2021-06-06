@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-// const pluginVue = require("@11ty/eleventy-plugin-vue");
+const pluginVue = require("@11ty/eleventy-plugin-vue");
 
 const INPUT_DIR = "src";
 const OUTPUT_DIR = "_site";
@@ -10,6 +10,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(require('./src/_11ty/vite'));
   eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"));
   eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-rss"));
+  eleventyConfig.addPlugin(pluginVue)
+
   eleventyConfig.addTransform('responsify', require('./src/_11ty/transforms/responsify'));
   
   eleventyConfig.setLibrary("md", require('./src/_11ty/markdown'));

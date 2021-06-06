@@ -8,12 +8,12 @@ tags:
   - Work
 subtitle: >-
   The company that wrote "It Doesn't Have To Be Crazy At Work" responds to craziness at work.
-thumbnail: https://ddimg.imgix.net/2021/back-to-basic-at-basecamp/cover__back-to-basic-at-basecamp.jpeg
+thumbnail: https://res.cloudinary.com/demaree/cx/2021/back-to-basic-at-basecamp/cover__back-to-basic-at-basecamp.jpeg
 metadata:
   description: Basecamp's anti-"politics" stance and the folly of trying to change a team's culture via public blog post
 ---
 
-![Night falls over a base camp](https://ddimg.imgix.net/2021/back-to-basic-at-basecamp/cover__back-to-basic-at-basecamp.jpeg){width=900 height=600} {.alignwide}
+![Night falls over a base camp](https://res.cloudinary.com/demaree/cx/2021/back-to-basic-at-basecamp/cover__back-to-basic-at-basecamp.jpeg){width=900 height=600} {.alignwide}
 
 Basecamp (née 37signals) founder/CEO Jason Fried,[ posting on his personal HEY World blog/newsletter yesterday](https://world.hey.com/jason/changes-at-basecamp-7f32afc5), announced some big internal changes for the company. Here’s a summary of his post, lightly edited for brevity:
 

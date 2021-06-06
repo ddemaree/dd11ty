@@ -8,7 +8,7 @@ import _ from 'lodash'
 
 const FitVids = {
   init() {
-    console.log("Fitting the vids")
+    // console.log("Fitting the vids")
     "use strict";
 
     // List of Video Vendors embeds you want to support

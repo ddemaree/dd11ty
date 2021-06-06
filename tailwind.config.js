@@ -55,6 +55,7 @@ module.exports = {
 			'./src/**/*.js',
 			"./src/**/*.njk",
 			"./src/**/*.md",
+			"./src/**/*.vue",
 			"./.eleventy.js"
 		]
 	},
