@@ -129,6 +129,10 @@
     @apply text-lg;
   }
 
+  .dd-prose > .dd-prose {
+    @apply w-full max-w-full !important;
+  }
+
   .dd-prose > * {
     @apply mx-auto text-ink;
 
