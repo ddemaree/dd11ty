@@ -5,7 +5,7 @@ const { JSDOM } = require('jsdom')
 async function responsifyHTML(content, outputPath) {
   const sizes = [380, 760, 1280, 2560]
 
-  if(path.extname(outputPath) === ".html") {
+  if(outputPath && path.extname(outputPath) === ".html") {
     const dom = new JSDOM(content)
     const { document } = dom.window
 

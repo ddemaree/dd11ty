@@ -6,7 +6,7 @@
   <span class="mx-8 flex-1 hidden sm:block"></span>
   <nav>
     <ul class="flex flex-wrap gap-x-4 gap-y-2">
-    {% for menuItem in site.menu %}{% if !menuItem.hidden %}<li>
+    {% for menuItem in site.menu %}{% if not menuItem.hidden %}<li>
       <a href="{{ menuItem.url }}" class="flex items-center gap-2 {% if active_nav === menuItem.identifier %}text-accent font-medium{% else %}text-ink-medium {% endif %}">
         {% if menuItem.icon %}<i class="fal fa-{{ menuItem.icon }}"></i>{% endif %}
         <span>{{ menuItem.text }}</span>
