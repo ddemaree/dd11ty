@@ -16,7 +16,8 @@ module.exports = {
       text: "About",
       icon: "user-ninja",
       url: "/about",
-      identifier: "about"
+      identifier: "about",
+      hidden: true
     },
     {
       text: "Writing",
@@ -28,7 +29,8 @@ module.exports = {
       text: "Notes",
       icon: "comment-alt-dots",
       url: "/notes",
-      identifier: "notes"
+      identifier: "notes",
+      hidden: true
     }
   ]
 }

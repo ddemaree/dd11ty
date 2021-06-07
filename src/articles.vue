@@ -22,7 +22,8 @@ export default {
   data: {
     layout: "layouts/base.njk",
     title: "Blog Archives",
-    active_nav: "articles"
+    active_nav: "articles",
+    permalink: "/articles/index.html"
   },
   computed: {
     articles: function() {
