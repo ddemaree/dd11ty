@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/feed/?",
+      "source": "/feed/",
       "destination": "/feed.xml"
     },
     {
