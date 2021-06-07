@@ -1,0 +1,14 @@
+[Settings]
+  ID = "demaree-next"
+
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_ENV = "production"
+  HUGO_ENV = "production"
+  NODE_VERSION = "16"
+  HUGO_VERSION = "0.82.0"
+  HUGO_ENABLEGITINFO = "true"
+  ELEVENTY_EXPERIMENTAL = "true"
