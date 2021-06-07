@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/feed/?",
+      "destination": "/feed.xml"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/api/handle404"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 const axios = require('axios')
 const wpClient = axios.create({
-  baseURL: "https://demaree.space/wp-json"
+  baseURL: "https://demareeblog.wpengine.com/wp-json"
 })
 
 module.exports = async () => {
