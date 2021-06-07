@@ -1,6 +1,8 @@
 require('dotenv').config();
 
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginVue = require("@11ty/eleventy-plugin-vue");
+const pluginSyntax = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const INPUT_DIR = "src";
 const OUTPUT_DIR = "_site";
@@ -8,8 +10,8 @@ const PATH_PREFIX = "/";
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(require('./src/_11ty/vite'));
-  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"));
-  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-rss"));
+  eleventyConfig.addPlugin(pluginSyntax);
+  eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginVue)
 
   eleventyConfig.addTransform('responsify', require('./src/_11ty/transforms/responsify'));

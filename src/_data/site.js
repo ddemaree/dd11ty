@@ -23,6 +23,12 @@ module.exports = {
       icon: "feather-alt",
       url: "/articles",
       identifier: "articles"
+    },
+    {
+      text: "Notes",
+      icon: "comment-alt-dots",
+      url: "/notes",
+      identifier: "notes"
     }
   ]
 }

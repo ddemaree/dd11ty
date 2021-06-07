@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       layout: 'layouts/base.njk',
+      active_nav: 'notes',
       pagination: {
         data: 'wpNotes',
         size: 10,
