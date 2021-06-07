@@ -12,3 +12,25 @@
   HUGO_VERSION = "0.82.0"
   HUGO_ENABLEGITINFO = "true"
   ELEVENTY_EXPERIMENTAL = "true"
+
+[[redirects]]
+  from = "https://demaree.me/*"
+  to = "https://demaree.space/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://demaree.me/"
+  to = "https://demaree.space/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/p/:splat"
+  status = 301
+
+[dev]
+  framework = "#custom"
+  command = "npm run dev"
+  targetPort = 8080
