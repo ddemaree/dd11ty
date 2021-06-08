@@ -16,7 +16,7 @@ metadata:
   description: Patreon CEO Jack Conte announced layoffs via a confessional YouTube video, joining the ranks of tech leaders who've taken workplace issues a little too personally. 
 ---
 
-![Some kind of circus act](https://res.cloudinary.com/demaree/cx/2021/the-full-coinbase/cover-circus.jpeg){width=900 height=675} {.alignwide}
+![Some kind of circus act](https://images.unsplash.com/photo-1611424564096-3b8838e8438b){width=900 height=675} {.alignwide}
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 

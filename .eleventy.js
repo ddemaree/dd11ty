@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+process.env.ELEVENTY_EXPERIMENTAL = 1
+
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginVue = require("@11ty/eleventy-plugin-vue");
 const pluginSyntax = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -40,7 +42,7 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    passthroughFileCopy: true,
+    // passthroughFileCopy: true,
     dir: {
       input: INPUT_DIR,
       output: OUTPUT_DIR,
