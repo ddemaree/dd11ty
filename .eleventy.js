@@ -35,7 +35,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/static")
 
   return {
-    templateFormats: ["md", "njk", "html"],
+    templateFormats: ["md", "njk", "html", "11ty.js"],
     pathPrefix: PATH_PREFIX,
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
