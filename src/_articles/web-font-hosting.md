@@ -8,6 +8,8 @@ tags:
   - Git
   - Web Development
   - Fonts
+aliases:
+  - /p/where-the-web-fonts-go
 thumbnail: https://res.cloudinary.com/demaree/cx/2021/web-font-hosting/cover-why-fonts-matter.jpg
 ---
 
