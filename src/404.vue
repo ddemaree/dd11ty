@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col items-center justify-center gap-4">
+  <main class="flex flex-col items-center justify-center gap-4 py-12">
     <p class="text-5xl font-light">404</p>
     <p>Sorry, page not found</p>
   </main>
