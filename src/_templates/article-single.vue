@@ -1,6 +1,6 @@
 <template>
   <main>
-    <article class="dd-prose">
+    <article class="dd-prose pt-8">
       <header class="text-center contents">
         <h1 class="dd-title">{{ title }}</h1>
         <p v-if="subtitle">{{ subtitle }}</p>
@@ -8,27 +8,34 @@
       </header>
       <div class="dd-prose" v-html="content"></div>
 
-      <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-        <page-link previous="1" :href="previousPageHref" v-if="previousPageHref">
-          {{ previousArticle.data.title }}
-        </page-link>
-        <page-link next="1" :href="nextPageHref" v-if="nextPageHref">
-          {{ nextArticle.data.title }}
-        </page-link>
-      </div>
+      <tags-list :tags="tags" v-if="tags" class="my-12" />
+
     </article>
+
+    <div class="w-full-inset mx-auto flex flex-col sm:flex-row sm:items-center gap-3 pt-12">
+      <page-link previous="1" :href="previousPageHref" v-if="previousPageHref">
+        <span class="sm:block text-sm uppercase tracking-wider text-ink-light">Previous:</span>
+        {{ previousArticle.data.title }}
+      </page-link>
+      <span class="flex-1"></span>
+      <page-link next="1" :href="nextPageHref" v-if="nextPageHref">
+        <span class="sm:block text-sm uppercase tracking-wider text-ink-light">Next:</span>
+        {{ nextArticle.data.title }}
+      </page-link>
+    </div>
   </main>
 </template>
 
 <script>
 import _ from 'lodash'
 import pageLink from '../_includes/components/page-link.vue'
+import tagsList from '../_includes/components/tags-list.vue'
 
 export default {
-  components: { pageLink },
+  components: { pageLink, tagsList },
   data() {
     return {
-      components: { pageLink },
+      active_nav: "articles",
       layout: "layouts/base.njk",
       pagination: {
         data: 'collections.articles',
@@ -50,6 +57,9 @@ export default {
     subtitle() {
       const { data } = this.article
       return (data.subtitle || data.excerpt)
+    },
+    tags() {
+      return this.article.data.tags || []
     },
     nextPageHref() {
       return this.pagination.nextPageHref
@@ -73,6 +83,7 @@ export default {
     }
   },
   created() {
+
   }
 }
 </script>

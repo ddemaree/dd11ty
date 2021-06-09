@@ -20,7 +20,7 @@ export default {
     linkClasses() {
       return [
         'flex-1 flex items-center leading-snug gap-2 font-medium text-accent no-underline',
-        (this.next && 'sm:flex-row-reverse')
+        (this.next && 'sm:flex-row-reverse sm:text-right')
       ]
     }
   }

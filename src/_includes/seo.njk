@@ -1,0 +1,21 @@
+{# Remember that og:* are property=, twitter:* are name= #}
+
+<meta property="og:type" content="website" />
+<meta name="twitter:site" content="@ddemaree" />
+<meta name="twitter:creator" content="@ddemaree" />
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:url" content="{{ page.url | absoluteUrl('https://demaree.space/') }}" />
+<meta property="og:url" content="{{ page.url | absoluteUrl('https://demaree.space/') }}" />
+<link rel="canonical" href="{{ page.url | absoluteUrl('https://demaree.space/') }}" />
+
+{# Max 200 chars #}
+{% if metadata.description or excerpt %}<meta property="og:description" name="twitter:description" content="{{ metadata.description or excerpt}}" />{% endif %}
+
+{# Max 70 chars #}
+{% set seoTitle = metadata.title or title | default("David Demaree's web site") %}
+<meta property="og:title" name="twitter:title" content="{{ seoTitle }}" />
+
+{# og:image / twitter:image #}
+{# og:image:alt #}
+

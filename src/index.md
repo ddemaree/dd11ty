@@ -1,6 +1,7 @@
 ---
 layout: layouts/home.njk
-title: David's Home Page
+title: Home Page
+override_title: Welcome to David Demaree's web site
 active_nav: home
 ---
 

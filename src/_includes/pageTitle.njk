@@ -1,0 +1,7 @@
+{% if override_title %}
+<title>{{ override_title }}</title>
+{% elseif metadata.title or title %}
+<title>{{ metadata.title or title }} — David Demaree's web site</title>
+{% else %}
+<title>David Demaree's web site</title>
+{% endif %}

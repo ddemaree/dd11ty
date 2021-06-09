@@ -1,4 +1,5 @@
 require('dotenv').config();
+const _ = require('lodash')
 
 process.env.ELEVENTY_EXPERIMENTAL = 1
 
@@ -20,8 +21,15 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.setLibrary("md", require('./src/_11ty/markdown'));
 
+  eleventyConfig.addShortcode("pageTitle", function(_page) {
+    console.log(_page, _.keys(this.page))
+
+    return `David Demaree's web site`;
+  })
+
   eleventyConfig.addShortcode("imgix", require('./src/_11ty/shortcodes/imgix'));
   eleventyConfig.addPairedShortcode('gallery', require('./src/_11ty/shortcodes/gallery'));
+
   eleventyConfig.addNunjucksAsyncShortcode("iconAsset", require('./src/_11ty/shortcodes/iconAsset'));
   eleventyConfig.addNunjucksAsyncShortcode("twitter", require('./src/_11ty/shortcodes/twitter'));
   eleventyConfig.addNunjucksAsyncShortcode("postThumbnail", require('./src/_11ty/shortcodes/postThumbnail'));
