@@ -11,10 +11,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
-
-const FILTERED_TAGS = ['featured', 'selected', 'posts', 'event', 'articles', 'notes']
-
 export default {
   props: ['tags'],
   computed: {
