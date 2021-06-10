@@ -21,10 +21,22 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.setLibrary("md", require('./src/_11ty/markdown'));
 
-  eleventyConfig.addShortcode("pageTitle", function(_page) {
-    console.log(_page, _.keys(this.page))
+  eleventyConfig.addFilter("processPostTags", function(tags) {
+    const slug = this.slug
+    const _tags = Array.from(tags)
+    const FILTERED_TAGS = ['featured', 'selected', 'posts', 'event', 'articles', 'notes'] 
+    
+    const onlyTopicTags = _.filter(_tags, t => (!_.includes(FILTERED_TAGS, t)))
 
-    return `David Demaree's web site`;
+    const tagObjects = onlyTopicTags.map(_tag => {
+      if(_.isObject(_tag)) return _tag
+      return {
+        name: _tag,
+        url: `/tags/${slug(_tag)}`
+      }
+    })
+
+    return tagObjects
   })
 
   eleventyConfig.addShortcode("imgix", require('./src/_11ty/shortcodes/imgix'));

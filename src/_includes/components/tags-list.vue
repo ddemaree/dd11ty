@@ -1,6 +1,6 @@
 <template>
-  <div class="post-tags my-8 text-base flex flex-wrap gap-4">
-    <span class="block w-full mb-6">
+  <div class="post-tags text-base flex flex-wrap gap-4">
+    <span class="block w-full mb-4">
       <hr class="h-0 border-t-2 border-ink-light" />
     </span>
     <a v-for="tag in _tags" :key="tag.name" :href="tag.url" class="t-tag tag leading-none font-medium flex gap-2 items-baseline no-underline">
@@ -19,13 +19,7 @@ export default {
   props: ['tags'],
   computed: {
     _tags() {
-      const slug = this.slug
-
-      return _.filter(Array.from(this.tags), t => (!_.includes(FILTERED_TAGS, t)))
-        .map(_tag => ({
-          name: _tag,
-          url: `/tags/${slug(_tag)}`
-        }))
+      return this.processPostTags(this.tags)
     }
   }
 }

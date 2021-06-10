@@ -6,9 +6,10 @@
         <p v-if="subtitle">{{ subtitle }}</p>
         <p class="mt-4 text-base text-ink-medium font-medium">{{ this.prettyDate(article.date) }}</p>
       </header>
-      <div class="dd-prose" v-html="content"></div>
 
-      <tags-list :tags="tags" v-if="tags" class="my-12" />
+      <div class="dd-prose mb-8" v-html="content"></div>
+
+      <tags-list :tags="tags" v-if="hasTags" class="mb-8" />
 
     </article>
 
@@ -67,7 +68,10 @@ export default {
       return (data.subtitle || data.excerpt)
     },
     tags() {
-      return this.article.data.tags || []
+      return this.processPostTags(this.article.data.tags || [])
+    },
+    hasTags() {
+      return !_.isEmpty(this.tags);
     },
     nextPageHref() {
       return this.pagination.nextPageHref

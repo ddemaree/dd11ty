@@ -6,7 +6,8 @@ module.exports = {
   tags: ['articles'],
   eleventyComputed: {
     postUrl({ page }) {
-      return `/p/${page.fileSlug}/`
+      const urlPath = `/p/${page.fileSlug}/`
+      return urlPath
     }
   }
 }
