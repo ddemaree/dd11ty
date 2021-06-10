@@ -42,17 +42,25 @@ export default {
         size: 1,
         alias: 'article'
       },
-      permalink(data) {
-        return `/p/${data.article.fileSlug}/index.html`
+      permalink({ article }) {
+        return `/p/${article.fileSlug}/index.html`
+      },
+      eleventyComputed: {
+        metadata({ article }) {
+          return article.data.metadata
+        },
+        title({ article }) {
+          return article.data.title
+        },
+        excerpt({ article }) {
+          return article.data.excerpt
+        }
       }
     }
   },
   computed: {
     content() {
       return this.article.templateContent
-    },
-    title() {
-      return this.article.data.title
     },
     subtitle() {
       const { data } = this.article
@@ -81,9 +89,6 @@ export default {
       const previousSlug = previousHref.replace(/^\/p\//, '').replace(/\/$/, '')
       return _.first(_.filter(this.collections.articles, article => article.fileSlug === previousSlug))
     }
-  },
-  created() {
-
   }
 }
 </script>

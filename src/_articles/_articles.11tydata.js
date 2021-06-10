@@ -3,5 +3,10 @@ module.exports = {
   permalink: false,
   layout: 'layouts/article.njk',
   active_nav: "articles",
-  tags: ['articles']
+  tags: ['articles'],
+  eleventyComputed: {
+    postUrl({ page }) {
+      return `/p/${page.fileSlug}/`
+    }
+  }
 }
