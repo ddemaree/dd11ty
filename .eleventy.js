@@ -1,4 +1,7 @@
 require('dotenv').config();
+const _ = require('lodash')
+
+process.env.ELEVENTY_EXPERIMENTAL = 1
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginVue = require("@11ty/eleventy-plugin-vue");
@@ -18,8 +21,27 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.setLibrary("md", require('./src/_11ty/markdown'));
 
+  eleventyConfig.addFilter("processPostTags", function(tags) {
+    const slug = this.slug
+    const _tags = Array.from(tags)
+    const FILTERED_TAGS = ['featured', 'selected', 'posts', 'event', 'articles', 'notes'] 
+    
+    const onlyTopicTags = _.filter(_tags, t => (!_.includes(FILTERED_TAGS, t)))
+
+    const tagObjects = onlyTopicTags.map(_tag => {
+      if(_.isObject(_tag)) return _tag
+      return {
+        name: _tag,
+        url: `/tags/${slug(_tag)}`
+      }
+    })
+
+    return tagObjects
+  })
+
   eleventyConfig.addShortcode("imgix", require('./src/_11ty/shortcodes/imgix'));
   eleventyConfig.addPairedShortcode('gallery', require('./src/_11ty/shortcodes/gallery'));
+
   eleventyConfig.addNunjucksAsyncShortcode("iconAsset", require('./src/_11ty/shortcodes/iconAsset'));
   eleventyConfig.addNunjucksAsyncShortcode("twitter", require('./src/_11ty/shortcodes/twitter'));
   eleventyConfig.addNunjucksAsyncShortcode("postThumbnail", require('./src/_11ty/shortcodes/postThumbnail'));
@@ -40,7 +62,7 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    passthroughFileCopy: true,
+    // passthroughFileCopy: true,
     dir: {
       input: INPUT_DIR,
       output: OUTPUT_DIR,

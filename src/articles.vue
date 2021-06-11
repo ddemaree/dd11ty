@@ -31,7 +31,7 @@ export default {
       
       return articles.map(function({ data, url, ...article}){
         return {
-          link: url,
+          link: `/p/${article.fileSlug}`,
           title: data.title,
           excerpt: ((data.metadata && data.metadata.description) || data.excerpt),
           date: article.date,
