@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.1.1",
+    "clean-css": "^4.2.3",
     "imgix.js": "^3.5.0",
     "lazysizes": "^5.3.2"
   }
