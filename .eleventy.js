@@ -39,12 +39,11 @@ module.exports = function (eleventyConfig) {
     const minifiedCss = await cleanCss.minify(cssData)
       .then(cssData => cssData.styles)
       .then(styles => {
-        console.log(styles)
-        return styles.replaceAll(/url\(/g, `url(https://cdn.demaree.net/fonts/${fontName}/`)
+        return styles.replace(/url\(/g, `url(https://cdn.demaree.net/fonts/${fontName}/`)
       })
       .catch(err => {
         console.error(err)
-        return `/* Error loading font set ${styleUrl} */`
+        return `/* Error loading font set ${styleUrl} */\n@import url(https://cdn.demaree.net/fonts/${fontName}/index.css)\n;`
       })
 
     // console.log(minifiedCss)

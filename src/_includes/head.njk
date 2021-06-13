@@ -17,9 +17,7 @@
   <script async src="https://kit.fontawesome.com/f0afb61fe2.js" crossorigin="anonymous"></script>
   <script src="https://cdn.usefathom.com/script.js" data-site="TOFIAIKB" data-included-domains="demaree.me,demaree.space" defer></script>
   <link rel="preconnect" href="https://cdn.demaree.net">
-  <style type="text/css">
-  {% for set in site.fontSets %}{% webfontStyle set | safe %}{% endfor %}
-  </style>
+  <style type="text/css">{% for set in site.fontSets %}{% webfontStyle set | safe %}{% endfor %}</style>
   {% if build.env == "production" %}
     {# Add any CSS from the main script #}
     {% viteLinkStylesheetTags "src/client/main.js" %}
