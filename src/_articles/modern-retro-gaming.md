@@ -1,10 +1,37 @@
 ---
 title: Modern Retro Gaming
-excerpt: Playing old-school NES games on Nintendo Switch and Analogue's Nt Mini
-draft: true
+excerpt: Playing old-school NES games on Analogue's Nt Mini
 date: 2021-06-13 12:00:00
-metadata: 
 ---
+
+My pandemic hobbies have been grown-up versions of the stuff I liked as a kid, like [building big Lego sets](https://www.amazon.com/gp/product/B083JZRCSS/ref=as_li_tl?ie=UTF8&tag=demareedotspa-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B083JZRCSS&linkId=fcb0ea5b5d5cb79f4c61c06d23c9c60c) or playing vintage video games. There's a huge, rich back catalog of games released in the 1980s and '90s; many of these games are classics, and a lot of them are deeper and more challenging than you remember.
+
+Earlier this year, wanting to branch out beyond the few games Nintendo includes with a Switch subscription, I bought one of the last run of [Analogue's Nt Mini Noir console](https://www.analogue.co/editions/nt-mini-noir), with the idea I'd track down a bunch of vintage cartridges and get to experience all those old games in something like their original glory.
+
+
+
+
+and went looking for vintage cartridges. Which is surprisingly hard! Production of new NES games and consoles ended in the mid 1990s, and a lot of the old cartridges are non-functional after sitting in basements and attics for all these years. The market prices for many used NES games on eBay are around $10-15, with used or refreshed copies of classic titles going for more like $30 or 40 — almost the cost of a brand-new modern game! In fact, the collector's market for these is brisk enough that I saw a used-with-original-box copy of _Mega Man 2_ priced at $200.
+
+It's wild to think about, but even though so much of the music, TV, and movie canon are available instantly from streaming services, there are few good, legal options for playing many 8-bit games, especially ones not named _Mario_, _Zelda_, or _Mega Man_. Those big franchises have been reissued a lot over the years: Nintendo's games are currently available to Switch Online subscribers at no extra charge, and all six 8-bit _Mega Man_ games are available on Switch and other platforms as the [_Mega Man Legacy Collection_](https://www.amazon.com/gp/product/B079ZV4GX9/ref=as_li_tl?ie=UTF8&tag=demareedotspa-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B079ZV4GX9&linkId=d6aefa3f8d7216b65cb1e5ecf7fd7816).
+
+But outside a small number of "canon" titles and franchises, many NES games are simply lost to time unless you happen to still have copies laying around, or are willing to engage in a bit of light software piracy.
+
+It's unclear [how legal it is to download bootleg video game ROMs from the internet](https://www.howtogeek.com/262758/is-downloading-retro-video-game-roms-ever-legal/), which is how a lot of people get and play 8-bit titles these days. All NES games are still protected under U.S. copyright law, but very few cases have been brought before courts regarding bootleg games infringing on publishers' IP. Unlike with music and movies, for which industry groups like the RIAA and MPAA took an early, aggressive anti-piracy stance, relatively little effort has been put into establishing scary legal precedents around pirating video games. 
+
+I'd think this is due to the lack of industry standards for game software and the console product cycle only being a few years long. Console makers have always enforced a bit of lock-in by only supporting their own proprietary disc or cartridge formats (which often had to be manufactured by the console maker itself), and after a few years games are rendered obsolete by a new batch of consoles. Piracy of older games is not a huge concern for most publishers, because most games and systems have short shelf lives.
+
+This doesn't make game piracy legal, exactly, but over the years it's become clear that publishers like Nintendo or Capcom are just not that interested in suing anyone over sharing bootleg copies of their games. As such, [you can buy this very sketchy-looking "239-in-1" NES multicart on Amazon for $35](https://www.amazon.com/gp/product/B08B2JQVQD/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B08B2JQVQD&linkCode=as2&tag=demareedotspa-20&linkId=94260c55cf666e48dfb74e33fd142381), one of a lot of similar items being offered from mysterious marketplace sellers.
+
+---
+
+https://www.techradar.com/reviews/analogue-nt-mini
+
+https://www.nintendolife.com/news/2017/06/hardware_review_the_analogue_nt_mini_isnt_just_the_best_nes_clone_its_much_more_besides
+
+https://www.amazon.com/239in1-Classic-Collection-Cartridge-Transparent-Nintendo/dp/B08B2JQVQD/ref=sr_1_4?crid=3CGKCDAKZ20YE&dchild=1&keywords=nes+cartridge&qid=1623525554&sprefix=nes+cartr%2Caps%2C160&sr=8-4
+
+<a target="_blank" href="">239in1 Classic Collection for Nes Multi Games Cartridge 8 Bit Green Transparent</a>
 
 
 Topic(s):
