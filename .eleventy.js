@@ -87,7 +87,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.addPassthroughCopy("./src/**/*.{jpg,jpeg,png,gif}");
-  eleventyConfig.addPassthroughCopy("./static")
+  eleventyConfig.addPassthroughCopy({ "static": "/" })
 
   return {
     templateFormats: ["md", "njk", "html", "11ty.js"],
