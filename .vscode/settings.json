@@ -2,5 +2,15 @@
   "emmet.includeLanguages": {
     "njk": "html"
   },
-  "tailwindCSS.emmetCompletions": true
+  "tailwindCSS.emmetCompletions": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  "[markdown]": {
+    "editor.fontSize": 16,
+    "editor.fontFamily": "'Söhne Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 72,
+    "editor.quickSuggestions": false
+  }
 }

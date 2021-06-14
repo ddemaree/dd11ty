@@ -3,7 +3,7 @@
     <article class="dd-prose pt-8">
       <header class="text-center contents">
         <h1 class="dd-title">{{ title }}</h1>
-        <p v-if="subtitle">{{ subtitle }}</p>
+        <p v-if="subtitle" class="w-full-inset max-w-2xl text-xl mx-auto">{{ subtitle }}</p>
         <p class="mt-4 text-base text-ink-medium font-medium">{{ this.prettyDate(article.date) }}</p>
       </header>
 

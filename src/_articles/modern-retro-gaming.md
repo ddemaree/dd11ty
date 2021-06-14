@@ -1,17 +1,36 @@
 ---
-title: Modern Retro Gaming
-excerpt: Playing old-school NES games on Analogue's Nt Mini
+title: Yesterday's Games Today
+excerpt: There are hundreds of old-school NES games — some of them classics, lots of them fun. Today most are surprisingly hard to find and play legally.
 date: 2021-06-13 12:00:00
 ---
 
-My pandemic hobbies have been grown-up versions of the stuff I liked as a kid, like [building big Lego sets](https://www.amazon.com/gp/product/B083JZRCSS/ref=as_li_tl?ie=UTF8&tag=demareedotspa-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B083JZRCSS&linkId=fcb0ea5b5d5cb79f4c61c06d23c9c60c) or playing vintage video games. There's a huge, rich back catalog of games released in the 1980s and '90s; many of these games are classics, and a lot of them are deeper and more challenging than you remember.
+<figure class="wp-block-video"><video autoplay loop src="https://res.cloudinary.com/demaree/video/upload/cx/2021/nes-games/mk-nes-fight-trimmed.mov"></video><figcaption>Gameplay from <em>Mortal Kombat II</em> for NES</figcaption></figure>
+
+A few weeks ago I was playing _Mortal Kombat II_ for the first time, or rather I was playing a version I'd never played before. It was an 8-bit clone of the original *Mortal Kombat* made by a Taiwanese game developer called [Hummer Team](https://bootleggames.fandom.com/wiki/Hummer_Team), who were known as much for their ambitious 8-bit ports of 16-bit games as for their disregard of other companies' intellectual property. This *MKII* in name only was originally made for the Famicom (the NES's Japanese predecessor), released only on bootleg cartridges in places where copyright enforcement was lax.
+
+There's a huge, rich back catalog of games released in the 1980s and '90s; many of these games are classics, and a lot of them are deeper and more challenging than you remember. And it's both interesting and sad how little difference there is these days between this hella sketchy version of _Mortal Kombat_ and any other games made for the NES. Apart from a few mega-franchises — your Marios, your Zeldas, your Mega Mans — a lot of the 8-bit canon are only playable on 20-30 year old vintage cartridges, or via ROMs or multicarts that are almost certainly violating someone's copyright.
 
 Earlier this year, wanting to branch out beyond the few games Nintendo includes with a Switch subscription, I bought one of the last run of [Analogue's Nt Mini Noir console](https://www.analogue.co/editions/nt-mini-noir), with the idea I'd track down a bunch of vintage cartridges and get to experience all those old games in something like their original glory.
 
+![Analogue Nt Mini console](https://res.cloudinary.com/demaree/image/upload/cx/2021/nes-games/analogue-nt-mini.jpeg){width=554 height=640}
 
+I like the Analogue Nt because, apart from it being a beautiful piece of hardware, it's the best possible recreation of the _feel_ of playing games on a real NES, while still taking advantage of modern niceness such as HD video and wireless controllers.
 
+Old NES controllers were more sensitive than modern ones in some ways, stiffer and less responsive in other ways, and part of learning to play the old games was learning how to time your button mashes precisely with the jerky movements of an analog video signal. Back in the 1990s, the first, best meta-game was always mastering how the game and controller would play together. Analogue's console is the first time I've gotten a whole, Proustian feeling of what it was like to play these games when I was a kid.
 
-and went looking for vintage cartridges. Which is surprisingly hard! Production of new NES games and consoles ended in the mid 1990s, and a lot of the old cartridges are non-functional after sitting in basements and attics for all these years. The market prices for many used NES games on eBay are around $10-15, with used or refreshed copies of classic titles going for more like $30 or 40 — almost the cost of a brand-new modern game! In fact, the collector's market for these is brisk enough that I saw a used-with-original-box copy of _Mega Man 2_ priced at $200.
+![Capcom's Ducktales playing on a computer screen](https://res.cloudinary.com/demaree/image/upload/cx/2021/nes-games/nes-ducktales.jpeg){width=532 height=640}
+
+NES emulators have been around forever; Nintendo has even shipped their own retro gaming products based on emulators, including the NES app for Switch Online subscribers, and 2017's NES Classic mini-console, both of which come packed with a curated selection of mostly first-party games.
+
+The Nt Mini is different in that it isn't trying to <em>emulate</em> an NES — it's an attempt to fully recreate it at a hardware level, using a chip called a FPGA. On Analogue's site they write:
+
+> The core functionality of the original NES is engineered directly into an Altera Cyclone V, a sophisticated [FPGA](https://en.wikipedia.org/wiki/Field-programmable_gate_array). When it comes to knowledge of the NES, our lead Electrical Engineer is second to none. He spent over 5,000 hours re-engineering the NES via FPGA for absolute accuracy. Unlike the knock off and emulation systems that riddle the market today, you’ll be experiencing the NES free of any compromises.
+
+In pursuit of this uncompromising, vintage gaming vibe, once I ordered the Nt Mini I went looking for vintage cartridges to go with it, expecting I could find them relatively cheap on eBay from people trying to clean out their basements and attics. Production of new NES games and consoles ended in the mid 1990s, and some of the old cartridges are non-functional after sitting around for all these years, but many are still perfectly playable.
+
+As ever, I forgot that most of my bright ideas someone else had first. It turns out there is a _lot_ of interest in replaying these old games. Market prices for many used NES games on eBay are around $10-15, with used or refreshed copies of classic titles going for more like $30 or 40 — almost the cost of a brand-new modern game! At the high end, the collector's market for these games is brisk enough that I saw a used-with-original-box copy of _Mega Man 2_ priced at $200.
+
+![](https://res.cloudinary.com/demaree/image/upload/w_900,h_900/cx/2021/nes-games/bootleg-nes-games.png){width=900 height=900}
 
 It's wild to think about, but even though so much of the music, TV, and movie canon are available instantly from streaming services, there are few good, legal options for playing many 8-bit games, especially ones not named _Mario_, _Zelda_, or _Mega Man_. Those big franchises have been reissued a lot over the years: Nintendo's games are currently available to Switch Online subscribers at no extra charge, and all six 8-bit _Mega Man_ games are available on Switch and other platforms as the [_Mega Man Legacy Collection_](https://www.amazon.com/gp/product/B079ZV4GX9/ref=as_li_tl?ie=UTF8&tag=demareedotspa-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B079ZV4GX9&linkId=d6aefa3f8d7216b65cb1e5ecf7fd7816).
 
@@ -24,6 +43,8 @@ I'd think this is due to the lack of industry standards for game software and th
 This doesn't make game piracy legal, exactly, but over the years it's become clear that publishers like Nintendo or Capcom are just not that interested in suing anyone over sharing bootleg copies of their games. As such, [you can buy this very sketchy-looking "239-in-1" NES multicart on Amazon for $35](https://www.amazon.com/gp/product/B08B2JQVQD/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B08B2JQVQD&linkCode=as2&tag=demareedotspa-20&linkId=94260c55cf666e48dfb74e33fd142381), one of a lot of similar items being offered from mysterious marketplace sellers.
 
 ---
+
+My pandemic hobbies have been grown-up versions of the stuff I liked as a kid, like [building big Lego sets](https://www.amazon.com/gp/product/B083JZRCSS/ref=as_li_tl?ie=UTF8&tag=demareedotspa-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B083JZRCSS&linkId=fcb0ea5b5d5cb79f4c61c06d23c9c60c) or playing vintage video games. 
 
 https://www.techradar.com/reviews/analogue-nt-mini
 
