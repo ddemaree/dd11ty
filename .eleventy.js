@@ -1,5 +1,7 @@
 require('dotenv').config();
 const _ = require('lodash')
+const CleanCSS = require("clean-css");
+const Cache = require("@11ty/eleventy-cache-assets");
 
 process.env.ELEVENTY_EXPERIMENTAL = 1
 
@@ -20,6 +22,37 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform('responsify', require('./src/_11ty/transforms/responsify'));
   
   eleventyConfig.setLibrary("md", require('./src/_11ty/markdown'));
+
+  const inlineWebfont = async function(fontName) {
+    const styleUrl = `https://cdn.demaree.net/fonts/${fontName}/index.css`
+    
+    const cssData = await Cache(styleUrl, {
+      duration: "7d", type: "text"
+    })
+
+    const cleanCss = new CleanCSS({ 
+      returnPromise: true,
+      format: {
+        semicolonAfterLastProperty: true
+      }
+    })
+    const minifiedCss = await cleanCss.minify(cssData)
+      .then(cssData => cssData.styles)
+      .then(styles => {
+        return styles.replace(/url\(/g, `url(https://cdn.demaree.net/fonts/${fontName}/`)
+      })
+      .catch(err => {
+        console.error(err)
+        return `/* Error loading font set ${styleUrl} */\n@import url(https://cdn.demaree.net/fonts/${fontName}/index.css)\n;`
+      })
+
+    // console.log(minifiedCss)
+    // console.log(typeof minifiedCss)
+    return minifiedCss + "\n"
+  }
+
+  // eleventyConfig.addShortcode("webfontStyle", inlineWebfont)
+  eleventyConfig.addNunjucksAsyncShortcode("webfontStyle", inlineWebfont)
 
   eleventyConfig.addFilter("processPostTags", function(tags) {
     const slug = this.slug
@@ -54,7 +87,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.addPassthroughCopy("./src/**/*.{jpg,jpeg,png,gif}");
-  eleventyConfig.addPassthroughCopy("./src/static")
+  eleventyConfig.addPassthroughCopy({ "static": "/" })
 
   return {
     templateFormats: ["md", "njk", "html", "11ty.js"],
