@@ -4,7 +4,7 @@ excerpt: There are hundreds of old-school NES games — some of them classics, l
 date: 2021-06-13 12:00:00
 ---
 
-<figure class="wp-block-video"><video autoplay loop src="https://res.cloudinary.com/demaree/video/upload/cx/2021/nes-games/mk-nes-fight-trimmed.mov"></video><figcaption>Gameplay from <em>Mortal Kombat II</em> for NES</figcaption></figure>
+<figure class="wp-block-video"><video autoplay loop src="https://res.cloudinary.com/demaree/video/upload/cx/2021/nes-games/mk-nes-fight-trimmed.mov"></video><figcaption>Gameplay from Hummer Team's unlicensed <em>Mortal Kombat II</em> (1994) for Famicom/NES</figcaption></figure>
 
 A few weeks ago I was playing _Mortal Kombat II_ for the first time, or rather I was playing a version I'd never played before. It was an 8-bit clone of the original *Mortal Kombat* made by a Taiwanese game developer called [Hummer Team](https://bootleggames.fandom.com/wiki/Hummer_Team), who were known as much for their ambitious 8-bit ports of 16-bit games as for their disregard of other companies' intellectual property. This *MKII* in name only was originally made for the Famicom (the NES's Japanese predecessor), released only on bootleg cartridges in places where copyright enforcement was lax.
 
@@ -12,7 +12,7 @@ There's a huge, rich back catalog of games released in the 1980s and '90s; many 
 
 Earlier this year, wanting to branch out beyond the few games Nintendo includes with a Switch subscription, I bought one of the last run of [Analogue's Nt Mini Noir console](https://www.analogue.co/editions/nt-mini-noir), with the idea I'd track down a bunch of vintage cartridges and get to experience all those old games in something like their original glory.
 
-![Analogue Nt Mini console](https://res.cloudinary.com/demaree/image/upload/cx/2021/nes-games/analogue-nt-mini.jpeg){width=554 height=640}
+![Analogue Nt Mini console](https://res.cloudinary.com/demaree/image/upload/cx/2021/nes-games/analogue-nt-mini.jpeg "Analogue Nt Mini Noir console, with 8BitDo wireless controller"){width=554 height=640}
 
 I like the Analogue Nt because, apart from it being a beautiful piece of hardware, it's the best possible recreation of the _feel_ of playing games on a real NES, while still taking advantage of modern niceness such as HD video and wireless controllers.
 
@@ -28,9 +28,15 @@ The Nt Mini is different in that it isn't trying to <em>emulate</em> an NES — 
 
 In pursuit of this uncompromising, vintage gaming vibe, once I ordered the Nt Mini I went looking for vintage cartridges to go with it, expecting I could find them relatively cheap on eBay from people trying to clean out their basements and attics. Production of new NES games and consoles ended in the mid 1990s, and some of the old cartridges are non-functional after sitting around for all these years, but many are still perfectly playable.
 
-As ever, I forgot that most of my bright ideas someone else had first. It turns out there is a _lot_ of interest in replaying these old games. Market prices for many used NES games on eBay are around $10-15, with used or refreshed copies of classic titles going for more like $30 or 40 — almost the cost of a brand-new modern game! At the high end, the collector's market for these games is brisk enough that I saw a used-with-original-box copy of _Mega Man 2_ priced at $200.
+As ever, I forgot that most of my bright ideas someone else had first. It turns out there is a _lot_ of interest in replaying these old games, with [eBay prices for used cartridges](https://www.ebay.com/sch/i.html?_from=R40&_nkw=used+nes+cartridges&_sacat=0&_dmd=2&rt=nc) ranging from a few bucks to [_one million dollars_ (or best offer)](https://www.ebay.com/itm/184313884445). I'm pretty sure that last one won't sell, but still, I could totally see a rare collectible cartridge selling for a thousand bucks or more.
 
-![](https://res.cloudinary.com/demaree/image/upload/w_900,h_900/cx/2021/nes-games/bootleg-nes-games.png){width=900 height=900}
+
+
+. Market prices for many used NES games on eBay are around $10-15, with used or refreshed copies of classic titles going for more like $30 or 40 — almost the cost of a brand-new modern game! At the high end, the collector's market for these games is brisk enough that I saw a used-with-original-box copy of _Mega Man 2_ priced at $200.
+
+
+
+![](https://res.cloudinary.com/demaree/image/upload/w_600,h_600/cx/2021/nes-games/bootleg-nes-games.png){width=600 height=600}
 
 It's wild to think about, but even though so much of the music, TV, and movie canon are available instantly from streaming services, there are few good, legal options for playing many 8-bit games, especially ones not named _Mario_, _Zelda_, or _Mega Man_. Those big franchises have been reissued a lot over the years: Nintendo's games are currently available to Switch Online subscribers at no extra charge, and all six 8-bit _Mega Man_ games are available on Switch and other platforms as the [_Mega Man Legacy Collection_](https://www.amazon.com/gp/product/B079ZV4GX9/ref=as_li_tl?ie=UTF8&tag=demareedotspa-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B079ZV4GX9&linkId=d6aefa3f8d7216b65cb1e5ecf7fd7816).
 
