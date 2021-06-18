@@ -1,6 +1,9 @@
 {
   "emmet.includeLanguages": {
-    "njk": "html"
+    "njk": "html",
+    "markdown": "html",
+    "astro-markdown": "html"
   },
+  "emmet.excludeLanguages": [],
   "tailwindCSS.emmetCompletions": true
 }

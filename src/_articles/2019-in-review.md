@@ -12,7 +12,9 @@ For whatever reason, while I've not hesitated to write tech/business think piece
 
 Anyway, 2019 was good! Work was good, travel was good, and I got a dog! 
 
-![David Demaree holding up a Disney World &quot;2019&quot; pin featuring Stitch](https://res.cloudinary.com/demaree/image/upload/IMG_3257-2_vpsqb4.jpg){width=600 height=450}
+<figure>
+<img src="https://res.cloudinary.com/demaree/image/upload/IMG_3257-2_vpsqb4.jpg" alt="Middle-aged man holding up a Disney World &quot;2019&quot; pin featuring Stitch" width="600" height="450" />
+</figure>
 
 ## Work
 
@@ -28,17 +30,16 @@ I don't really hate them, but let's just say they have never once been as simple
 
 ### #googlelife
 
-When I'm at parties here in the New Jersey suburbs, I like to blow people's minds by telling them Google owns/occupies multiple city blocks of Manhattan office space—and yet we have so many Googlers that we've had to move some of us into temporary spaces while new spaces are being finished and others are being renovated. Mid-year my team was relocated from the main Google building on 8th Avenue to a temporary WeWork space 2 blocks away:
-
-<!-- insta B490OQppPzI -->
-
-So there's no longer a cafeteria mere steps from my desk, but Google and our site leads have tried to keep things cozy regardless:
-
-<!-- insta B6WkF25JAP4 -->
+When I'm at parties here in the New Jersey suburbs, I like to blow people's minds by telling them Google owns/occupies multiple city blocks of Manhattan office space—and yet we have so many Googlers that we've had to move some of us into temporary spaces while new spaces are being finished and others are being renovated. Mid-year my team was relocated from the main Google building on 8th Avenue to [a temporary WeWork space 2 blocks away](https://www.instagram.com/p/B490OQppPzI/).
 
 Fortunately, I also still have access to <em>these views</em> at the main building:
 
-<!-- insta B5jGaM6JNl0 -->
+<figure class="dd-block-embed instagram">
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/B5jGaM6JNl0/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="13">
+  <a href="https://www.instagram.com/p/B5jGaM6JNl0/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank">Instagram post shared by David Demaree (@ddemaree)</a>
+</blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+</figure>
 
 Last Spring I started teaching an orientation class for new Googlers ("Nooglers") about inclusive product design, covering general topics (a11y, i18n, business arguments for inclusion) and how they're especially important at a company of Google's global scale. I also had some opportunities to do 1-1 mentoring with some more junior PMs from inside and outside Google. Teaching and mentoring new and junior folks has been one of the most rewarding parts of my job and I'm looking forward to doing it more next year.
 
@@ -66,60 +67,76 @@ Apart from inter-office travel for Google, this year I visited 6 cities: Melbour
 
 Melbourne was far too short of a trip; it came right after my daughter's 5th birthday, and we had a new puppy in the house, so I chose to only spend 3 days in the city (plus almost four full days of travel). In addition to the conference itself, which was wonderful, I went on a walking tour of hidden laneway bars, saw the requisite sights like Flinders Street Station, and enjoyed good company and hospitality from fellow product/design folks.
 
-![Flinders Street Station, Melbourne](https://res.cloudinary.com/demaree/image/upload/bitsandletters-assets/L2090110.jpg "Flinders Street Station, Melbourne"){width=1200 height=960} {.alignwide}
+<figure class="alignwide">
+  <img src="https://res.cloudinary.com/demaree/bitsandletters-assets/L2090110.jpg" alt="Flinders Street Station, Melbourne" width="1200" height="960" />
+  <figcaption>Flinders Street Station, Melbourne</figcaption>
+</figure>
 
-![](https://res.cloudinary.com/demaree/image/upload/bitsandletters-assets/L2090117.jpg "Tourists watching a street artist in one of Melbourne's famous laneways"){width=1200 height=745} {.alignwide}
+<figure class="alignwide">
+  <img src="https://res.cloudinary.com/demaree/bitsandletters-assets/L2090117.jpg" alt="Tourists watching a street artist in an alley" width="1200" height="745" />
+  <figcaption>Tourists watching a street artist in one of Melbourne's famous laneways</figcaption>
+</figure>
 
-{% gallery align="wide", cols=3 %}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090133-1024x1024.jpg){width=1024 height=1024}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090144-1024x683.jpg){width="1024" height="683"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090127-1024x819.jpg){width="1024" height="819"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090164-1024x732.jpg){width="1024" height="732"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_1581-819x1024.jpg){width="819" height="1024"}
-
-<figcaption>Shots from my walking tour of hidden cocktail bars</figcaption>
-{% endgallery %}
+<figure class="dd-block-gallery cols-3 alignwide">
+  <ul>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090133-1024x1024.jpg" alt="" width="1024" height="1024" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090144-1024x683.jpg" alt="" width="1024" height="683" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090127-1024x819.jpg" alt="" width="1024" height="819" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/L2090164-1024x732.jpg" alt="" width="1024" height="732" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_1581-819x1024.jpg" alt="" width="819" height="1024" /></li>
+  </ul>
+  <figcaption>Shots from my walking tour of hidden cocktail bars</figcaption>
+</figure>
 
 I stayed at a beautiful little apartment-style hotel called <a href="http://unitedplaces.com.au/">United Places</a> in the South Yarra neighborhood, a bit of a hike from the conference venue and CBD. But it was a lovely hike, and I came home after my talk to this lovely note and treat:
 
-<!-- insta B01j7LvJ9dS -->
+<figure class="dd-block-embed instagram">
+  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/B01j7LvJ9dS/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="13">
+    <a href="https://www.instagram.com/p/B01j7LvJ9dS/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank">Instagram post shared by David Demaree (@ddemaree)</a>
+  </blockquote>
+  <script async src="//www.instagram.com/embed.js"></script>
+</figure>
 
 ### Disney
 
 Last March we made our first family Disney trip, and we discovered we are Wilderness Lodge people.
 
-{% gallery align="wide", cols=3 %}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/2e824696-5ab4-4098-97d7-bc8a68471509-683x1024.jpg){width="683" height="1024"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/8c34b923-3825-4cf4-ae87-4c72623b26af.jpg){width="683" height="1024"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/8e663344-d644-4ea0-9d7a-90a300a77fb7.jpg){width="1024" height="925"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/DSC00215.jpg){width="1024" height="765"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/DSC00397.jpg){width="1024" height="849"}
-{% endgallery %}
+<figure class="dd-block-gallery cols-3 alignwide">
+  <ul>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/2e824696-5ab4-4098-97d7-bc8a68471509-683x1024.jpg" alt="" width="683" height="1024" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/8c34b923-3825-4cf4-ae87-4c72623b26af.jpg" alt="" width="683" height="1024" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/8e663344-d644-4ea0-9d7a-90a300a77fb7.jpg" alt="" width="1024" height="925" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/DSC00215.jpg" alt="" width="1024" height="765" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/DSC00397.jpg" alt="" width="1024" height="849" /></li>
+  </ul>
+</figure>
 
 June is still little and doesn't love rides, and my wife Jody has chronic back pain, so we kept our park itineraries pretty chill, with lots of slow dark rides (Journey of the Little Mermaid, it's a small world, Na'vi River Journey), photo ops, and character meals.
 
-We're going back in April, which means I got to spend a chunk of 2020 on one of my new favorite hobbies—planning upcoming Disney vacations. (I booked our hotel in June, 10 months before the trip, and all our meals in October, 6 months before.) There's a real, deep <a href="https://en.wikipedia.org/wiki/Metagaming">metagame</a> to booking Disney trips that I keep meaning to blog about.
+We're going back in April, which means I got to spend a chunk of 2019 on one of my new favorite hobbies—planning upcoming Disney vacations. (I booked our hotel in June, 10 months before the trip, and all our meals in October, 6 months before.) There's a real, deep <a href="https://en.wikipedia.org/wiki/Metagaming">metagame</a> to booking Disney trips that I keep meaning to blog about.
 
 Despite tons of people on Twitter complaining about it, I still fly United; my flights to and from Australia were enough to get me gold status for the first time ever. 
 
 I seem to be alone in this, but I really like the iPad-driven food service at EWR's Terminal C.
 
-## Family, or: The Dog
+## The Dog
 
 Probably the biggest thing that happened this year was this little guy joining our family—we got a French bulldog puppy, who we named Johnny Cash.
 
-![](https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_1505-819x1024.jpg){width="640" height="800"}
+<figure>
+<img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_1505-819x1024.jpg" alt="" width="640" height="800" />
+</figure>
 
-{% gallery align="wide", cols=3 %}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_0320.jpg){width="1024" height="1024"}
-- ![](https://res.cloudinary.com/demaree/cx/wp/2020/01/L2070624.jpg){width="768" height="1024"
-{% endgallery %}
+<figure class="dd-block-gallery cols-3 alignwide">
+  <ul>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/IMG_0320.jpg" alt="" width="1024" height="1024" /></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/wp/2020/01/L2070624.jpg" alt="" width="768" height="1024" /></li>
+  </ul>
+</figure>
 
 At least for the first few weeks, raising a puppy was about as hard as taking care of a new baby. But now that he's older (8 months) we're finding our groove as dog parents, and Johnny is settling into being a snuggly, playful little sausage.
 
-My other family members had a good year too. My daughter June turned 5 and started kindergarten, and my wife Jody turned 40 and made us all awesome Infinity Stones-themed sweaters:
-
-<!-- insta B0ouYROpc-T -->
+My other family members had a good year too. My daughter June turned 5 and started kindergarten, and my wife Jody turned 40 and made us all awesome Infinity Stones-themed sweaters.
 
 <hr class="wp-block-separator"/>
 
