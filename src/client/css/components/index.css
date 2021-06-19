@@ -1,6 +1,6 @@
 @layer components {
   .homepage-lede {
-    @apply font-roslindale-2 text-4xl sm:text-5xl md:text-6xl;
+    @apply font-sans font-medium text-4xl sm:text-5xl md:text-6xl;
     line-height: 1.25 !important;
     font-variation-settings: 'wdth' 94;
   
@@ -46,10 +46,7 @@
 
   .dd-title,
   .dd-blog-title {
-    @apply font-roslindale-2 text-4xl sm:text-5xl;
-    font-weight: 520;
-    font-variation-settings: "wdth" 96;
-    font-feature-settings: "ss03" on;
+    @apply font-sans font-medium text-4xl sm:text-5xl;
   }
 
   .dd-title-2 {

@@ -58,27 +58,33 @@ In 2019 "traveling" included family trips to Disney World, Ohio, and Texas, and 
 
 We went three places last year, all within 2 hours of home: the Hudson Valley (for a masked hangout with a friend), Asbury Park (for a beach day), and the Catskills (for "glamping"). The latter two trips were during the few weeks when New York and New Jersey had exceptionally low (for the U.S.) COVID rates, and even then we were as careful as could be.
 
-{% gallery %}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-32.jpg){width=600 height=600} {.span-2}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-28.jpg){width=600 height=600}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-33.jpg){width=600 height=600}
-{% endgallery %}
+<figure class="dd-block-gallery">
+<ul>
+  <li class="span-2"><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-32.jpg" alt="" width="600" height="600"></li>
+  <li><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-28.jpg" alt="" width="600" height="600"></li>
+  <li><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-33.jpg" alt="" width="600" height="600"></li>
+</ul>
+</figure>
 
 We did almost all our pandemic dining-out during our Catskills trip (and all of it was outdoors). The best thing I ate this year was a burger and onion rings from [Phoenicia Diner](http://phoeniciadiner.com/), pictured below. In our house these last few months, "support our local economy" has become a euphemism for "order takeout" — we've eagerly supported [Jackie & Son](https://jackieandson.com), [Miti Miti Latin Street Food](https://www.mitimitinj.com), [BGR](https://bgrtheburgerjoint.com), [The Red Cadillac](https://www.theredcadillacnj.com), [Arturo's](https://arturosnj.com) and [The Able Baker](https://theablebaker.com/).
 
-{% gallery align="wide" %}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-27.jpg){width=600 height=600}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-26.jpg){width=600 height=600}
-{% endgallery %}
+<figure class="dd-block-gallery alignwide">
+  <ul>
+    <li><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-27.jpg" alt="" width="600" height="600"></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-26.jpg" alt="" width="600" height="600"></li>
+  </ul>
+</figure>
 
 As a pandemic hobby — and _not_ as self-medication amidst existential world horror! — I've been working to up my home mixology game, which I documented as a "cocktail of the week" feature in several of this summer's newsletters. Where before I usually stuck to home cocktails consisting of such exotic ingredients as bourbon and frozen water, in 2020 I used a lot of fresh citrus and even made some homemade grenadine and blackberry shrub (the latter from David Lebovitz's [_Drinking French_](https://www.amazon.com/Drinking-French-Cocktails-Ap%C3%A9ritifs-Traditions/dp/1607749297)).
 
 Along the way I "invented" two drinks: the "Glover" (a Rob Roy with Japanese whisky and bitters, named for the first Google result for "famous Scotsman in Japan"), and a Paper Plane variation with St. George's Bruto Americano and Bigallet China-China Amer instead of Aperol and Nonino.
 
-{% gallery %}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-10.jpg){width="450" height="600"}
-- ![](https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-48.jpg){width="450" height="600"}
-{% endgallery %}
+<figure class="dd-block-gallery">
+  <ul>
+    <li><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-10.jpg" alt="" width="450" height="600"></li>
+    <li><img src="https://res.cloudinary.com/demaree/cx/2021/2020-in-review/2020-in-review-48.jpg" alt="" width="450" height="600"></li>
+  </ul>
+</figure>
 
 ## Reading and Watching and Playing on Screens
 

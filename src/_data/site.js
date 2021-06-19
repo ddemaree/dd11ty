@@ -2,8 +2,7 @@ module.exports = {
   fontSets: [
     "soehne",
     "soehne-mono",
-    "soehne-breit",
-    "roslindale"
+    "soehne-breit"
   ],
   menu: [
     {
