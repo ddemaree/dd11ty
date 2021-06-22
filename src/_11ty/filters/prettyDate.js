@@ -4,7 +4,10 @@ const { DateTime } = require('luxon')
 module.exports = date => {
   let dateObj;
 
-  if(_.isObject(date)) {
+  if(date instanceof DateTime) {
+    dateObj = date;
+  }
+  else if(date instanceof Date) {
     dateObj = DateTime.fromJSDate(date)
   }
   else if(_.isString(date)) {

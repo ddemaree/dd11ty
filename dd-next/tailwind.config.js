@@ -52,11 +52,7 @@ module.exports = {
 	purge: {
 		layers: ['utilities'],
 		content: [
-			'./src/**/*.js',
-			"./src/**/*.njk",
-			"./src/**/*.md",
-			"./src/**/*.vue",
-			"./.eleventy.js"
+			'./**/*.js',
 		]
 	},
 	plugins: [

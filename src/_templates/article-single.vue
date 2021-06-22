@@ -39,29 +39,29 @@ export default {
       active_nav: "articles",
       layout: "layouts/base.njk",
       pagination: {
-        data: 'collections.articles',
+        data: 'wpPosts',
         size: 1,
         alias: 'article'
       },
       permalink({ article }) {
-        return `/p/${article.fileSlug}/index.html`
+        return `/p/${article.slug}/index.html`
       },
       eleventyComputed: {
         metadata({ article }) {
-          return article.data.metadata
+          return article.metadata
         },
         title({ article }) {
-          return article.data.title
+          return article.title
         },
         excerpt({ article }) {
-          return article.data.excerpt
+          return article.excerpt
         }
       }
     }
   },
   computed: {
     content() {
-      return this.article.templateContent
+      return this.article.content
     },
     subtitle() {
       const { data } = this.article
@@ -74,17 +74,17 @@ export default {
       return !_.isEmpty(this.tags);
     },
     nextPageHref() {
-      return this.pagination.nextPageHref
+      return null // this.pagination.nextPageHref
     },
     nextArticle() {
       const nextHref = this.pagination.nextPageHref
       if(!nextHref) return null
 
       const nextSlug = nextHref.replace(/^\/p\//, '').replace(/\/$/, '')
-      return _.first(_.filter(this.collections.articles, article => article.fileSlug === nextSlug))
+      return null // _.first(_.filter(this.collections.articles, article => article.fileSlug === nextSlug))
     },
     previousPageHref() {
-      return this.pagination.previousPageHref
+      return null // this.pagination.previousPageHref
     },
     previousArticle() {
       const previousHref = this.pagination.previousPageHref
