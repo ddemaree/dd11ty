@@ -2,8 +2,8 @@
   ID = "demaree-next"
 
 [build]
-  command = "npm run build"
-  publish = "_site"
+  command = "npm run next-build"
+  publish = "dd-next/out"
 
 [build.environment]
   NODE_ENV = "production"
@@ -35,7 +35,7 @@
   status = 301
   force = true
 
-[dev]
-  framework = "#custom"
-  command = "npm run dev"
-  targetPort = 8080
+# [dev]
+#   framework = "#custom"
+#   command = "npm run dev"
+#   targetPort = 8080

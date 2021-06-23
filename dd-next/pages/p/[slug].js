@@ -5,6 +5,7 @@ import { DateTime } from 'luxon'
 import client from '../../apollo-client'
 
 import Layout from '../../components/Layout'
+import { getPostPaths, getSinglePost } from '../../lib/wordpress'
 
 const PostPage = ({ post: { title, subtitle, content, excerpt, date, ...post} }) => {
 
@@ -36,71 +37,18 @@ export default PostPage
 
 export async function getStaticProps({ params }) {
   const { slug } = params
-
-  const query = gql`
-  query SinglePostQuery($slug: String) {
-    post: postBy(slug: $slug) {
-      title
-      content
-      excerpt: unencodedExcerpt
-      date: dateGmt
-      postFields {
-        subtitle
-      }
-      linkFields {
-        linkUrl
-      }
-    }
-  }
-  `
-
-  const { data: { post } } = await client.query({ query, variables: { slug }})
+  const post = await getSinglePost(slug)
 
   return {
     props: { 
-      post: {
-        ...post,
-        ...post.postFields,
-        ...post.linkFields
-      }
+      post
     },
   }
 }
 
 export async function getStaticPaths() {
-  let variables = {
-    startCursor: ""
-  }
-
-  const query = gql`
-    query PathsQuery($startCursor: String) {
-      posts(first: 100, after: $startCursor) {
-        nodes {
-          slug
-        }
-      }
-    }
-  `
-
-  const { data: { posts } } = await client.query({ query, variables })
-
-  const paths = posts.nodes.map(({ slug }, index) => {
-    let nextNode, previousNode;
-
-    if(index > 0) {
-      nextNode = posts.nodes[index - 1]
-    }
-
-    previousNode = posts.nodes[index + 1]
-
-    return {
-      params: {
-        slug,
-        nextSlug: (nextNode && nextNode.slug),
-        previousSlug: (previousNode && previousNode.slug)
-      }
-    }
-  })
+  const paths = await getPostPaths()
+  console.log(paths)
 
   return {
     paths,
