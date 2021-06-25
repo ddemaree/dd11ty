@@ -13,6 +13,12 @@
   HUGO_ENABLEGITINFO = "true"
   ELEVENTY_EXPERIMENTAL = "true"
 
+[[plugins]]
+package = "netlify-plugin-cache-nextjs"
+  [plugins.inputs]
+	# The path to the build directory
+	build_dir_path = "dd-next"
+
 [[redirects]]
   from = "/feed"
   to = "/feed.xml"
