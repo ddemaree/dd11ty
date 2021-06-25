@@ -1,8 +1,6 @@
-import { gql } from '@apollo/client'
 import { faClock } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { DateTime } from 'luxon'
-import client from '../../apollo-client'
 
 import Layout from '../../components/Layout'
 import { getPostPaths, getSinglePost } from '../../lib/wordpress'
@@ -48,7 +46,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const paths = await getPostPaths()
-  console.log(paths)
 
   return {
     paths,

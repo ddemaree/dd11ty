@@ -17,15 +17,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp
-
-export async function getServerSideProps() {
-  const wpBlocksCssUrl = ""
-  const wpBlocksCss = await fetch(wpBlocksCssUrl).then(response => response.body)
-  console.log(wpBlocksCss)
-
-  return {
-    props: {
-      wpBlocksCss
-    }
-  }
-}
