@@ -2,7 +2,7 @@
   ID = "demaree-next"
 
 [build]
-  command = "npm run next-build"
+  command = "npm run next-export"
   publish = "dd-next/out"
 
 [build.environment]
