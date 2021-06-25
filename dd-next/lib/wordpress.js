@@ -1,7 +1,19 @@
+import { resolve } from 'path'
+import { mkdir } from 'fs/promises'
 import { gql } from '@apollo/client'
 import client from '../apollo-client'
 import _ from 'lodash'
 import { AssetCache } from "@11ty/eleventy-cache-assets"
+
+const ASSET_CACHE_KEY = "wpPosts_demareeblog_wpengine_com"
+const ASSET_CACHE_DIR = resolve('./../.cache')
+
+let _assetCache;
+function getAssetCache() {
+  if(_assetCache) return _assetCache;
+  _assetCache = new AssetCache(ASSET_CACHE_KEY, ASSET_CACHE_DIR)
+  return _assetCache;
+}
 
 function normalizePost(post) {
   return {
@@ -29,7 +41,7 @@ fragment FullPostFields on Post {
 `
 
 export async function getSinglePost(slug) {
-  let asset = new AssetCache(ASSET_CACHE_KEY)
+  let asset = getAssetCache();
 
   // check if the cache is fresh within the last day
   if(asset.isCacheValid("1d")) {
@@ -58,10 +70,8 @@ export async function getSinglePost(slug) {
   return normalizePost(post)
 }
 
-const ASSET_CACHE_KEY = "wpPosts_demareeblog_wpengine_com"
-
 export async function getAllPosts() {
-  let asset = new AssetCache(ASSET_CACHE_KEY)
+  let asset = getAssetCache()
 
   // check if the cache is fresh within the last day
   if(asset.isCacheValid("1d")) {
@@ -122,6 +132,7 @@ export async function getAllPosts() {
     }
   })
 
+  await mkdir(ASSET_CACHE_DIR, {recursive: true})
   await asset.save(posts, "json")
   return posts
 }
