@@ -14,13 +14,13 @@
   ELEVENTY_EXPERIMENTAL = "true"
 
 [[redirects]]
-  from = "/feed"
-  to = "/feed.xml"
+  from = "/feed.xml"
+  to = "https://demaree.blog/feed/atom"
   status = 301
 
 [[redirects]]
   from = "/posts"
-  to = "/articles"
+  to = "https://demaree.blog/"
   status = 301
 
 [[redirects]]
