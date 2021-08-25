@@ -1,0 +1,13 @@
+---
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFlickr, faWordpress } from '@fortawesome/free-brands-svg-icons'
+
+const { icon, title, url } = Astro.props
+---
+<li>
+  <a href={url} class="flex items-center gap-3">
+    <FontAwesomeIcon icon={icon} fixedWidth />
+    <span>{title}</span>
+  </a>
+</li>
+

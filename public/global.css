@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    --background: white;
+    --background-alt: #f0fafa;
+    --text: #1a1a1a;
+    --text-light: #727272;
+    --red: #E42121;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --background: black;
+      --background-alt: #171717;
+      --text: #efefef;
+      --text-light: #828282;
+      --red: #E84545;
+    }
+  }
+
+
+  body {
+    font-family: 'soehne-web', sans-serif;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  
+  a {
+    color: var(--red);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

@@ -45,7 +45,7 @@ const myColors = {
 	},
 }
 
-module.exports = {
+const oldTwConfig = {
 	darkMode: 'media',
 	important: true,
 	mode: 'jit',
@@ -119,3 +119,21 @@ module.exports = {
 		},
 	},
 };
+
+module.exports = {
+  darkMode: 'class',
+	important: true,
+  mode: 'jit',
+  purge: ['./public/**/*.html', './src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {},
+    fontFamily: {
+      'sans': ['soehne-web', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      'display': ['obviously-var', 'ui-sans-serif', 'system-ui', 'sans-serif']
+    }
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}

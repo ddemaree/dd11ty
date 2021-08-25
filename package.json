@@ -1,61 +1,35 @@
 {
-  "name": "eleventy-with-vite",
-  "version": "1.0.0",
-  "description": "A demo or template for integrating a Vite build with Eleventy",
-  "author": "Fotis Papadogeorgopoulos (fotis@fpapado.com)",
+  "name": "@ddemaree/website",
+  "version": "21.8.0",
+  "description": "A personal web site",
+  "author": "David Demaree (david@demaree.me)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/fpapado/eleventy-with-vite"
+    "url": "git://github.com/ddemaree/website"
   },
   "bugs": {
-    "url": "https://github.com/fpapado/eleventy-with-vite"
+    "url": "https://github.com/ddemaree/website/issues"
   },
   "main": "index.js",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-cache-assets": "^2.2.1",
-    "@11ty/eleventy-img": "^0.9.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
-    "@11ty/eleventy-plugin-vue": "^0.3.1",
-    "@cloudinary/base": "*",
-    "@imgix/js-core": "^3.1.3",
-    "@vitejs/plugin-legacy": "^1.3.2",
-    "autoprefixer": "^10.2.6",
-    "axios": "^0.21.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "astro": "^0.19.4",
     "classnames": "^2.3.1",
-    "cloudinary": "^1.25.2",
-    "cloudinary-core": "^2.11.4",
-    "concurrently": "^6.0.0",
     "dotenv": "^10.0.0",
-    "graphql": "^15.5.0",
     "jest": "^26.6.3",
     "jsdom": "^16.6.0",
     "lodash": "^4.17.21",
     "luxon": "^1.27.0",
-    "markdown-it-attrs": "^4.0.0",
-    "markdown-it-footnote": "^3.0.3",
     "postcss": "^8.3.0",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.5",
-    "posthtml": "^0.15.2",
-    "serve": "^11.3.2",
-    "tailwindcss": "^2.1.2",
-    "vite": "^2.1.3"
+    "tailwindcss": "^2.2.7"
   },
   "scripts": {
-    "dev": "concurrently npm:dev:*",
-    "dev:eleventy": "eleventy --serve",
-    "dev:vite": "vite",
-    "build": "npm run build:vite && npm run build:eleventy",
-    "build:eleventy": "NODE_ENV=production eleventy",
-    "build:vite": "NODE_ENV=production vite build",
-    "prod": "NODE_ENV=production npm run build && serve _site"
-  },
-  "dependencies": {
-    "@11ty/eleventy-plugin-rss": "^1.1.1",
-    "clean-css": "^4.2.3",
-    "imgix.js": "^3.5.0",
-    "lazysizes": "^5.3.2"
+    "start": "astro dev",
+    "build": "astro build"
   }
 }
