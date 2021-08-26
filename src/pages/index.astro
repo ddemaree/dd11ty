@@ -2,33 +2,18 @@
 import { Markdown } from 'astro/components';
 import MainHead from '../components/MainHead.astro';
 import HomepageLink from '../components/HomepageLink.astro'
-// import Nav from '../components/Nav.astro';
+import Wave from '../components/Wave.astro'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFlickr, faWordpress, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
-let title = 'Don’s Blog';
-let description = 'An example blog on Astro';
+let title = 'David Demaree • A good man, and thorough';
+let description = 'A personal internet site';
 ---
 <style lang="scss">
 
 body {
   background-color: var(--background);
-}
-
-.wave-background {
-  > svg { fill: var(--background-alt); }
-  > div { background-color: var(--background-alt); }
-}
-
-.wrapper {
-  --gutter: theme('spacing.6');
-  @apply min-h-screen grid items-center pt-4;
-  grid-template-rows: 4rem 1fr;
-
-  @media (min-width: 500px) {
-    --gutter: theme('spacing.10');
-  }
 }
 
 header {
@@ -86,7 +71,7 @@ header {
       grid-column: 2 / span 1;
       justify-self: center;
       width: 100%;
-      transform: translateY(-2rem) rotate(6deg);
+      transform: translateY(-2rem) rotate(6deg) !important;
     }
 
     > .photo, > .homepage-text {
@@ -100,6 +85,7 @@ header {
     > .links {
       grid-column: 2 / span 1;
       justify-self: center;
+      align-self: center;
     }
   }
 
@@ -107,19 +93,10 @@ header {
     --sidebar-width: 224px;
     @apply text-2xl;
     gap: 40px;
-  }
-}
 
-// Grid governing how content overlays on top of the wave
-.hp-grid {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  min-height: 100vh;
-
-  > * {
-    grid-row: 2;
-    grid-column: -1/1;
+    > .links {
+      @apply px-4;
+    }
   }
 }
 
@@ -129,65 +106,53 @@ header {
   <head>
     <MainHead title={title} />
   </head>
-
   <body>
-    <!-- <Nav /> -->
-    <div class="hp-grid">
+    <Wave>
+      <header class="flex items-center px-6">
+        <figure class="w-10 h-10">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" class="w-full h-full"><defs><style>#dd-icon-rounded * { fill: currentColor; } .cls-1{fill-rule:evenodd}</style></defs><g id="dd-icon-rounded"><g><path d="M4.24 6.19h1.5v1.64h-1.5z"/><path class="cls-1" d="M8.79 5.18a2 2 0 00-.48-.61 2.55 2.55 0 00-.72-.4A2.21 2.21 0 006.71 4H4.24v1.4h4.65a2.44 2.44 0 00-.1-.22zM6.47 7.83h.24a2.62 2.62 0 00.88-.15 2.35 2.35 0 00.72-.41 1.87 1.87 0 00.48-.6A1.6 1.6 0 009 6.19H6.47zM10.54 6.77a2.54 2.54 0 00-.72-.41h-.09a2.13 2.13 0 01-.2.65 2.79 2.79 0 01-.65.84 3.11 3.11 0 01-1 .55 3.32 3.32 0 01-1.17.21h-.24V10H9a2.57 2.57 0 00.87-.15 2.32 2.32 0 00.72-.41 1.94 1.94 0 00.41-.6 1.49 1.49 0 00.17-.74 1.75 1.75 0 00-.17-.72 2.06 2.06 0 00-.46-.61z"/><path class="cls-1" d="M12 0H2a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V2a2 2 0 00-2-2zm-.24 9.13a2.51 2.51 0 01-.64.84 3.19 3.19 0 01-.95.58 3.32 3.32 0 01-1.17.21H4.24V10h1.5V8.58H2v-.75h1.5V4H2v-.76h4.76a3.32 3.32 0 011.17.21 3.19 3.19 0 011 .58 2.67 2.67 0 01.65.84 2.72 2.72 0 01.2.63 3.11 3.11 0 011.39.7 2.65 2.65 0 01.64.85 2.37 2.37 0 010 2.08z"/></g></g></svg>
+        </figure>
+      </header>
 
-      <div class="wave-background row-start-1 flex flex-col">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-background__svg pt-20">
-          <path fill-opacity="1" d="M0,64L80,96C160,128,320,192,480,181.3C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-        </svg>
-        <div class="wave-background__fill flex-grow"></div>
-      </div>
-    
-      <div class="wrapper">
-        <header class="flex items-center px-6">
-          <figure class="w-10 h-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" class="w-full h-full"><defs><style>#dd-icon-rounded * { fill: currentColor; } .cls-1{fill-rule:evenodd}</style></defs><g id="dd-icon-rounded"><g><path d="M4.24 6.19h1.5v1.64h-1.5z"/><path class="cls-1" d="M8.79 5.18a2 2 0 00-.48-.61 2.55 2.55 0 00-.72-.4A2.21 2.21 0 006.71 4H4.24v1.4h4.65a2.44 2.44 0 00-.1-.22zM6.47 7.83h.24a2.62 2.62 0 00.88-.15 2.35 2.35 0 00.72-.41 1.87 1.87 0 00.48-.6A1.6 1.6 0 009 6.19H6.47zM10.54 6.77a2.54 2.54 0 00-.72-.41h-.09a2.13 2.13 0 01-.2.65 2.79 2.79 0 01-.65.84 3.11 3.11 0 01-1 .55 3.32 3.32 0 01-1.17.21h-.24V10H9a2.57 2.57 0 00.87-.15 2.32 2.32 0 00.72-.41 1.94 1.94 0 00.41-.6 1.49 1.49 0 00.17-.74 1.75 1.75 0 00-.17-.72 2.06 2.06 0 00-.46-.61z"/><path class="cls-1" d="M12 0H2a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V2a2 2 0 00-2-2zm-.24 9.13a2.51 2.51 0 01-.64.84 3.19 3.19 0 01-.95.58 3.32 3.32 0 01-1.17.21H4.24V10h1.5V8.58H2v-.75h1.5V4H2v-.76h4.76a3.32 3.32 0 011.17.21 3.19 3.19 0 011 .58 2.67 2.67 0 01.65.84 2.72 2.72 0 01.2.63 3.11 3.11 0 011.39.7 2.65 2.65 0 01.64.85 2.37 2.37 0 010 2.08z"/></g></g></svg>
-          </figure>
-        </header>
+      <main class="homepage">
+        <figure class="photo origin-center rotate-6">
+          <svg viewbox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g>
+              <clipPath id="squircle">
+                <path d="
+                    M 0, 75
+                    C 0, 18.75 18.75, 0 75, 0
+                    S 150, 18.75 150, 75
+                        131.25, 150 75, 150
+                        0, 131.25 0, 75
+                " fill="#FADB5F"></path>
+              </clipPath>
+            </g>
+            <a xlink:href="/">
+              <image clip-path="url(#squircle)" height="100%" width="100%" xlink:href="https://res.cloudinary.com/demaree/image/twitter_name/w_400,h_400/ddemaree.jpg" />
+            </a>
+          </svg>
+          <img src="https://res.cloudinary.com/demaree/image/twitter_name/w_400,h_400/ddemaree.jpg" loading="lazy" class="sr-only" alt="Photograph of David Demaree" />
+        </figure>
 
-        <main class="homepage">
-          <figure class="photo origin-center rotate-6">
-            <svg viewbox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g>
-                <clipPath id="squircle">
-                  <path d="
-                      M 0, 75
-                      C 0, 18.75 18.75, 0 75, 0
-                      S 150, 18.75 150, 75
-                          131.25, 150 75, 150
-                          0, 131.25 0, 75
-                  " fill="#FADB5F"></path>
-                </clipPath>
-              </g>
-              <a xlink:href="/">
-                <image clip-path="url(#squircle)" height="100%" width="100%" xlink:href="https://res.cloudinary.com/demaree/image/twitter_name/w_400,h_400/ddemaree.jpg" />
-              </a>
-            </svg>
-            <img src="https://res.cloudinary.com/demaree/image/twitter_name/w_400,h_400/ddemaree.jpg" loading="lazy" class="sr-only" alt="Photograph of David Demaree" />
-          </figure>
+        <div class="homepage-text">
+          <Markdown>
+          # Hi, I'm David. I make internet things.
 
-          <div class="homepage-text">
-            <Markdown>
-            # Hi, I'm David. I make internet things.
+          I'm the author of _Git for Humans_ and I'm baby everyday carry iceland DIY, XOXO letterpress glossier freegan migas shaman hell of heirloom actually pork belly. Squid kogi chillwave authentic shabby chic ethical lumbersexual health goth succulents quinoa fingerstache YOLO pug.
 
-            I'm the author of _Git for Humans_ and I'm baby everyday carry iceland DIY, XOXO letterpress glossier freegan migas shaman hell of heirloom actually pork belly. Squid kogi chillwave authentic shabby chic ethical lumbersexual health goth succulents quinoa fingerstache YOLO pug.
+          </Markdown>
+        </div>
 
-            </Markdown>
-          </div>
+        <ul class="links">
+          <HomepageLink icon={faWordpress} title="Blog" url="https://demaree.blog/" />
+          <HomepageLink icon={faFlickr} title="Photos" url="https://flickr.com/photos/demaree/" />
+          <HomepageLink icon={faTwitter} title="Tweets" url="https://twitter.com/ddemaree/" />
+        </ul>
+      </main>
 
-          <ul class="links">
-            <HomepageLink icon={faWordpress} title="Blog" url="https://demaree.blog/" />
-            <HomepageLink icon={faFlickr} title="Photos" url="https://flickr.com/photos/demaree/" />
-            <HomepageLink icon={faTwitter} title="Tweets" url="https://twitter.com/ddemaree/" />
-          </ul>
-        </main>
+      <footer class="h-15"></footer>
 
-        <footer class="h-15"></footer>
-      </div>
-    </div>
-
+    </Wave>
   </body>
 </html>

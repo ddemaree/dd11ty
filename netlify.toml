@@ -2,8 +2,8 @@
   ID = "demaree-next"
 
 [build]
-  command = "npm run build"
-  publish = "_site"
+  command = "yarn build"
+  publish = "dist"
 
 [build.environment]
   NODE_ENV = "production"
