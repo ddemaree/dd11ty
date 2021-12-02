@@ -1,0 +1,144 @@
+@import url(https://cdn.demaree.net/fonts/soehne/index.css);
+@import url(https://cdn.demaree.net/fonts/soehne-mono/index.css);
+@import url(https://cdn.demaree.net/fonts/ivar-text/index.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .prose-ivory {
+    --color-bodytext: theme('colors.gray.800');
+    --color-linktext: theme('colors.red.600');
+    --color-boldtext: theme('colors.black');
+    --color-captiontext: theme('colors.gray.500');
+    --color-line-quotes: theme('colors.gray.200');
+    --color-line-rules: theme('colors.gray.300');
+  }
+
+  .prose-ebony {
+    --color-bodytext: theme('colors.gray.200');
+    --color-linktext: theme('colors.red.400');
+    --color-boldtext: theme('colors.white');
+    --color-captiontext: theme('colors.blue.200');
+    --color-line-quotes: theme('colors.gray.700');
+    --color-line-rules: theme('colors.gray.500');
+  }
+
+  .prose {
+    color: var(--color-bodytext);
+
+    a:link {
+      color: var(--color-linktext);
+    }
+
+    figcaption {
+      color: var(--color-captiontext);
+    }
+
+    :where(h1, h2, h3, h4, h5, h6, b, strong) {
+      color: var(--color-boldtext);
+    }
+  }
+
+  /* TYPOGRAPHY */
+  .prose {
+    @apply font-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+
+    :where(a:link) {
+      @apply underline;
+    }
+
+    /* TYPOGRAPHY */
+    :where(h1, h2, h3, h4, h5, h6) {
+      @apply font-sans font-semibold;
+    }
+
+    :where(h1) {
+      @apply text-4xl font-medium;
+    }
+
+    :where(h2) {
+      @apply text-3xl font-medium;
+    }
+
+    :where(h3) {
+      @apply text-2xl font-semibold;
+    }
+
+    :where(h4, h5, h6) {
+      @apply text-xl uppercase tracking-widest font-medium;
+    }
+  }
+
+  /* WIDTH & SPACING */
+  :is(.prose > *, .prose > figure) {
+    @apply mx-auto;
+  }
+
+  :is(.prose > * + *, .prose > * + [class^=wp-block]) {
+    @apply mt-6;
+  }
+
+  .prose {
+    > * {
+      @apply mx-auto w-full;
+    }
+
+    > :not(.width-full, .width-wide, .alignfull, .alignwide) {
+      @apply max-w-3xl;
+    }
+
+    > :where(.alignwide, .width-wide) {
+      @apply max-w-5xl;
+    }
+
+    > * img {
+      width: 100%;
+    }
+
+    > :not(hr) + :is(h1, h2, h3, h4, h5, h6) {
+      @apply mt-14 !important;
+    }
+
+    > :is(figure) {
+      @apply pb-6;
+
+      &:not(:first-child) {
+        @apply pt-6;
+      }
+    }
+
+    > :where(ul) {
+      @apply list-disc;
+
+      ul {
+        list-style-type: circle;
+      }
+
+      li {
+        @apply ml-8;
+      }
+    }
+
+    blockquote {
+      border-left: 4px solid var(--color-line-quotes);
+      color: var(--color-captiontext);
+      padding-left: calc(theme('spacing.6') - 4px);
+      padding-right: theme('spacing.6');
+    }
+
+    > hr:not([hidden]) {
+      @apply py-8 border-0 flex items-center justify-center;
+
+      &:before {
+        letter-spacing: 15px;
+        content: '•••';
+        color: var(--color-line-rules);
+        line-height: 1;
+      }
+    }
+  }
+}

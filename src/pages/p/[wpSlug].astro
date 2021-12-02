@@ -1,0 +1,42 @@
+---
+// import Layout from '../../components/Layout.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import Prose from '@/components/Prose.astro'
+
+export async function getStaticPaths() {
+  const response = await fetch('https://demaree.blog/wp-json/wp/v2/posts?per_page=100&_fields=id,slug,date_gmt');
+  const responseData = await response.json();
+
+  const slugs = responseData.map(({ slug: wpSlug, id: postId }) => {
+    return { 
+      params: { wpSlug },
+      props: { postId }
+    }
+  })
+
+  return slugs;
+}
+
+const { postId } = Astro.props;
+const postURL = `https://demaree.blog/wp-json/wp/v2/posts/${postId}`;
+const post = await fetch(postURL).then(r => r.json())
+---
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={post.title.raw || "David's blog"}
+      description="A simple web site for a simple man"
+      permalink="https://demaree.me" />
+    <link rel='stylesheet' id='wp-block-library-css'  href='https://demaree.blog/wp-content/plugins/gutenberg/build/block-library/style.css?ver=12.0.1' media='all' />
+  </head>
+
+  <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+    <main class="blog-main py-12">
+      <header class="text-center w-full-inset mx-auto py-8 mb-4">
+        <div class="mb-3">{post.date_gmt}</div>
+        <h1 class="text-5xl font-medium">{post.title.rendered}</h1>
+      </header>
+      <Prose class="width-full">{post.content.rendered}</Prose>
+    </main>
+  </body>
+</html>

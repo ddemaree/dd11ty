@@ -1,0 +1,8 @@
+---
+import c from '../lib/classnames.js'
+const { class: className = '' } = Astro.props
+const classString = c('prose prose-ivory dark:prose-ebony', className)
+---
+<div class={classString}>
+  <slot />
+</div>
