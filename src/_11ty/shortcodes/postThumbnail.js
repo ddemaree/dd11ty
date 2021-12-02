@@ -1,17 +1,5 @@
 const imgixClient = require('../imgixClient')
 
-const cloudinary = require('cloudinary').v2;
-
-function getCloudinaryIDFromURL(url) {
-  return url.replace(/^https?:\/\/res.cloudinary.com\/demaree\/image\/upload|fetch/)
-
-  if(urlMatch) {
-    return urlMatch[0]
-  }
-
-  return null
-}
-
 const postThumbnail = async uri => {
   const urlObj = new URL(uri, "http://localhost/")
   // console.log(urlObj)
