@@ -10,7 +10,9 @@ _site
 .vercel
 
 # Local Netlify folder
-.netlify# build output
+.netlify
+
+# build output
 dist
 
 # dependencies

@@ -3,15 +3,11 @@
 
 [build]
   command = "npm run build"
-  publish = "_site"
+  publish = "dist"
 
 [build.environment]
   NODE_ENV = "production"
-  HUGO_ENV = "production"
   NODE_VERSION = "16"
-  HUGO_VERSION = "0.82.0"
-  HUGO_ENABLEGITINFO = "true"
-  ELEVENTY_EXPERIMENTAL = "true"
 
 [[redirects]]
   from = "/feed"
@@ -22,18 +18,6 @@
   from = "/posts"
   to = "/articles"
   status = 301
-
-[[redirects]]
-  from = "https://demaree.me/*"
-  to = "https://demaree.space/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://demaree.me/"
-  to = "https://demaree.space/"
-  status = 301
-  force = true
 
 [dev]
   framework = "#custom"
