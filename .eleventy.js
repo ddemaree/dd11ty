@@ -78,10 +78,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode("iconAsset", require('./src/_11ty/shortcodes/iconAsset'));
   eleventyConfig.addNunjucksAsyncShortcode("twitter", require('./src/_11ty/shortcodes/twitter'));
   eleventyConfig.addNunjucksAsyncShortcode("postThumbnail", require('./src/_11ty/shortcodes/postThumbnail'));
-
-  // eleventyConfig.addNunjucksAsyncShortcode("insta", async id => {
-  //   // const instaData = await Cache(``)
-  // })
   
   eleventyConfig.addFilter("prettyDate", require('./src/_11ty/filters/prettyDate'));
 
