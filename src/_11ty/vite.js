@@ -1,6 +1,6 @@
 const fs = require("fs/promises");
 const path = require("path");
-
+const { createServer: createViteServer } = require('vite')
 
 // TODO: Move these into a config hash?
 const INPUT_DIR = "src";

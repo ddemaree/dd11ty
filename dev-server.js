@@ -1,20 +1,15 @@
-const path = require('path')
-const connect = require('connect')
 const express = require('express')
-const serve = require('serve-handler')
-const { createServer: createHTTPServer } = require('http')
-const { createServer: createViteServer } = require('vite')
-const { nextTick } = require('process')
-
 const sirv = require('sirv')
+const { createServer: createViteServer } = require('vite')
 
 const Eleventy = require('@11ty/eleventy')
 const elev = new Eleventy("./src", "./_site", {
   configPath: "./.eleventy.js",
-  source: "cli"
+  source: "cli",
+  quietMode: true
 })
 
-// const viteConfig = require('./vite.config')
+elev.setIncrementalBuild(true)
 
 const portNumber = process.env.PORT || 3003
 
@@ -25,16 +20,14 @@ async function createServer() {
     clearScreen: false,
     server: { 
       middlewareMode: 'ssr',
-    },
-    build: {
-      // outDir: "_site",
-      assetsDir: "assets",
-      sourcemap: true,
-      manifest: true,
-      rollupOptions: {
-        input: path.join(process.cwd(), "src/client/main.js"),
-      },
-    },
+      watch: {
+        ignored: [
+          "**/src/**/*",
+          "**/_site/**/*",
+          "**/static/**/*"
+        ]
+      }
+    }
   })
 
   app.use(vite.middlewares)
@@ -50,7 +43,12 @@ async function createServer() {
       elev.watch()
         .catch(e => console.log(`There was an error: ${e}`))
         .then(_ => {
-          createHTTPServer(app).listen(portNumber)
+          elev.watcher.on("change", file => {
+            console.log(`Eleventy changed ${file}`)
+          })
+        })
+        .then(_ => {
+          app.listen(portNumber)
         })
     })  
 }
