@@ -1,15 +1,15 @@
 {
-  "name": "eleventy-with-vite",
-  "version": "1.0.0",
-  "description": "A demo or template for integrating a Vite build with Eleventy",
-  "author": "Fotis Papadogeorgopoulos (fotis@fpapado.com)",
+  "name": "@ddemaree/website",
+  "version": "22.0.0",
+  "description": "A simple website",
+  "author": "David Demaree (david@demaree.me)",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/fpapado/eleventy-with-vite"
+    "type": "https",
+    "url": "https://github.com/ddemaree/website"
   },
   "bugs": {
-    "url": "https://github.com/fpapado/eleventy-with-vite"
+    "url": "https://github.com/ddemaree/website/issues"
   },
   "main": "index.js",
   "devDependencies": {
@@ -53,7 +53,7 @@
     "vite": "^2.6.14"
   },
   "scripts": {
-    "dev": "run-p dev:*",
+    "dev": "node dev-server.js",
     "dev:eleventy": "eleventy --watch",
     "dev:vite": "vite",
     "build": "NODE_ENV=production run-s build:eleventy build:vite",
