@@ -1,0 +1,78 @@
+---
+import FontAwesomeIcon from './FontAwesomeIcon.jsx'
+// import ThemeSwitcher from '../components/ThemeSwitcher.svelte'
+---
+<div class="site-wrapper">
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="/" class="site-header__home icon-btn">
+        <FontAwesomeIcon icon={['fas', 'home']} />
+				<span>Home</span>
+			</a>
+			<a href="/" class="site-header__logo flex items-center gap-3">
+        <FontAwesomeIcon icon={['fak', 'dd-logo-square']} size="2x" />
+				<span class="site-header__title">David Demaree</span>
+			</a>
+
+      <!-- <ThemeSwitcher /> -->
+    </div>
+  </header>
+
+  <main class="site-main" role="main">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+</div>
+
+<style>
+.site-header {
+  @apply h-16;
+}
+
+.site-header__inner {
+  @apply px-[var(--inset-x)];
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: [full-start home-start] 75px [home-end logo-start] 1fr [logo-end menu-start] 75px [menu-end full-end];
+
+  height: var(--header-height, 4rem);
+
+  @screen sm {
+    grid-template-columns: [full-start logo-start] minmax(100px, 30vw) [logo-end menu-start] 1fr [menu-end full-end];
+  }
+}
+
+.site-header__home {
+  justify-self: start;
+  grid-column: home;
+
+  @screen sm {
+    display: none !important;
+  }
+}
+
+.site-header__logo {
+  @apply text-accent;
+  justify-self: center;
+  grid-column: logo;
+
+  position: relative;
+  z-index: 3;
+
+  @screen sm {
+    justify-self: start;
+  }
+}
+
+.site-header__title {
+  @apply sr-only sm:not-sr-only text-ink-bold font-sans leading-none font-semibold;
+  font-size: 18px;
+}
+
+.site-header__menu-btn {
+  justify-self: end;
+  grid-column: menu;
+}
+</style>

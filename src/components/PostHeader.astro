@@ -1,0 +1,49 @@
+---
+import PostDateline from './PostDateline.tsx'
+
+export interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+}
+
+const { title, description, date } = Astro.props;
+
+---
+<style>
+.post-header {
+  @apply px-[var(--inset-x)];
+  --ph-padding-y: clamp(2rem, 10vw, 4rem);
+  padding-bottom: var(--ph-padding-y);
+  padding-top: var(--ph-padding-y);
+
+  text-align: center;
+}
+
+.post-header > * {
+   @apply max-w-content w-full-inset mx-auto;
+}
+
+.title {
+  @apply font-sans font-bold text-ink-bold;
+  line-height: 1.1;
+  letter-spacing: -0.03ch;
+  font-size: clamp(2rem, 10vw, 3rem);
+}
+
+.dateline {
+  @apply font-sans font-normal uppercase mb-3 text-ink-medium sm:text-lg;
+  letter-spacing: 0.3ch;
+}
+
+.description {
+  @apply text-ink-medium;
+  font-size: 1.5em;
+}
+</style>
+
+<header class="post-header">
+  {date && <PostDateline date={date} className="dateline" />}
+  <h1 class="title">{title}</h1>
+  {description && <p class="description">{description}</p>}
+</header>

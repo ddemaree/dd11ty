@@ -1,0 +1,52 @@
+
+/* .post-content {
+  @apply font-serif;
+  font-size: clamp(19px, 2.5vw, 21px);
+  font-feature-settings: "calt", "clig", "kern", "liga", "onum", "pnum";
+  line-height: 1.35;
+
+  :where(a:not(.wp-block-button__link)) {
+    @apply text-primary font-normal underline;
+  }
+
+  * ~ :where(h1, h2, h3, h4, h5, h6) {
+    @apply mt-12;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    @apply font-sans font-semibold;
+    font-size: revert;
+  }
+
+  :where(figcaption) {
+    @apply font-sans text-center text-ink-medium mx-auto;
+    font-size: 0.75em;
+    max-width: 64ch;
+  }
+
+  p.is-style-big-intro {
+    @apply font-serif font-light;
+    font-size: clamp(1.375em, 3.5vw, 1.625em) !important;
+    line-height: 1.2;
+
+    b, strong {
+      @apply font-sans font-semibold;
+    }
+  }
+
+  .wp-block-button__link {
+    background-color: var(--col-buttons);
+  }
+}
+
+.content-wrapper,
+.post-content {
+  > * + * {
+    @apply mt-6;
+  }
+
+  > :not(figure) + figure,
+  > figure + :not(figure) {
+    @apply mt-10;
+  }
+} */

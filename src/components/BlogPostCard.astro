@@ -1,0 +1,16 @@
+---
+export interface Props {
+  post: object;
+}
+
+import PostDateline from '../components/PostDateline.tsx'
+
+const { post } = Astro.props
+---
+<article class="max-w-content">
+<a href={post.url}>
+  <h2 class="text-xl font-semibold leading-tight">{post.title}</h2>
+  {post.description && <p class="font-serif text-lg leading-snug mt-1">{post.description}</p>}
+  <PostDateline as="p" date={post.date} className="text-[0.875em] text-ink-medium font-medium uppercase tracking-wide mt-1" />
+</a>
+</article>

@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Importing all because this is build time and it's fine
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faDdLogoSquare } from './icons/faDdLogoSquare.js'
 
 import { library, config } from '@fortawesome/fontawesome-svg-core'
-library.add(fab, fas)
-
-import '@fortawesome/fontawesome-svg-core/styles.css'
+library.add(fab, fas, faDdLogoSquare)
 config.autoAddCss = false
 
-export default function ReactIcon(props) {
+// import '@fortawesome/fontawesome-svg-core/styles.css'
+
+export default function AwesomeReactIcon(props) {
   return <FontAwesomeIcon {...props} />
 }

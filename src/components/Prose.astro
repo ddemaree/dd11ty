@@ -1,8 +1,86 @@
 ---
-import c from '../lib/classnames.js'
-const { class: className = '' } = Astro.props
-const classString = c('prose prose-ivory dark:prose-ebony', className)
 ---
-<div class={classString}>
+<style global>
+@import '../styles/wp-blocks.css';
+
+.post-content {
+  @apply font-serif;
+  font-size: clamp(19px, 2.5vw, 21px);
+  font-feature-settings: "calt", "clig", "kern", "liga", "onum", "pnum";
+  line-height: 1.4;
+
+  > :where(*) {
+    margin-left: auto;
+    margin-right: auto;
+
+    &:not(.alignwide, .alignfull) {
+      @apply max-w-content w-full-inset;
+    }
+
+    &:where(.alignwide) {
+      @apply max-w-wide;
+      width: 100%;
+    }
+
+    &:where(.alignfull) {
+      max-width: unset;
+      width: 100%;
+    }
+  }
+
+  > * + * {
+    @apply mt-4;
+  }
+
+  > :where(:not(figure) + figure),
+  > :where(figure + :not(figure)) {
+    @apply mt-10;
+  }
+
+  > :where(figure + figure) {
+    @apply mt-8;
+  }
+
+  :where(a:not(.wp-block-button__link)) {
+    @apply text-primary font-normal underline;
+  }
+
+  * ~ :where(h1, h2, h3, h4, h5, h6) {
+    @apply mt-16;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    @apply font-sans font-semibold;
+    font-size: revert;
+  }
+
+  :where(ul:not(.blocks-gallery-grid)) {
+    @apply pl-10;
+    list-style-type: disc;
+  }
+
+  :where(figcaption), :is([class^=wp-block] figcaption) {
+    @apply font-sans text-center text-ink-medium mx-auto mt-3;
+    font-size: 0.75em;
+    max-width: 68ch;
+  }
+
+  p.is-style-big-intro {
+    @apply font-serif font-light;
+    font-size: clamp(1.375em, 3.5vw, 1.625em) !important;
+    line-height: 1.2;
+
+    b, strong {
+      @apply font-sans font-semibold;
+    }
+  }
+
+  .wp-block-button__link {
+    background-color: var(--col-buttons);
+  }
+}
+</style>
+
+<div class="post-content">
   <slot />
 </div>

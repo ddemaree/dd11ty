@@ -1,24 +1,76 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import ReactIcon from '../components/FontAwesomeIcon.jsx'\
 import { Markdown } from 'astro/components'
+import { DateTime } from 'luxon'
+import BaseHead from '../components/BaseHead.astro'
+import SiteChrome from '../components/SiteChrome.astro'
+import BlogPostCard from '../components/BlogPostCard.astro'
 
-let title = 'Example Blog';
-let description = 'The perfect starter for your perfect blog.';
-let permalink = 'https://example.com/';
+let title = 'David Demaree';
+
+const posts = Astro.fetchContent("./posts/*.md")
+  .filter(p => p.featured)
+  .sort((a, b) => {
+    const aDate = DateTime.fromISO(a.date)
+    const bDate = DateTime.fromISO(b.date)
+    return (bDate - aDate)
+  })
+  .slice(0,5)
 ---
-<html lang="en" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-  <head>
-    <BaseHead title={title} description={description} permalink={permalink} />
-  </head>
-  <body>
-    <div class="py-12 w-full-inset mx-auto max-w-3xl">
-      <h1 class="text-4xl font-sans font-semibold">
-        <ReactIcon icon="coffee" />
-        A home page</h1>
-      <Markdown>
-        # This is a home page too <ReactIcon icon="coffee" />
-      </Markdown>
+<html lang="en">
+<head>
+  <BaseHead title={title} description="" permalink="" />
+  <style>
+    .intro {
+      @apply flex flex-col items-center justify-center;
+      --home-v-padding: clamp(theme('spacing.6'), 5.3vw, theme('spacing.16'));
+
+      &__photo {
+        height: clamp(200px, 70vw, 300px);
+        width: 100%;
+        max-width: 400px;
+        /* border-radius: 1rem;
+        border: 1px solid currentColor; */
+        
+        img {
+          height: 100%;
+          object-fit: cover;
+          object-position: 25% 30%;
+        }
+
+        @media screen and (min-width: 880px) {
+          height: unset;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <SiteChrome>
+    <div class="md:grid grid-cols-[420px,minmax(0px,_1fr)] py-12 items-start gap-[var(--inset-x)] w-full-inset max-w-6xl mx-auto">
+      <section id="intro" class="intro">
+        <figure class="intro__photo">
+          <picture>
+            <source media="(max-width: 600px)" src="https://res.cloudinary.com/demaree/image/upload/w_300,h_300/bitsandletters-assets/260135835_318234089877893_8902691237656935354_n.jpg" />
+            <img src="https://res.cloudinary.com/demaree/image/upload/v1641097397/bitsandletters-assets/260135835_318234089877893_8902691237656935354_n.jpg" />
+          </picture>
+        </figure>
+        <div class="intro__text font-serif text-xl space-y-6 py-8">
+          <p class="is-style-big-intro text-2xl">Hi, I’m <b class="font-sans font-semibold">David Demaree</b>, a Big Tech product manager, frontend web developer, photographer, and keyboard enthusiast based in New Jersey, <abbr style="font-variant: small-caps; text-transform: lowercase;">U.S.A.</abbr></p>
+          <Markdown>
+            I’m currently the product lead for Stripe’s design systems team. Previously I worked on Google Fonts, Material Design, and Adobe Fonts. I wrote Git for Humans for A Book Apart, have spoken at events around the world, and …other stuff, probably.
+
+            I’m @ddemaree on Twitter and GitHub.
+          </Markdown>
+        </div>
+      </section>
+      <hr class="my-8 sm:hidden" />
+      <section id="blog-posts" class="space-y-8">
+        <header>
+          <h2 class="text-2xl">Latest posts</h2>
+        </header>
+        {posts.map(post => <BlogPostCard post={post} />)}
+      </section>
     </div>
-  </body>
+  </SiteChrome>
+</body>
 </html>
