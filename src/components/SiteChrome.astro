@@ -7,19 +7,14 @@ import MenuToggle from '../components/MenuToggle.svelte'
 <div>
   <header class="site-header" role="banner">
     <div class="site-header__inner">
-      <a href="/" class="site-header__home icon-btn">
-        <FontAwesomeIcon icon={['fas', 'home']} />
-				<span>Home</span>
-			</a>
-
-			<a href="/" class="site-header__logo flex items-center gap-3">
+			<a href="/" class="site-header__logo [grid-column:left] flex items-center gap-3">
         <FontAwesomeIcon icon={['fak', 'dd-logo-square']} size="2x" />
 				<span class="site-header__title">David Demaree</span>
 			</a>
 
-      <div class="site-header__menu-btn flex gap-4 items-center">
+      <div class="site-header__menu-btn contents">
         <ThemeSwitcher client:visible />
-        <MenuToggle client:visible />
+        <MenuToggle class="farts" client:visible />
       </div>
     </div>
   </header>
@@ -31,7 +26,7 @@ import MenuToggle from '../components/MenuToggle.svelte'
 
 <style>
 .site-header {
-  @apply h-16;
+  height: var(--header-height);
 }
 
 .site-header__inner {
@@ -39,35 +34,13 @@ import MenuToggle from '../components/MenuToggle.svelte'
 
   display: grid;
   align-items: center;
-  grid-template-columns: [full-start home-start] 75px [home-end logo-start] 1fr [logo-end menu-start] 75px [menu-end full-end];
-
+  grid-template-columns: [full-start left-start] minmax(0px, 30vw) [left-end center-start] minmax(0px, 30vw) [center-end right-start] minmax(0px, 30vw) [right-end full-end];
   height: var(--header-height, 4rem);
-
-  @screen sm {
-    grid-template-columns: [full-start logo-start] minmax(100px, 30vw) [logo-end menu-start] 1fr [menu-end full-end];
-  }
-}
-
-.site-header__home {
-  justify-self: start;
-  grid-column: home;
-
-  @screen sm {
-    display: none !important;
-  }
 }
 
 .site-header__logo {
-  @apply text-accent z-30;
+  @apply text-accent relative z-30;
   justify-self: center;
-  grid-column: logo;
-
-  position: relative;
-
-  @screen sm {
-    z-index: 0;
-    justify-self: start;
-  }
 }
 
 .site-header__title {

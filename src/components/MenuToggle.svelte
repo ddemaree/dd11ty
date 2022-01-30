@@ -1,13 +1,22 @@
-<script>
+<script lang="ts">
+let className: string = '';
+export { className as class };
+console.log(className);
+
+import c from 'classnames';
 import { fly, fade } from 'svelte/transition';
 import { faFeather, faUserNinja } from '@fortawesome/free-solid-svg-icons'
 import MenuItem from './MenuItem.svelte'
 
 let menuOpen = false;
+
 const toggleMenu = () => { menuOpen = !menuOpen }
+
+const localClassName = c('bison-burger', className);
+console.log(localClassName);
 </script>
 
-<div class="bison-burger" class:open={menuOpen}>
+<div class={localClassName} class:open={menuOpen}>
   <button on:click={toggleMenu}>
     <i class="bar bar-top" aria-hidden="true"></i>
     <i class="bar bar-middle" aria-hidden="true"></i>

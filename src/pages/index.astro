@@ -27,9 +27,7 @@ const posts = Astro.fetchContent("./posts/*.md")
       &__photo {
         height: clamp(200px, 70vw, 300px);
         width: 100%;
-        max-width: 400px;
-        /* border-radius: 1rem;
-        border: 1px solid currentColor; */
+        /* max-width: 400px; */
         
         img {
           height: 100%;
@@ -46,12 +44,12 @@ const posts = Astro.fetchContent("./posts/*.md")
 </head>
 <body>
   <SiteChrome>
-    <div class="md:grid grid-cols-[420px,minmax(0px,_1fr)] py-12 items-start gap-[var(--inset-x)] w-full-inset max-w-6xl mx-auto">
-      <section id="intro" class="intro">
-        <figure class="intro__photo">
+    <div>
+      <section id="intro" class="bg-red-20">
+        <figure class="bg-red-40">
           <picture>
-            <source media="(max-width: 600px)" src="https://res.cloudinary.com/demaree/image/upload/w_300,h_300/bitsandletters-assets/260135835_318234089877893_8902691237656935354_n.jpg" />
-            <img src="https://res.cloudinary.com/demaree/image/upload/v1641097397/bitsandletters-assets/260135835_318234089877893_8902691237656935354_n.jpg" />
+            <!-- <source media="(max-width: 600px)" src="https://res.cloudinary.com/demaree/image/upload/w_300,h_300/bitsandletters-assets/260135835_318234089877893_8902691237656935354_n.jpg" /> -->
+            <img src="https://res.cloudinary.com/demaree/image/upload/v1641097397/bitsandletters-assets/260135835_318234089877893_8902691237656935354_n.jpg" class="w-full h-full" />
           </picture>
         </figure>
         <div class="intro__text font-serif text-xl space-y-6 py-8">

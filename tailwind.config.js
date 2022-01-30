@@ -50,7 +50,7 @@ module.exports = {
 	],
 	theme: {
 		screens: {
-			'xs': '374px',
+			'xs': '375px',
 			'sm': '660px',
 			'md': '880px',
 		},
