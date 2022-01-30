@@ -19,15 +19,13 @@ export function setDarkMode(themeValue: string, persist: boolean = false) {
 }
 
 function getDarkModeQuery() {
-  return import.meta.env.SSR ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  return import.meta.env.SSR ? window.matchMedia('(prefers-color-scheme: dark)') : { matches: false };
 } 
 
 export function getInitialTheme() {
-  if(import.meta.env.SSR) {
-    return null;
-  }
+  if(import.meta.env.SSR) return null;
 
-  const darkModeQuery = getDarkModeQuery()
+  const darkModeQuery = getDarkModeQuery();
 
   if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
     return localStorage.getItem('theme');
