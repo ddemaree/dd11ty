@@ -1,7 +1,4 @@
 <script lang="ts">
-let className: string = '';
-export { className as class };
-console.log(className);
 
 import c from 'classnames';
 import { fly, fade } from 'svelte/transition';
@@ -9,11 +6,11 @@ import { faFeather, faUserNinja } from '@fortawesome/free-solid-svg-icons'
 import MenuItem from './MenuItem.svelte'
 
 let menuOpen = false;
-
 const toggleMenu = () => { menuOpen = !menuOpen }
 
+let className: string = '';
+export { className as class };
 const localClassName = c('bison-burger', className);
-console.log(localClassName);
 </script>
 
 <div class={localClassName} class:open={menuOpen}>
