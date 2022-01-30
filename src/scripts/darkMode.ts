@@ -16,7 +16,6 @@ export function setDarkMode(themeValue: string, persist: boolean = false) {
   }
 
   if(persist) localStorage.setItem('theme', themeValue);
-  console.log('Setting themode to ' + themeValue, root.classList)
 }
 
 function getDarkModeQuery() {
