@@ -11,8 +11,6 @@ import { library, config } from '@fortawesome/fontawesome-svg-core'
 library.add(fab, fas, faDdLogoSquare)
 config.autoAddCss = false
 
-// import '@fortawesome/fontawesome-svg-core/styles.css'
-
 export default function AwesomeReactIcon(props) {
   return <FontAwesomeIcon {...props} />
 }

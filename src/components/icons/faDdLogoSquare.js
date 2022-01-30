@@ -17,13 +17,3 @@ export const faDdLogoSquare = {
     svgPathData
   ]
 };
-
-// exports.faDdLogoSquare = exports.definition;
-// exports.prefix = prefix;
-// exports.iconName = iconName;
-// exports.width = width;
-// exports.height = height;
-// exports.ligatures = aliases;
-// exports.unicode = unicode;
-// exports.svgPathData = svgPathData;
-// exports.aliases = aliases;

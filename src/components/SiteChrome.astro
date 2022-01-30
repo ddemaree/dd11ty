@@ -1,28 +1,32 @@
 ---
 import FontAwesomeIcon from './FontAwesomeIcon.jsx'
-// import ThemeSwitcher from '../components/ThemeSwitcher.svelte'
+import ThemeSwitcher from '../components/ThemeSwitcher.svelte'
+import MenuToggle from '../components/MenuToggle.svelte'
 ---
-<div class="site-wrapper">
+
+<div>
   <header class="site-header" role="banner">
     <div class="site-header__inner">
       <a href="/" class="site-header__home icon-btn">
         <FontAwesomeIcon icon={['fas', 'home']} />
 				<span>Home</span>
 			</a>
+
 			<a href="/" class="site-header__logo flex items-center gap-3">
         <FontAwesomeIcon icon={['fak', 'dd-logo-square']} size="2x" />
 				<span class="site-header__title">David Demaree</span>
 			</a>
 
-      <!-- <ThemeSwitcher /> -->
+      <div class="site-header__menu-btn flex gap-4 items-center">
+        <ThemeSwitcher client:visible />
+        <MenuToggle client:visible />
+      </div>
     </div>
   </header>
 
   <main class="site-main" role="main">
     <slot />
   </main>
-
-  <!-- Footer -->
 </div>
 
 <style>
@@ -54,14 +58,14 @@ import FontAwesomeIcon from './FontAwesomeIcon.jsx'
 }
 
 .site-header__logo {
-  @apply text-accent;
+  @apply text-accent z-30;
   justify-self: center;
   grid-column: logo;
 
   position: relative;
-  z-index: 3;
 
   @screen sm {
+    z-index: 0;
     justify-self: start;
   }
 }

@@ -34,6 +34,9 @@
 		--col-ink-medium: theme('colors.gray.60');
 		--col-ink-light: theme('colors.gray.40');
 		--col-primary: theme('colors.red.50');
+
+    --ts-background: lch(78% 0 -88);
+    --ts-inactive: lch(48% 0 -88);
 	}
 
 	.theme-dark {
@@ -47,5 +50,8 @@
     --col-primary: lch(68% 90 34);
 		--col-accent: hsl(6deg 82% 58%);
     --col-buttons: lch(36% 30 -88);
+
+    --ts-background: lch(36% 28 -88);
+    --ts-inactive: lch(78% 28 -88);
 	}
 }

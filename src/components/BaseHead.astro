@@ -9,25 +9,13 @@ const { title, description, permalink } = Astro.props;
 ---
 
 <!-- Global Metadata -->
-<script>
-// Set initial dark mode
-const root = document.documentElement;
-const theme = localStorage.getItem('theme');
-if (
-  theme === 'dark' ||
-  (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-) {
-  root.classList.add('dark');
-} else {
-  root.classList.remove('dark');
-}
-</script>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/x-icon" href="/dd-icon.svg" />
-
 <link rel="stylesheet" type="text/css" href={Astro.resolve('../styles/global.css')} />
 <link rel="preconnect" href="https://res.cloudinary.com" />
+
+<script type="module" src={Astro.resolve('../scripts/main.ts')}></script>
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>

@@ -1,5 +1,5 @@
 ---
-import PostDateline from './PostDateline.tsx'
+import PostDateline from './PostDateline.astro'
 
 export interface Props {
   title: string;
@@ -8,15 +8,19 @@ export interface Props {
 }
 
 const { title, description, date } = Astro.props;
-
 ---
+<header class="post-header">
+  {date && <PostDateline date={date} class="dateline" />}
+  <h1 class="title">{title}</h1>
+  {description && <p class="description">{description}</p>}
+</header>
+
 <style>
 .post-header {
   @apply px-[var(--inset-x)];
   --ph-padding-y: clamp(2rem, 10vw, 4rem);
   padding-bottom: var(--ph-padding-y);
   padding-top: var(--ph-padding-y);
-
   text-align: center;
 }
 
@@ -41,9 +45,3 @@ const { title, description, date } = Astro.props;
   font-size: 1.5em;
 }
 </style>
-
-<header class="post-header">
-  {date && <PostDateline date={date} className="dateline" />}
-  <h1 class="title">{title}</h1>
-  {description && <p class="description">{description}</p>}
-</header>

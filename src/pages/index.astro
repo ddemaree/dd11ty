@@ -10,8 +10,8 @@ let title = 'David Demaree';
 const posts = Astro.fetchContent("./posts/*.md")
   .filter(p => p.featured)
   .sort((a, b) => {
-    const aDate = DateTime.fromISO(a.date)
-    const bDate = DateTime.fromISO(b.date)
+    const aDate = DateTime.fromISO(a.date).valueOf()
+    const bDate = DateTime.fromISO(b.date).valueOf()
     return (bDate - aDate)
   })
   .slice(0,5)
@@ -56,11 +56,6 @@ const posts = Astro.fetchContent("./posts/*.md")
         </figure>
         <div class="intro__text font-serif text-xl space-y-6 py-8">
           <p class="is-style-big-intro text-2xl">Hi, I’m <b class="font-sans font-semibold">David Demaree</b>, a Big Tech product manager, frontend web developer, photographer, and keyboard enthusiast based in New Jersey, <abbr style="font-variant: small-caps; text-transform: lowercase;">U.S.A.</abbr></p>
-          <Markdown>
-            I’m currently the product lead for Stripe’s design systems team. Previously I worked on Google Fonts, Material Design, and Adobe Fonts. I wrote Git for Humans for A Book Apart, have spoken at events around the world, and …other stuff, probably.
-
-            I’m @ddemaree on Twitter and GitHub.
-          </Markdown>
         </div>
       </section>
       <hr class="my-8 sm:hidden" />

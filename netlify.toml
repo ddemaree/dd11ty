@@ -2,7 +2,7 @@
   ID = "demaree-next"
 
 [build]
-  command = "npm run build"
+  command = "yarn build"
   publish = "dist"
 
 [build.environment]
@@ -14,12 +14,7 @@
   to = "/feed.xml"
   status = 301
 
-[[redirects]]
-  from = "/posts"
-  to = "/articles"
-  status = 301
-
 [dev]
   framework = "#custom"
-  command = "npm run dev"
+  command = "yarn dev"
   targetPort = 8080
