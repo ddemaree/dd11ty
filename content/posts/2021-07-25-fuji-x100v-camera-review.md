@@ -57,7 +57,10 @@ The Q is _almost_ as portable as the X100V — or, put another way, the Fuji is 
 
 [This YouTube review by TheSnapChick](https://www.youtube.com/watch?v=KnvPogM8cZ0) compares the Fuji head-to-head with the newer Leica Q2 which features 45 megapixels(!) of resolution and a more weather-sealed design. She ultimately concludes that the Leica is her preferred go-to camera, but I think it's a strong endorsement of the X100V that it was a close call, given how powerful (and expensive) the Q2 is.
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">https://www.youtube.com/watch?v=KnvPogM8cZ0</div></figure>
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<!-- https://www.youtube.com/watch?v=KnvPogM8cZ0 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KnvPogM8cZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
 
 ## Retro-Style Camera, Modern Features
 

@@ -11,6 +11,7 @@
   "dependencies": {
     "alpinejs": "^3.9.1",
     "autoprefixer": "^10.4.2",
+    "juxtaposejs": "^1.1.6",
     "petite-vue": "^0.4.1",
     "postcss": "^8.4.7",
     "postcss-cli": "^9.1.0",

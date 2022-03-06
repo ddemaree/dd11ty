@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   alpinejs: ^3.9.1
   autoprefixer: ^10.4.2
+  juxtaposejs: ^1.1.6
   petite-vue: ^0.4.1
   postcss: ^8.4.7
   postcss-cli: ^9.1.0
@@ -14,6 +15,7 @@ specifiers:
 dependencies:
   alpinejs: 3.9.1
   autoprefixer: 10.4.2_postcss@8.4.7
+  juxtaposejs: 1.1.6
   petite-vue: 0.4.1
   postcss: 8.4.7
   postcss-cli: 9.1.0_postcss@8.4.7
@@ -345,6 +347,10 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.9
+    dev: false
+
+  /juxtaposejs/1.1.6:
+    resolution: {integrity: sha1-cXPqdBYQLpOVDGmXiVuKB1hkznM=}
     dev: false
 
   /lilconfig/2.0.4:
