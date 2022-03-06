@@ -2,19 +2,22 @@
   ID = "demaree-next"
 
 [build]
-  command = "yarn build"
-  publish = "dist"
+  command = "hugo --gc --minify"
+  publish = "public"
 
-[build.environment]
   NODE_ENV = "production"
+  HUGO_ENV = "production"
   NODE_VERSION = "16"
+  HUGO_VERSION = "0.93.0"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [[redirects]]
   from = "/feed"
   to = "/feed.xml"
   status = 301
-
-[dev]
-  framework = "#custom"
-  command = "yarn dev"
-  targetPort = 8080
