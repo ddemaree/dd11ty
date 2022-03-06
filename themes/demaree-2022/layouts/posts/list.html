@@ -1,0 +1,42 @@
+{{ define "head" }}
+<title>Blog Posts • David Demaree's website</title>
+{{ end }}
+
+{{ define "main" }}
+<main class="posts-archive">
+
+  <h1 class="posts-archive__header">Blog Posts</h1>
+
+  {{ range .Paginator.Pages }}
+    <article class="posts-archive__item">
+      <a href="{{ .RelPermalink }}">
+        <h2>{{ .Title }}</h2>
+      </a>
+    </article>
+  {{ end }}
+
+  {{ if (or .Paginator.HasPrev .Paginator.HasNext) }}
+  <div class="paginator">
+    <ul>
+      {{ if .Paginator.HasPrev }}
+      <li class="paginator__item paginator__item--prev">
+        <a href="{{ .Paginator.Prev.URL }}">
+          <i class="far fa-chevron-left"></i>
+          <span>Newer posts</span>
+        </a>
+      </li>
+      {{ end }}
+      {{ if .Paginator.HasNext }}
+      <li class="paginator__item paginator__item--next">
+        <a href="{{ .Paginator.Next.URL }}">
+          <i class="far fa-chevron-right"></i>
+          <span>Older posts</span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+</main>
+{{ end }}

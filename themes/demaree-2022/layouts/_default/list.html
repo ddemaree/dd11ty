@@ -1,0 +1,14 @@
+{{ define "head" }}
+<title>Blog Posts • David Demaree's website</title>
+{{ end }}
+
+{{ define "main" }}
+  <h1>Posts</h1>
+  {{ range .Pages }}
+    <article>
+      <a href="{{ .RelPermalink }}">
+        <h2>{{ .Title }}</h2>
+      </a>
+    </article>
+  {{ end }}
+{{ end }}

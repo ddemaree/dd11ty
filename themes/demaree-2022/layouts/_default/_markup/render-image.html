@@ -1,0 +1,14 @@
+{{ $img := .Page.Resources.GetMatch .Destination }}
+
+{{ if $img }}
+{{ else }}
+  {{ $url := urls.Parse .Destination }}
+  {{ if (eq $url.Host "res.cloudinary.com") }}
+    {{ $cloudinaryId := replaceRE "^/demaree/image/upload(?:/v[0-9]+)/" "" $url.Path }}
+    {{ $cloudinaryInfo := getJSON (printf "https://res.cloudinary.com/demaree/image/upload/fl_getinfo,w_1200/%s" $cloudinaryId) }}
+    {{ $cloudinaryUrl := printf "https://res.cloudinary.com/demaree/image/upload/w_1200/%s" $cloudinaryId}}
+    <img src="{{ $cloudinaryUrl }}" alt="{{ .Text }}" height="{{ $cloudinaryInfo.output.height }}" width="{{ $cloudinaryInfo.output.width }}">
+  {{ else }}
+  <img src="{{ .Destination }}" alt="{{ .Text }}" />
+  {{ end }}
+{{ end }}

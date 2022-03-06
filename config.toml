@@ -1,0 +1,95 @@
+baseURL = "//demaree.me/"
+languageCode = "en-us"
+title = "David Demaree"
+description = "Writing, photos, and nonsense from a NYC-based tech person"
+theme = "demaree-2022"
+
+# Disable Hugo's built-in Alias feature, to utilize Netlify Redirects instead:
+disableAliases = true
+
+[taxonomies]
+series = "series"
+tag = "tags"
+
+[social]
+twitter = "ddemaree"
+instagram = "ddemaree"
+github = "ddemaree"
+linkedin = "ddemaree"
+
+[params]
+cloudinaryBase = "res.cloudinary.com/demaree/image"
+
+[permalinks]
+posts = "/p/:slug"
+
+[markup]
+[markup.highlight]
+  anchorLineNos = false
+  codeFences = true
+  guessSyntax = false
+  hl_Lines = ""
+  lineAnchors = ""
+  lineNoStart = 1
+  lineNos = false
+  lineNumbersInTable = true
+  noClasses = false
+  style = "monokai"
+  tabWidth = 2
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.parser.attribute]
+  block = true
+  title = true
+
+
+[[menu.social]]
+  identifier = "twitter"
+  name = "Twitter"
+  pre = "<i class='fab fa-twitter'></i>"
+  url = "https://twitter.com/ddemaree"
+  weight = -100
+
+[[menu.social]]
+  identifier = "instagram"
+  name = "Instagram"
+  pre = "<i class='fab fa-instagram'></i>"
+  url = "https://instagram.com/ddemaree"
+
+[[menu.social]]
+  identifier = "linkedin"
+  name = "LinkedIn"
+  pre = "<i class='fab fa-linkedin'></i>"
+  url = "https://linkedin.com/in/ddemaree"
+
+
+# Custom Output formats are outlined here: https://gohugo.io/templates/output-formats. See also: https://gohugo.io/news/http2-server-push-in-hugo/
+
+# Create the media type https://gohugo.io/templates/output-formats#media-types
+# [mediaTypes]
+# [mediaTypes."text/netlify"]
+# delimiter = ""
+# suffixes = [""]
+
+# configure output formats: https://gohugo.io/templates/output-formats#configure-output-formats
+# [outputFormats]
+# [outputFormats.HEADERS]
+# baseName = "_headers"
+# isPlainText = true
+# mediatype = "text/netlify"
+# notAlternative = true
+
+# [outputFormats.REDIR]
+# baseName = "_redirects"
+# isPlainText = true
+# mediatype = "text/netlify"
+# notAlternative = true
+
+# For the home page, output the formats we created: https://gohugo.io/templates/output-formats#customizing-output-formats
+# [outputs]
+# home = [
+# "HTML",
+# "REDIR"
+# ]

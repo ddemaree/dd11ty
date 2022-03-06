@@ -1,0 +1,21 @@
+{
+  "name": "dd-hugo-2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.2",
+    "petite-vue": "^0.4.1",
+    "postcss": "^8.4.7",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.0.2",
+    "postcss-lab-function": "^4.1.1",
+    "postcss-mixins": "^9.0.2",
+    "postcss-nested": "^5.0.6"
+  }
+}

@@ -1,0 +1,34 @@
+<header class="site-header">
+  <a href="/" class="site-header__logo">
+    <span class="fa-layers" style="text-align: center; vertical-align: top; font-size: 2.5rem">
+      <i class="fas fa-square"></i>
+      <i class="fak fa-dd-logo fa-inverse" data-fa-transform="shrink-6"></i>
+    </span>
+    <span class="sr-only">David Demaree</span>
+  </a>
+  <nav class="site-header__menu primary-menu-container">
+    {{ partial "menus/main_menu.html" . }}
+
+    <div class="site-header__actions">
+      <div v-cloak v-effect="saveTheme()" :class="['theme-switch', `theme-switch--${currentTheme}`]">
+        <label v-for="theme in themes" :class="['theme-option', {'theme-option--active': currentTheme === theme.key}]">
+          <i :class="`fas fa-${theme.icon} fa-sm fa-fw`"></i>
+          <span class="sr-only" v-text="theme.key"></span>
+          <input type="radio" name="theme-switch" :value="theme.key" v-model="currentTheme">
+        </label>
+      </div>
+
+      <div v-cloak :class="['bison-burger', {'bison-burger--open': menuOpen}]">
+        <button @click="menuOpen = !menuOpen">
+          <i class="bar bar-top" aria-hidden="true"></i>
+          <i class="bar bar-middle" aria-hidden="true"></i>
+          <i class="bar bar-bottom" aria-hidden="true"></i>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
+    </div> <!--/ .site-header__actions -->
+  </nav>
+</header>
+<div v-cloak v-if="menuOpen" @vue:mounted="setupMenu($el)" class="mobile-menu">
+  {{ partial "menus/main_menu.html" . }}
+</div>

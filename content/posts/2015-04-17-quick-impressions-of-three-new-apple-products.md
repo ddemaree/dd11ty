@@ -1,0 +1,33 @@
+---
+title: 'Apple Watch, 12" MacBook, and Force Touch Trackpads'
+slug: quick-impressions-of-three-new-apple-products
+modified: '2021-05-22T18:42:26.000Z'
+date: '2015-04-18T01:24:20.000Z'
+tumblr_url: >-
+  https://ddemaree.tumblr.com/post/116687505629/quick-impressions-of-three-new-apple-products
+---
+On Wednesday I went to the SoHo Apple Store in NYC for an Apple Watch try-on appointment. I signed up two days in advance, but showed up fifteen minutes early to find the try-on area almost empty—I got to start looking at Watches right away. Let me say upfront: the try-on service at the SoHo store was excellent. I tried on five Watches. The 38mm and 42mm Milanese loop both felt great; the 38mm was a _teeny_ bit more awkward to put on, but looked and felt good once it was on. I expected the 42mm to look huge, but it really didn’t. Here’s my hairy wrist modeling the 42mm Milanese loop; in the background you can see the 38mm model next to the similarly-sized, Dieter Rams-designed Braun wristwatch I normally wear:
+
+<figure data-orig-width="2448" data-orig-height="2448" class="tmblr-full"><img src="https://41.media.tumblr.com/2fcea71bc3a7ef6ba7a0495768e892b4/tumblr_inline_nmz7fsYO6Q1qaztlp_540.jpg" alt="image" data-orig-width="2448" data-orig-height="2448"></figure>
+
+Here’s a closer look at the Milanese models, next to my Braun:
+
+<figure data-orig-width="2344" data-orig-height="1674" class="tmblr-full"><img src="https://40.media.tumblr.com/b784783ef3d503c6603cb7f94c6a90c2/tumblr_inline_nmz7olvTCy1qaztlp_540.jpg" alt="image" data-orig-width="2344" data-orig-height="1674"></figure>
+
+My second favorite was (surprisingly, to me) one of the Sport models. The Sport Band feels lovely, for a rubber band. The pin-and-tuck closure is hard to grok at first, but makes perfect sense once you figure it out. The Space Gray looks great, though still not as lovely as the stainless steel.
+
+<figure data-orig-width="2448" data-orig-height="2448" class="tmblr-full"><img src="https://36.media.tumblr.com/8bc7148fa48d6b6675013dc08aa2d292/tumblr_inline_nmz7k62D4a1qaztlp_540.jpg" alt="image" data-orig-width="2448" data-orig-height="2448"></figure>
+
+The 38mm Modern Buckle looks good, but only barely fit. The Link Bracelet looked beautiful, and felt beautifully made. It also looks very much not my style, and definitely not my price range. I didn’t even ask the guy helping me to remove any links to make it fit. None of the watches were fully functional, but they ran a demo loop. It’s hard to assess how the demo loop would translate to real-world use, but the haptic feedback felt very nice. Each station was paired with an actual, working Watch, attached to a stand with an iPad running an app explaining all of its features. It wasn’t paired with an iPhone for all its data access, and it didn’t have any third-party apps loaded, so it was _not_ representative of real-world Watch performance. But it did a fine job of showing the Watch’s core features. Some reviews have said the interface is confusing, but it took me just a couple of minutes to figure it out. Overall, I left the visit still excited about the Watch.
+
+* * *
+
+I also checked out the new MacBook:
+
+<figure class="tmblr-full" data-orig-height="2430" data-orig-width="2430"><img src="https://40.media.tumblr.com/4e90295da4d481d3494b1c21b1651145/tumblr_inline_nmz9jwDHkD1qaztlp_540.jpg" data-orig-height="2430" data-orig-width="2430"></figure>
+
+It’s gorgeous hardware. It’s impossibly light. The screen is gorgeous, and looks more than big enough for a normal person’s daily work. I didn’t get to try any of my fussy developer or design tools, but stock apps felt plenty fast. The keyboard is bizarre. It’s truly unlike every other physical keyboard I’ve ever used—almost no travel, eerily quiet, so thin and shallow that keys are hard to differentiate by touch because my fingertips can reach the body of the laptop as easily as the keys. It’s clearly a compromise, though one good thing about it is that it seems like a hard keyboard to totally abuse with hard, loud typing, the way I abuse my keyboards. Naturally, this was a demo unit on a table, so the one-port thing didn’t get to be an issue. I ultimately decided not to buy a New MacBook because of the one-port thing—I can compromise on performance, but I can’t magically turn the Thunderbolt Display on my desk into a future-world USB-C display. I’m looking forward to future generations of this laptop (and all Apple laptops), when the USB-C ecosystem is more established. That’s not today.
+
+* * *
+
+The laptop I _did_ buy—well, that I had work buy, not at this Apple Store visit but over a week ago, via a byzantine corporate procurement system—is the new 13-inch MacBook Pro with Force Touch trackpad. My 13-inch MacBook Pro replaces one of the first-gen, 15-inch retina MacBook Pros from 2012. Three years in, it remains the fastest computer I have ever personally used. This 13-inch is a step down in raw speed—its Core i7 chip is clocked higher, but only dual core, whereas my 15-inch is quad-core—but a lot lighter, with much better battery life. I’m finding it a good trade-off. Force Touch is as amazing on this laptop as on the new MacBook. The actual force click actions are a little gimmicky, but cool. I wouldn’t say Force Touch is a reason to buy this laptop, but it’s nice that it’s here.

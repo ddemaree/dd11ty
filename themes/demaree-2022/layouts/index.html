@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="dd-home-hero">
+  {{ with .Params.main_photo }}
+  <div class="dd-home-hero__photo">
+    <figure>
+      <img src="//res.cloudinary.com/demaree/image/upload/w_600,h_600,g_face,c_crop/{{ .cloudinary_id }}" alt="{{ .alt }}" loading="lazy" width="540" height="540">
+    </figure>
+  </div>
+  {{ end }}
+  <div class="dd-home-hero__content content-wrapper">
+    {{ .Content }}
+  </div>
+</div>
+
+<section class="featured-posts">
+  <div class="featured-posts__heading">
+    <h2>Latest featured posts</h2>
+
+    <a href="/posts" class="featured-posts__view-all">
+      <span>Browse all posts</span>
+      <i class="fas fa-sm fa-chevron-right"></i>
+    </a>
+  </div>
+
+  {{ $posts := (where (where .Site.RegularPages "Type" "posts") "Params.featured" true) }}
+  {{ range (first 3 $posts) }}
+  {{ $permalink := .RelPermalink }}
+  <article class="featured-post">
+    {{ with .Params.featured_image }}
+    <a href="{{ $permalink }}">
+    <figure class="featured-post__image">
+    {{ if and (reflect.IsMap .) (isset . "cloudinary_id") }}
+      {{ $metadata := getJSON (printf "https://res.cloudinary.com/demaree/image/upload/fl_getinfo,w_300,h_200,c_thumb/%s" .cloudinary_id) }}
+      {{ $url := (printf "https://res.cloudinary.com/demaree/image/upload/w_300,h_200,c_thumb/%s" .cloudinary_id) }}
+
+      <img src="{{ $url }}" width="300" height="200" alt="{{ .alt }}" />
+
+    {{ else if and (reflect.IsMap .) (isset . "url") }}
+      <img src="{{ .url }}" width="300" height="200" alt="{{ .alt }}" /> 
+    {{ end }}
+    </figure>
+    </a>
+    {{ end }}
+    <h3 class="featured-post__title"><a href="{{ $permalink }}">{{ .Title }}</a></h3>
+    {{ with .Params.description }}
+    <p class="featured-post__description">{{ . }}</p>
+    {{ end }}
+    <p class="featured-post__date">{{ .Date.Format "Jan 2 2006" }}</p>
+  </article>
+  {{ end }}
+</section>
+
+{{ end }}

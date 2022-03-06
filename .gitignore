@@ -33,3 +33,6 @@ yarn-error.log*
 
 tmp
 __
+
+resources/*
+.hugo_build.lock
