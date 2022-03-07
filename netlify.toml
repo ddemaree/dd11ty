@@ -2,7 +2,7 @@
   ID = "demaree-next"
 
 [build]
-  command = "hugo --gc --minify"
+  command = "hugo --gc --minify -e production"
   publish = "public"
 
 [build.environment]
@@ -13,10 +13,10 @@
   HUGO_ENABLEGITINFO = "true"
 
 [context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL -e staging"
 
 [context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL -e staging"
 
 [[redirects]]
   from = "/feed"

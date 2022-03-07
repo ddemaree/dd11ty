@@ -64,32 +64,19 @@ posts = "/p/:slug"
   pre = "<i class='fab fa-linkedin'></i>"
   url = "https://linkedin.com/in/ddemaree"
 
+[outputFormats]
+[outputFormats.RSS]
+  baseName = "feed"
+  isPlainText = true
+  mediatype = "application/rss+xml"
+  permalinkable = true
 
-# Custom Output formats are outlined here: https://gohugo.io/templates/output-formats. See also: https://gohugo.io/news/http2-server-push-in-hugo/
+[outputFormats.SVG]
+  baseName = "icon"
+  isPlainText = true
+  mediatype = "image/svg+xml"
+  notAlternative = true
+  permalinkable = true
 
-# Create the media type https://gohugo.io/templates/output-formats#media-types
-# [mediaTypes]
-# [mediaTypes."text/netlify"]
-# delimiter = ""
-# suffixes = [""]
-
-# configure output formats: https://gohugo.io/templates/output-formats#configure-output-formats
-# [outputFormats]
-# [outputFormats.HEADERS]
-# baseName = "_headers"
-# isPlainText = true
-# mediatype = "text/netlify"
-# notAlternative = true
-
-# [outputFormats.REDIR]
-# baseName = "_redirects"
-# isPlainText = true
-# mediatype = "text/netlify"
-# notAlternative = true
-
-# For the home page, output the formats we created: https://gohugo.io/templates/output-formats#customizing-output-formats
-# [outputs]
-# home = [
-# "HTML",
-# "REDIR"
-# ]
+[outputs]
+  home = ["HTML", "RSS", "SVG"]
