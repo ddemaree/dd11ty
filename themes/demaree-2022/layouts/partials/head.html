@@ -8,7 +8,7 @@
 </style>
 <script src="https://kit.fontawesome.com/f0afb61fe2.js" crossorigin="anonymous"></script>
 
-{{ $style := resources.Get "css/main.css" | resources.PostCSS | minify | fingerprint }}
+{{- $style := resources.Get "css/main.css" | resources.PostCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css" />
-
 <script src="https://cdn.usefathom.com/script.js" data-site="TOFIAIKB" data-included-domains="demaree.me" defer></script>
+{{ partial "head/seo.html" . }}

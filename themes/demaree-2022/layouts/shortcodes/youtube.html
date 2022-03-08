@@ -1,0 +1,7 @@
+{{ $oembedUrl := printf "https://youtube.com/oembed?%s" (querify "url" (.Get 0) "format" "json") }}
+{{ $oembedData := getJSON $oembedUrl }}
+<pre>{{ $oembedUrl }}</pre>
+
+<figure class="wp-block-embed wp-block-embed-youtube">
+{{ $oembedData.html | safeHTML }}
+</figure>

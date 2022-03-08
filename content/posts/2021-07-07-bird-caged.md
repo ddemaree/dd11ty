@@ -7,9 +7,7 @@ date: '2021-07-07T19:09:24.000Z'
 advanced_seo_description: On scaling back my Twitter use before my brain gets any mushier.
 subtitle: Scaling back Twitter before my brain gets any mushier
 ---
-<figure class="wp-block-image alignwide"><img src="https://images.unsplash.com/photo-1572402230267-f3e267c1e5a2?ixid=MnwyNDI0MjN8MHwxfGFsbHx8fHx8fHx8fDE2MjU2ODQwOTc&amp;ixlib=rb-1.2.1&amp;w=2000&amp;h=1324" alt="yellow and green bird" width="2000" height="1324" data-wp-url="https://res.cloudinary.com/demaree/images/v1625684191/bitsandletters-assets/regine-tholen-tbf7nd07dfc-unsplash/regine-tholen-tbf7nd07dfc-unsplash.jpeg?_i=AA"></figure>
-
-<figure class="wp-block-image size-large"><img src="https://res.cloudinary.com/demaree/image/upload/v1625684191/bitsandletters-assets/regine-tholen-tbf7nd07dfc-unsplash.jpg" alt="yellow and green bird" class="wp-image-4901" data-original-src="https://demaree.blog/wp-content/uploads/2021/07/regine-tholen-tbf7nd07dfc-unsplash.jpeg"><figcaption>Photo by <a href="https://unsplash.com/@designbytholen" rel="nofollow">REGINE THOLEN</a> on <a href="https://unsplash.com/?utm_source=david-demarees-blog&amp;utm_medium=referral" rel="nofollow">Unsplash</a></figcaption></figure>
+<figure class="wp-block-image alignwide"><img src="https://images.unsplash.com/photo-1572402230267-f3e267c1e5a2?ixid=MnwyNDI0MjN8MHwxfGFsbHx8fHx8fHx8fDE2MjU2ODQwOTc&amp;ixlib=rb-1.2.1&amp;w=2000&amp;h=1324" alt="yellow and green bird" width="2000" height="1324" data-wp-url="https://res.cloudinary.com/demaree/images/v1625684191/bitsandletters-assets/regine-tholen-tbf7nd07dfc-unsplash/regine-tholen-tbf7nd07dfc-unsplash.jpeg?_i=AA"><figcaption>Photo by <a href="https://unsplash.com/@designbytholen" rel="nofollow">REGINE THOLEN</a> on <a href="https://unsplash.com/?utm_source=david-demarees-blog&amp;utm_medium=referral" rel="nofollow">Unsplash</a></figcaption></figure>
 
 Recently, whenever I’ve felt stressed or down on myself, it’s been after a long (sometimes very long) spree of scrolling through tweets. Years ago at Brooklyn Beta, Naz Hamid said that one of his keys to a peaceful life was not to compare oneself to other people. It’s harder to follow that advice when a lot of the day is spent drinking a firehose of people’s spiciest selves.
 
@@ -21,7 +19,7 @@ Today — inspired by [Caitlin Flanagan’s piece in The Atlantic about what Twi
 
 One of the most aggravating things about Twitter, especially in the last decade or so, has been that it is both incredibly toxic but also the internet's _de facto_ town square, or at least its high school cafeteria. I have friends who I literally only know through Twitter; to leave Twitter is to leave people. "The internet" is indeed made of people, just like [Soylent Green](https://en.wikipedia.org/wiki/Soylent_Green), and it feels… _anti-social_ to walk away from people. But it also feels wrong to stop eating chips even after eating a whole bag of chips.
 
-<div class="wp-block-image"><figure class="aligncenter"><img src="https://lh3.googleusercontent.com/proxy/TMM7fthhHKeP0_e_WyVBdhtYV_IPI1EOcnasxIPiLroi0FxNNrJcpvpDZ1DSPoKotqo9tTucXtCpw_Xvmnk5ztS9w9_6lVmCifCbMw45g2brSJw" alt="Soylent Green Movie Poster - IMP Awards"></figure></div>
+![Soylent Green Movie Poster](https://res.cloudinary.com/demaree/image/upload/v1646702129/demaree-dot-me/2022/SOYLENT-GREEN-2022.jpg)
 
 For me, Twitter's toxic quality is the desire to be seen and liked, preferably at scale. As someone who has a bit of a public profile, and would like his profile to be bigger, it seems like a sacrifice to stop participating in The Discourse. For now I'm trying to see this as an opportunity — to be more intentional about what I put on social media, and to divert more energy into this here blog.
 

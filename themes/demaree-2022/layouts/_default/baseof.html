@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html :class="{ 'dark': (currentTheme === 'dark') }">
-  <head>
-    {{- partial "head.html" . -}}
-    {{ block "head" . }}
-    <title>David Demaree's site</title>
-    {{ end }}
-  </head>
-  <body class="theme-light dark:theme-dark{{ with .Params.body_class }} {{ . }}{{ end }}">
-    <div class="site-wrapper">
-      {{- partial "header.html" . -}}
-      <div id="content">
-      {{- block "main" . }}{{- end }}
-      </div>
-      {{- partial "footer.html" . -}}
+<head>
+{{- partial "head.html" . -}}
+{{ block "head" . }}{{ end }}
+</head>
+<body class="theme-light dark:theme-dark{{ with .Params.body_class }} {{ . }}{{ end }}">
+  <div class="site-wrapper">
+    {{- partial "header.html" . -}}
+    <div id="content">
+    {{- block "main" . }}{{- end }}
     </div>
-  
-  {{ $jsOptions := (dict "minify" true) }}
-  {{ $js := resources.Get "js/main.js" | js.Build $jsOptions }}
-  <script type="module" src="{{ $js.RelPermalink }}"></script>
-  </body>
+    {{- partial "footer.html" . -}}
+  </div>
+
+{{ $jsOptions := (dict "minify" true) }}
+{{ $js := resources.Get "js/main.js" | js.Build $jsOptions }}
+<script type="module" src="{{ $js.RelPermalink }}"></script>
+</body>
 </html>

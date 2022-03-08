@@ -1,14 +1,10 @@
-{{ define "head" }}
-<title>{{ .Params.title }} • David Demaree's blog</title>
-{{ end }}
-
 {{ define "main" }}
 {{ partial "posts/post_header.html" . }}
 <div class="content-wrapper">
   {{ .Content }}
 </div>
 
-{{ if or .NextInSection .PrevInSection }}
+{{- if or .NextInSection .PrevInSection }}
 <nav class="post-navigation post-navigation--single" aria-label="Post" role="navigation">
   <ul class="post-navigation__inner">
     {{ with .PrevInSection }}
