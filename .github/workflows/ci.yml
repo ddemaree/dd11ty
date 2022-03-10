@@ -6,10 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 15.x
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 6.32.3
+          run_install: true
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -21,7 +32,7 @@ jobs:
           HUGO_ENV: production
         run: |
           pnpm install
-          hugo --minify
+          hugo --minify -e production
       - name: run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
