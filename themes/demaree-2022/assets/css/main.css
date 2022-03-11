@@ -2,6 +2,13 @@
 @import url('https://cdn.demaree.net/fonts/soehne-mono/index.css');
 @import url('https://cdn.demaree.net/fonts/soehne-schmal/index.css');
 @import url('https://cdn.demaree.net/fonts/ivar-text/index.css');
+@import url('https://cdn.demaree.net/fonts/epicene/epicene.css');
+@import url('https://dd-webfonts.vercel.app/signifier/fonts.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Source+Sans+3:wght@200..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
   --inset-x: clamp(1.5rem,7.5vw,3rem);
@@ -11,8 +18,8 @@
   --width--inset: calc(100% - (2 * var(--inset-x)));
   --inset-width: var(--width--inset);
   
-  --font--sans: "soehne-web", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font--serif: "ivar-text", Georgia, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font--sans: 'soehne-web', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font--serif: "signifier", Georgia, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font--mono: 'soehne-mono-web', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --header-height: 5rem;
@@ -86,7 +93,7 @@ body {
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font--sans);
+  font-variation-settings: 'WONK' 1;
   font-weight: 600;
   line-height: 1.1;
 }
@@ -121,6 +128,10 @@ body {
   grid-template-columns: [full-start left-start] max-content [left-end mid-start] 1fr [mid-end right-start] max-content [right-end full-end];
   height: 4rem;
   padding: 0 var(--inset-x);
+
+  position: sticky;
+  top: 0;
+  background-color: var(--col--header);
 
   a {
     text-decoration: none;
@@ -493,9 +504,9 @@ body {
   &__title {
     color: var(--col--ink-bold);
     line-height: 1.1;
-    letter-spacing: -0.03ch;
     font-size: clamp(2rem, 10vw, 3rem);
-    font-weight: 700;
+    font-weight: 600;
+    font-family: var(--font--serif);
   }
 }
 
@@ -780,7 +791,7 @@ body {
 }
 
 .content-wrapper {
-  font-feature-settings: "calt", "clig", "kern", "liga", "onum", "pnum";
+  font-feature-settings: "calt", "clig", "kern", "liga", "tnum", "pnum";
 }
 
 :where(.content-wrapper img) {
@@ -1164,4 +1175,45 @@ body {
     margin: unset;
     padding: unset;
   }
+}
+
+/* UTILITIES */
+
+.ff-signifier {
+  font-family: signifier !important;
+}
+
+.ff-epicene-text {
+  font-family: 'epicene-text' !important;
+}
+
+.ff-fraunces {
+  font-family: 'Fraunces' !important;
+}
+.ff-georgia {
+  font-family: 'Georgia' !important;
+}
+.ff-ivar-text {
+  font-family: 'ivar-text' !important;
+}
+
+.ff-roboto-serif {
+  font-family: 'Roboto Serif' !important;
+}
+
+.ff-source-serif-4 {
+  font-family: 'Source Serif 4' !important;
+}
+
+.serifs-test {
+  counter-reset: section;
+}
+
+.serifs-test > p:before {
+  counter-increment: section;
+  display: block;
+  content: "Sample " counter(section) ": ";
+  font-family: var(--font--sans);
+  font-weight: 600;
+  font-size: 1rem;
 }

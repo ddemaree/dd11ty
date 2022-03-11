@@ -28,7 +28,7 @@
       </div>
     </div> <!--/ .site-header__actions -->
   </nav>
+  <div v-cloak v-if="menuOpen" @vue:mounted="setupMenu($el)" class="mobile-menu">
+    {{ partial "menus/main_menu.html" . }}
+  </div>
 </header>
-<div v-cloak v-if="menuOpen" @vue:mounted="setupMenu($el)" class="mobile-menu">
-  {{ partial "menus/main_menu.html" . }}
-</div>
