@@ -3,7 +3,9 @@
 @import url('https://cdn.demaree.net/fonts/soehne-schmal/index.css');
 @import url('https://cdn.demaree.net/fonts/ivar-text/index.css');
 @import url('https://cdn.demaree.net/fonts/epicene/epicene.css');
-@import url('https://dd-webfonts.vercel.app/signifier/fonts.css');
+@import url('https://cdn.demaree.net/fonts/tiempos/fonts.css');
+/* @import url('https://dd-webfonts.vercel.app/signifier/fonts.css');
+@import url('https://dd-webfonts.vercel.app/tiempos/fonts.css'); */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wdth,wght@0,50..150,200..900;1,50..150,200..900&display=swap');
@@ -18,7 +20,7 @@
   --inset-width: var(--width--inset);
   
   --font--sans: 'soehne-web', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font--serif: "signifier", Georgia, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font--serif: "tiempos-text", Georgia, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font--mono: 'soehne-mono-web', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --header-height: 5rem;
@@ -92,14 +94,18 @@ body {
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
-  font-variation-settings: 'WONK' 1;
+  font-family: var(--font--sans);
   font-weight: 600;
   line-height: 1.1;
 }
 
 :where(a[href]) {
   color: var(--col--primary);
-  font-weight: 500;
+}
+
+:where(strong, b) {
+  color: var(--col--ink-bold);
+  font-weight: 700;
 }
 
 :where(figure ul, figure, ol) {
@@ -481,21 +487,21 @@ body {
 .post-header {
   padding-block: clamp(2rem, 10vw, 4rem);
   padding-inline: var(--inset-x);
-  text-align: center;
 
   > * {
     inline-size: var(--inset-width);
     margin-block: unset;
     margin-inline: auto;
-    max-inline-size: var(--wp--custom--content-width);
+    max-inline-size: var(--width--content);
   }
 
   &__date {
     font-family: var(--font--sans);
+    font-size: 1rem;
 
     color: var(--col--ink-medium);
     font-weight: 400;
-    letter-spacing: 0.3ch;
+    letter-spacing: 0.2ch;
     margin-block-end: 0.75rem;
     text-transform: uppercase;
   }
@@ -503,9 +509,9 @@ body {
   &__title {
     color: var(--col--ink-bold);
     line-height: 1.1;
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: 1.75rem;
     font-weight: 600;
-    font-family: var(--font--serif);
+    font-family: var(--font--sans);
   }
 }
 
@@ -791,6 +797,12 @@ body {
 
 .content-wrapper {
   font-feature-settings: "calt", "clig", "kern", "liga", "tnum", "pnum";
+  line-height: 1.625;
+}
+
+:where(.content-wrapper b, .content-wrapper strong) {
+  color: var(--col--ink-bold);
+  font-weight: 600;
 }
 
 :where(.content-wrapper img) {
@@ -800,13 +812,23 @@ body {
   vertical-align: bottom;
 }
 
+:where(.content-wrapper > *, .content-wrapper > * > *) {
+  margin-block: unset;
+  padding: unset;
+}
+
+:where(.content-wrapper > * + *, .content-wrapper > * > * + *) {
+  margin-block-start: 1.75rem;
+}
+
+:where(.content-wrapper > figure) {
+  margin-block: 2.5rem;
+}
+
 :where(.content-wrapper > *) {
   margin-inline: auto;
   max-inline-size: var(--width--content);
   inline-size: var(--inset-width);
-
-  &:first-child { margin-block-start: 0; }
-  &:last-child { margin-block-end: 0; }
 }
 
 :where(.content-wrapper > .alignwide, .content-wrapper * > .alignwide) {
@@ -827,17 +849,13 @@ body {
   }
 }
 
-.content-wrapper :where(p, ul, ol) {
+/* .content-wrapper :where(p, ul, ol) {
   margin-block: 1.875rem;
-}
+} */
 
 .content-wrapper blockquote {
   border-inline-start: 0.25rem solid var(--col--ink-light);
   padding-inline-start: 1.5rem;
-}
-
-.content-wrapper > figure {
-  margin-block: 2.5rem;
 }
 
 .content-wrapper figcaption {
@@ -1179,7 +1197,7 @@ body {
 /* UTILITIES */
 
 .ff-signifier {
-  font-family: signifier !important;
+  font-family: signifier, 'Comic Sans MS' !important;
 }
 
 .ff-epicene-text {
@@ -1202,6 +1220,14 @@ body {
 
 .ff-source-serif-4 {
   font-family: 'Source Serif 4' !important;
+}
+
+.ff-tiempos-text {
+  font-family: 'tiempos-text', 'Comic Sans MS' !important;
+}
+
+.ff-times-new-roman {
+  font-family: 'Times New Roman';
 }
 
 .serifs-test {
