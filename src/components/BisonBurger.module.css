@@ -1,0 +1,43 @@
+.bisonBurger {
+  font-family: var(--font--sans);
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 30;
+}
+
+.bisonBurger * {
+  all: unset;
+}
+
+.bisonBurger button {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.bisonBurger :global(.bar) {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  background-color: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.bisonBurger :global(.bar-top) {
+  transform: translateY(-7px);
+}
+
+.bisonBurger :global(.bar-middle) {
+  transform: translateY(0) scaleX(1.1);
+  transform-origin: left center;
+  top: 50%;
+}
+
+.bisonBurger :global(.bar-bottom) {
+  transform: translateY(7px);
+}

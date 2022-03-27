@@ -1,6 +1,6 @@
 ---
 title: Why are webcams so cursed?
-date: 2022-03-21 12:00:00
+date: '2022-03-21'
 ---
 
 **Last week, Apple announced their first new mainstream computer monitor in more than a decade**. The new Apple Studio Display is not the most impressive monitor, but with a 5K, wide-gamut color panel it's pretty good. The new Studio also doesn't have a full docking solution, in that it has 3 USB-C ports which will still require dongles, but at least the dongles can stay on your desk and be hidden out of sight.

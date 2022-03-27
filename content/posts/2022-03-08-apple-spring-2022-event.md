@@ -1,6 +1,6 @@
 ---
 title: "Apple's Spring 2022 Event"
-date: 2022-03-07T21:22:23-05:00
+date: 2022-03-07 12:22:23
 draft: true
 ---
 
