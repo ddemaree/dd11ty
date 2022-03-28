@@ -5,6 +5,8 @@ specifiers:
   '@fortawesome/free-brands-svg-icons': ^6.1.1
   '@fortawesome/free-solid-svg-icons': ^6.1.1
   '@fortawesome/react-fontawesome': ^0.1.18
+  '@mdx-js/loader': ^2.1.0
+  '@next/mdx': ^12.1.1
   '@types/node': ^17.0.23
   '@types/react': ^17.0.43
   autoprefixer: ^10.4.2
@@ -37,6 +39,8 @@ dependencies:
   '@fortawesome/free-brands-svg-icons': 6.1.1
   '@fortawesome/free-solid-svg-icons': 6.1.1
   '@fortawesome/react-fontawesome': 0.1.18_6909f5698ccb6b468185370814560628
+  '@mdx-js/loader': 2.1.0
+  '@next/mdx': 12.1.1_@mdx-js+loader@2.1.0
   autoprefixer: 10.4.2_postcss@8.4.7
   classnames: 2.3.1
   fast-glob: 3.2.11
@@ -669,6 +673,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
+  /@mdx-js/loader/2.1.0:
+    resolution: {integrity: sha512-r2CqhmBELQUoUxiWDh8SnlD7QTRNULgXE26gmmlD/uE0HWM7CG8iw6F3ZfvVr5p9y2z4MHWsOHbaJEuNCa8i3Q==}
+    peerDependencies:
+      webpack: '>=4'
+    dependencies:
+      '@mdx-js/mdx': 2.1.0
+      source-map: 0.7.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@mdx-js/mdx/2.1.0:
     resolution: {integrity: sha512-AuZGNLSGrytOd7a81E2SsWAOYg/eV5I51BlUPc11PPmPwhpovu7mwfyQ8PH1jxhdH0Is6aRtXHERuDxon0TluQ==}
     dependencies:
@@ -705,6 +720,15 @@ packages:
 
   /@next/env/12.1.0:
     resolution: {integrity: sha512-nrIgY6t17FQ9xxwH3jj0a6EOiQ/WDHUos35Hghtr+SWN/ntHIQ7UpuvSi0vaLzZVHQWaDupKI+liO5vANcDeTQ==}
+    dev: false
+
+  /@next/mdx/12.1.1_@mdx-js+loader@2.1.0:
+    resolution: {integrity: sha512-Jco/0qYWovt6UkQiWRp481f4+PrqLw+Vkv9w+3SHvr8VZizJC/aUYsajCqKnHp7C8qNGn2YAmEAzXioAcYu14Q==}
+    peerDependencies:
+      '@mdx-js/loader': '>=0.15.0'
+      '@mdx-js/react': '*'
+    dependencies:
+      '@mdx-js/loader': 2.1.0
     dev: false
 
   /@next/swc-android-arm64/12.1.0:
@@ -3873,7 +3897,6 @@ packages:
   /source-map/0.7.3:
     resolution: {integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /space-separated-tokens/2.0.1:
     resolution: {integrity: sha512-ekwEbFp5aqSPKaqeY1PGrlGQxPNaq+Cnx4+bE2D8sciBQrHpbwoBbawqTN2+6jPs9IdWxxiUcN0K2pkczD3zmw==}

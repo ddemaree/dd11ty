@@ -5,6 +5,45 @@ import { DateTime } from 'luxon'
 import FastGlob from 'fast-glob';
 import _, { chunk } from 'lodash';
 
+export function getParentPaths(pathname) {
+  let parts = pathname.split("/")
+  let paths = []
+
+  while(parts.length > 0) {
+    if(parts.length === 1 && parts[0] === "") {
+      paths.push("/")
+    }
+    else {
+      paths.push( parts.join("/") )
+    }
+    parts.pop()
+  }
+
+  return paths
+}
+
+export function generateSlug(pathname) {
+  const pathInfo = path.parse(pathname)
+  const dirs = pathInfo.dir.split('/')
+
+  let rawslug;
+
+  if(pathInfo.name === 'index' && dirs.length) {
+    rawslug = dirs.slice(-1)[0];
+  }
+  else {
+    rawslug = pathInfo.name
+  }
+
+  let reg = rawslug.match(/\d{4}-\d{2}-\d{2}-(.*)/);
+  if (reg) {
+    return reg[1];
+  }
+  else {
+    return rawslug
+  }
+}
+
 function getPostDateTime(pathname, data) {
   if("date" in data && data.date) {
     if (data.date instanceof Date) return data.date;
@@ -41,40 +80,36 @@ export function MdStore(baseDir = './content', options = {}) {
     let subpath = filepath.replace(baseDir, '').replace(/^\//, '')
     let pathInfo = path.parse( subpath )
     let dirs = pathInfo.dir.split('/')
-    let section = dirs.shift()
-
+    
     let fileString = fs.readFileSync(filepath)
     let { data, content } = matter.default(fileString);
+    data.path = subpath
+
+    // let dataDirs = []
+    // let lastPath = null
+    // let fullDir = path.join(baseDir, pathInfo.dir).split('/')
+    // fullDir.forEach(() => {
+    //   dataDirs.push(fullDir.join('/'))
+    //   dataDirs.pop()
+    // })
+
+    // console.log(dataDirs)
+    // console.log(fullDir)
+
+    // const dataDirs = dirs.map(dir => path.join(baseDir, dir))
+
+    data.section = dirs.shift()
     
     if(!data.slug) {
-      let rawslug;
-
-      if(pathInfo.name === 'index' && dirs.length) {
-        rawslug = dirs.slice(-1)[0];
-      }
-      else {
-        rawslug = pathInfo.name
-      }
-
-      let reg = rawslug.match(/\d{4}-\d{2}-\d{2}-(.*)/);
-      if (reg) {
-        data.slug = reg[1];
-      }
-      else {
-        data.slug = rawslug
-      }
+      data.slug = generateSlug(filepath)
     }
 
     let filedate = getPostDateTime(filepath, data);
-    let ts = filedate.getTime();
-
+    data.ts = filedate.getTime();
     data.date = filedate.toJSON()
     
     return Object.assign({}, data, { 
       content,
-      path: subpath,
-      section,
-      ts,
       format: pathInfo.ext.replace(/^\./, '')
     });
   }

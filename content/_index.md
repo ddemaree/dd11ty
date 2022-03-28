@@ -10,8 +10,6 @@ main_photo:
 ---
 
 Hi, I’m **David Demaree**, a web developer, designer, and product manager in NYC.
-{.is-style-big-intro}
 
-* [<i class="fas fa-user-ninja fa-sm"></i> More about me](/about)
-* <a href="https://twitter.com/ddemaree"><i class="fab fa-twitter fa-sm"></i> Twitter</a>
-{.button-group}
+* [More about me](/about)
+* [Twitter](https://twitter.com/ddemaree)

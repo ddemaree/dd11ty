@@ -14,7 +14,12 @@ date: 2022-03-15
 './posts/2022-04-01-foolishness/index.md': `---
 title: April Foolishness
 ---
-`
+`,
+'./about/index.md': `---
+title: About Me
+---
+`,
+'./posts/posts.json': JSON.stringify({ layout: 'PostLayout' })
 };
 vol.fromJSON(json, '/tmp/content');
 
