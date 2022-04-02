@@ -1,0 +1,16 @@
+.heroBox {
+  margin-inline: auto;
+  padding-block-end: 0.5em;
+}
+
+.heroText {
+  @apply leading-[1.15] font-epicene-text;
+  color: var(--col--ink-medium);
+  font-size: clamp(21px, 4vw, 30px);
+  max-width: 21ch;
+  font-weight: 200;
+
+  b {
+    font-weight: 600;
+  }
+}

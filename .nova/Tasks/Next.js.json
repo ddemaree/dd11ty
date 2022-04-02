@@ -1,0 +1,16 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "pnpm install"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "rm -fr .next"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "next dev"
+    }
+  }
+}

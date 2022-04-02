@@ -1,9 +1,21 @@
-// import App from 'next/app'
+import "../styles/main.css";
+import SiteLayout from "../components/SiteLayout";
+import { MDXProvider } from "@mdx-js/react";
+import _ from "lodash";
+import Image from "next/image";
 
-import '../styles/main.css';
+const components = {
+  Image,
+};
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <MDXProvider components={components}>
+      <SiteLayout>
+        <Component {...pageProps} />
+      </SiteLayout>
+    </MDXProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

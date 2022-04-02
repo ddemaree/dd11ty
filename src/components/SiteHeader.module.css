@@ -9,7 +9,7 @@
 
   position: sticky;
   top: 0;
-  background-color: var(--col--header);
+  /* background-color: var(--col--header); */
 
   a {
     text-decoration: none;
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  justify-self: end; 
+  justify-self: end;
 
   /* .menu-wrapper {
     list-style-type: none;

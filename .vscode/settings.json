@@ -1,9 +1,15 @@
 {
   "emmet.includeLanguages": {
-    "njk": "html",
-    "markdown": "html",
-    "astro-markdown": "html"
+    "markdown": "markdownreact",
+    "astro-markdown": "html",
+    "javascript": "javascriptreact"
   },
   "emmet.excludeLanguages": [],
-  "tailwindCSS.emmetCompletions": true
+  "tailwindCSS.emmetCompletions": true,
+  "files.exclude": {
+    "**/themes": true
+  },
+  "files.watcherExclude": {
+    "**/.next": true
+  }
 }
