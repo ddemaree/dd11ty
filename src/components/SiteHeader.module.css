@@ -20,6 +20,17 @@
   }
 }
 
+.headerFullBleed {
+  @apply bg-opacity-50 bg-white backdrop-blur-lg;
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+
+  :global(.dark) & {
+    @apply bg-black bg-opacity-60;
+  }
+}
+
 .logo {
   align-items: center;
   color: var(--col--buttons);

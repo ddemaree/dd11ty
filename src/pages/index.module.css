@@ -1,14 +1,13 @@
 .heroBox {
-  margin-inline: auto;
-  padding-block-end: 0.5em;
+  @apply absolute inset-0 flex flex-col pt-16 place-content-center place-items-center bg-black bg-opacity-25 z-20 px-[var(--inset-x)];
+  backdrop-filter: blur(4px);
 }
 
 .heroText {
-  @apply leading-[1.15] font-epicene-text;
-  color: var(--col--ink-medium);
-  font-size: clamp(21px, 4vw, 30px);
+  @apply leading-[1.15] font-sans relative z-[300];
+  font-size: clamp(42px, 4vw, 30px);
   max-width: 21ch;
-  font-weight: 200;
+  font-weight: 300;
 
   b {
     font-weight: 600;

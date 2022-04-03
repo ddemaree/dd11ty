@@ -11,9 +11,16 @@ const withMDX = require("@next/mdx")({
 });
 module.exports = withMDX({
   // Append the default value with md extensions
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "mdx"],
   images: {
     loader: "cloudinary",
     path: "https://res.cloudinary.com/demaree/",
+  },
+  experimental: {
+    images: {
+      layoutRaw: true,
+      loader: "cloudinary",
+      path: "https://res.cloudinary.com/demaree/",
+    },
   },
 });

@@ -8,10 +8,13 @@ const components = {
   Image,
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp({
+  Component,
+  pageProps: { layout: layoutProps, ...pageProps },
+}) {
   return (
     <MDXProvider components={components}>
-      <SiteLayout>
+      <SiteLayout {...layoutProps}>
         <Component {...pageProps} />
       </SiteLayout>
     </MDXProvider>
