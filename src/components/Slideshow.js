@@ -28,11 +28,11 @@ export default function Slideshow({ images }) {
     }
   }
 
-  const imageSrcs = images.map((i) => {
-    const img = cld.image(i);
+  function getImageURL(path) {
+    const img = cld.image(path);
     img.resize(Resize.scale(1200));
     return img.toURL();
-  });
+  }
 
   const startTimeout = () => {
     return setTimeout(
@@ -44,12 +44,10 @@ export default function Slideshow({ images }) {
     );
   };
 
-  const handleVisibilityChange = function (event) {
+  const handleVisibilityChange = (e) => {
     if (document.hidden) {
-      console.log("not visible");
       resetTimeout();
     } else {
-      console.log("is visible");
       startTimeout();
     }
   };
@@ -75,7 +73,19 @@ export default function Slideshow({ images }) {
     imgWrap.classList.add(styles.imageWrap);
     currImg.classList.add(styles.imageLoading);
     currImg.onload = () => currImg.classList.remove(styles.imageLoading);
-    currImg.src = imageSrcs[currentIndex];
+
+    const [imgPath, imgStyles] = images[currentIndex];
+    currImg.src = getImageURL(imgPath);
+    currImg.oncontextmenu = (e) => false;
+
+    if (imgStyles) {
+      for (const key in imgStyles) {
+        if (Object.hasOwnProperty.call(imgStyles, key)) {
+          const element = imgStyles[key];
+          currImg.style.setProperty(key, element);
+        }
+      }
+    }
 
     if (existingImage) {
       imgWrap.classList.add(styles.nextImage);

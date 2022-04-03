@@ -3,9 +3,12 @@ import styles from "./index.module.css";
 
 export default function HomePage() {
   const images = [
-    "cx/homepage/typekit-office.jpg",
-    "demaree-dot-me/images/david-acnh-xmas.jpg",
-    "cx/homepage/bar-1.jpg",
+    ["cx/homepage/typekit-office.jpg", { "object-position": "40% 50%" }],
+    [
+      "demaree-dot-me/images/david-acnh-xmas.jpg",
+      { "object-position": "65% 50%" },
+    ],
+    ["cx/homepage/bar-1.jpg", { "object-position": "77% 50%" }],
   ];
 
   return (
