@@ -1,0 +1,136 @@
+---
+import { Debug } from 'astro/components'
+import Date from './Date.astro';
+
+export interface Props {
+	title: string;
+	author: string;
+	publishDate: string;
+	heroImage: string;
+	alt: string;
+}
+
+const { title, pubDate, heroImage, alt } = Astro.props;
+---
+
+<div class="layout">
+	<article class="content">
+		<div>
+			<header>
+				{heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
+				{pubDate && <p class="publish-date mt-2">
+					<Date date={pubDate} />
+				</p>}
+				<h1 class="title">{title}</h1>
+			</header>
+			<main>
+				<slot />
+			</main>
+		</div>
+	</article>
+</div>
+
+<style>
+	.content {
+		@apply text-lg;
+		font-family: 'tiempos-text';
+		margin-bottom: 8rem;
+	}
+
+	.content :global(:where(b, strong)) {
+		color: var(--theme-text-bold);
+		font-weight: 600;
+	}
+
+	.content :global(:where(main > *, main astro-island > *)) {
+		margin-block: 0;
+		margin-inline: auto;
+		max-width: var(--width-content);
+		width: calc(100% - (2 * var(--spacing-inset)));
+
+		&:first-child {
+			margin-block-start: 0;
+		}
+
+		&:where(.align-wide, .size-wide, .size-large) {
+			max-width: var(--width-wide);
+		}
+	}
+
+	.content :global(:where(main > * + *, main blockquote > * + *)) {
+		margin-top: 1.25rem;
+	}
+
+	.content :global(h2, h3, h4) {
+		margin-top: 4rem;
+		font-weight: 500;
+	}
+
+	.content :global(h2) {
+		font-size: revert;
+	}
+
+	.content :global(:where(blockquote)) {
+		--padding-block: 1rem;
+		--padding-inline: 1.25rem;
+		--color: var(--theme-divider);
+		
+		background: transparent;
+		border-left: calc(var(--padding-inline) / 4) solid var(--color);
+		border-radius: 0;
+		display: flex;
+		flex-direction: column;
+		padding-inline: var(--padding-inline);
+	}
+
+	.content :global(:where(hr)) {
+		border-color: var(--theme-divider);
+		border-width: 0.125rem;
+		margin-block: 2.5rem;
+		max-width: 18rem;
+	}
+
+	.content :global(:where(main > figure, main astro-island > figure)) {
+		margin-block: 2rem;
+
+		&:where(.size-wide, .size-full) {
+			margin-block: 2.5rem;
+		}
+	}
+
+	.content :global(:where(figcaption)) {
+		@apply text-center text-sm font-sans mt-2;
+		color: var(--theme-text-light);
+		margin-inline: auto;
+		max-width: var(--width-content);
+		width: calc(100vw - (2 * var(--spacing-inset)));
+	}
+
+	header {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+
+		padding-bottom: 2rem;
+		margin-bottom: 2rem;
+		/* border-bottom: 4px solid var(--theme-divider); */
+	}
+
+	.title,
+	.author,
+	.publish-date {
+		margin: 0;
+	}
+
+	.publish-date {
+		@apply font-sans;
+		color: var(--theme-text-lighter);
+	}
+
+	.title {
+		font-size: 2.25rem;
+		font-weight: 600;
+	}
+</style>

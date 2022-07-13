@@ -1,0 +1,21 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Image from '../../components/Image.astro';
+import ImageCompare from '../../components/ImageCompare.jsx';
+---
+
+<html lang={'en'}>
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css"/>
+		<BaseHead title="Tests: ImageCompare" description="" permalink="/tests/compare" />
+	</head>
+
+  <body>
+    <div class="max-w-xl mx-auto my-8">
+      <ImageCompare client:visible>
+        <Image src="bitsandletters-assets/L1000512_5344d75c9.jpg" />
+        <Image src="bitsandletters-assets/DSCF0608_53464e025.jpg" />
+      </ImageCompare>
+    </div>
+  </body>
+</html>

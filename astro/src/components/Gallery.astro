@@ -1,0 +1,39 @@
+---
+import { Debug } from "astro/components";
+
+export interface GalleryProps {
+  size?: 'wide' | 'full'
+}
+
+const { size } = Astro.props as GalleryProps;
+
+const hasSlotContent = Astro.slots.has('default')
+
+---
+<figure class:list={["dd-gallery", (size && `size-${size}`)]}>
+  <slot />
+</figure>
+
+<style is:global>
+.dd-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dd-gallery .dd-image {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: calc(50% - 1rem);
+}
+
+.dd-gallery .dd-image img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  flex: 1 0 0;
+  max-height: 24rem;
+  object-position: var(--img-position-x, 50%) var(--img-position-y, 50%);
+}
+</style>

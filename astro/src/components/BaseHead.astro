@@ -1,0 +1,48 @@
+---
+import '../styles/blog.css';
+
+export interface Props {
+	title: string;
+	description: string;
+	permalink: string;
+	socialTitle?: string;
+	socialImages?: [string];
+}
+let { title, description, permalink, socialTitle, socialImages = [] } = Astro.props;
+
+if(!socialTitle) socialTitle = title;
+
+const socialImageUrl = `https://res.cloudinary.com/demaree/w_1200,h_627/p/${encodeURIComponent(socialTitle)}`;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={permalink} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageUrl} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={permalink} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageUrl} />
+<!-- {socialImages.map(i => <meta property="twitter:image" content={i} />) } -->
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://cdn.demaree.net" />
+<link rel="stylesheet" href="https://cdn.demaree.net/fonts/soehne/index.css" />
+<link rel="stylesheet" href="https://cdn.demaree.net/fonts/soehne-mono/index.css" />
+<link rel="stylesheet" href="https://cdn.demaree.net/fonts/epicene/epicene.css">
+<link rel="stylesheet" href="https://cdn.demaree.net/fonts/tiempos/fonts.css">

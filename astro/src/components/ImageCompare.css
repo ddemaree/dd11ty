@@ -1,0 +1,50 @@
+.ic-root {
+  position: relative;
+  /* border: 4px solid cyan; */
+  /* height: 500px; */
+  background: cyan;
+}
+
+.ic-root.ic-ready .ic-image {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  background-position: left;
+  margin: 0;
+
+  img {
+    margin: 0;
+    width: auto;
+    height: 100%;
+    position: absolute;
+    max-height: initial;
+    max-width: initial;
+  }
+
+  &.ic-image-right {
+    background-position: right;
+
+    img {
+      right: 0;
+    }
+  }
+}
+
+.ic-root .ic-image-left {
+  left: 0;
+}
+
+.ic-root .ic-image-right {
+  right: 0;
+}
+
+.ic-slider {
+  position: absolute;
+  z-index: 10;
+  width: 6px;
+  top: 0;
+  height: 100%;
+  background-color: yellow;
+  transform: translateX(-3px);
+}
