@@ -7,7 +7,7 @@
   "emmet.excludeLanguages": [],
   "tailwindCSS.emmetCompletions": true,
   "files.exclude": {
-    "**/themes": true
+    "**/resources": true
   },
   "files.watcherExclude": {
     "**/.next": true
