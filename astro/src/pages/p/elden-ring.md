@@ -5,17 +5,12 @@ description: How I learned to stop worrying and love "Elden Ring"
 image:
   cloudinary: bitsandletters-assets/IMG_4374_58991dafd
 layout: ../../layouts/BlogPost.astro
-setup: |
-  import Image from '../../components/Image.astro';
-  import Tweet from '../../components/Tweet.astro';
-  import YouTube from '../../components/YouTube.astro';
 ---
 
-<Image src="bitsandletters-assets/IMG_4374_58991dafd" size="wide">
-My _Elden Ring_ character, Wile E. Coyote, finally standing at the threshold of the Erdtree
-</Image>
-
-<!-- <figure class="wp-block-image alignwide size-large"><img width="3840" height="2160" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzODQwIiBoZWlnaHQ9IjIxNjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImZpbGwiIHZhbHVlcz0icmdiYSgxNTMsMTUzLDE1MywwLjUpO3JnYmEoMTUzLDE1MywxNTMsMC4xKTtyZ2JhKDE1MywxNTMsMTUzLDAuNSkiIGR1cj0iMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPjwvcmVjdD48L3N2Zz4=" alt="" class="wp-image-5899" data-public-id="bitsandletters-assets/IMG_4374_58991dafd.jpg" data-format="jpg" data-transformations="f_auto,q_auto" data-version="1652486346" data-size="3840 2160" data-srcset="https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 1024w, https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 300w, https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 768w, https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 1536w, https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 2048w, https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 1200w, https://res.cloudinary.com/demaree/images/f_auto,q_auto/v1652486346/bitsandletters-assets/IMG_4374_58991dafd/IMG_4374_58991dafd.jpg?_i=AA 3000w" data-sizes="(max-width: 1024px) 100vw, 1024px" data-delivery="upload" onload=";window.CLDBind?CLDBind(this):null;" data-cloudinary="lazy"><figcaption>My <em>Elden Ring</em> character, Wile E. Coyote, finally standing at the threshold of the Erdtree</figcaption></figure> -->
+<figure class="dd-image size-wide block-image align-wide">
+  <img src="https://res.cloudinary.com/demaree/image/upload/f_auto,q_auto,w_1200/bitsandletters-assets/IMG_4374_58991dafd/elden-ring-01.jpg" alt="Man in knight armor standing in front of magical tree" width="1200" height="675">
+  <figcaption>My <cite>Elden Ring</cite> character, Wile E. Coyote, finally standing at the threshold of the Erdtree</figcaption>
+</figure>
 
 Having fought and wandered and grinded for over 75 hours, I finally approach the only open door to Leyndell, Royal Capital and home of the Erdtree, to find it blocked by magic fog and a horse-mounted soldier-knight-dragon thingy—the Draconic Tree Sentinel.
 
@@ -27,9 +22,12 @@ In addition to improving my loadout, I also work on my strategy. A blog post rem
 
 Finally, out of magic power, but with the Sentinel down to 10% health, I quietly back away and mount my horse, finally officially starting the battle with two katana slices to the enemy horse’s flank. One more slash after that and he’s done, unblocking my way to the next thing.
 
-After what’s now more like 76 hours over 2-3 months, I’m maybe 30% through _Elden Ring_.
+After what’s now more like 76 hours over 2-3 months, I’m maybe 30% through <cite>Elden Ring</cite>.
 
-<figure class="wp-block-video alignwide"><video autoplay="" loop="" muted="" src="https://res.cloudinary.com/demaree/video/upload/f_auto,q_auto/v1652408374/bitsandletters-assets/GIF_5894dcadc.mp4?_i=AA" data-public-id="bitsandletters-assets/GIF_5894dcadc.mp4" class="wp-post-0 wp-video-5894" data-format="mp4" data-transformations="f_auto,q_auto" data-version="1652408374"></video><figcaption>Here I try—and fail—to take on one of <em>Elden Ring</em>'s giant dragons</figcaption></figure>
+<figure class="wp-block-video alignwide align-wide">
+  <video autoplay loop muted src="https://res.cloudinary.com/demaree/video/upload/f_auto,q_auto/v1652408374/bitsandletters-assets/GIF_5894dcadc.mp4?_i=AA" data-public-id="bitsandletters-assets/GIF_5894dcadc.mp4"></video>
+  <figcaption>Here I try—and fail—to take on one of <em>Elden Ring</em>'s giant dragons</figcaption>
+</figure>
 
 ## Choosing your own adventure
 
@@ -45,7 +43,8 @@ The first way the game is challenging is its character-building aspect: unlike (
 
 One of the game’s ongoing core mechanics is grinding for “runes,” which serve as both experience points (XP) and currency. You earn runes when you kill enemies, and you can also find them laying around as loot or get them for selling your extra stuff to a merchant. You spend runes when you want to level up your character — in return for an ever-increasing amount of runes, you can add one stat point to one of your character’s attributes. These stat upgrades are mostly permanent, and they determine what kinds of attacks or defenses you’ll be good at later on, so you have to invest wisely.
 
-<Tweet class="dd-embed" url="https://twitter.com/gravitywins/status/1508906117786574854?s=20u0026t=hAWeMe5uKQ9zSoaHXuGhtA" />
+<!-- <Tweet class="dd-embed" url="https://twitter.com/gravitywins/status/1508906117786574854?s=20u0026t=hAWeMe5uKQ9zSoaHXuGhtA" /> -->
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">I find the world fascinating. Most open world games feel like task whack-a-mole anymore. I love how ER encourages you to explore and rewards that curiosity. I also like the ways you can customize your play style and gear.</p>&mdash; Justin Belcher (@gravitywins) <a href="https://twitter.com/gravitywins/status/1508906117786574854?ref_src=twsrc%5Etfw">March 29, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 But “wisely” can be a local maximum — _Elden Ring_ doesn’t have a single set way to win, and it’s designed to allow players the freedom to make their own path. I hear that lots of players go all-in on magic, only using swords and shields as a backup. Others do the opposite, spending all their runes on building the strongest, buffest, tankiest warriors possible.
 
@@ -107,7 +106,10 @@ It took me what felt like weeks to get through _Returnal_'s Derelict Citadel reg
 
 I'd be remiss if I didn't take a moment to talk about the game's story, because I think _Elden Ring_'s opening, scene-setting cinematic is one of the funniest things I've seen in years:
 
-<YouTube url="https://www.youtube.com/watch?v=_uydEN9Fu7M" />
+<!-- <YouTube url="https://www.youtube.com/watch?v=_uydEN9Fu7M" /> -->
+<figure class="block-embed block-embed-youtube align-center">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_uydEN9Fu7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
 
 It's both hard to spoil _Elden Ring_'s story, and hard _not_ to. All of Miyazaki's games have opaque narratives where key information is conveyed via item descriptions and other "flavor text", instead of cutscenes and dialogue. Any explanation of the plot or backstory risks ruining some surprise, but without an explanation you may not know that what you're looking at is even part of the story.
 
@@ -117,7 +119,11 @@ Since I started _Elden Ring_, I started checking out Miyazaki's original _Dark S
 
 I literally have no idea if this is a spoiler: most, if not all, of those characters from the intro do show up in the game as NPCs, each with their own lore and side quests. And don't worry: the ever-brilliant Goldmask can be found hanging out on a bridge in a late-game area.
 
-<Image src="bitsandletters-assets/IMG_4342_5879eb27b" size="wide">Everything OK there, Goldmask?</Image>
+<figure class="dd-image size-wide block-image align-wide">
+  <img src="https://res.cloudinary.com/demaree/image/upload/f_auto,q_auto,w_1200/bitsandletters-assets/IMG_4342_5879eb27b.jpg" alt="Man in knight armor standing in front of another gentleman who is wearing a gold mask and pointing" width="1200" height="675">
+  <figcaption>Everything OK there, Goldmask?</figcaption>
+</figure>
+
 
 * * *
 
@@ -129,7 +135,10 @@ I've been subscribed for a while to [a subreddit for fans of _Deathloop_](https:
 
 What's great about this for a solo gamer is that there is a wealth of information out there, especially for super-popular games like _Elden Ring_. YouTube creator and _Souls_ influencer [VaatiVidya](https://www.youtube.com/channel/UCe0DNp0mKMqrYVaTundyr9w) has posted over a dozen videos about _Elden Ring_, including this one about [how to make your character "overpowered" (or "OP") from early in the game](https://youtu.be/GYI5Z3jhKB4):
 
-<YouTube url="https://youtu.be/GYI5Z3jhKB4" />
+<!-- <YouTube url="https://youtu.be/GYI5Z3jhKB4" /> -->
+<figure class="block-embed block-embed-youtube align-center">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GYI5Z3jhKB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
 
 If TL;DW, some key tips are:
 
@@ -138,13 +147,16 @@ If TL;DW, some key tips are:
 
 _Elden Ring_ tells you almost nothing about itself, at least not in a clear or linear way. Most open-world games have quest markers telling you the precise distance to your next objective, with voiceovers or other cues to tell you if it's time to grind or do other stuff before you go to there. Remember how I said _Elden Ring_ gives you a golden arrow that you absolutely should _not_ follow?
 
-Creators have filled the information gap Miyazaki and FromSoft have (intentionally) left open, and because the _Souls_ games have such a hardcore following (and because those games are even more opaque than _Elden Ring_) the fan materials for this game are plentiful, and polished. For instance, there's an interactive map helpfully located at [eldenringmap.com](https://eldenringmap.com/), marking locations of loot, checkpoints, NPCs, etc. that you'd otherwise have to just find and remember. This is information that you can get in-game in titles like _Horizon_ by e.g. climbing Tallneck robots and unlocking map sections; here, you have to rely on the kindness of strangers.
+Creators have filled the information gap Miyazaki and FromSoft have (intentionally) left open, and because the _Souls_ games have such a hardcore following (and because those games are even more opaque than _Elden Ring_) the fan materials for this game are plentiful, and polished. For instance, there's an interactive map helpfully located at [`eldenringmap.com`](https://eldenringmap.com/), marking locations of loot, checkpoints, NPCs, etc. that you'd otherwise have to just find and remember. This is information that you can get in-game in titles like _Horizon_ by e.g. climbing Tallneck robots and unlocking map sections; here, you have to rely on the kindness of strangers.
 
 Speaking of kind strangers, _Elden Ring_'s multiplayer is largely all about giving and accepting help with the main campaign — when you're stuck on a boss, blogs advise that you use one of the game's weirdly finger-themed multiplayer items to either offer to join someone else's fight (for risk-free practice) or invite others to join yours.
 
 For weeks, an _Elden Ring_ player known only as "let me solo her" has made themselves available to help beat the game's hardest boss, Malenia the Blade of Miquella. LMSH carries two katanas, wears nothing but undies and a bucket helmet, and can consistently take down the most forbidding enemy in Miyazaki's oeuvre. [On May 11, LMSH defeated Malenia for the 1,000th time](https://www.theverge.com/2022/4/14/23025610/elden-ring-pc-let-me-solo-her-malenia-boss), which would seem almost rude except that most of those were on behalf of random online players who probably really needed the help.
 
-<YouTube url="https://youtu.be/18BiFD0n0JI" />
+<!-- <YouTube url="https://youtu.be/18BiFD0n0JI" /> -->
+<figure class="block-embed block-embed-youtube align-center">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/18BiFD0n0JI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
 
 Their handle is both a generous offer and an admonition. [_The Verge_'s Cameron Faulkner invited someone claiming to be LMSH to their game, tried to help, and was immediately abandoned to die brutally](https://www.theverge.com/2022/4/14/23025610/elden-ring-pc-let-me-solo-her-malenia-boss) to Malenia's horrific, very scary "Waterfowl Dance" moves. [IGN interviewed someone claiming to be the real LMSH](https://www.ign.com/articles/let-me-solo-her-elden-ring-community-hero) who says they're OK with accepting help, and that whoever helped Faulkner is a copycat.
 

@@ -4,4 +4,6 @@
   <div class="dd-home-hero__content content-wrapper">{{ .Content }}</div>
 </div>
 
+<div>{{ range first 10 .Site.RegularPages }} {{ .Title }} {{ end }}</div>
+
 {{ end }}
