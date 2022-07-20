@@ -30,6 +30,16 @@ const { title, pubDate, heroImage, alt } = Astro.props;
 	</article>
 </div>
 
+<script>
+
+const iframeVids = document.querySelectorAll('.content figure > iframe')
+
+iframeVids.forEach(iframe => {
+	// iframe.style.display = 'none';
+});
+
+</script>
+
 <style>
 	.content {
 		@apply text-lg;
@@ -40,6 +50,13 @@ const { title, pubDate, heroImage, alt } = Astro.props;
 	.content :global(:where(b, strong)) {
 		color: var(--theme-text-bold);
 		font-weight: 600;
+	}
+
+	.content :global(:where(img, video)) {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin-inline: auto;
 	}
 
 	.content :global(:where(main > *, main astro-island > *)) {
@@ -70,6 +87,24 @@ const { title, pubDate, heroImage, alt } = Astro.props;
 		font-size: revert;
 	}
 
+	.content :global(:where(ul, ol)) {
+		list-style-type: revert;
+		list-style-position: outside;
+		padding-inline-start: 2.5rem;
+
+		:global(li + li) {
+			margin-block-start: 0.5rem;
+		}
+
+		:global(::marker) {
+			color: var(--theme-primary);
+		}
+	}
+
+	.content :global(ul) {
+		list-style-type: square;
+	}
+
 	.content :global(:where(blockquote)) {
 		--padding-block: 1rem;
 		--padding-inline: 1.25rem;
@@ -98,12 +133,29 @@ const { title, pubDate, heroImage, alt } = Astro.props;
 		}
 	}
 
+	.content :global(main > .twitter-tweet) {
+		margin-block: 2rem !important;
+	}
+
 	.content :global(:where(figcaption)) {
 		@apply text-center text-sm font-sans mt-2;
 		color: var(--theme-text-light);
 		margin-inline: auto;
 		max-width: var(--width-content);
 		width: calc(100vw - (2 * var(--spacing-inset)));
+	}
+
+	.content :global(.block-embed) {
+		position: relative;
+		aspect-ratio: var(--embed-aspect-ratio, 16 / 9);
+
+		:global(> iframe) {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
 	}
 
 	header {
@@ -133,4 +185,29 @@ const { title, pubDate, heroImage, alt } = Astro.props;
 		font-size: 2.25rem;
 		font-weight: 600;
 	}
+</style>
+<style is:global>
+
+.block-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.block-gallery .block-image {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: calc(50% - 1rem);
+}
+
+.block-gallery .block-image img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	flex: 1 0 0;
+	max-height: 24rem;
+	object-position: var(--img-position-x, 50%) var(--img-position-y, 50%);
+}
+
 </style>

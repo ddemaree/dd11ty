@@ -8,7 +8,7 @@ layout: ../../layouts/BlogPost.astro
 ---
 
 <figure class="dd-image size-wide block-image align-wide">
-  <img src="https://res.cloudinary.com/demaree/image/upload/f_auto,q_auto,w_1200/bitsandletters-assets/IMG_4374_58991dafd/elden-ring-01.jpg" alt="Man in knight armor standing in front of magical tree" width="1200" height="675">
+  <img src="https://res.cloudinary.com/demaree/image/upload/f_auto,q_auto,w_1200/bitsandletters-assets/IMG_4374_58991dafd.jpg" alt="Man in knight armor standing in front of magical tree" width="1200" height="675">
   <figcaption>My <cite>Elden Ring</cite> character, Wile E. Coyote, finally standing at the threshold of the Erdtree</figcaption>
 </figure>
 
