@@ -2,15 +2,29 @@
   "name": "@ddemaree/website",
   "version": "22.7.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "test": "echo 'no tests here'"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "David Demaree (david@demaree.me)",
   "devDependencies": {
-    "petite-vue": "^0.4.1",
-    "tailwindcss": "^3.1.6"
+    "@astrojs/mdx": "^0.2.0",
+    "@astrojs/rss": "^0.2.1",
+    "@astrojs/solid-js": "^0.2.1",
+    "@astrojs/tailwind": "^0.2.4",
+    "@cloudinary/url-gen": "^1.8.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "astro": "^1.0.0-beta.72",
+    "clsx": "^1.2.1",
+    "feed": "^4.2.2",
+    "lodash": "^4.17.21",
+    "luxon": "^2.5.0",
+    "postcss-lab-function": "^4.2.1",
+    "solid-js": "^1.4.7"
   }
 }
