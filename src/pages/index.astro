@@ -3,13 +3,18 @@
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
+import generateSlug from '../lib/generateSlug';
 
 let title = 'David Demaree';
 let description = 'The perfect starter for your perfect blog.';
 let permalink = 'https://example.com/';
 
-let allPosts = await Astro.glob('./p/*.md');
-allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+let allPosts = []
+// let allPosts = await Astro.glob('./p/*.md');
+// allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+
+let otherAllPosts = await Astro.glob("../posts/*.md");
+// console.log(otherAllPosts.map(f => generateSlug(f.file)))
 ---
 
 <html lang="en">

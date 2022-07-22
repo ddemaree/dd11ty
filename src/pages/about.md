@@ -1,15 +1,8 @@
 ---
 title: About Me
-menu:
-  main:
-    name: "About"
-    weight: 0
-    params:
-      icon: user-ninja
 ---
 
-Hi. 👋  I’m **David Demaree**, an American product manager, web developer, designer, and writer based in the NYC area.
-{.is-style-big-intro}
+Hi. I’m **David Demaree**, an American product manager, web developer, designer, and writer based in the NYC area.
 
 ![Middle-aged man enjoying a cocktail on vacation](https://res.cloudinary.com/demaree/image/upload/v1627245371/bitsandletters-assets/david-vacation-cocktail.jpg "Middle-aged man enjoying a cocktail on vacation")
 
@@ -40,7 +33,6 @@ As a programmer, my first, best languages are Ruby, JavaScript, and PHP.
 A few years ago I wrote a brief book about version control, [<cite>Git for Humans</cite>](https://abookapart.com/products/git-for-humans), for [A Book Apart](https://abookapart.com/). You can read a sample chapter about making Git commits, [“The Art of the Commit”](https://alistapart.com/article/the-art-of-the-commit/), on A List Apart.
 
 ![Printed copies of the book "Git for Humans"](https://i0.wp.com/cdn.shopify.com/s/files/1/0051/7692/products/aba-000017-pp-3_660x@2x.progressive.jpg?ssl=1)
-{.alignwide}
 
 ## Speaking
 

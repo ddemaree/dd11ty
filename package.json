@@ -25,6 +25,7 @@
     "lodash": "^4.17.21",
     "luxon": "^2.5.0",
     "postcss-lab-function": "^4.2.1",
-    "solid-js": "^1.4.7"
+    "solid-js": "^1.4.7",
+    "zx": "^7.0.7"
   }
 }

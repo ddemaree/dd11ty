@@ -30,41 +30,47 @@ But what’s _really_ great about Parcel is that it’s a Webpack-like tool that
 
 Take an HTML document like this:
 
-    <!-- index.html -->
-    <html>
-      <head>
-        <title>A throwaway web page experiment</title>
-        <link href="./styles.css" rel="stylesheet" />
-      </head>
-      <body>
-        <h1>Time to code!</h1>
-        <div id="vue-app"></div>
-        <script src="./app.js"></script>
-      </body>
-    </html>
+```html
+<!-- index.html -->
+<html>
+  <head>
+    <title>A throwaway web page experiment</title>
+    <link href="./styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Time to code!</h1>
+    <div id="vue-app"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
+```
 
 In a bygone era, with all your HTML, JavaScript, and CSS code hand-crafted as static files, you could just load this into a browser and go. In fact, let me tell you a secret: that way of making web pages _still works_. The modern web platform still supports simple ways of working, it just doesn’t allow or make it easy for you to use preprocessors if you want to.
 
 **But Parcel does!** Once it’s installed, just run this command:
 
-    parcel index.html
+```sh
+parcel index.html
+```
 
 Reading your HTML, Parcel will see that it depends on two other assets — `styles.css` and `main.js` — and build those, preprocessing them according to the file extensions. It’ll (re-)build your HTML too, replacing references to these source code files to the built asset files it generates.
 
 What’s more, these don’t have to be plain CSS or JS files. If you want to use (say) Sass and TypeScript, you could do this and it will Just Work:
 
-    <!-- index.html -->
-    <html>
-      <head>
-        <title>A throwaway web page experiment</title>
-        <link href="./styles.scss" rel="stylesheet" />
-      </head>
-      <body>
-        <h1>Time to code!</h1>
-        <div id="vue-app"></div>
-        <script src="./app.ts"></script>
-      </body>
-    </html>
+```html
+<!-- index.html -->
+<html>
+  <head>
+    <title>A throwaway web page experiment</title>
+    <link href="./styles.scss" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Time to code!</h1>
+    <div id="vue-app"></div>
+    <script src="./app.ts"></script>
+  </body>
+</html>
+```
 
 Beyond that, Parcel brings a web server and hot reloading to the party—you give it some files, it gives you a local development URL, and that URL will auto-magically refresh as you edit code. Hot reloading has been a revolution in how I approach web design — beyond just reloading pages, seeing code or style changes applied seamlessly in the browser makes designing in the browser responsive and delightful. Hot reloading with Webpack usually requires a framework or complicated setup; in Parcel that too Just Works.
 
@@ -78,8 +84,10 @@ Parcel 2, meanwhile, doesn’t support single-file components with the current v
 
 BTW, this is the NPM incantation to install the stack I ended up using:
 
-    npm install --save parcel@nightly vue@next \
-      tailwindcss@latest postcss@latest
+```sh
+npm install --save parcel@nightly vue@next \
+  tailwindcss@latest postcss@latest
+```
 
 Now, I did have another option, to stick with versions of these libraries that work together, and to only use features that work with those versions. Tailwind 1.x is nice, as are non-single-file Vue views. _I’m_ the one who chose to live dangerously.
 

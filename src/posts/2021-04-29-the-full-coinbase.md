@@ -5,18 +5,12 @@ slug: the-full-coinbase
 modified: '2021-05-26T19:15:57.000Z'
 date: '2021-04-29T18:26:33.000Z'
 subtitle: A step-by-step guide to making any workplace crisis about you.
-featured: true
-featured_image:
-  url: https://images.unsplash.com/photo-1611424564096-3b8838e8438b?ixid=MnwyMTM5OTN8MHwxfGFsbHx8fHx8fHx8fDE2MTk3MTgwMTA&ixlib=rb-1.2.1&w=600&h=400
-  alt: red and white neon light signage 
 ---
 <figure class="wp-block-image alignwide"><img src="https://images.unsplash.com/photo-1611424564096-3b8838e8438b?ixid=MnwyMTM5OTN8MHwxfGFsbHx8fHx8fHx8fDE2MTk3MTgwMTA&amp;ixlib=rb-1.2.1&amp;w=2000&amp;h=1505" alt="red and white neon light signage" width="2000" height="1505" data-wp-url="https://res.cloudinary.com/demaree/images/w_2560,h_1927/v1619718134/bitsandletters-assets/joshua-coleman-dtoxmncnxlc-unsplash/joshua-coleman-dtoxmncnxlc-unsplash.jpeg?_i=AA"></figure>
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MV-3GgU6rlo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></figure>
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">https://www.youtube.com/watch?app=desktop&amp;v=MV-3GgU6rlo&amp;feature=youtu.be</div></figure>
 
 _Protocol_ reports that:
 
@@ -38,7 +32,7 @@ A difference between this video and the blog posts from Coinbase CEO Brian Armst
 
 Conte also, I guess to his credit, didn’t announce a big change to how the company works and then passive-aggressively offer an exit package to anyone who dissents — rather, he just fired the people who he wanted to fire, with similarly generous severance and other benefits such as full vesting of their stock grants.
 
----
+* * *
 
 <figure class="wp-block-image size-large"><img src="https://res.cloudinary.com/demaree/image/upload/v1619720758/bitsandletters-assets/gnome-ceos.jpg" alt="" class="wp-image-4319" data-original-src="https://demaree.blog/wp-content/uploads/2021/04/gnome-ceos.jpg"></figure>
 
@@ -76,7 +70,7 @@ In other words, it’s not that these CEOs have some inside scoop about the futu
 
 Another factor here — and the reason why this is playing out publicly — is that these CEOs are leveraging public opinion, possibly to make themselves feel better about hard choices, but also to kickstart controversy to make unambiguously dickish moves seem, well, more ambiguous. In Conte’s case, he’s getting love from his deeply loyal YouTube fan community:
 
-<figure class="wp-block-embed aligncenter is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">{{< tweet 1387629343984295937 >}}</div></figure>
+<figure class="wp-block-embed aligncenter is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">https://twitter.com/evan_just_evan/status/1387629343984295937</div></figure>
 
 In the other cases, it’s a mix of pro-business fellow travelers and longtime allies — [Daring Fireball](http://daringfireball.net)’s John Gruber, who’s known Jason Fried for a long time and been a 37signals/Basecamp proponent almost since the beginning, has posted [multiple](https://daringfireball.net/linked/2021/04/28/twitter-hate-machine) [links](https://daringfireball.net/linked/2021/04/27/ride-out-the-storm) that (vaguely, like subtweets) show support for Fried and dismiss the haters.
 

@@ -31,8 +31,10 @@ One of the great things about Git is that it doesn't really require your main br
 
 When you start a new repo, Git is hard-coded to set the first branch's name to `master`. But that branch doesn't technically exist until you make your first commit. So here's what you do to set your preferred name on a brand-new repo:
 
-    git init # if you hadn't done this yet
-    git checkout -b main
+```sh
+git init # if you hadn't done this yet
+git checkout -b main
+```
 
 Until GitHub finishes changing the default primary branch name, you'll need to go into your repo settings there to tell it that `main` is your primary branch; you'll find instructions for how to do this later in this post.
 
@@ -44,18 +46,24 @@ In other words, you can't actually rename a branch in Git, because renaming woul
 
 Here we'll replace a `master` branch with a new one called `main`, pointing to the current head commit:
 
-    git checkout master # if you're not already there
-    git checkout -b main
+```sh
+git checkout master # if you're not already there
+git checkout -b main
+```
 
 Alternatively, you can use `git branch` to ask Git to create a new branch pointing at the same commit `master` is on:
 
-    git branch main master
+```sh
+git branch main master
+```
 
 Whichever way you do it, your `master` branch will be left intact, you'll have a new `main` branch that's identical to `master`.
 
 To make this new main branch available to your collaborators, push it to GitHub:
 
-    git push -u origin main
+```sh
+git push -u origin main
+```
 
 ## Updating your primary branch in GitHub and other tools
 
@@ -97,54 +105,74 @@ So you may want to replace your old `master` with an "orphan" branch, which (a
 
 We’ll name this new orphan branch `no-masters`. To start, we call on `git checkout --orphan`, which asks Git to start a new branch but intentionally forget anything about your former head commit. This is similar to if you were starting over with a brand-new repo.
 
-    git checkout --orphan no-masters
+```sh
+git checkout --orphan no-masters
+```
 
 You'll end up with a branch that contains all the files and folders from your project, but staged as if they were new additions.
 
 Next, we'll remove all the content from this branch. Using `git rm` (as opposed to regular 'ol `rm`) will only delete files and folders that are checked into Git, leaving behind ignored content.
 
-    git rm -fr .
+```sh
+git rm -fr .
+```
 
 Depending on your tech stack, this may leave behind some stuff that had previously been hidden by `.gitignore`, all of which will now show up when you run `git status`. So we'll restore the old `gitignore` file from `main` to make sure these files are not committed or deleted:
 
-    git checkout main .gitignore
+```sh
+git checkout main .gitignore
+```
 
 Finally, let's leave a note explaining why this branch is empty. We'll add and commit a `README.md` Markdown file with the following text:
 
-    # This branch is deprecated
-    
-    This project's primary branch is now called `main`.
-    
-    You should `git checkout main` and `git pull origin main` from now on.
+```markdown
+# This branch is deprecated
+
+This project's primary branch is now called `main`.
+
+You should `git checkout main` and `git pull origin main` from now on.
+```
 
 Then commit these changes:
 
-    git add .gitignore README.md
-    # … output deleted …
-    git commit -m "Deprecation message for `master` branch"
+```sh
+git add .gitignore README.md
+# … output deleted …
+git commit -m "Deprecation message for `master` branch"
+```
 
 Because this is an orphaned branch, if you run `git log` you'll only see this commit, none of the history before it:
 
-    git log --oneline
-    > cd2b2c2 (HEAD -> no-masters) Deprecation message for `master` branch
+```
+git log --oneline
+> cd2b2c2 (HEAD -> no-masters) Deprecation message for `master` branch
+```
 
 OK, now for the scary part — replacing `master` with this content. Which means deleting your old `master` branch:
 
-    git branch -D master
+```sh
+git branch -D master
+```
 
 This will delete `master` locally, allowing you to create a new `master`branch that points to this new, empty-except-for-deprecation-message commit.
 
-    git branch master no-masters
+```sh
+git branch master no-masters
+```
 
 If you were to then `git checkout master`, you'll see the deprecation message.
 
-    git checkout master
-    git log --oneline
-    > cd2b2c2 (HEAD -> master) Deprecation message for `master` branch
+```
+git checkout master
+git log --oneline
+> cd2b2c2 (HEAD -> master) Deprecation message for `master` branch
+```
 
 Whew. Okay. One last step: pushing this `master` branch to GitHub. Because this is a new, orphaned branch, you will need to force-push. This may (hell, probably will) break any integrations you have hooked up to `master`, so you may want to wait until your team and infrastructure are fully migrated over to `main` until you do this.
 
-    git push -f origin master
+```
+git push -f origin master
+```
 
 Ahhhhhhhhh, so nice to have that done. Here's the deprecation message as shown on one of my GitHub repos:
 
@@ -152,9 +180,11 @@ Ahhhhhhhhh, so nice to have that done. Here's the deprecation message as shown o
 
 Because the server's `master` now points to this orphaned commit, Git will raise an error whenever you or someone on your team tries to pull from it:
 
-    git pull origin master
-    From <your-repo-url-here>
-     * branch            master     -> FETCH_HEAD
-    fatal: refusing to merge unrelated histories
+```
+git pull origin master
+From <your-repo-url-here>
+    * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+```
 
 If only it was this easy to break free from history in real life.
