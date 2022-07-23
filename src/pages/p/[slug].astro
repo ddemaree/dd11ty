@@ -1,0 +1,64 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import BlogHeader from '../../components/BlogHeader.astro';
+import BlogPost from '../../components/BlogPost.astro';
+import Footer from '../../components/Footer.astro';
+
+import generateSlug from '../../lib/generateSlug'
+import { getCloudinaryThumbnailUrl } from '../../lib/cloudinary';
+
+export async function getStaticPaths() {
+  let allPosts = await Astro.glob("../../posts/*.md");
+
+  return allPosts.map(postObj => {
+    const slug = generateSlug(postObj.file)
+
+    return {
+      params: { slug }
+    }
+  })
+}
+
+const { slug } = Astro.params;
+
+let allPosts = await Astro.glob("../../posts/*.md");
+allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+
+const post = allPosts.find(p => (generateSlug(p.file) === slug))
+const slugIndex = allPosts.indexOf(post)
+
+const prevPost = slugIndex > 0 ? allPosts[slugIndex - 1] : null;
+const nextPost = slugIndex < allPosts.length ? allPosts[slugIndex + 1] : null;
+
+const { Content, frontmatter: { title, description, date, image } } = post;
+
+let socialImages = [];
+if(image && image.cloudinary) socialImages.push(getCloudinaryThumbnailUrl(image.cloudinary))
+---
+<html lang="en">
+	<head>
+    <BaseHead {title} {description} {socialImages} />
+	</head>
+  
+	<body>
+    <BlogHeader />
+		<div class="wrapper">
+      <BlogPost {title} {date}>
+        <Content />
+			</BlogPost>
+
+      <div class="post-pagination">
+        {prevPost && <div>
+          Newer:
+          <a href={`/p/${generateSlug(prevPost.file)}`}>{prevPost.frontmatter.title}</a>
+        </div>}
+        {nextPost && <div>
+          Older:
+          <a href={`/p/${generateSlug(nextPost.file)}`}>{nextPost.frontmatter.title}</a>
+        </div>}
+      </div>
+
+			<Footer />
+		</div>
+	</body>
+</html>

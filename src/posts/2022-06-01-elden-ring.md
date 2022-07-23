@@ -1,10 +1,10 @@
 ---
 title: Because I Could Not Stop For Death
-pubDate: 2022-06-01
+date: 2022-06-01
+featured: true
 description: How I learned to stop worrying and love "Elden Ring"
 image:
   cloudinary: bitsandletters-assets/IMG_4374_58991dafd
-layout: ../../layouts/BlogPost.astro
 ---
 
 <figure class="dd-image size-wide block-image align-wide">

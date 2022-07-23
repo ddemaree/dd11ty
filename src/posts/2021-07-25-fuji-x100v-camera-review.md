@@ -3,12 +3,11 @@ title: 2 weeks with the Fuji X100V
 description: >-
   I got a fun new camera for summer vacation shooting.
 slug: fuji-x100v-camera-review
-pubDate: 2021-07-26
+date: 2021-07-26
 featured: true
 featured_image:
   cloudinary_id: bitsandletters-assets/IMG_2826.jpg 
   alt: Fuji X100V camera with lens cap and strap 
-layout: ../../layouts/BlogPost.astro
 ---
 
 <figure class="dd-image block-image">
