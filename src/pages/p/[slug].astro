@@ -1,11 +1,13 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import BlogHeader from '../../components/BlogHeader.astro';
-import BlogPost from '../../components/BlogPost.astro';
-import Footer from '../../components/Footer.astro';
+import BaseHead from '@components/BaseHead.astro';
+import SiteHeader from '@components/SiteHeader.astro';
+import BlogPost from '@components/BlogPost.astro';
+import Footer from '@components/Footer.astro';
+import PostPagination from '@components/PostPagination.astro';
 
-import generateSlug from '../../lib/generateSlug'
-import { getCloudinaryThumbnailUrl } from '../../lib/cloudinary';
+import generateSlug from '@lib/generateSlug'
+import { getCloudinaryThumbnailUrl } from '@lib/cloudinary';
+import { getAllPosts } from '@lib/posts';
 
 export async function getStaticPaths() {
   let allPosts = await Astro.glob("../../posts/*.md");
@@ -41,22 +43,13 @@ if(image && image.cloudinary) socialImages.push(getCloudinaryThumbnailUrl(image.
 	</head>
   
 	<body>
-    <BlogHeader />
+    <SiteHeader />
 		<div class="wrapper">
       <BlogPost {title} {date}>
         <Content />
 			</BlogPost>
 
-      <div class="post-pagination">
-        {prevPost && <div>
-          Newer:
-          <a href={`/p/${generateSlug(prevPost.file)}`}>{prevPost.frontmatter.title}</a>
-        </div>}
-        {nextPost && <div>
-          Older:
-          <a href={`/p/${generateSlug(nextPost.file)}`}>{nextPost.frontmatter.title}</a>
-        </div>}
-      </div>
+      <PostPagination nextPost={nextPost} prevPost={prevPost} />
 
 			<Footer />
 		</div>

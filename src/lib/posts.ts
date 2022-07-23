@@ -1,7 +1,9 @@
 import { AstroGlobal, MarkdownInstance } from "astro";
 
-export async function getAllPosts(Astro: AstroGlobal) {
-  return await Astro.glob("../posts/*.md");
+export async function getAllPosts() {
+  let _posts = Object.values(await import.meta.glob("../posts/*.md"));
+  _posts = await Promise.all(_posts.map((p) => p()));
+  return _posts;
 }
 
 export interface PostGetter {

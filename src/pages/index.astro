@@ -1,8 +1,8 @@
 ---
 // Component Imports
-import BaseHead from '../components/BaseHead.astro';
-import BlogHeader from '../components/BlogHeader.astro';
-import BlogPostPreview from '../components/BlogPostPreview.astro';
+import BaseHead from '@components/BaseHead.astro';
+import SiteHeader from '@components/SiteHeader.astro';
+import BlogPostPreview from '@components/BlogPostPreview.astro';
 
 let title = 'David Demaree';
 let description = 'The perfect starter for your perfect blog.';
@@ -62,7 +62,7 @@ let otherAllPosts = await Astro.glob("../posts/*.md");
 	</head>
 
 	<body>
-		<BlogHeader />
+		<SiteHeader />
 		<div class="wrapper">
 			<main class="content">
 				

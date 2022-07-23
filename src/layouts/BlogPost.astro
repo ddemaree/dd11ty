@@ -1,9 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import BlogHeader from '../components/BlogHeader.astro';
-import BlogPost from '../components/BlogPost.astro';
-import Footer from '../components/Footer.astro';
-import { getCloudinaryThumbnailUrl } from '../lib/cloudinary';
+import BaseHead from '@components/BaseHead.astro';
+import SiteHeader from '@components/SiteHeader.astro';
+import BlogPost from '@components/BlogPost.astro';
+import Footer from '@components/Footer.astro';
+import { getCloudinaryThumbnailUrl } from '@lib/cloudinary';
 
 const { content } = Astro.props;
 const { title, description, pubDate, author, heroImage, permalink, alt, image } = content;
@@ -18,7 +18,7 @@ if(image && image.cloudinary) socialImages.push(getCloudinaryThumbnailUrl(image.
 	</head>
 
 	<body>
-		<BlogHeader />
+		<SiteHeader />
 		<div class="wrapper">
 			<BlogPost {title} {author} {heroImage} {pubDate} {alt}>
 				<slot />

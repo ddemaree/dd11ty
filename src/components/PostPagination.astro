@@ -1,0 +1,25 @@
+---
+import type { MarkdownInstance } from 'astro';
+import generateSlug from '@lib/generateSlug';
+
+export interface Props {
+  prevPost?: MarkdownInstance<Record<string, any>>;
+  nextPost?: MarkdownInstance<Record<string, any>>;
+}
+
+const { prevPost, nextPost } = Astro.props;
+---
+<div class="post-pagination">
+  {prevPost && <div>
+    Newer:
+    <a href={`/p/${generateSlug(prevPost.file)}`}>{prevPost.frontmatter.title}</a>
+  </div>}
+  {nextPost && <div>
+    Older:
+    <a href={`/p/${generateSlug(nextPost.file)}`}>{nextPost.frontmatter.title}</a>
+  </div>}
+</div>
+
+<style>
+
+</style>
