@@ -6,7 +6,7 @@ modified: '2021-05-26T19:15:57.000Z'
 date: '2021-04-29T18:26:33.000Z'
 subtitle: A step-by-step guide to making any workplace crisis about you.
 ---
-<figure class="wp-block-image alignwide"><img src="https://images.unsplash.com/photo-1611424564096-3b8838e8438b?ixid=MnwyMTM5OTN8MHwxfGFsbHx8fHx8fHx8fDE2MTk3MTgwMTA&amp;ixlib=rb-1.2.1&amp;w=2000&amp;h=1505" alt="red and white neon light signage" width="2000" height="1505" data-wp-url="https://res.cloudinary.com/demaree/images/w_2560,h_1927/v1619718134/bitsandletters-assets/joshua-coleman-dtoxmncnxlc-unsplash/joshua-coleman-dtoxmncnxlc-unsplash.jpeg?_i=AA"></figure>
+<figure class="wp-block-image alignwide size-wide"><img src="https://images.unsplash.com/photo-1611424564096-3b8838e8438b?ixid=MnwyMTM5OTN8MHwxfGFsbHx8fHx8fHx8fDE2MTk3MTgwMTA&amp;ixlib=rb-1.2.1&amp;w=1200&amp;h=900" alt="Performer at a circus" width="1200" height="900"></figure>
 
 One is an incident, two is a coincidence, but three makes a pattern. Following on Basecamp’s heel turn this week, now [Patreon CEO Jack Conte has posted a YouTube video](https://www.youtube.com/watch?app=desktop\u0026v=MV-3GgU6rlo\u0026feature=youtu.be) announcing [the layoff of _36 people_ from the company](https://www.protocol.com/bulletins/patreon-lays-off-36-employees), despite things going well financially.
 

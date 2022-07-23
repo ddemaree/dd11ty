@@ -1,30 +1,32 @@
-import { AstroGlobal, MarkdownInstance } from "astro";
+import generateSlug from "./generateSlug";
 
-export async function getAllPosts() {
-  let _posts = Object.values(await import.meta.glob("../posts/*.md"));
-  _posts = await Promise.all(_posts.map((p) => p()));
-  return _posts;
+export interface PostFrontMatter {
+  title: string;
+  date: string;
 }
 
-export interface PostGetter {
-  Astro: AstroGlobal;
-  allPosts: MarkdownInstance<Record<string, any>>[];
+export interface Post {
+  Content: Function;
+  file: string;
+  frontmatter: PostFrontMatter;
+  uri: string;
 }
 
-export class PostGetter {
-  constructor(Astro: AstroGlobal) {
-    this.Astro = Astro;
-    this.allPosts = [];
-  }
+export function sortPostsByDate(allPosts: Post[]) {
+  return allPosts.sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+}
 
-  async getAllPosts() {
-    let _allPosts = await this.Astro.glob("../posts/*.md");
-    _allPosts = _allPosts.sort(
-      (a, b) =>
-        new Date(b.frontmatter.date).valueOf() -
-        new Date(a.frontmatter.date).valueOf()
-    );
-    this.allPosts = _allPosts;
-    return this.allPosts;
-  }
+export function getSinglePost(allPosts: Post[], slug: string) {
+  if (slug.match("/") || slug.match(/\.md$/)) slug = generateSlug(slug);
+
+  const post = allPosts.find((p) => generateSlug(p.file) === slug);
+  const slugIndex = allPosts.indexOf(post);
+  const prevPost = slugIndex > 0 ? allPosts[slugIndex - 1] : null;
+  const nextPost = slugIndex < allPosts.length ? allPosts[slugIndex + 1] : null;
+
+  return { slug, post, prevPost, nextPost };
 }

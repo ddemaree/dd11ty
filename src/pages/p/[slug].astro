@@ -5,32 +5,23 @@ import BlogPost from '@components/BlogPost.astro';
 import Footer from '@components/Footer.astro';
 import PostPagination from '@components/PostPagination.astro';
 
-import generateSlug from '@lib/generateSlug'
 import { getCloudinaryThumbnailUrl } from '@lib/cloudinary';
-import { getAllPosts } from '@lib/posts';
+import { getSinglePost, sortPostsByDate } from '@lib/posts';
 
 export async function getStaticPaths() {
-  let allPosts = await Astro.glob("../../posts/*.md");
+  let allPosts = sortPostsByDate(await Astro.glob("../../posts/*.md"));
 
   return allPosts.map(postObj => {
-    const slug = generateSlug(postObj.file)
+    const { slug, post, prevPost, nextPost } = getSinglePost(allPosts, postObj.file)
 
     return {
-      params: { slug }
+      params: { slug },
+      props: { post, prevPost, nextPost }
     }
   })
 }
 
-const { slug } = Astro.params;
-
-let allPosts = await Astro.glob("../../posts/*.md");
-allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
-
-const post = allPosts.find(p => (generateSlug(p.file) === slug))
-const slugIndex = allPosts.indexOf(post)
-
-const prevPost = slugIndex > 0 ? allPosts[slugIndex - 1] : null;
-const nextPost = slugIndex < allPosts.length ? allPosts[slugIndex + 1] : null;
+const { post, prevPost, nextPost } = Astro.props;
 
 const { Content, frontmatter: { title, description, date, image } } = post;
 
