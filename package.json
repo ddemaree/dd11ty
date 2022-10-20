@@ -10,7 +10,8 @@
     "preview": "astro preview"
   },
   "author": "David Demaree (david@demaree.me)",
-  "devDependencies": {
+  "dependencies": {
+    "@astrojs/vercel": "^2.3.1",
     "@astrojs/mdx": "^0.11.4",
     "@astrojs/solid-js": "^1.2.1",
     "@astrojs/tailwind": "^2.1.1",
@@ -18,6 +19,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@vercel/og": "^0.0.19",
     "astro": "^1.5.2",
     "clsx": "^1.2.1",
     "feed": "^4.2.2",
@@ -25,11 +27,9 @@
     "luxon": "^3.0.4",
     "postcss-lab-function": "^4.2.1",
     "solid-js": "^1.5.9",
-    "vercel": "^28.4.12",
     "zx": "^7.1.1"
   },
-  "dependencies": {
-    "@astrojs/vercel": "^2.3.1",
-    "@vercel/og": "^0.0.19"
+  "devDependencies": {
+    "vercel": "^28.4.12"
   }
 }
