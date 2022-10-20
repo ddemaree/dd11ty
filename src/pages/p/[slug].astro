@@ -6,10 +6,10 @@ import Footer from '@components/Footer.astro';
 import PostPagination from '@components/PostPagination.astro';
 
 import { getCloudinaryThumbnailUrl } from '@lib/cloudinary';
-import { getSinglePost, sortPostsByDate } from '@lib/posts';
+import { getAllPosts, getSinglePost } from '@lib/posts';
 
 export async function getStaticPaths() {
-  let allPosts = sortPostsByDate(await Astro.glob("../../posts/*.md"));
+  let allPosts = await getAllPosts();
 
   return allPosts.map(postObj => {
     const { slug, post, prevPost, nextPost } = getSinglePost(allPosts, postObj.file)

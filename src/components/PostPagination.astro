@@ -1,6 +1,8 @@
 ---
 import type { MarkdownInstance } from 'astro';
 import generateSlug from '@lib/generateSlug';
+import Icon from './Icon.astro';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export interface Props {
   prevPost?: MarkdownInstance<Record<string, any>>;
@@ -9,17 +11,23 @@ export interface Props {
 
 const { prevPost, nextPost } = Astro.props;
 ---
-<div class="post-pagination">
-  {prevPost && <div>
-    Newer:
-    <a href={`/p/${generateSlug(prevPost.file)}`}>{prevPost.frontmatter.title}</a>
-  </div>}
-  {nextPost && <div>
-    Older:
-    <a href={`/p/${generateSlug(nextPost.file)}`}>{nextPost.frontmatter.title}</a>
-  </div>}
+<div class="post-pagination mx-auto my-12 max-w-content md:max-w-none w-minus-inset flex flex-col gap-4 md:flex-row md:justify-between text-lg leading-snug py-6 border-y-2 border-y-divider/50 ">
+  {prevPost ? <div>
+    <a class="group flex gap-3 items-center" href={`/p/${generateSlug(prevPost.file)}`}>
+      <Icon icon={faArrowLeft} wrapperClass="text-text-lighter group-hover:text-primary md:text-2xl" />
+      <span class="md:block">
+        <b class="font-medium lowercase [font-variant:small-caps] tracking-wider block">Newer:</b>
+        <span class="group-hover:underline">{prevPost.frontmatter.title}</span>
+      </span>
+    </a>
+  </div> : <span></span>}
+  {nextPost ? <div>
+    <a class="group flex gap-3 items-center" href={`/p/${generateSlug(nextPost.file)}`}>
+      <Icon icon={faArrowRight} wrapperClass="text-text-lighter group-hover:text-primary md:order-last md:text-2xl" />
+      <span class="md:text-right">
+        <b class="font-medium lowercase [font-variant:small-caps] tracking-wider block">Older:</b>
+        <span class="group-hover:underline">{nextPost.frontmatter.title}</span>
+      </span>
+    </a>
+  </div> : <span></span>}
 </div>
-
-<style>
-
-</style>

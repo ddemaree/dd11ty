@@ -1,35 +1,31 @@
 ---
-import { cloudinaryImage, getCloudinaryThumbnailUrl } from '../lib/cloudinary';
 import Date from './Date.astro';
 
+import type { Post } from '@lib/posts';
+import generateSlug from '@lib/generateSlug';
+
 export interface Props {
-	post: any;
+	post: Post;
 }
 
 const { post } = Astro.props;
-
-let postImageURL;
-const postImage = post.frontmatter.image;
-if(postImage && postImage.cloudinary) {
-	postImageURL = getCloudinaryThumbnailUrl(postImage.cloudinary)
-}
+const postUrl = `/p/${generateSlug(post.file)}`
 ---
 
 <article class="post-preview">
-	{postImageURL && <figure><img src={postImageURL} width="300" height="200" alt="Image for post" /></figure>}
-	<header>
-		<p class="publish-date"><Date date={post.frontmatter.pubDate} /></p>
-		<a href={post.url}><h1 class="title">{post.frontmatter.title}</h1></a>
-	</header>
-	<p>{post.frontmatter.description}</p>
+	<div>
+		<header>
+			<p class="publish-date"><Date date={post.frontmatter.date} /></p>
+			<a href={postUrl}><h1 class="title">{post.frontmatter.title}</h1></a>
+		</header>
+		<p class="description">{post.frontmatter.description}</p>
+	</div>
 </article>
 
 <style>
 
 	.post-preview {
-		padding-bottom: 2rem;
-		margin-bottom: 2rem;
-		border-bottom: 4px solid var(--theme-divider);
+		font-size: 1.25rem;
 	}
 
 	header {
@@ -40,7 +36,7 @@ if(postImage && postImage.cloudinary) {
 		text-align: left;
 
 		h1 {
-			font-weight: 600;
+			/* font-weight: 600; */
 		}
 	}
 
@@ -52,13 +48,27 @@ if(postImage && postImage.cloudinary) {
 
 	.publish-date,
 	.author {
-		font-size: 1.25rem;
 		color: var(--theme-text-lighter);
+		font-size: 1rem;
 	}
 
 	.title {
-		font-size: 2.25rem;
-		font-weight: 700;
+		/* font-size: 2.25rem; */
+		font-weight: 600;
 		color: var(--theme-text);
+	}
+
+	.description {
+		@apply font-serif;
+		font-size: 1.125rem;
+	}
+
+	.post-image {
+		margin-bottom: 0.75rem;
+	}
+
+	.post-image img {
+		aspect-ratio: 5 / 4;
+		object-fit: cover;
 	}
 </style>

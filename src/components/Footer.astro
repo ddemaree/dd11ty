@@ -1,19 +1,16 @@
 ---
 import Icon from "./Icon.astro";
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import { faHeart, faFeed } from "@fortawesome/free-solid-svg-icons"
 
 ---
-<footer>
-  <div class="site-footer__credit text-sm leading-snug">
-    <p class="m-0">Made with <Icon wrapperClass="text-red-500" icon={faHeart} /> in New Jersey, U.S.A.</p>
+<footer class="px-6 text-center my-8 text-sm leading-snug text-text-light">
+  <div class="site-footer__credit">
+    <p class="m-0">Made with <Icon wrapperClass="text-primary" icon={faHeart} /> in New Jersey, U.S.A.</p>
     <p class="text-ink-medium m-0">&ldquo;Have courage, and be kind.&rdquo;</p>
   </div>
+  <div class="mt-4 flex gap-3 justify-center">
+    Subscribe to my feed:
+    <a href="/feeds/posts.xml" class="font-medium text-primary flex gap-1"><Icon icon={faFeed} /> <span>RSS</span></a>
+    <a href="/feeds/posts.json" class="font-medium text-primary flex gap-1"><Icon icon={faFeed} /> <span>JSON</span></a>
+  </div>
 </footer>
-
-<style>
-  footer {
-    color: var(--theme-text-light);
-    max-width: var(--width--wide);
-    padding-block: theme('spacing.8');
-  }
-</style>

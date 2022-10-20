@@ -11,36 +11,49 @@ const { title, date } = Astro.props;
 
 <div class="layout">
 	<article class="content">
-		<div>
-			<header>
-				{date && <p class="publish-date mt-2">
-					<Date date={date} />
-				</p>}
-				<h1 class="title">{title}</h1>
-			</header>
-			<main>
-				<slot />
-			</main>
-		</div>
+		<header class=" w-minus-inset mx-auto font-sans text-center my-10">
+			{date && <p class="publish-date mb-3 text-text-light">
+				<Date date={date} />
+			</p>}
+			<h1 class="title font-semibold text-4xl leading-[1.125]">{title}</h1>
+		</header>
+		<main>
+			<slot />
+		</main>
 	</article>
 </div>
 
-<script>
-
-const iframeVids = document.querySelectorAll('.content figure > iframe')
-
-iframeVids.forEach(iframe => {
-	// iframe.style.display = 'none';
-});
-
-</script>
-
 <style>
 	.content {
-		@apply text-lg;
-		font-family: 'tiempos-text';
-		margin-bottom: 8rem;
+		@apply text-lg font-serif leading-[1.5];
 	}
+
+	.content :global(:where(small,
+	.text_small)) {
+		font-size: theme("fontSize.sm");
+	}
+
+	.content :global(strong) {
+		font-weight: 600;
+		color: inherit;
+	}
+
+	.content :global(a) {
+		@apply text-primary underline decoration-primary/30;
+		align-items: center;
+		gap: 0.5rem;
+		text-decoration-thickness: 1.25px;
+		text-underline-offset: 0.125em;
+	}
+
+	.content :global(a:hover, a:focus) {
+		@apply decoration-primary/100;
+	}
+
+	/* .content :global(a:focus) {
+		outline: 2px solid currentColor;
+		outline-offset: 0.25em;
+	} */
 
 	.content :global(:where(b, strong)) {
 		color: var(--theme-text-bold);
@@ -55,10 +68,10 @@ iframeVids.forEach(iframe => {
 	}
 
 	.content :global(:where(main > *, main astro-island > *)) {
+		@apply w-minus-inset;
 		margin-block: 0;
 		margin-inline: auto;
 		max-width: var(--width-content);
-		width: calc(100% - (2 * var(--spacing-inset)));
 
 		&:first-child {
 			margin-block-start: 0;
@@ -73,12 +86,16 @@ iframeVids.forEach(iframe => {
 		margin-top: 1.25rem;
 	}
 
+	.content :global(h1, h2, h3, h4, h5, h6) {
+		@apply font-sans text-text-strong;
+	}
+
 	.content :global(h2, h3, h4) {
 		margin-top: 4rem;
 		font-weight: 500;
 	}
 
-	.content :global(h2) {
+	.content :global(h2, h3, h4) {
 		font-size: revert;
 	}
 
@@ -92,7 +109,7 @@ iframeVids.forEach(iframe => {
 		}
 
 		:global(::marker) {
-			color: var(--theme-primary);
+			@apply text-primary;
 		}
 	}
 
@@ -101,12 +118,12 @@ iframeVids.forEach(iframe => {
 	}
 
 	.content :global(:where(blockquote)) {
+		@apply border-l-divider border-l-4;
 		--padding-block: 1rem;
 		--padding-inline: 1.25rem;
 		--color: var(--theme-divider);
 		
 		background: transparent;
-		border-left: calc(var(--padding-inline) / 4) solid var(--color);
 		border-radius: 0;
 		display: flex;
 		flex-direction: column;
@@ -114,10 +131,8 @@ iframeVids.forEach(iframe => {
 	}
 
 	.content :global(:where(hr)) {
-		border-color: var(--theme-divider);
-		border-width: 0.125rem;
-		margin-block: 2.5rem;
-		max-width: 18rem;
+		@apply border-t-divider border-t-2 my-12;
+		max-width: calc(var(--width-content) / 2);
 	}
 
 	.content :global(:where(main > figure, main astro-island > figure)) {
@@ -133,8 +148,7 @@ iframeVids.forEach(iframe => {
 	}
 
 	.content :global(:where(figcaption)) {
-		@apply text-center text-sm font-sans mt-2;
-		color: var(--theme-text-light);
+		@apply text-center text-sm font-sans mt-2 text-text-light;
 		margin-inline: auto;
 		max-width: var(--width-content);
 		width: calc(100vw - (2 * var(--spacing-inset)));
@@ -153,33 +167,25 @@ iframeVids.forEach(iframe => {
 		}
 	}
 
-	header {
+	/* header {
 		display: flex;
 		flex-direction: column;
 		text-align: center;
 		align-items: center;
 		justify-content: center;
 
-		padding-bottom: 2rem;
-		margin-bottom: 2rem;
-		/* border-bottom: 4px solid var(--theme-divider); */
-	}
-
-	.title,
-	.author,
-	.publish-date {
-		margin: 0;
+		padding-block-end: 3rem;
 	}
 
 	.publish-date {
-		@apply font-sans;
-		color: var(--theme-text-lighter);
+		@apply font-sans text-text-light;
 	}
 
 	.title {
 		font-size: 2.25rem;
 		font-weight: 600;
-	}
+		line-height: 1;
+	} */
 </style>
 <style is:global>
 

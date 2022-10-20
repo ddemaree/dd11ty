@@ -11,21 +11,24 @@
   },
   "author": "David Demaree (david@demaree.me)",
   "devDependencies": {
-    "@astrojs/mdx": "^0.2.0",
-    "@astrojs/rss": "^0.2.1",
-    "@astrojs/solid-js": "^0.2.1",
-    "@astrojs/tailwind": "^0.2.4",
-    "@cloudinary/url-gen": "^1.8.0",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-brands-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "astro": "^1.0.0-beta.72",
+    "@astrojs/mdx": "^0.11.4",
+    "@astrojs/solid-js": "^1.2.1",
+    "@astrojs/tailwind": "^2.1.1",
+    "@cloudinary/url-gen": "^1.8.6",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "astro": "^1.5.2",
     "clsx": "^1.2.1",
     "feed": "^4.2.2",
     "lodash": "^4.17.21",
-    "luxon": "^2.5.0",
+    "luxon": "^3.0.4",
     "postcss-lab-function": "^4.2.1",
-    "solid-js": "^1.4.7",
-    "zx": "^7.0.7"
+    "solid-js": "^1.5.9",
+    "vercel": "^28.4.12",
+    "zx": "^7.1.1"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^2.3.1"
   }
 }

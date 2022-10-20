@@ -36,12 +36,12 @@ const [ html ] = faIcon(icon, { classes: clsx(classes) }).html
 	}
 
 	.icon-wrapper-rounded:before {
+		@apply bg-current;
     position: absolute;
 		height: 1em;
 		width: 1em;
 		content: '';
 		display: inline-block;
-		background-color: var(--theme-primary, currentColor);
 		border-radius: 0.18em;
 	}
 
