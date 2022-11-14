@@ -3,7 +3,9 @@ import _ from "lodash";
 import { DateTime } from "luxon";
 
 export async function getFeed() {
-  const docs = Object.values(import.meta.globEager("../pages/p/**/*.md"));
+  const docs = Object.values(
+    import.meta.glob("../pages/p/**/*.md", { eager: true })
+  );
 
   // This is wrapped in Promise/async because content rendering is async
   // As it happens, doc content can't be rendered outside of Astro builds

@@ -1,43 +1,40 @@
 ---
+import { Image, Picture } from '@astrojs/image/components';
 import BaseHead from '@components/BaseHead.astro';
 import SiteHeader from '@components/SiteHeader.astro';
 import BlogPost from '@components/BlogPost.astro';
 import Footer from '@components/Footer.astro';
 import PostPagination from '@components/PostPagination.astro';
+import Tweet from '@components/Tweet.astro';
 
-import { getCloudinaryThumbnailUrl } from '@lib/cloudinary';
 import { getAllPosts, getSinglePost } from '@lib/posts';
+import { getImage } from '@astrojs/image';
 
-export async function getStaticPaths() {
-  let allPosts = await getAllPosts();
+const allPosts = await getAllPosts();
+const { slug } = Astro.params;
+const { post, prevPost, nextPost } = getSinglePost(allPosts, slug);
 
-  return allPosts.map(postObj => {
-    const { slug, post, prevPost, nextPost } = getSinglePost(allPosts, postObj.file)
+const { Content, frontmatter: fm, featuredImage } = post;
+const { title, date, description, excerpt, ...frontmatter } = fm;
 
-    return {
-      params: { slug },
-      props: { post, prevPost, nextPost }
-    }
-  })
+if(frontmatter.featuredImage) {
+	
+	// Path relative to _this_ file, not the original .mdx
+	const featImageImport = await import( /* @vite-ignore */ `../../content/images/${frontmatter.featuredImage}` );
+	const featuredImageData = await getImage({src: featImageImport.default, width: 1400 });
+	console.log({featuredImageData, featImageImport});
 }
-
-const { post, prevPost, nextPost } = Astro.props;
-
-const { Content, frontmatter: { title, description, date, image } } = post;
-
-let socialImages = [];
-if(image && image.cloudinary) socialImages.push(getCloudinaryThumbnailUrl(image.cloudinary))
 ---
 <html lang="en">
 	<head>
-    <BaseHead {title} {description} {socialImages} />
+    <BaseHead title={title} description={description} />
 	</head>
   
 	<body>
     <SiteHeader />
 		<div class="wrapper">
-      <BlogPost {title} {date}>
-        <Content />
+      <BlogPost title={title} date={date} subtitle={excerpt || description}>
+        <Content components={{ Tweet, Image }} />
 			</BlogPost>
 
       <PostPagination nextPost={nextPost} prevPost={prevPost} />

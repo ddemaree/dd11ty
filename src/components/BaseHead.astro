@@ -4,20 +4,20 @@ import '../styles/blog.css';
 export interface Props {
 	title: string;
 	description: string;
-	permalink: string;
+	permalink?: string;
 	socialTitle?: string;
 	socialImages?: [string];
 }
 let { title, description, permalink, socialTitle, socialImages = [] } = Astro.props;
 
-if(!socialTitle) socialTitle = title;
+if(!socialTitle) socialTitle = title || "";
 
-const socialImageUrl = `https://res.cloudinary.com/demaree/w_1200,h_627/p/${encodeURIComponent(socialTitle)}`;
+const socialImageUrl = `https://dd-social-images.vercel.app/api/image?title=${encodeURIComponent(socialTitle.replace(/ /g, "_").replace(/'/g, '%27'))}&t=${Date.now()}`;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" href="/icon.svg" type="image/svg+xml" />
 
 <!-- Primary Meta Tags -->
@@ -33,16 +33,16 @@ const socialImageUrl = `https://res.cloudinary.com/demaree/w_1200,h_627/p/${enco
 <meta property="og:image" content={socialImageUrl} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={permalink} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={socialImageUrl} />
-<!-- {socialImages.map(i => <meta property="twitter:image" content={i} />) } -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={permalink} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImageUrl} />
+<meta name="twitter:creator" content="@ddemaree" />
+<meta name="twitter:site" content="@ddemaree" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://cdn.demaree.net" />
 <link rel="stylesheet" href="https://cdn.demaree.net/fonts/soehne/index.css" />
 <link rel="stylesheet" href="https://cdn.demaree.net/fonts/soehne-mono/index.css" />
-<link rel="stylesheet" href="https://cdn.demaree.net/fonts/epicene/epicene.css">
 <link rel="stylesheet" href="https://cdn.demaree.net/fonts/tiempos/fonts.css">

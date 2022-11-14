@@ -1,156 +1,281 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
-
-:root {
-  /* Primary */
-  --color-red-900: 57 9 10;
-  --color-red-800: 97 12 24;
-  --color-red-700: 139 17 37;
-  --color-red-600: 181 25 51;
-  --color-red-500: 225 34 66;
-  --color-red-400: 248 85 95;
-  --color-red-300: 250 137 135;
-  --color-red-200: 250 180 176;
-  --color-red-100: 250 219 217;
-
-  /* Secondary */
-  --color-purple-900: 38 19 57;
-  --color-purple-800: 65 33 98;
-  --color-purple-700: 94 49 141;
-  --color-purple-600: 133 79 188;
-  --color-purple-500: 147 97 195;
-  --color-purple-400: 169 128 206;
-  --color-purple-300: 191 159 218;
-  --color-purple-200: 212 191 229;
-  --color-purple-100: 233 223 240;
-
-  /* Info */
-  --color-blue-900: 21 28 36;
-  --color-blue-800: 37 50 63;
-  --color-blue-700: 54 73 92;
-  --color-blue-600: 73 97 121;
-  --color-blue-500: 93 123 152;
-  --color-blue-400: 116 152 188;
-  --color-blue-300: 143 175 209;
-  --color-blue-200: 181 201 223;
-  --color-blue-100: 219 228 238;
-
-  /* Neutral */
-  --color-neutral-900: 27 27 27;
-  --color-neutral-800: 43 43 43;
-  --color-neutral-700: 71 71 71;
-  --color-neutral-600: 94 94 94;
-  --color-neutral-500: 119 119 119;
-  --color-neutral-400: 145 145 145;
-  --color-neutral-300: 171 171 171;
-  --color-neutral-200: 198 198 198;
-  --color-neutral-100: 226 226 226;
-  --color-neutral-50: 240 240 240;
-
-  /* Success */
-  --color-green-900: 23 30 8;
-  --color-green-800: 34 54 9;
-  --color-green-700: 49 78 12;
-  --color-green-600: 67 104 19;
-  --color-green-500: 85 131 27;
-  --color-green-400: 104 159 35;
-  --color-green-300: 124 188 43;
-  --color-green-200: 135 204 47;
-  --color-green-100: 176 246 89;
-
-  /* Caution */
-  --color-gold-900: 37 25 4;
-  --color-gold-800: 68 43 1;
-  --color-gold-700: 98 62 0;
-  --color-gold-600: 130 84 0;
-  --color-gold-500: 163 106 0;
-  --color-gold-400: 197 129 0;
-  --color-gold-300: 232 153 0;
-  --color-gold-200: 255 175 49;
-  --color-gold-100: 252 221 184;
-}
-
-:root {
-  --font-fallback: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  --font-body: "soehne-web", var(--font-fallback);
-  --font-mono: "soehne-mono-web", Consolas, "Andale Mono WT", "Andale Mono",
-    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
-    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco,
-    "Courier New", Courier, monospace;
-
-  --color-white: #fff;
-  --color-black: #000014;
-
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
-
-  --color-blue: #3894ff;
-  --color-blue-rgb: 56, 148, 255;
-  --color-green: #17c083;
-  --color-green-rgb: 23, 192, 131;
-  --color-orange: #ff5d01;
-  --color-orange-rgb: 255, 93, 1;
-  --color-purple: #882de7;
-  --color-purple-rgb: 136, 45, 231;
-  --color-red: #ff1639;
-  --color-red-rgb: 255, 22, 57;
-  --color-yellow: #ffbe2d;
-  --color-yellow-rgb: 255, 190, 45;
-
-  --width-content: 38rem;
-  --width-wide: 62rem;
-
-  --spacing-inset: 1.5rem;
-  --spacing-inset: clamp(1.5rem, 6vw, 2.25rem);
-}
+@tailwind utilities;
 
 :root {
   color-scheme: light;
-  /* --theme-accent: var(--color-orange);
-  --theme-accent-rgb: var(--color-orange-rgb);
-
-  --theme-accent-rgb: var(--color-red-500);
-  --theme-accent: rgba(var(--theme-accent-rgb));
-
-  --theme-accent-opacity: 0.1;
-  --theme-divider: var(--color-gray-100);
-  --theme-text: var(--color-gray-800);
-  --theme-text-light: var(--color-gray-600);
-  --theme-text-lighter: var(--color-gray-400);
-  --theme-text-bold: theme("colors.black");
-  --theme-bg: var(--color-white);
-  --theme-bg-offset: var(--color-gray-100);
-  --theme-bg-accent: rgba(var(--theme-accent-rgb), var(--theme-accent-opacity));
-  --theme-code-inline-bg: var(--color-gray-100);
-  --theme-code-text: var(--color-gray-100);
-  --theme-code-bg: var(--color-gray-700); */
-
-  --theme-background: var(--color-neutral-50);
-  --theme-primary: var(--color-red-500);
-  --theme-text: var(--color-neutral-800);
-  --theme-text-strong: theme("colors.black");
-  --theme-text-light: var(--color-neutral-500);
-  --theme-text-lighter: var(--color-neutral-300);
-  --theme-divider: var(--color-neutral-200);
-  --theme-divider-light: var(--color-neutral-100);
 }
 
-body {
-  @apply text-text bg-background;
-}
+@layer components {
+  .prose {
+    --tw-prose-body: theme("colors.zinc.700");
+    --tw-prose-headings: theme("colors.zinc.900");
+    --tw-prose-lead: theme("colors.zinc.600");
+    --tw-prose-links: theme("colors.zinc.900");
+    --tw-prose-bold: theme("colors.zinc.900");
+    --tw-prose-counters: theme("colors.zinc.500");
+    --tw-prose-bullets: theme("colors.zinc.300");
+    --tw-prose-hr: theme("colors.zinc.200");
+    --tw-prose-quotes: theme("colors.zinc.900");
+    --tw-prose-quote-borders: theme("colors.zinc.200");
+    --tw-prose-captions: theme("colors.zinc.500");
+    --tw-prose-code: theme("colors.zinc.900");
+    --tw-prose-pre-code: theme("colors.zinc.200");
+    --tw-prose-pre-bg: theme("colors.zinc.800");
+    --tw-prose-th-borders: theme("colors.zinc.300");
+    --tw-prose-td-borders: theme("colors.zinc.200");
+    --tw-prose-invert-body: theme("colors.zinc.300");
+    --tw-prose-invert-headings: colors.white;
+    --tw-prose-invert-lead: theme("colors.zinc.400");
+    --tw-prose-invert-links: colors.white;
+    --tw-prose-invert-bold: colors.white;
+    --tw-prose-invert-counters: theme("colors.zinc.400");
+    --tw-prose-invert-bullets: theme("colors.zinc.600");
+    --tw-prose-invert-hr: theme("colors.zinc.700");
+    --tw-prose-invert-quotes: theme("colors.zinc.100");
+    --tw-prose-invert-quote-borders: theme("colors.zinc.700");
+    --tw-prose-invert-captions: theme("colors.zinc.400");
+    --tw-prose-invert-code: colors.white;
+    --tw-prose-invert-pre-code: theme("colors.zinc.300");
+    --tw-prose-invert-pre-bg: "rgb(0 0 0 / 50%)";
+    --tw-prose-invert-th-borders: theme("colors.zinc.600");
+    --tw-prose-invert-td-borders: theme("colors.zinc.700");
 
-.wrapper {
-  margin-inline: auto;
-  max-width: var(--width-wide);
-  width: 100%;
+    --prose-text-size: clamp(16px, 2.5vw, 18px);
+
+    --flow-spacing-xs: calc(var(--prose-text-size) * 0.375);
+    --flow-spacing-sm: calc(var(--prose-text-size) * 0.75);
+    --flow-spacing-normal: calc(var(--prose-text-size) * 1.5);
+    --flow-spacing-big: calc(var(--prose-text-size) * 3);
+
+    --prose-indent: 1.625em;
+
+    color: var(--tw-prose-body);
+    font-size: var(--prose-text-size);
+    line-height: 1.6;
+
+    & :where(* + *),
+    & :where(blockquote * + *) {
+      margin-block-start: var(--flow-spacing-normal);
+    }
+
+    & > :where(figure, img, picture, hr, pre[class*="language-"]) {
+      &,
+      & + * {
+        margin-block-start: var(--flow-spacing-big);
+      }
+    }
+
+    :where(img) {
+      margin: unset;
+    }
+
+    :where(a) {
+      color: var(--tw-prose-links);
+    }
+
+    :where(b, strong) {
+      color: var(--tw-prose-bold);
+      font-weight: 600;
+    }
+
+    :where(a, blockquote, thead th) :where(b, strong) {
+      color: inherit;
+    }
+
+    :where(ol, ul) {
+      padding-inline-start: var(--prose-indent);
+
+      :where(ol, ul) {
+        margin-block: var(--flow-spacing-xs) 0;
+      }
+
+      > li {
+        padding-inline-start: 0.375em;
+      }
+    }
+
+    > :where(ol, ul) {
+      > li p {
+        margin-block: 0.75em;
+      }
+    }
+
+    li {
+      margin-block: var(--flow-spacing-xs);
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    /* OMITTED: OL [type] attribute styles */
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol > li::marker {
+      @apply font-sans font-semibold;
+      color: var(--tw-prose-counters);
+      font-size: 0.875em;
+    }
+
+    ul > li::marker {
+      color: var(--tw-prose-bullets);
+    }
+
+    :where(ul, ol) :where(ul, ol) {
+      margin-block-start: 0.5em;
+      margin-block-end: 0;
+    }
+
+    hr {
+      border-color: var(--tw-prose-hr);
+      border-top-width: 1px;
+
+      + * {
+        margin-block-start: 0;
+      }
+    }
+
+    :where(blockquote) {
+      border-left-color: var(--tw-prose-quote-borders);
+      border-left-width: 0.25em;
+      color: var(--tw-prose-quotes);
+      padding-inline-start: calc(var(--prose-indent) - 0.25em);
+    }
+
+    figure blockquote {
+      margin: 0;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) {
+      color: var(--tw-prose-headings);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      letter-spacing: -0.01ch;
+      line-height: 1.1;
+      margin-block-start: var(--flow-spacing-big);
+
+      + :where(p) {
+        margin-block-start: var(--flow-spacing-sm);
+      }
+
+      :where(b, strong) {
+        color: inherit;
+        font-weight: 700;
+      }
+    }
+
+    :where(h1) {
+      font-size: 2em;
+    }
+
+    :where(h2) {
+      font-size: 1.75em;
+    }
+
+    :where(h3) {
+      font-size: 1.5em;
+    }
+
+    :where(figure) {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    :where(figcaption, .wp-block-pullquote__citation) {
+      color: var(--tw-prose-captions);
+      font-family: var(--font-sans);
+      font-size: 0.875em;
+      font-style: normal;
+      line-height: 1.375;
+      margin-block-start: 0.875em;
+      margin-block-end: 0;
+      max-width: 60ch;
+      text-align: center;
+    }
+
+    code {
+      color: var(--tw-prose-code);
+      font-weight: 500;
+    }
+
+    :where(a, h1, h2, h3, h4, h5, h6, blockquote, thead th) code {
+      color: inherit;
+    }
+
+    /* TODO: Code styles, need to see how they interact with prism */
+    pre {
+      color: var(--tw-prose-pre-code);
+      background-color: var(--tw-prose-pre-bg);
+      overflow-x: auto;
+      font-weight: 400;
+
+      code {
+        background-color: transparent;
+        color: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+      }
+    }
+
+    /* OMITTED: table styles */
+
+    :where(figure iframe[src*="youtube.com"]) {
+      aspect-ratio: 16 / 9;
+      height: auto;
+      width: 100%;
+    }
+
+    :where(figure[class*="gallery"]) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--flow-spacing-sm);
+      align-items: unset;
+
+      :where(figure:has(img)) {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        margin: unset;
+        width: calc(50% - (var(--flow-spacing-sm) / 2));
+
+        img {
+          flex: 1 0 0%;
+          height: 100%;
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .prose-grid {
+    display: grid;
+    grid-auto-flow: row;
+    /* prettier-ignore */
+    grid-template-columns: [full-start] 1fr [wide-start] minmax(var(--inset-x), 7ch) [content-start] min( calc(100% - (var(--inset-x) * 2)), 60ch ) [content-end] minmax(var(--inset-x), 7ch) [wide-end] 1fr [full-end];
+    justify-items: start;
+
+    > :is(*, p, .aligncontent) {
+      grid-column: content;
+    }
+
+    > .alignwide {
+      grid-column: wide;
+    }
+
+    > .alignfull {
+      grid-column: full;
+    }
+
+    .wp-block-embed {
+      justify-self: center;
+    }
+  }
 }

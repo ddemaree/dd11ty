@@ -1,5 +1,6 @@
 ---
 // Component Imports
+import { Image } from '@astrojs/image/components';
 import BaseHead from '@components/BaseHead.astro';
 import SiteHeader from '@components/SiteHeader.astro';
 import BlogPostPreview from '@components/BlogPostPreview.astro';
@@ -39,13 +40,7 @@ allPosts = await getAllPosts();
 			<main class="content">
 				
 				<section class="intro mb-12 px-inset flex flex-col items-center">
-					<img
-						src="/assets/dd-stitch-transparent.png"
-						width="320"
-						height="453"
-						alt="Man wearing Stitch cap"
-						class="mb-4 w-[clamp(160px,50vw,200px)]"
-					/>
+					<Image src="/assets/dd-stitch-transparent.png" alt="Man wearing Stitch cap" width="320" aspectRatio="0.7" class="mb-4 w-[clamp(160px,50vw,200px)]" />
 					<div class="intro text-2xl w-full max-w-content">
 						<Intro />
 					</div>

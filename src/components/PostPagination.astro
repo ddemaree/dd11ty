@@ -1,12 +1,13 @@
 ---
 import type { MarkdownInstance } from 'astro';
+import type { Post } from "@lib/posts";
 import generateSlug from '@lib/generateSlug';
 import Icon from './Icon.astro';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export interface Props {
-  prevPost?: MarkdownInstance<Record<string, any>>;
-  nextPost?: MarkdownInstance<Record<string, any>>;
+  prevPost?: Post | MarkdownInstance<Record<string, any>>;
+  nextPost?: Post | MarkdownInstance<Record<string, any>>;
 }
 
 const { prevPost, nextPost } = Astro.props;

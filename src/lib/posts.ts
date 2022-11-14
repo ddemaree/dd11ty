@@ -3,7 +3,9 @@ import generateSlug from "./generateSlug";
 export interface PostFrontMatter {
   title: string;
   date: string;
-  description: string;
+  description?: string;
+  excerpt?: string;
+  featuredImage?: string;
 }
 
 export interface Post {
@@ -11,6 +13,7 @@ export interface Post {
   file: string;
   frontmatter: PostFrontMatter;
   uri: string;
+  featuredImage?: any;
 }
 
 interface PostOptions {
@@ -28,7 +31,7 @@ export async function getAllPosts(
   opts: PostOptions = { featured: null, includeDrafts: false }
 ) {
   let _posts = Object.values(
-    await import.meta.globEager("../content/posts/*.md")
+    await import.meta.glob("../content/posts/*.{md,mdx}", { eager: true })
   ) as Post[];
 
   if (opts.featured) {
