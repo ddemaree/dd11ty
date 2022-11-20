@@ -38,7 +38,7 @@ The first way the game is challenging is its character-building aspect: unlike (
 
 One of the game’s ongoing core mechanics is grinding for “runes,” which serve as both experience points (XP) and currency. You earn runes when you kill enemies, and you can also find them laying around as loot or get them for selling your extra stuff to a merchant. You spend runes when you want to level up your character — in return for an ever-increasing amount of runes, you can add one stat point to one of your character’s attributes. These stat upgrades are mostly permanent, and they determine what kinds of attacks or defenses you’ll be good at later on, so you have to invest wisely.
 
-<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><blockquote class="twitter-tweet" data-width="550"><p lang="en" dir="ltr">I find the world fascinating. Most open world games feel like task whack-a-mole anymore. I love how ER encourages you to explore and rewards that curiosity. I also like the ways you can customize your play style and gear.</p>— Justin Belcher (@gravitywins) <a href="https://twitter.com/gravitywins/status/1508906117786574854?ref_src=twsrc%5Etfw">March 29, 2022</a></blockquote><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></figure>
+<Tweet url="https://twitter.com/gravitywins/status/1508906117786574854" />
 
 But “wisely” can be a local maximum — _Elden Ring_ doesn’t have a single set way to win, and it’s designed to allow players the freedom to make their own path. I hear that lots of players go all-in on magic, only using swords and shields as a backup. Others do the opposite, spending all their runes on building the strongest, buffest, tankiest warriors possible.
 

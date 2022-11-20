@@ -17,12 +17,18 @@ const { post, prevPost, nextPost } = getSinglePost(allPosts, slug);
 const { Content, frontmatter: fm, featuredImage } = post;
 const { title, date, description, excerpt, ...frontmatter } = fm;
 
+let featuredImageData = {};
+
 if(frontmatter.featuredImage) {
-	
-	// Path relative to _this_ file, not the original .mdx
-	const featImageImport = await import( /* @vite-ignore */ `../../content/images/${frontmatter.featuredImage}` );
-	const featuredImageData = await getImage({src: featImageImport.default, width: 1400 });
-	console.log({featuredImageData, featImageImport});
+	if(frontmatter.featuredImage.match(/^https?\:/)) {
+		featuredImageData = await getImage({src: frontmatter.featuredImage, width: 1400, aspectRatio: (5/4) });
+	}
+	else {
+		// Path relative to _this_ file, not the original .mdx
+		const featImageImport = await import( /* @vite-ignore */ `../../content/images/${frontmatter.featuredImage}` );
+		featuredImageData = await getImage({src: featImageImport.default, width: 1400 });
+	}
+	console.log({featuredImageData});
 }
 ---
 <html lang="en">
