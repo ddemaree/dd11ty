@@ -1,0 +1,17 @@
+---
+import { Image } from '@astrojs/image/components';
+---
+<section class="@container/intro intro [margin-inline:_auto] max-w-4xl">
+  <div class="px-inset flex flex-col items-center gap-x-[6cqi] gap-y-8 @3xl:flex-row @3xl:items-start @md:py-[max(6cqi,6vw)]">
+    <div class="w-[clamp(160px,36cqi,200px)] flex-shrink-0">
+      <Image src="/assets/dd-stitch-transparent.png" alt="Man wearing Stitch cap" width="320" aspectRatio="0.7" />
+    </div>
+  
+    <div class="@container/intro-text w-full flex flex-col items-center leading-[1.25]">
+      <div class="[font-size:clamp(21px,6cqi,31px)] max-w-[30ch] text-gray-500@ font-serif-headline font-light">
+        <p class="[font-size:118%] font-normal leading-[1.18] mb-[0.5em] text-gray-600"><b class="font-semibold text-black">Hi, I’m David Demaree</b>, a web coder, writer, and photographer based in suburban NYC.</p>
+        <p>This is my website where I write about tech, business, digital culture, and whatever else. I love good coffee, mechanical keyboards, Legos, my family, and my dog, not necessarily in that order.</p>
+      </div>
+    </div>
+  </div>
+</section>

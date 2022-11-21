@@ -46,6 +46,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("@tailwindcss/container-queries"),
     plugin(function ({ addBase, theme }) {
       const themeFontFamilies = theme("fontFamily");
       const fontFamilies = {};

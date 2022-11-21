@@ -80,11 +80,11 @@ I burned through _[Metroid Dread](https://en.wikipedia.org/wiki/Metroid_Dread)_ 
 
 Not long after _Elden Ring_’s release, [_Ars Technica_’s Kyle Orland wrote about its hardness and offered a taxonomy](https://arstechnica.com/gaming/2022/03/is-elden-ring-really-that-hard-well-it-depends-what-you-mean-by-hard/) consisting of five types of difficulty in video games:
 
-*   Mechanical difficulty (being able to hit buttons or perform moves precisely)
-*   Punishing difficulty (how easy is it to screw up, and how much progress do you lose if you do?)
-*   Arcane difficulty (how much or little does the game explain itself to the player)
-*   Grindable difficulty (is it possible to flatten the difficulty curve by just spending hours collecting more loot?)
-*   Difficulty walls (if you hit an impasse, are you stuck?)
+* __Mechanical difficulty__ (being able to hit buttons or perform moves precisely)
+* __Punishing difficulty__ (how easy is it to screw up, and how much progress do you lose if you do?)
+* __Arcane difficulty__ (how much or little does the game explain itself to the player)
+* __Grindable difficulty__ (is it possible to flatten the difficulty curve by just spending hours collecting more loot?)
+* __Difficulty walls__ (if you hit an impasse, are you stuck?)
 
 All of the hard games I've been playing, including _Elden Ring_, are mechanically and punishingly difficult according to Orland's list. _Elden Ring_ generally requires less precision than the hardest parts of _Returnal_ or _Metroid_, both of which feature lots of bullet-hell sections where sloppy timing will get you killed.
 
@@ -126,8 +126,8 @@ What's great about this for a solo gamer is that there is a wealth of informatio
 
 If TL;DW, some key tips are:
 
-*   Find a good rune farming spot, so you can level up quickly. (VaatiVidya and others recommend a spot close to a bridge in Caelid, but FWIW I'm partial to a spot in Stormhill with 5-6 giant trolls, each worth 1,000 runes, just hanging around.)
-*   Mining tunnels are great for grabbing stones to upgrade weapons, and you don't even need to fight or beat all the enemies (but obviously you'll do even better once you can)
+* Find a good rune farming spot, so you can level up quickly. (VaatiVidya and others recommend a spot close to a bridge in Caelid, but FWIW I'm partial to a spot in Stormhill with 5-6 giant trolls, each worth 1,000 runes, just hanging around.)
+* Mining tunnels are great for grabbing stones to upgrade weapons, and you don't even need to fight or beat all the enemies (but obviously you'll do even better once you can)
 
 _Elden Ring_ tells you almost nothing about itself, at least not in a clear or linear way. Most open-world games have quest markers telling you the precise distance to your next objective, with voiceovers or other cues to tell you if it's time to grind or do other stuff before you go to there. Remember how I said _Elden Ring_ gives you a golden arrow that you absolutely should _not_ follow?
 
