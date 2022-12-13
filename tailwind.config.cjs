@@ -23,6 +23,7 @@ module.exports = {
       serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
+      "mona-sans": ["mona-sans", ...defaultTheme.fontFamily.sans],
     }),
     extend: {
       fontSize: {

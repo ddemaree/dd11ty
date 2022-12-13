@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  src: url("/fonts/Mona-Sans.woff") format("woff"),
+    url("/fonts/Mona-Sans.woff2") format("woff2");
+  font-family: "mona-sans";
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
 }

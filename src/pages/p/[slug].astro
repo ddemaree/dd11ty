@@ -28,7 +28,6 @@ if(frontmatter.featuredImage) {
 		const featImageImport = await import( /* @vite-ignore */ `../../content/images/${frontmatter.featuredImage}` );
 		featuredImageData = await getImage({src: featImageImport.default, width: 1400 });
 	}
-	console.log({featuredImageData});
 }
 ---
 <html lang="en">

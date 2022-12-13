@@ -38,10 +38,10 @@ allPosts = await getAllPosts();
 	<body>
 		<SiteHeader />
 		<div class="wrapper">
-			<main class="content">
+			<main class="content w-inset max-w-6xl [margin-inline:auto] grid grid-cols-1 gap-x-[max(2rem,4vw)] justify-items-center lg:grid-cols-[min(35vw,410px)_1fr]">
 				<Intro />
 
-				<section class="blog-posts w-minus-inset max-w-content mx-auto space-y-6 my-16" aria-label="Blog post list">
+				<section class="blog-posts w-full max-w-4xl space-y-6" aria-label="Blog post list">
 					<header>
 						<h2 class="text-lg font-medium tracking-widest uppercase">Blog posts</h2>
 					</header>
