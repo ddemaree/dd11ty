@@ -19,11 +19,12 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: ({ theme }) => ({
-      sans: ["soehne-web", ...defaultTheme.fontFamily.sans],
-      serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
+      sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
+      serif: ["source-serif-4", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
       "mona-sans": ["mona-sans", ...defaultTheme.fontFamily.sans],
+      "mona-sans": ["source-serif-4", ...defaultTheme.fontFamily.serif],
     }),
     extend: {
       fontSize: {

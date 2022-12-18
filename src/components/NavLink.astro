@@ -1,0 +1,30 @@
+---
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import Icon from './Icon.astro';
+import clsx from 'clsx';
+
+export type Props = {
+  label: string;
+  url: string | URL;
+  icon?: IconDefinition;
+  isActive?: boolean;
+  alwaysHideLabel?: boolean;
+}
+
+const { icon, url, label, isActive = false, alwaysHideLabel = false } = Astro.props;
+
+const classes = [
+  'nav-link inline-flex gap-x-1',
+  (isActive && '')
+]
+
+const labelClasses = [
+  'font-medium',
+  (alwaysHideLabel && 'sr-only')
+]
+
+---
+<a href={url} class={clsx(classes)}>
+  {icon && <Icon icon={icon} size="lg" fixedWidth={true} />}
+  <span class:list={labelClasses}>{label}</span>
+</a>
