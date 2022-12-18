@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const { unset } = require("lodash");
+const { reduce, isArray } = require("lodash");
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
@@ -12,6 +12,23 @@ resetSelectors.forEach((selector) => {
     marginBottom: null,
   };
 });
+
+function mapToCSSVars(prefix, tokens) {
+  return reduce(
+    tokens,
+    (vars, value, key) => {
+      if (isArray(value)) {
+        value = value.join(", ");
+      }
+
+      const safeKey = key.replace(/[^0-9A-Za-z\-\_]/g, "_");
+      vars[`--${prefix}-${safeKey}`] = value;
+
+      return vars;
+    },
+    {}
+  );
+}
 
 module.exports = {
   // darkMode: "media",
@@ -43,24 +60,30 @@ module.exports = {
       },
       width: {
         inset: "calc(100% - (2 * var(--inset-x)))",
+        content: "45rem",
       },
-      maxWidth: {},
+      maxWidth: {
+        content: "45rem",
+        wide: "59rem",
+        prose: "min(65ch, 45rem)",
+      },
     },
   },
   plugins: [
     require("@tailwindcss/container-queries"),
     plugin(function ({ addBase, theme }) {
-      const themeFontFamilies = theme("fontFamily");
-      const fontFamilies = {};
-
-      for (const [key, value] of Object.entries(themeFontFamilies)) {
-        fontFamilies[`--font-${key}`] = value.join(", ");
-      }
+      const fontFamilies = mapToCSSVars("font", theme("fontFamily"));
+      const spacings = mapToCSSVars("spacing", theme("spacing"));
+      const widths = mapToCSSVars("w", theme("width"));
+      const maxWidths = mapToCSSVars("maxw", theme("maxWidth"));
 
       addBase({
         ":root": {
           "--inset-x": "clamp(1.25rem, 6.25vw, 2rem)",
           ...fontFamilies,
+          ...spacings,
+          ...widths,
+          ...maxWidths,
         },
       });
     }),

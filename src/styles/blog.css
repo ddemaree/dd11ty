@@ -250,6 +250,10 @@
 
     /* OMITTED: table styles */
 
+    :where(.wp-block-embed__wrapper) {
+      display: contents;
+    }
+
     :where(figure iframe[src*="youtube.com"]) {
       aspect-ratio: 16 / 9;
       height: auto;

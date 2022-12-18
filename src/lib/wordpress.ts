@@ -17,6 +17,7 @@ export type WordpressPost = {
 export type WordpressResponse = {
   status: number;
   post: WordpressPost;
+  error?: string;
 };
 
 async function makeGQLRequest(
@@ -66,7 +67,16 @@ export async function getSinglePost(
   const { status } = gqlResponse;
   const {
     data: { post: postData },
+    ...data
   } = await gqlResponse.json();
+
+  if (!postData || status != 200) {
+    return {
+      status,
+      error: `No post found with slug '${slug}'`,
+      post: null,
+    };
+  }
 
   const {
     title,

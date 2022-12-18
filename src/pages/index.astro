@@ -8,6 +8,7 @@ import Footer from '@components/Footer.astro';
 import Intro from '@components/home/Intro.astro';
 
 import { getAllPosts } from '@lib/posts';
+import SiteLayout from '@components/SiteLayout.astro';
 
 let title = "David Demaree's blog";
 let description = 'The perfect starter for your perfect blog.';
@@ -20,24 +21,11 @@ allPosts = await getAllPosts();
 
 <html lang="en">
 	<head>
-		<BaseHead {title} {description} {permalink} />
-		<style is:global>
-			.intro {
-				> * + * {
-					@apply mt-4;
-				}
-
-				h1, h2, h3 {
-					@apply font-semibold;
-					font-size: revert;
-				}
-			}
-		</style>
+		<BaseHead title={title} description={description} permalink={permalink} />
 	</head>
 
 	<body>
-		<SiteHeader />
-		<div class="wrapper">
+		<SiteLayout>
 			<main class="content w-inset max-w-6xl [margin-inline:auto] grid grid-cols-1 gap-x-[max(2rem,4vw)] justify-items-center lg:grid-cols-[min(35vw,410px)_1fr]">
 				<Intro />
 
@@ -49,7 +37,6 @@ allPosts = await getAllPosts();
 					{allPosts.map((p) => <BlogPostPreview post={p} />)}
 				</section>
 			</main>
-		</div>
-		<Footer />
+		</SiteLayout>
 	</body>
 </html>

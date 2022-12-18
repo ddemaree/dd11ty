@@ -1,40 +1,36 @@
 ---
 import BaseHead from '@components/BaseHead.astro';
 import SiteHeader from '@components/SiteHeader.astro';
-import BlogPost from '@components/BlogPost.astro';
+import PostHeader from '@components/PostHeader.astro';
 import Footer from '@components/Footer.astro';
 import { getSinglePost } from '@lib/wordpress';
+import SiteLayout from '@components/SiteLayout.astro';
 
 const { slug } = Astro.params;
-
-const { post } = await getSinglePost(slug);
-
-let title = post?.title;
-let content = post?.content;
-let description = post?.excerpt;
-let date = post?.date;
+const { error, post } = await getSinglePost(slug);
 
 if(!post) {
 	return new Response("Post not found", {
 		status: 404,
-		statusText: "Post not found"
+		statusText: error
 	})
 }
+
+const { title, content, excerpt, date, featuredImage } = post;
 
 ---
 <html lang="en">
 	<head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={excerpt} />
 	</head>
-  
 	<body>
-    <SiteHeader />
-		<div class="wrapper">
-			<BlogPost title={title} date={date} subtitle={description}>
-				<Fragment set:html={content} />
-			</BlogPost>
-
-			<Footer />
-		</div>
+		<SiteLayout section="blog">
+			<article class="content">
+				<PostHeader title={title} subtitle={excerpt} date={date} image={featuredImage} />
+				<main class="mt-8 prose prose-lg prose-grid font-serif prose-figcaption:font-sans">
+					<Fragment set:html={content} />
+				</main>
+			</article>
+		</SiteLayout>
 	</body>
 </html>

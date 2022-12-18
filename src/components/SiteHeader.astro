@@ -5,19 +5,20 @@ import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import NavLink from './NavLink.astro';
 ---
-<header class="h-16 sm:h-20 flex px-8 items-center">
+<header class="h-16 sm:h-20 flex px-8 items-center justify-between">
 	<a href="/" class="contents text-primary">
 		<Icon icon={faDDLogo} size="2x" />
 		<span class="sr-only">David Demaree</span>
 	</a>
 
-	<nav class="flex gap-x-2">
-		<!-- <NavLink label="Home" url="/" icon={faHomeAlt} /> -->
-		<NavLink label="Blog" url="/posts" icon={faNewspaper} />
-	</nav>
-
-	<nav class="flex gap-x-2">
-		<NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
-		<NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
-	</nav>
+	<div class="flex gap-x-6">
+		<nav class="flex gap-x-2">
+			<NavLink label="Blog" url="/posts" icon={faNewspaper} />
+		</nav>
+		
+		<nav class="flex gap-x-2">
+			<NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
+			<NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
+		</nav>
+	</div>
 </header>

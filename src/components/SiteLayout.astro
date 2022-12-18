@@ -1,0 +1,46 @@
+---
+// import SiteHeader from '@components/SiteHeader.astro';
+import Footer from '@components/Footer.astro';
+import Icon from './Icon.astro';
+import { faDDLogo } from '../lib/ddIcon';
+import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import NavLink from './NavLink.astro';
+
+export interface Props {
+  section?: "home" | "blog";
+}
+
+const { section } = Astro.props;
+
+---
+<div class="site-layout">
+  <header class="h-16 sm:h-20 flex px-8 items-center justify-between">
+    <a href="/" class="contents text-primary">
+      <Icon icon={faDDLogo} size="2x" />
+      <span class="sr-only">David Demaree</span>
+    </a>
+
+    <div class="flex gap-x-6">
+      <nav class="flex gap-x-2">
+        <NavLink label="Blog" url="/posts" icon={faNewspaper} isActive={section === "blog"} />
+      </nav>
+      
+      <nav class="flex gap-x-2">
+        <NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
+        <NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
+      </nav>
+    </div>
+  </header>
+  <div class="site-layout-main">
+    <slot />
+  </div>
+  <Footer />
+</div>
+<style>
+  .site-layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+</style>

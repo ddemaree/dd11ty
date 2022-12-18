@@ -14,13 +14,15 @@ export type Props = {
 const { icon, url, label, isActive = false, alwaysHideLabel = false } = Astro.props;
 
 const classes = [
-  'nav-link inline-flex gap-x-1',
-  (isActive && '')
+  'nav-link inline-flex gap-x-1 leading-1 px-2 py-1 rounded-lg',
+  (!alwaysHideLabel && ''),
+  (isActive && 'bg-slate-200')
 ]
 
 const labelClasses = [
   'font-medium',
-  (alwaysHideLabel && 'sr-only')
+  (alwaysHideLabel && 'sr-only'),
+  (isActive && 'font-semibold')
 ]
 
 ---
