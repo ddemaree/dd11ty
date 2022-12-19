@@ -3,8 +3,9 @@ import BaseHead from '@components/BaseHead.astro';
 import SiteHeader from '@components/SiteHeader.astro';
 import PostHeader from '@components/PostHeader.astro';
 import Footer from '@components/Footer.astro';
-import { getSinglePost } from '@lib/wordpress';
+import { getAllPosts, getSinglePost } from '@lib/wordpress';
 import SiteLayout from '@components/SiteLayout.astro';
+import sanitizeHtml from '@lib/sanitizeHtml';
 
 const { slug } = Astro.params;
 const { error, post } = await getSinglePost(slug);
@@ -16,7 +17,11 @@ if(!post) {
 	})
 }
 
+const { posts } = await getAllPosts();
+
 const { title, content, excerpt, date, featuredImage } = post;
+
+const cleanContent = sanitizeHtml(content);
 
 ---
 <html lang="en">
@@ -28,7 +33,7 @@ const { title, content, excerpt, date, featuredImage } = post;
 			<article class="content">
 				<PostHeader title={title} subtitle={excerpt} date={date} image={featuredImage} />
 				<main class="mt-8 prose prose-lg prose-grid font-serif prose-figcaption:font-sans">
-					<Fragment set:html={content} />
+					<Fragment set:html={cleanContent} />
 				</main>
 			</article>
 		</SiteLayout>

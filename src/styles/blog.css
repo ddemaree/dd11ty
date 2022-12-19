@@ -282,6 +282,29 @@
         }
       }
     }
+
+    .drop-cap .initial {
+      @apply font-sans;
+      font-variation-settings: "wdth" 140;
+      font-weight: 240;
+      font-size: 5.25em;
+      float: left;
+      line-height: 1;
+      margin-right: 0.05em;
+      margin-left: -0.05em;
+    }
+
+    .drop-cap .initial:before,
+    .drop-cap .initial:after {
+      content: "";
+      display: block;
+    }
+    .drop-cap .initial:before {
+      /* margin-bottom: -0.0125em; */
+    }
+    .drop-cap .initial:after {
+      margin-top: -0.25em;
+    }
   }
 
   .prose-grid {

@@ -1,79 +1,28 @@
 ---
+import type { WordpressPost } from '@lib/wordpress';
+
 import Date from './Date.astro';
 
-import type { Post } from '@lib/posts';
-import generateSlug from '@lib/generateSlug';
-
 export interface Props {
-	post: Post;
+	post: WordpressPost;
 }
 
-const { post } = Astro.props;
-const postUrl = `/p/${generateSlug(post.file)}`
+const { post: { featuredImage, ...post} } = Astro.props;
+const postUrl = `/p/${post.slug}`
 ---
-
 <article class="post-preview @container/blog-card flex flex-col">
-	<div class="flex flex-col @md:flex-row">
+	<div class="flex flex-col gap-y-4 @md:flex-row">
 		<div class="flex-1">
 			<header>
-				<a href={postUrl}><h1 class="title [font-size:clamp(22px,4cqi,44px)]">{post.frontmatter.title}</h1></a>
-				<p class="publish-date"><Date date={post.frontmatter.date} /></p>
+				<a href={postUrl}><h1 class="title font-bold [font-size:clamp(22px,6cqi,34px)] [font-variation-settings:'wdth'_120] tracking-[-0.5px] leading-none">{post.title}</h1></a>
+				<p class="description mt-1 text-lg">{post.excerpt}</p>
+				<p class="publish-date"><Date date={post.date} /></p>
 			</header>
-			<p class="description">{post.frontmatter.description}</p>
 		</div>
-		<figure class="w-full order-first @md:order-last @md/blog-card:w-[20cqi]">
-			<img class=" bg-gray-400 w-full aspect-video" />
-		</figure>
+
+		{featuredImage && <figure class="w-full order-first @md:order-last @md/blog-card:w-[25cqi]">
+			<img src={featuredImage.sourceUrl} class=" bg-gray-400 w-full aspect-video object-cover object-top rounded-lg" />
+		</figure>}
+
 	</div>
 </article>
-
-<style>
-
-	.post-preview {
-		font-size: 1.25rem;
-	}
-
-	header {
-		align-items: flex-start;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: left;
-
-		h1 {
-			/* font-weight: 600; */
-		}
-	}
-
-	.title,
-	.author,
-	.publish-date {
-		margin: 0;
-	}
-
-	.publish-date,
-	.author {
-		color: var(--theme-text-lighter);
-		font-size: 1rem;
-	}
-
-	.title {
-		/* font-size: 2.25rem; */
-		font-weight: 600;
-		color: var(--theme-text);
-	}
-
-	.description {
-		@apply font-serif;
-		font-size: 1.125rem;
-	}
-
-	.post-image {
-		margin-bottom: 0.75rem;
-	}
-
-	.post-image img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-	}
-</style>

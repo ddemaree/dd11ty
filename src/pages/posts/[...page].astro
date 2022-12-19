@@ -1,0 +1,37 @@
+---
+import BaseHead from "@components/BaseHead.astro";
+import BlogPostPreview from "@components/BlogPostPreview.astro";
+import SiteLayout from "@components/SiteLayout.astro";
+import { getAllPosts } from "@lib/wordpress";
+
+const { page = 1 } = Astro.params;
+
+const title = `David Demaree's blog` + (page > 1 && ` Page ${page}`)
+
+const allPosts = await getAllPosts();
+
+const pageSize = 8;
+const startIndex = Math.min( (pageSize * (Number(page) - 1)), allPosts.length );
+const endIndex = Math.min( (startIndex + pageSize), allPosts.length);
+const currentPosts = allPosts.slice(startIndex, endIndex);
+
+---
+<html lang="en">
+	<head>
+    <BaseHead title={title} description="Writing about tech, business, and culture by a guy who likes keyboards" />
+	</head>
+	<body>
+		<SiteLayout section="blog">
+      <header class=" h-24">
+        <h1>Posts</h1>
+      </header>
+      <main class=" w-inset max-w-wide mx-auto">
+        <div class="flex flex-col gap-y-[max(6vw,_3rem)]">
+          {currentPosts.map(post => <BlogPostPreview post={post} />)}
+        </div>
+      </main>
+
+			
+		</SiteLayout>
+	</body>
+</html>

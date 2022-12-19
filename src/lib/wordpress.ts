@@ -7,6 +7,7 @@ export type WordpressImage = {
 };
 
 export type WordpressPost = {
+  slug: string;
   title: string;
   date: string;
   content: string;
@@ -19,6 +20,23 @@ export type WordpressResponse = {
   post: WordpressPost;
   error?: string;
 };
+
+function wrapWordpressPost(inputPostData: any): WordpressPost {
+  const { slug, title, content, date, excerpt, ...postData } = inputPostData;
+
+  const featuredImage = postData?.featuredImage?.node;
+
+  const post: WordpressPost = {
+    slug,
+    title,
+    content,
+    date,
+    excerpt,
+    featuredImage,
+  };
+
+  return post;
+}
 
 async function makeGQLRequest(
   query: string,
@@ -42,6 +60,7 @@ async function makeGQLRequest(
 const SINGLE_POST_QUERY = `
   query PostQuery($id: ID!) {
     post(id: $id, idType: SLUG) {
+      slug
       title
       date: dateGmt
       content
@@ -58,6 +77,48 @@ const SINGLE_POST_QUERY = `
     }
   }
 `;
+
+const ALL_POSTS_QUERY = `
+query PostsQuery($startCursor: String) {
+  posts(
+    first: 100
+    after: $startCursor
+    where: {status: PUBLISH, dateQuery: {after: {year: 2015}}}
+  ) {
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    nodes {
+      slug
+      title
+      date: dateGmt
+      excerpt(format: RAW)
+      featuredImage {
+        node {
+          sourceUrl
+          srcSet
+          sizes
+          altText
+          caption(format: RAW)
+        }
+      } 
+    }
+  }
+}
+`;
+
+export async function getAllPosts(): Promise<WordpressPost[]> {
+  const gqlResponse = await makeGQLRequest(ALL_POSTS_QUERY, {});
+  const { status } = gqlResponse;
+  const { data } = await gqlResponse.json();
+
+  const {
+    posts: { nodes: postObjs },
+  } = data;
+
+  return postObjs.map((p) => wrapWordpressPost(p)) as WordpressPost[];
+}
 
 export async function getSinglePost(
   slug: string | number
@@ -78,21 +139,7 @@ export async function getSinglePost(
     };
   }
 
-  const {
-    title,
-    content,
-    date,
-    excerpt,
-    featuredImage: { node: featuredImage },
-  } = postData;
-
-  const post: WordpressPost = {
-    title,
-    content,
-    date,
-    excerpt,
-    featuredImage,
-  };
+  const post = wrapWordpressPost(postData);
 
   return {
     status,
