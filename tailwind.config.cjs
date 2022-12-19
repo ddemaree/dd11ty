@@ -90,6 +90,12 @@ module.exports = {
     plugin(function ({ addVariant }) {
       addVariant("desc", ":where(& *)");
       addVariant("desc-links", ":where(& a)");
+
+      addVariant("nav-open", ":root:has(.nav-parent .nav-state:checked) &");
+      addVariant(
+        "nav-closed",
+        ":root:not(:has(.nav-parent .nav-state:checked)) &"
+      );
     }),
   ],
 };

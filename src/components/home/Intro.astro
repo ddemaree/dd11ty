@@ -1,6 +1,10 @@
 ---
 import { Image } from "@astrojs/image/components";
 import imgDavidStitch from "../../content/images/dd-stitch-transparent.png";
+
+import Icon from '@components/Icon.astro';
+import { faTwitter, faLinkedin, faMastodon, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 ---
 
 <section class="@container/intro intro w-full max-w-4xl">
@@ -29,8 +33,13 @@ import imgDavidStitch from "../../content/images/dd-stitch-transparent.png";
       Legos, my family, and my dog, not necessarily in that order.
     </p>
     <h2 class="intro-hed">Links</h2>
-    <ul>
-      <li>Link</li>
+    <ul class=" [font-size:1.5rem] desc-links:bg-yellow-400 desc-links:px-3 desc-links:py-1 desc-links:rounded-lg desc-links:inline-flex desc-links:gap-x-2 desc-links:font-semibold desc-links:[font-variation-settings:'wdth'_130] pt-2 -mt-2 flex flex-wrap justify-items-start gap-y-3 gap-x-4">
+      <li><a href="mailto:david@demaree.me"><Icon icon={faPaperPlane} /><span class="label">Email</span></a></li>
+      <li><a href="/posts"><Icon icon={faNewspaper} /><span class="label">Blog</span></a></li>
+      <li><a href="https://linkedin.com/in/ddemaree"><Icon icon={faLinkedin} />LinkedIn</a></li>
+      <li><a href="https://twitter.com/ddemaree"><Icon icon={faTwitter} /><span class="label">Twitter</span></a></li>
+      <li><a href="https://mastodon.social/@demaree"><Icon icon={faMastodon} />Mastodon</a></li>
+      <li><a href="https://github.com/ddemaree"><Icon icon={faGithub} />GitHub</a></li>
     </ul>
   </div>
 </section>
