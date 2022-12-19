@@ -32,6 +32,10 @@
 }
 
 @layer components {
+  .dateline {
+    @apply font-sans font-semibold tracking-wide uppercase;
+  }
+
   .prose {
     --tw-prose-body: theme("colors.zinc.700");
     --tw-prose-headings: theme("colors.zinc.900");

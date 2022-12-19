@@ -5,9 +5,9 @@ import imgDavidStitch from "../../content/images/dd-stitch-transparent.png";
 
 <section class="@container/intro intro w-full max-w-4xl">
   <div
-    class="flex flex-col items-center gap-x-[5cqi] gap-y-8 @3xl:flex-row @3xl:items-start justify-center"
+    class="intro-grid"
   >
-    <div class="w-[clamp(160px,30cqi,240px)] flex-shrink-0">
+    <div class="intro-image">
       <Image
         src={imgDavidStitch}
         alt="Man wearing Stitch cap"
@@ -16,24 +16,157 @@ import imgDavidStitch from "../../content/images/dd-stitch-transparent.png";
       />
     </div>
 
-    <div
-      class="@container/intro-text w-full flex flex-col items-center leading-[1.25] font-mona-sans"
-    >
-      <div
-        class="[font-size:clamp(22px,6cqi,31px)] max-w-[30ch] text-gray-500 [font-weight:450] [font-variation-settings:'wdth'_95]"
-      >
-        <p
-          class="[font-size:162%] [font-weight:650] leading-none mb-[0.5em] text-gray-600 [font-variation-settings:'wdth'_87] [letter-spacing:-0.5px]"
-        >
-          <b class="text-black/80 [font-weight:725]">Hi, I’m David Demaree</b>, a web
-          coder, writer, and photographer based in suburban NYC.
-        </p>
-        <p>
-          This is my website where I write about tech, business, digital
-          culture, and whatever else. I love good coffee, mechanical keyboards,
-          Legos, my family, and my dog, not necessarily in that order.
-        </p>
-      </div>
+    
+    <div class="intro-lede-graf @container/lede">
+      <p>
+        <b class=" intro-double-fancy text-black/80 [font-weight:725]"><span class="greeting">Hello<span class="punc">!</span> My name is</span> <span class="name">David Demaree</span><span class="punc">.</span></b> I'm a web coder, writer, and photographer based in suburban NYC<span class="punc">.</span>
+      </p>
     </div>
+    <h2 class="intro-hed">Intro</h2>
+    <p>
+      This is my website where I write about tech, business, digital
+      culture, and whatever else. I love good coffee, mechanical keyboards,
+      Legos, my family, and my dog, not necessarily in that order.
+    </p>
+    <h2 class="intro-hed">Links</h2>
+    <ul>
+      <li>Link</li>
+    </ul>
   </div>
 </section>
+
+<!-- <script>
+
+const lede = document.querySelector('.intro-lede-graf');
+const elemName = lede.querySelector('.intro-double-fancy .name');
+
+const phantomName = elemName.cloneNode(true) as Element;
+phantomName.classList.add('phantom');
+lede.appendChild(phantomName);
+
+</script> -->
+
+<style>
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  column-gap: 6cqi;
+}
+
+.intro-grid > * {
+  width: 100%;
+}
+
+.intro-image {
+  width: clamp(200px, 67cqi, 270px);
+  margin-bottom: 4cqi;
+  margin-top: -4cqi;
+}
+
+.intro .intro-hed {
+  @apply text-slate-400;
+  font-weight: 720;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  font-variation-settings: 'wdth' 140;
+}
+
+.intro p {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.intro .intro-lede-graf {
+  @apply font-serif;
+  font-style: italic;
+  width: 100%;
+  max-width: 36rem;
+}
+
+.intro .intro-lede-graf p {
+  line-height: 1.125;
+  font-size: clamp(1.625rem, 5.5cqi, 2rem);
+}
+
+.intro .punc {
+  display: none !important;
+}
+
+.intro .intro-double-fancy {
+  @apply font-sans not-italic;
+  display: block;
+}
+
+.intro .intro-double-fancy > * {
+  display: block;
+  line-height: 1;
+}
+
+.intro .name {
+  @apply bg-red-500 text-white rounded-lg;
+  font-size: max(2.5rem, 12.5cqi);
+  /* white-space: nowrap; */
+  font-weight: 700;
+  font-variation-settings: 'wdth' 110;
+  margin-block: 0.2em;
+  /* border-block: 0.05em;
+  border-color: currentColor;
+  border-style: solid; */
+  padding-block: 0.2em 0.15em;
+  padding-inline: 0.2em;
+  margin-inline: -0.2em;
+  transform: rotate(0.8deg);
+}
+
+.intro .intro-double-fancy .greeting {
+  text-transform: uppercase;
+  font-size: 75%;
+  letter-spacing: 0.2ch;
+  font-weight: 600;
+}
+
+.intro .name.phantom {
+  position: absolute;
+  opacity: 0.2;
+}
+
+@container intro (min-inline-size: 20rem) {
+  .intro-grid {
+  }
+}
+
+@container intro (min-inline-size: 36rem) {
+  .intro-grid {
+    grid-template-columns: 25cqi 1fr;
+    grid-auto-flow: row;
+    row-gap: clamp(2rem, 5cqi, 3rem);
+  }
+
+  .intro-grid .intro-lede-graf {
+    justify-self: start;
+  }
+
+  .intro-grid > * {
+    grid-column: 2 / span 1;
+  }
+
+  .intro-grid .intro-hed {
+    grid-column: 1 / span 1;
+    align-self: start;
+    justify-self: end;
+    width: auto;
+    margin-block: 0;
+  }
+
+  .intro-image {
+    width: 100%;
+    grid-column: 1 / span 1;
+    margin: 0;
+  }
+}
+
+</style>

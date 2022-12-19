@@ -1,40 +1,34 @@
 import { Feed } from "feed";
 import _ from "lodash";
 import { DateTime } from "luxon";
+import { getAllPosts } from "./wordpress";
 
 export async function getFeed() {
-  const docs = Object.values(
-    import.meta.glob("../pages/p/**/*.md", { eager: true })
-  );
+  // TODO: Get content as well as metadata
+  const allPosts = await getAllPosts();
 
-  // This is wrapped in Promise/async because content rendering is async
-  // As it happens, doc content can't be rendered outside of Astro builds
-  // (as of Jul '22) so this isn't necessary, but leaving it here just in
-  // case Astro fixes this someday
-  const items = await Promise.all(
-    docs.map(async (doc) => {
-      const url = `https://demaree.me${doc.url}`;
-      // const content = await doc.compiledContent();
-      const pubDate = doc.frontmatter.pubDate;
+  const items = allPosts
+    .map((post) => {
+      const url = `https://demaree.me/p/${post.slug}`;
+      const date = DateTime.fromISO(post.date).toJSDate();
+      const { title, excerpt: description } = post;
 
       return {
-        title: doc.frontmatter.title,
+        title,
         id: url,
         link: url,
-        description: doc.frontmatter.description,
-        // content,
-        date: DateTime.fromISO(pubDate).toJSDate(),
+        description,
+        date,
       };
     })
-  ).then((items) =>
-    items.sort((a, b) => {
+    .sort((a, b) => {
       return b.date.valueOf() - a.date.valueOf();
-    })
-  );
+    });
 
   const maxDate = _.max(items.map((i) => i.date));
 
   const feed = new Feed({
+    copyright: `©${new Date().getFullYear()} David Demaree, all rights reserved`,
     title: "David Demaree's blog",
     description: "Notes on tech, business, and culture",
     id: "http://demaree.me/",
@@ -46,8 +40,8 @@ export async function getFeed() {
     updated: maxDate, // optional, default = today
     generator: "awesome", // optional, default = 'Feed for Node.js'
     feedLinks: {
-      json: "https://example.com/json",
-      atom: "https://example.com/atom",
+      json: "https://demaree.me/feeds/posts.json",
+      rss: "https://demaree.me/feeds/posts.xml",
     },
     author: {
       name: "David Demaree",
