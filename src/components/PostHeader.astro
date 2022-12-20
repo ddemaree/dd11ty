@@ -1,0 +1,27 @@
+---
+import type { WordpressImage } from '@lib/wordpress';
+import Date from './Date.astro';
+
+export interface Props {
+	title: string;
+	subtitle?: string;
+	date: string;
+  image?: WordpressImage;
+}
+
+const { title, subtitle, date, image } = Astro.props;
+---
+<header class="post-header">
+  <div class="@container w-inset max-w-content mx-auto">
+    <div class="py-[8cqi] desc:mx-auto desc:my-0">
+      <h1 class="font-bold text-[clamp(28px,8cqi,44px)] tracking-[-0.0125em] leading-[1] [font-variation-settings:'wdth'_90] @sm:[font-variation-settings:'wdth'_100] @lg:[font-variation-settings:'wdth'_110] text-zinc-900">{title}</h1>
+
+      {subtitle && <p class="my-0 mt-2 dd-post-excerpt text-[clamp(18px,5cqi,24px)] [font-variation-settings:'wdth'_97] leading-snug text-zinc-600">{subtitle}</p>}
+
+      {date && <div class="font-semibold uppercase mt-4 mb-0"><Date date={date} /></div>}
+    </div>
+    {image && <figure class="post-featured-image size-large -mx-inset mb-[6cqi]">
+      <img src={image.sourceUrl} alt={image.altText} class="h-full w-full object-cover" />
+    </figure>}
+  </div>
+</header>

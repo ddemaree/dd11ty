@@ -9,14 +9,19 @@ export type Props = {
   class?: string,
   size?: SizeProp,
   style?: "rounded" | "circle" | "square",
+	fixedWidth?: boolean;
 	wrapperClass?: string
 }
 
-const { icon, size, class: className = '', style, wrapperClass } = Astro.props;
+const { icon, size, class: className = '', style, wrapperClass, fixedWidth = false } = Astro.props;
+
 let classes = [className];
+
 if(size) {
   classes.push(`fa-${size}`);
 }
+
+if(fixedWidth) classes.push('fa-fw');
 
 const [ html ] = faIcon(icon, { classes: clsx(classes) }).html
 

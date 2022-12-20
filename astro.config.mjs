@@ -7,9 +7,28 @@ import mdx from "@astrojs/mdx";
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://demaree.me",
-  integrations: [solid(), tailwind(), mdx()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+    },
+  },
+  integrations: [
+    solid(),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    mdx(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
 });

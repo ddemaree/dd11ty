@@ -1,0 +1,59 @@
+---
+// import SiteHeader from '@components/SiteHeader.astro';
+import Footer from '@components/Footer.astro';
+import Icon from './Icon.astro';
+import { faDDLogo } from '../lib/ddIcon';
+import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import NavLink from './NavLink.astro';
+
+export interface Props {
+  section?: "home" | "blog";
+}
+
+const { section } = Astro.props;
+
+---
+<div class="site-layout bg-stone-100">
+  <header class="nav-parent h-16 sm:h-20 flex px-8 items-center justify-between">
+    <a href="/" class="text-primary relative z-50">
+      <Icon icon={faDDLogo} size="2x" />
+      <span class="sr-only">David Demaree</span>
+    </a>
+
+    <div class="flex items-center gap-x-6 inset-0 z-20 bg-orange-300 fixed flex-col pt-16 transition-transform translate-x-full nav-open:translate-x-0 [font-size:max(5vw,2rem)] sm:relative sm:flex-row sm:[font-size:unset] sm:bg-transparent sm:pt-0 sm:transform-none">
+      <nav class="flex flex-col sm:flex-row gap-x-2 gap-y-4 w-full flex-1 items-center justify-center">
+        <NavLink label="Home" url="/" icon={faHomeAlt} isActive={section === "home"} />
+        <NavLink label="Blog" url="/posts" icon={faNewspaper} isActive={section === "blog"} />
+      </nav>
+      
+      <nav class="flex py-[0.5em] nav-open:mb-4 sm:mb-0 sm:py-0">
+        <NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
+        <NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
+      </nav>
+    </div>
+    <div class="relative z-50 sm:hidden">
+      <label class="menu-button inline-flex">
+        <input type="checkbox" class="nav-state hidden">
+        <span>Menu</span>
+      </label>
+    </div>
+  </header>
+  <div class="site-layout-main">
+    <slot />
+  </div>
+  <Footer />
+</div>
+<style>
+  .site-layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    row-gap: 2rem;
+  }
+
+  body:has(.nav-parent .nav-state:checked) {
+    height: 100vh;
+    overflow: hidden;
+  }
+</style>
