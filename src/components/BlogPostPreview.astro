@@ -10,8 +10,8 @@ export interface Props {
 const { post: { featuredImage, ...post} } = Astro.props;
 const postUrl = `/p/${post.slug}`
 ---
-<article class="post-preview @container/blog-card flex flex-col">
-	<div class="flex flex-col gap-x-[6cqi] gap-y-[7cqi] @md:flex-row @md:items-center">
+<article class="post-preview">
+	<div class="post-preview-inner @md:flex-row @md:items-center">
 		<div class="flex-1">
 			<header>
 				<a href={postUrl}><h1 class="title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.25rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025]">{post.title}</h1></a>
@@ -28,3 +28,22 @@ const postUrl = `/p/${post.slug}`
 
 	</div>
 </article>
+
+<style>
+
+.post-preview {
+	@apply flex flex-col;
+	container-name: blog-card;
+	container-type: inline-size;
+}
+
+.post-preview-inner {
+	@apply flex flex-col;
+	column-gap: 1.5rem;
+	column-gap: 6cqi;
+	 /* gap-y-[7cqi] */
+	row-gap: 1.5rem;
+	row-gap: 7cqi;
+}
+
+</style>
