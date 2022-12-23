@@ -22,7 +22,7 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
     
     <div class="intro-lede-graf @container/lede">
       <p>
-        <b class=" intro-double-fancy text-black/80 [font-weight:725]"><span class="greeting">Hello<span class="punc">!</span> My name is</span> <span class="name">David Demaree</span><span class="punc">.</span></b> I'm a web coder, writer, and photographer based in suburban NYC<span class="punc">.</span>
+        <b class=" intro-double-fancy text-black/80"><span class="greeting">Hello<span class="punc">!</span> My name is</span> <span class="name">David Demaree</span><span class="punc">.</span></b> I'm a web coder, writer, and photographer based in suburban NYC<span class="punc">.</span>
       </p>
     </div>
     <h2 class="intro-hed">Intro</h2>
@@ -109,6 +109,8 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 .intro .intro-double-fancy {
   @apply font-sans not-italic;
   display: block;
+  /* font-weight: 725;
+  font-variation-settings: 'wdth' 725; */
 }
 
 .intro .intro-double-fancy > * {

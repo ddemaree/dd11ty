@@ -37,11 +37,9 @@ module.exports = {
   theme: {
     fontFamily: ({ theme }) => ({
       sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
-      serif: ["source-serif-4", ...defaultTheme.fontFamily.serif],
+      serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
-      "mona-sans": ["mona-sans", ...defaultTheme.fontFamily.sans],
-      "mona-sans": ["source-serif-4", ...defaultTheme.fontFamily.serif],
     }),
     extend: {
       fontSize: {
@@ -91,11 +89,11 @@ module.exports = {
       addVariant("desc", ":where(& *)");
       addVariant("desc-links", ":where(& a)");
 
-      addVariant("nav-open", ":root:has(.nav-parent .nav-state:checked) &");
-      addVariant(
-        "nav-closed",
-        ":root:not(:has(.nav-parent .nav-state:checked)) &"
-      );
+      addVariant("nav-open", ".menu-open &");
+      // addVariant(
+      //   "nav-closed",
+      //   ":root:not(:has(.nav-parent .nav-state:checked)) &"
+      // );
     }),
   ],
 };

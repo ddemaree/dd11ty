@@ -7,6 +7,8 @@ import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import NavLink from './NavLink.astro';
 
+import MenuButton from './MenuButton.svelte';
+
 export interface Props {
   section?: "home" | "blog";
 }
@@ -15,45 +17,73 @@ const { section } = Astro.props;
 
 ---
 <div class="site-layout bg-stone-100">
-  <header class="nav-parent h-16 sm:h-20 flex px-8 items-center justify-between">
+  <header class="nav-parent h-20 sm:h-20 flex px-8 items-center justify-between">
     <a href="/" class="text-primary relative z-50">
       <Icon icon={faDDLogo} size="2x" />
       <span class="sr-only">David Demaree</span>
     </a>
 
-    <div class="flex items-center gap-x-6 inset-0 z-20 bg-orange-300 fixed flex-col pt-16 transition-transform translate-x-full nav-open:translate-x-0 [font-size:max(5vw,2rem)] sm:relative sm:flex-row sm:[font-size:unset] sm:bg-transparent sm:pt-0 sm:transform-none">
-      <nav class="flex flex-col sm:flex-row gap-x-2 gap-y-4 w-full flex-1 items-center justify-center">
+    <div class="menu-container">
+      <nav class="menu-top">
         <NavLink label="Home" url="/" icon={faHomeAlt} isActive={section === "home"} />
         <NavLink label="Blog" url="/posts" icon={faNewspaper} isActive={section === "blog"} />
       </nav>
       
-      <nav class="flex py-[0.5em] nav-open:mb-4 sm:mb-0 sm:py-0">
+      <nav class="menu-bottom">
         <NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
         <NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
       </nav>
     </div>
-    <div class="relative z-50 sm:hidden">
-      <label class="menu-button inline-flex">
-        <input type="checkbox" class="nav-state hidden">
-        <span>Menu</span>
-      </label>
-    </div>
+    <MenuButton client:only="svelte" />
   </header>
   <div class="site-layout-main">
     <slot />
   </div>
   <Footer />
 </div>
-<style>
-  .site-layout {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
-    row-gap: 2rem;
+<style is:global>
+
+  .menu-container {
+    display: flex;
+    column-gap: 1.5rem;
   }
 
-  body:has(.nav-parent .nav-state:checked) {
-    height: 100vh;
-    overflow: hidden;
+  .menu-top {
+    @apply flex flex-col sm:flex-row gap-x-2 gap-y-4 w-full flex-1 items-center justify-start;
+  }
+
+  .menu-bottom {
+    @apply flex justify-center py-[0.5em] nav-open:mb-4 sm:mb-0 sm:py-0;
+  }
+
+  @media screen and (max-width: 639px) {
+    .menu-open body {
+      overflow: hidden;
+      height: 100vw;
+    }
+    .menu-container {
+      @apply fixed inset-0 z-20 bg-orange-300 pt-20 transition-transform translate-x-full;
+
+      font-size: max(5vw, 2rem);
+      flex-direction: column;
+    }
+
+    .menu-container .menu-top .nav-link {
+      width: 100%;
+      padding-inline: var(--inset-x) !important;
+      border-radius: 0 !important;
+      font-variation-settings: 'wdth' 112;
+    }
+
+    .menu-open .menu-container {
+      @apply translate-x-0;
+      --t--nav-link-bg: theme('colors.orange.400');
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    .menu-container {
+      position: relative;
+    }
   }
 </style>

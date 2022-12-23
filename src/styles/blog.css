@@ -1,3 +1,5 @@
+@import url("https://cdn.demaree.net/fonts/tiempos/fonts.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,17 +14,17 @@
 }
 
 @font-face {
-  src: url("/fonts/SourceSerif4-VariableFont_opsz,wght.ttf");
+  src: url("/fonts/SourceSerif4Variable-Roman.otf.woff2");
   font-family: "source-serif-4";
-  font-weight: 200 900;
+  font-weight: 300 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  src: url("/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.ttf");
+  src: url("/fonts/SourceSerif4Variable-Italic.otf.woff2");
   font-family: "source-serif-4";
-  font-weight: 200 900;
+  font-weight: 300 900;
   font-style: italic;
   font-display: swap;
 }
@@ -70,7 +72,7 @@
     --tw-prose-invert-th-borders: theme("colors.zinc.600");
     --tw-prose-invert-td-borders: theme("colors.zinc.700");
 
-    --prose-text-size: clamp(16px, 2.5vw, 19px);
+    --prose-text-size: clamp(17px, 2.5vw, 20px);
 
     --flow-spacing-xs: calc(var(--prose-text-size) * 0.375);
     --flow-spacing-sm: calc(var(--prose-text-size) * 0.75);
@@ -81,6 +83,7 @@
 
     color: var(--tw-prose-body);
     font-size: var(--prose-text-size);
+    /* font-variation-settings: "opsz" 18; */
     line-height: 1.6;
 
     & :where(* + *),

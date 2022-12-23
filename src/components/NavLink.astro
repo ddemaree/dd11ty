@@ -14,9 +14,9 @@ export type Props = {
 const { icon, url, label, isActive = false, alwaysHideLabel = false } = Astro.props;
 
 const classes = [
-  'nav-link inline-flex gap-x-1 leading-1 px-2 py-1 rounded-lg',
-  (!alwaysHideLabel && ''),
-  (isActive && 'bg-slate-200')
+  'nav-link inline-flex gap-x-2 leading-1 px-2 py-1 rounded-lg',
+  (alwaysHideLabel && 'scale-125'),
+  (isActive && 'is-active')
 ]
 
 const labelClasses = [
@@ -27,6 +27,12 @@ const labelClasses = [
 
 ---
 <a href={url} class={clsx(classes)}>
-  {icon && <Icon icon={icon} size="lg" fixedWidth={true} />}
+  {icon && <Icon icon={icon} fixedWidth={true} />}
   <span class:list={labelClasses}>{label}</span>
 </a>
+
+<style>
+.nav-link.is-active {
+  background-color: var(--t--nav-link-bg, theme('colors.slate.300'));
+}
+</style>
