@@ -17,8 +17,13 @@ let permalink = 'https://example.com/';
 let allPosts = []
 
 allPosts = await getAllPosts();
----
 
+// Astro.response.headers.set('Accept-CH', 'Sec-CH-Prefers-Color-Scheme');
+
+// const cookie = Astro.request.headers.get('');
+// console.log(Astro.request.headers);
+
+---
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} permalink={permalink} />

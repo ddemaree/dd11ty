@@ -28,7 +28,7 @@ const cleanContent = sanitizeHtml(content);
 		<SiteLayout section="blog">
 			<article class="content">
 				<PostHeader title={title} subtitle={excerpt} date={date} image={featuredImage} />
-				<main class="mt-8 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal">
+				<main class="mt-8 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
 					<Fragment set:html={cleanContent} />
 				</main>
 			</article>

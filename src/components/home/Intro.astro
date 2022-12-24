@@ -17,12 +17,13 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
         alt="Man wearing Stitch cap"
         width="320"
         format="png"
+        class=" dark:mix-blend-multiply dark:opacity-80"
       />
     </div>
     
-    <div class="intro-lede-graf @container/lede">
+    <div class="intro-lede-graf @container/lede text-black/80 dark:text-slate-300">
       <p>
-        <b class=" intro-double-fancy text-black/80"><span class="greeting">Hello<span class="punc">!</span> My name is</span> <span class="name">David Demaree</span><span class="punc">.</span></b> I'm a web coder, writer, and photographer based in suburban NYC<span class="punc">.</span>
+        <b class=" intro-double-fancy"><span class="greeting">Hello<span class="punc">!</span> My name is</span> <span class="name">David Demaree</span><span class="punc">.</span></b> I'm a web coder, writer, and photographer based in suburban NYC<span class="punc">.</span>
       </p>
     </div>
     <h2 class="intro-hed">Intro</h2>
@@ -32,7 +33,7 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
       Legos, my family, and my dog, not necessarily in that order.
     </p>
     <h2 class="intro-hed">Links</h2>
-    <ul class=" [font-size:1.5rem] desc-links:bg-yellow-400 desc-links:px-3 desc-links:py-1 desc-links:rounded-lg desc-links:inline-flex desc-links:gap-x-2 desc-links:font-semibold desc-links:[font-variation-settings:'wdth'_130] pt-2 -mt-2 flex flex-wrap justify-items-start gap-y-3 gap-x-4">
+    <ul class=" [font-size:1.5rem] desc-links:bg-yellow-400 dark:desc-links:bg-yellow-800/80 dark:desc-links:bg-blend-multiply dark:desc-links:text-yellow-200 desc-links:px-3 desc-links:pt-1 desc-links:rounded-lg desc-links:inline-flex desc-links:gap-x-2 desc-links:font-semibold desc-links:[font-variation-settings:'wdth'_130] pt-2 -mt-2 flex flex-wrap justify-items-start gap-y-3 gap-x-4">
       <li><a href="mailto:david@demaree.me"><Icon icon={faPaperPlane} /><span class="label">Email</span></a></li>
       <li><a href="/posts"><Icon icon={faNewspaper} /><span class="label">Blog</span></a></li>
       <li><a href="https://linkedin.com/in/ddemaree"><Icon icon={faLinkedin} />LinkedIn</a></li>
@@ -72,7 +73,7 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 }
 
 .intro .intro-hed {
-  @apply text-slate-400;
+  @apply text-slate-400 dark:text-red-300;
   font-weight: 720;
   font-size: 1.5rem;
   margin-top: 3rem;
@@ -109,8 +110,6 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 .intro .intro-double-fancy {
   @apply font-sans not-italic;
   display: block;
-  /* font-weight: 725;
-  font-variation-settings: 'wdth' 725; */
 }
 
 .intro .intro-double-fancy > * {
@@ -119,7 +118,7 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 }
 
 .intro .name {
-  @apply bg-red-500 text-white rounded-lg;
+  @apply rounded-lg bg-red-500 text-white dark:bg-red-800;
   font-size: max(2.5rem, 12.5cqi);
   font-weight: 700;
   font-variation-settings: 'wdth' 110;
@@ -179,7 +178,7 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
   }
 }
 
-@supports not (container-size: inline-size) {
+@supports not (container-type: inline-size) {
   @media (min-width: 600px) {
 
     .intro-grid {
@@ -197,7 +196,7 @@ import { faPaperPlane, faNewspaper } from '@fortawesome/free-solid-svg-icons';
     }
 
     .intro .intro-lede-graf p {
-      font-size: 2.25rem;
+      /* font-size: 2.25rem; */
     }
 
     .intro .name {

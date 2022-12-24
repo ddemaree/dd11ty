@@ -15,7 +15,7 @@ const { title, subtitle, date, image } = Astro.props;
   <div class="post-header-content">
     <h1 class="post-header-title">{title}</h1>
 
-    {subtitle && <p class="post-header-subtitle my-0 mt-2 leading-snug text-zinc-600">{subtitle}</p>}
+    {subtitle && <p class="post-header-subtitle my-0 mt-2 leading-snug text-zinc-600 dark:text-slate-400">{subtitle}</p>}
 
     {date && <div class="font-semibold uppercase mt-4 mb-0"><Date date={date} /></div>}
   </div>
@@ -29,7 +29,6 @@ const { title, subtitle, date, image } = Astro.props;
 .post-header {
   container-name: post-header;
   container-type: inline-size;
-  border-block-start: 1px solid theme('colors.slate.100');
   margin-block-start: -1rem;
 }
 
@@ -40,7 +39,7 @@ const { title, subtitle, date, image } = Astro.props;
 }
 
 .post-header-title {
-  @apply text-zinc-900;
+  @apply text-zinc-900 dark:text-slate-50;
 
   font-size: clamp(28px,8vw,44px);
   font-size: clamp(28px,8cqi,44px);

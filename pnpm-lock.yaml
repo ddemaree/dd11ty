@@ -14,6 +14,7 @@ specifiers:
   '@lottiefiles/svelte-lottie-player': ^0.3.0
   '@tailwindcss/container-queries': ^0.1.0
   '@tailwindcss/typography': ^0.5.8
+  '@vercel/edge': ^0.2.1
   '@vercel/og': ^0.0.19
   astro: ^1.7.2
   canvas: ^2.10.2
@@ -45,6 +46,7 @@ dependencies:
   '@lottiefiles/svelte-lottie-player': 0.3.0
   '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@vercel/edge': 0.2.1
   '@vercel/og': 0.0.19
   astro: 1.7.2
   canvas: 2.10.2
@@ -1043,6 +1045,10 @@ packages:
   /@vercel/build-utils/5.7.1:
     resolution: {integrity: sha512-JilBlPlqwH/d4dbRLyxbhr4y3Yb41cfyypGyCFOpdgXo1ie3v2wkNZWNyWpDHSocSS4PpdIGJ1OdnzULd2fdBQ==}
     dev: true
+
+  /@vercel/edge/0.2.1:
+    resolution: {integrity: sha512-ApFXG+tvnCCNgtAaIpTQfyTv/iYKEKaxSbckMuq91O1iZoZPkxJ++sEnfAdUBfxR7aptBQZ2dsMw/SsAnnM/mg==}
+    dev: false
 
   /@vercel/go/2.2.20:
     resolution: {integrity: sha512-VORq8/5iVK1NS55jgiNUqutcW4W7+bYhBIfSfvcBvsLbjaOLuQXlv3j/eDRTI4gGBdrBjXOjuGABlphw/J+olA==}

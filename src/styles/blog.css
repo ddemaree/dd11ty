@@ -18,6 +18,8 @@
   font-family: "source-serif-4";
   font-weight: 300 900;
   font-style: normal;
+  /* font-weight: 725;
+  font-variation-settings: 'wdth' 725; */
   font-display: swap;
 }
 
@@ -31,6 +33,10 @@
 
 :root {
   color-scheme: light;
+}
+
+body {
+  @apply bg-stone-100 dark:bg-neutral-900 dark:text-neutral-50;
 }
 
 @layer components {
@@ -292,12 +298,12 @@
 
     .drop-cap .initial {
       @apply font-sans;
-      font-variation-settings: "wdth" 140;
-      font-weight: 240;
-      font-size: 5.25em;
       float: left;
+      font-size: 5.25em;
+      font-variation-settings: "wdth" 120;
+      font-weight: 440;
       line-height: 1;
-      margin-right: 0.05em;
+      margin-right: 0.1em;
       margin-left: -0.05em;
     }
 
