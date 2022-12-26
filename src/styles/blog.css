@@ -109,7 +109,12 @@ body {
     }
 
     :where(a) {
+      @apply transition-colors underline decoration-1 underline-offset-4;
       color: var(--tw-prose-links);
+    }
+
+    :where(a:hover) {
+      @apply text-red-500;
     }
 
     :where(b, strong) {

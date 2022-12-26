@@ -31,7 +31,7 @@ function mapToCSSVars(prefix, tokens) {
 }
 
 module.exports = {
-  darkMode: ["class", '[data-mode="dark"]'],
+  darkMode: ["class", '[data-theme="dark"]'],
   important: true,
   content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
   theme: {
