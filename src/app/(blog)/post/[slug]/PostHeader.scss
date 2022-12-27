@@ -1,0 +1,35 @@
+@use "sass:math";
+
+:root {
+  --post-header-spacing: clamp(48px, #{math.floor(320 / 28)}vw, 64px);
+}
+
+.post-header {
+  $percentWidth: math.floor(320 / 28);
+
+  .post-header-inner {
+    @apply w-inset max-w-content mx-auto;
+  }
+
+  &__title {
+    font-size: clamp(30px, #{math.floor((30 / 320) * 100)}vw, 42px);
+    font-weight: 640;
+    font-variation-settings: "wdth" 118;
+    line-height: 1;
+    margin-block-start: var(--post-header-spacing);
+  }
+
+  &__subtitle {
+    @apply text-stone-500 dark:text-stone-400;
+    font-size: clamp(18px, #{math.floor((18 / 320) * 100)}vw, 24px);
+    line-height: 1.375;
+    margin-block-start: 0.5em;
+  }
+
+  &__dateline {
+    font-size: 18px;
+    font-weight: 650;
+    text-transform: uppercase;
+    margin-top: 1em;
+  }
+}

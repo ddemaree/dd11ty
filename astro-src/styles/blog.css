@@ -4,6 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  src: url("/fonts/Mona-Sans.woff") format("woff"),
+    url("/fonts/Mona-Sans.woff2") format("woff2");
+  font-family: "mona-sans";
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url("/fonts/SourceSerif4Variable-Roman.otf.woff2");
+  font-family: "source-serif-4";
+  font-weight: 300 900;
+  font-style: normal;
+  /* font-weight: 725;
+  font-variation-settings: 'wdth' 725; */
+  font-display: swap;
+}
+
+@font-face {
+  src: url("/fonts/SourceSerif4Variable-Italic.otf.woff2");
+  font-family: "source-serif-4";
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
 }
@@ -82,15 +109,16 @@ body {
     }
 
     :where(a) {
-      @apply transition-colors underline decoration-1 underline-offset-4 text-black dark:text-white;
+      @apply transition-colors underline decoration-1 underline-offset-4;
+      color: var(--tw-prose-links);
     }
 
     :where(a:hover) {
-      @apply text-red-500 dark:text-red-400;
+      @apply text-red-500;
     }
 
     :where(b, strong) {
-      @apply text-black dark:text-white;
+      color: var(--tw-prose-bold);
       font-weight: 600;
     }
 
@@ -157,7 +185,7 @@ body {
     :where(blockquote) {
       border-left-color: var(--tw-prose-quote-borders);
       border-left-width: 0.25em;
-      /* color: var(--tw-prose-quotes); */
+      color: var(--tw-prose-quotes);
       padding-inline-start: calc(var(--prose-indent) - 0.25em);
     }
 
@@ -276,12 +304,12 @@ body {
     .drop-cap .initial {
       @apply font-sans;
       float: left;
-      font-size: 3.25em;
-      font-variation-settings: "wdth" 96;
-      font-weight: 540;
+      font-size: 5.25em;
+      font-variation-settings: "wdth" 120;
+      font-weight: 440;
       line-height: 1;
-      margin-right: 0.15em;
-      transform: translateX(0.025em);
+      margin-right: 0.1em;
+      margin-left: -0.05em;
     }
 
     .drop-cap .initial:before,
@@ -290,26 +318,10 @@ body {
       display: block;
     }
     .drop-cap .initial:before {
-      margin-bottom: 0.075em;
+      /* margin-bottom: -0.0125em; */
     }
     .drop-cap .initial:after {
-      margin-top: -0.5em;
-    }
-
-    @screen sm {
-      .drop-cap .initial {
-        font-size: 5.25em !important;
-        transform: translateX(0.075em);
-        font-variation-settings: "wdth" 120;
-      }
-
-      .drop-cap .initial:before {
-        margin-bottom: 0;
-      }
-
-      .drop-cap .initial:after {
-        margin-top: -0.1em;
-      }
+      margin-top: -0.25em;
     }
   }
 

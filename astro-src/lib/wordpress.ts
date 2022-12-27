@@ -17,7 +17,7 @@ export type WordpressPost = {
 
 export type WordpressResponse = {
   status: number;
-  post: WordpressPost | null;
+  post: WordpressPost;
   error?: string;
 };
 
@@ -42,7 +42,7 @@ async function makeGQLRequest(
   query: string,
   variables: any
 ): Promise<Response> {
-  const password = process.env.WP_PASSWORD;
+  const password = import.meta.env.WP_PASSWORD;
   const authString = Buffer.from("ddemaree" + ":" + password).toString(
     "base64"
   );

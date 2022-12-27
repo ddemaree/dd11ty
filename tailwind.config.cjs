@@ -35,8 +35,13 @@ module.exports = {
   important: true,
   content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
   theme: {
+    supports: {
+      cq: "container-type: inline-size",
+      "no-cq": "not (container-type: inline-size)",
+    },
     fontFamily: ({ theme }) => ({
-      sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
+      // sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
+      sans: "var(--font--mona-sans)",
       serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
