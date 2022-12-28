@@ -29,6 +29,7 @@
     "@types/react-dom": "18.0.10",
     "@vercel/edge": "^0.2.1",
     "@vercel/og": "^0.0.19",
+    "autoprefixer": "^10.4.13",
     "canvas": "^2.11.0",
     "cheerio": "1.0.0-rc.12",
     "clsx": "^1.2.1",
