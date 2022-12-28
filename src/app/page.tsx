@@ -66,7 +66,8 @@ export default function HomePage() {
                 <span className={styles["name"]}>David Demaree</span>
                 <span className={styles["punc"]}>.</span>
               </b>{" "}
-              I'm a web coder, writer, and photographer based in suburban NYC
+              I&apos;m a web coder, writer, and photographer based in suburban
+              NYC
               <span className={styles["punc"]}>.</span>
             </p>
           </div>

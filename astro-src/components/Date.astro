@@ -1,8 +1,0 @@
----
-import { DateTime } from 'luxon';
-
-const { date } = Astro.props;
-const dt = DateTime.fromISO(date).setZone('America/New_York');
-
----
-<date>{dt.toLocaleString(DateTime.DATE_FULL)}</date>
