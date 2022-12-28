@@ -6,7 +6,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHomeAlt, faNewspaper } from "@fortawesome/sharp-solid-svg-icons";
 import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faDDLogo } from "../lib/DDIcon";
+// import { faDDLogo } from "@lib/DDIcon";
 
 function MainNavItem({
   href,
@@ -57,7 +57,7 @@ export default function MainNavigation() {
     <header className="px-inset h-16 flex gap-8 items-center justify-between">
       <div>
         <Link href="/">
-          <FontAwesomeIcon icon={faDDLogo} size="2x" />
+          {/* <FontAwesomeIcon icon={faDDLogo} size="2x" /> */}
           <span className="sr-only">David Demaree</span>
         </Link>
       </div>
