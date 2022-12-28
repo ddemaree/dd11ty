@@ -6,7 +6,7 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHomeAlt, faNewspaper } from "@fortawesome/sharp-solid-svg-icons";
 import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faDDLogo } from "@lib/DDIcon";
+import { faDDLogo } from "../lib/DDIcon";
 
 function MainNavItem({
   href,
