@@ -12,6 +12,7 @@ specifiers:
   '@next/font': 13.1.1
   '@tailwindcss/container-queries': ^0.1.0
   '@tailwindcss/typography': ^0.5.8
+  '@types/jsdom': ^20.0.1
   '@types/luxon': ^3.1.0
   '@types/node': 18.11.17
   '@types/react': 18.0.26
@@ -51,6 +52,7 @@ dependencies:
   '@next/font': 13.1.1
   '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.4
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
+  '@types/jsdom': 20.0.1
   '@types/luxon': 3.1.0
   '@types/node': 18.11.17
   '@types/react': 18.0.26
@@ -544,6 +546,14 @@ packages:
       '@types/node': 18.11.17
     dev: false
 
+  /@types/jsdom/20.0.1:
+    resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
+    dependencies:
+      '@types/node': 18.11.17
+      '@types/tough-cookie': 4.0.2
+      parse5: 7.1.2
+    dev: false
+
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
 
@@ -602,6 +612,10 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+    dev: false
+
+  /@types/tough-cookie/4.0.2:
+    resolution: {integrity: sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==}
     dev: false
 
   /@types/which/2.0.1:

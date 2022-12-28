@@ -28,7 +28,7 @@ export default function sanitizeHtml(htmlInput: string): string {
 
     const initialText = firstNode.firstChild.textContent;
     const words = initialText?.split(" ");
-    const firstWord = words?.slice(0, 1)[0];
+    const firstWord = words?.slice(0, 1)[0] as string;
     const remainder = words?.slice(1).join(" ") as string;
 
     const letters = firstWord?.split("") as string[];

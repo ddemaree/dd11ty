@@ -117,7 +117,7 @@ export async function getAllPosts(): Promise<WordpressPost[]> {
     posts: { nodes: postObjs },
   } = data;
 
-  return postObjs.map((p) => wrapWordpressPost(p)) as WordpressPost[];
+  return postObjs.map((p: any) => wrapWordpressPost(p)) as WordpressPost[];
 }
 
 export async function getSinglePost(
@@ -128,7 +128,6 @@ export async function getSinglePost(
   const { status } = gqlResponse;
   const {
     data: { post: postData },
-    ...data
   } = await gqlResponse.json();
 
   if (!postData || status != 200) {
