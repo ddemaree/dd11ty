@@ -5,6 +5,8 @@ import sanitizeHtml from "@lib/sanitizeHtml";
 import { getSinglePost, WordpressPost } from "@lib/wordpress";
 import PostHeader from "./PostHeader";
 
+import parse from "html-react-parser";
+
 export default async function BlogPostPage({
   params: { slug },
 }: {
@@ -20,14 +22,14 @@ export default async function BlogPostPage({
   } = post as WordpressPost;
 
   const cleanContent = sanitizeHtml(content);
+  const reactContent = parse(cleanContent);
 
   return (
     <article>
       <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
-      <main
-        className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100"
-        dangerouslySetInnerHTML={{ __html: cleanContent }}
-      />
+      <main className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
+        {reactContent}
+      </main>
     </article>
   );
 }

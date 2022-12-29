@@ -42,6 +42,7 @@ const nextConfig = {
     // Important: return the modified config
     config.externals = [
       ...config.externals,
+      "jsdom",
       "bufferutil",
       "canvas",
       "utf-8-validate",

@@ -1,6 +1,5 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { Resize } from "@cloudinary/url-gen/actions";
-// import domino from "domino";
 import { JSDOM } from "jsdom";
 
 const cld = new Cloudinary({
@@ -12,14 +11,11 @@ const cld = new Cloudinary({
   },
 });
 
-function createDocument(htmlInput: string) {
-  const dom = new JSDOM(`<!DOCTYPE html>${htmlInput}`);
-  return dom.window.document;
-}
-
 export default function sanitizeHtml(htmlInput: string): string {
   let output = "";
-  const document = createDocument(htmlInput);
+
+  const dom = new JSDOM(`<!DOCTYPE html>${htmlInput}`);
+  const document = dom.window.document;
 
   // Make drop caps great again
   const firstNode = document.querySelector("p:first-of-type");
@@ -58,6 +54,9 @@ export default function sanitizeHtml(htmlInput: string): string {
 
     textNode.replaceWith(wrapper, " ", remainder);
   }
+
+  const scriptTags = document.querySelectorAll("script");
+  scriptTags.forEach((tag) => tag.parentNode?.removeChild(tag));
 
   // Replace WordPress lazy-load images with simpler markup
   const imageNodes = document.querySelectorAll(
