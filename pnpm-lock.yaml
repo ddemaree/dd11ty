@@ -14,6 +14,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.8
   '@types/dompurify': ^2.4.0
   '@types/jsdom': ^20.0.1
+  '@types/lodash': ^4.14.191
   '@types/luxon': ^3.1.0
   '@types/node': 18.11.17
   '@types/react': 18.0.26
@@ -59,6 +60,7 @@ dependencies:
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@types/dompurify': 2.4.0
   '@types/jsdom': 20.0.1
+  '@types/lodash': 4.14.191
   '@types/luxon': 3.1.0
   '@types/node': 18.11.17
   '@types/react': 18.0.26
@@ -583,6 +585,10 @@ packages:
     dependencies:
       '@types/node': 18.11.17
     dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: false
 
   /@types/luxon/3.1.0:
     resolution: {integrity: sha512-gCd/HcCgjqSxfMrgtqxCgYk/22NBQfypwFUG7ZAyG/4pqs51WLTcUzVp1hqTbieDYeHS3WoVEh2Yv/2l+7B0Vg==}
