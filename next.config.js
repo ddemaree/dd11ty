@@ -27,11 +27,34 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/feeds/posts.xml",
+        destination: "/feed/rss",
+        permanent: false,
+      },
+      {
+        source: "/feeds/posts.json",
+        destination: "/feed/json",
+        permanent: false,
+      },
+      {
+        source: "/p/:slug",
+        destination: "/post/:slug",
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
         source: "/.well-known/webfinger",
         destination: "/api/webfinger",
+      },
+      {
+        source: "/feed",
+        destination: "/feed/rss",
       },
     ];
   },

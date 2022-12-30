@@ -15,16 +15,10 @@ export default function MainFooter() {
       </div>
       <div className="mt-4 flex gap-3 justify-center">
         Subscribe to my feed:
-        <a
-          href="/feeds/posts.xml"
-          className="font-medium text-primary flex gap-1"
-        >
+        <a href="/feed/rss" className="font-medium text-primary flex gap-1">
           <FontAwesomeIcon icon={faFeed} /> <span>RSS</span>
         </a>
-        <a
-          href="/feeds/posts.json"
-          className="font-medium text-primary flex gap-1"
-        >
+        <a href="/feed/json" className="font-medium text-primary flex gap-1">
           <FontAwesomeIcon icon={faFeed} /> <span>JSON</span>
         </a>
       </div>
