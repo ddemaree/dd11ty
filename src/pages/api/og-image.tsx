@@ -28,23 +28,6 @@ export default async function handler({ url }: { url: string }) {
   const fontData = await fontMonaSemiboldWide;
   const fontDataMonaMedium = await fontMonaMedium;
 
-  const ImageResponseOptions = {
-    width: 1200,
-    height: 600,
-    fonts: [
-      {
-        data: fontData,
-        name: "MonaSansWide",
-        weight: 600,
-      },
-      {
-        data: fontDataMonaMedium,
-        name: "MonaSans",
-        weight: 500,
-      },
-    ],
-  };
-
   if (!title) {
     return new ImageResponse(
       (
@@ -62,7 +45,22 @@ export default async function handler({ url }: { url: string }) {
           </div>
         </div>
       ),
-      ImageResponseOptions
+      {
+        width: 1200,
+        height: 600,
+        fonts: [
+          {
+            data: fontData,
+            name: "MonaSansWide",
+            weight: 600,
+          },
+          {
+            data: fontDataMonaMedium,
+            name: "MonaSans",
+            weight: 500,
+          },
+        ],
+      }
     );
   }
 
@@ -88,6 +86,21 @@ export default async function handler({ url }: { url: string }) {
         </div>
       </div>
     ),
-    ImageResponseOptions
+    {
+      width: 1200,
+      height: 600,
+      fonts: [
+        {
+          data: fontData,
+          name: "MonaSansWide",
+          weight: 600,
+        },
+        {
+          data: fontDataMonaMedium,
+          name: "MonaSans",
+          weight: 500,
+        },
+      ],
+    }
   );
 }

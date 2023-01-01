@@ -83,23 +83,6 @@ export default async function handler(
   const fontData = await fontMonaSemiboldWide;
   const fontDataMonaMedium = await fontMonaMedium;
 
-  const ImageResponseOptions = {
-    width: 1200,
-    height: 600,
-    fonts: [
-      {
-        data: fontData,
-        name: "MonaSansWide",
-        weight: 600,
-      },
-      {
-        data: fontDataMonaMedium,
-        name: "MonaSans",
-        weight: 500,
-      },
-    ],
-  };
-
   return new ImageResponse(
     (
       <div
@@ -135,6 +118,21 @@ export default async function handler(
         </div>
       </div>
     ),
-    ImageResponseOptions
+    {
+      width: 1200,
+      height: 600,
+      fonts: [
+        {
+          data: fontData,
+          name: "MonaSansWide",
+          weight: 600,
+        },
+        {
+          data: fontDataMonaMedium,
+          name: "MonaSans",
+          weight: 500,
+        },
+      ],
+    }
   );
 }
