@@ -1,3 +1,4 @@
+import SocialImageTags from "@components/head/SocialImage";
 import DefaultHeadTags from "./DefaultHeadTags";
 
 export default function Head() {
@@ -7,6 +8,7 @@ export default function Head() {
       <meta name="title" content="David Demaree's home page" />
       <meta name="description" content="A good man, and thorough." />
       <DefaultHeadTags />
+      <SocialImageTags />
     </>
   );
 }

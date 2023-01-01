@@ -1,4 +1,5 @@
 export type WordpressImage = {
+  databaseId: number | string;
   sourceUrl: string;
   srcSet: string;
   sizes: string;
@@ -7,6 +8,7 @@ export type WordpressImage = {
 };
 
 export type WordpressPost = {
+  databaseId: number | string;
   slug: string;
   title: string;
   date: string;
@@ -22,11 +24,13 @@ export type WordpressResponse = {
 };
 
 function wrapWordpressPost(inputPostData: any): WordpressPost {
-  const { slug, title, content, date, excerpt, ...postData } = inputPostData;
+  const { databaseId, slug, title, content, date, excerpt, ...postData } =
+    inputPostData;
 
   const featuredImage = postData?.featuredImage?.node;
 
   const post: WordpressPost = {
+    databaseId,
     slug,
     title,
     content,
@@ -60,6 +64,7 @@ async function makeGQLRequest(
 const SINGLE_POST_QUERY = `
   query PostQuery($id: ID!) {
     post(id: $id, idType: SLUG) {
+      databaseId
       slug
       title
       date: dateGmt
@@ -67,6 +72,7 @@ const SINGLE_POST_QUERY = `
       excerpt(format: RAW)
       featuredImage {
         node {
+          databaseId
           sourceUrl
           srcSet
           sizes
