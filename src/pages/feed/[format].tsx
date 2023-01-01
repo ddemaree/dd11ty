@@ -1,6 +1,16 @@
+import { GetServerSidePropsContext } from "next";
 import { getFeed } from "../../lib/feeds";
 
-export async function getServerSideProps({ res, params: { format = "rss" } }) {
+interface DDFeedServerSidePropsContext extends GetServerSidePropsContext {
+  params: {
+    format?: string;
+  };
+}
+
+export async function getServerSideProps({
+  res,
+  params: { format = "rss" },
+}: DDFeedServerSidePropsContext) {
   const feed = await getFeed();
 
   res.setHeader(

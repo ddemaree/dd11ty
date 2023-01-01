@@ -26,7 +26,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { searchParams } = new URL(req.url);
+  const { searchParams } = new URL(req.url as string);
   let slug = searchParams.get("slug") as string;
 
   if (slug.match(/\.png$/)) {
