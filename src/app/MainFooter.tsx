@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faFeed } from "@fortawesome/sharp-solid-svg-icons";
+import Link from "next/link";
 
 export default function MainFooter() {
   return (
@@ -15,12 +16,12 @@ export default function MainFooter() {
       </div>
       <div className="mt-4 flex gap-3 justify-center">
         Subscribe to my feed:
-        <a href="/feed/rss" className="font-medium text-primary flex gap-1">
+        <Link href="/feed/rss" className="font-medium text-primary flex gap-1">
           <FontAwesomeIcon icon={faFeed} /> <span>RSS</span>
-        </a>
-        <a href="/feed/json" className="font-medium text-primary flex gap-1">
+        </Link>
+        <Link href="/feed/json" className="font-medium text-primary flex gap-1">
           <FontAwesomeIcon icon={faFeed} /> <span>JSON</span>
-        </a>
+        </Link>
       </div>
     </footer>
   );
