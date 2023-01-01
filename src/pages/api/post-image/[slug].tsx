@@ -1,14 +1,10 @@
-import { Cloudinary, Qualifiers } from "@cloudinary/url-gen";
-import { crop, fillPad, fill } from "@cloudinary/url-gen/actions/resize";
-import DDIcon from "@components/DDIcon";
-import cloudinary from "@lib/cloudinary";
-import { getSinglePost, WordpressResponse } from "@lib/wordpress";
-import { ImageResponse } from "@vercel/og";
 import _ from "lodash";
+import { ImageResponse } from "@vercel/og";
+import { getSinglePost, WordpressResponse } from "@lib/wordpress";
 import { NextApiRequest, NextApiResponse } from "next";
 import chroma from "chroma-js";
 import colors from "tailwindcss/colors";
-import path from "path";
+import DDIcon from "@components/DDIcon";
 
 export const config = {
   runtime: "experimental-edge",
@@ -74,10 +70,7 @@ export default async function handler(
       let [[imgMainColor]] = adminImageData.colors;
       mainColor = imgMainColor;
 
-      imgUrl = cloudinary
-        .image(cldPublicId)
-        .resize(fill(1200, 600).gravity("auto"))
-        .toURL();
+      imgUrl = `https://res.cloudinary.com/demaree/images/c_fill,w_1200,h_600,g_auto/${cldPublicId}.jpg`;
 
       const mc = chroma(mainColor);
       imgLuma = mc.luminance();
