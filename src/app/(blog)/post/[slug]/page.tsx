@@ -1,11 +1,12 @@
 // `app/page.js` is the UI for the root `/` URL
 
 // import sanitizeHtml from "@lib/sanitizeHtml";
-import sanitizeHtml from "@lib/sanitizeHtml";
+import htmlToReact from "@lib/text/htmlToReact";
+import sanitizeHtml from "@lib/text/sanitizeHtml";
+import extractTweetIds from "@lib/twitter/extractTweetIds";
+import fetchTweets from "@lib/twitter/fetchTweets";
 import { getSinglePost, WordpressPost } from "@lib/wordpress";
 import PostHeader from "./PostHeader";
-
-import parse from "html-react-parser";
 
 export default async function BlogPostPage({
   params: { slug },
@@ -22,7 +23,9 @@ export default async function BlogPostPage({
   } = post as WordpressPost;
 
   const cleanContent = sanitizeHtml(content);
-  const reactContent = parse(cleanContent);
+  const tweetIds = extractTweetIds(cleanContent);
+  const tweets = await fetchTweets(tweetIds);
+  const reactContent = htmlToReact(cleanContent, tweets);
 
   return (
     <article>

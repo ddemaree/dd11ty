@@ -86,7 +86,7 @@ export default async function handler(
   return new ImageResponse(
     (
       <div
-        tw="flex flex-col bg-red-600 text-white w-full h-full relative"
+        tw="flex flex-col w-full h-full relative"
         style={{
           fontFamily: "MonaSans",
           backgroundColor: mainColor,
@@ -98,7 +98,7 @@ export default async function handler(
             tw="absolute inset-0 z-10 w-full bg-black flex opacity-50"
             style={{
               backgroundImage: `url(${imgUrl})`,
-              backgroundSize: "1200px 600px",
+              backgroundSize: "1200px 630px",
             }}
           ></div>
         )}
@@ -120,7 +120,7 @@ export default async function handler(
     ),
     {
       width: 1200,
-      height: 600,
+      height: 630,
       fonts: [
         {
           data: fontData,

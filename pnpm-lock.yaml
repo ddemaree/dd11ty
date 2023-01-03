@@ -28,6 +28,7 @@ specifiers:
   clsx: ^1.2.1
   domino: ^2.1.6
   dompurify: ^2.4.1
+  domutils: ^3.0.1
   eslint: 8.30.0
   eslint-config-next: 13.1.1
   feed: ^4.2.2
@@ -46,6 +47,7 @@ specifiers:
   sharp: ^0.31.3
   tailwindcss: ^3.2.4
   typescript: 4.9.4
+  unicode-substring: ^1.0.0
   vercel: ^28.10.0
   zx: ^7.1.1
 
@@ -77,6 +79,7 @@ dependencies:
   clsx: 1.2.1
   domino: 2.1.6
   dompurify: 2.4.1
+  domutils: 3.0.1
   eslint: 8.30.0
   eslint-config-next: 13.1.1_lzzuuodtsqwxnvqeq4g4likcqa
   feed: 4.2.2
@@ -95,6 +98,7 @@ dependencies:
   sharp: 0.31.3
   tailwindcss: 3.2.4_postcss@8.4.20
   typescript: 4.9.4
+  unicode-substring: 1.0.0
 
 devDependencies:
   vercel: 28.10.0
@@ -4718,6 +4722,10 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
+    dev: false
+
+  /unicode-substring/1.0.0:
+    resolution: {integrity: sha512-2acGIOTaqS/GWocwKdyL1Vk9MHglCss1mR0CL2o/YJTwKrAt6JbTrw4X187VkSDmFcpJ8n2i3/+gJSYEdvXJMg==}
     dev: false
 
   /unique-string/2.0.0:

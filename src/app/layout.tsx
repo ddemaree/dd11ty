@@ -42,7 +42,7 @@ export default function RootLayout({
 
   return (
     <html
-      data-theme={colorSchemeHint}
+      // data-theme={colorSchemeHint}
       className={clsx([
         monaSans.variable,
         interFont.variable,

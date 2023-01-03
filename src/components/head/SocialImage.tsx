@@ -1,3 +1,6 @@
+import getSiteUrl from "@lib/getSiteUrl";
+import { isDevelopment } from "@lib/siteUtils";
+
 interface TitleSocialImageProps {
   title?: string;
   slug?: string;
@@ -7,7 +10,9 @@ export default function SocialImageTags({
   title = "",
   slug = "",
 }: TitleSocialImageProps) {
-  const urlBase = process.env.VERCEL_URL || "http://localhost:3000";
+  const urlHost = getSiteUrl();
+  const urlProtocol = isDevelopment() ? "http" : "https";
+  const urlBase = `${urlProtocol}://${urlHost}`;
   let socialImageUrl;
 
   if (slug) {

@@ -1,23 +1,29 @@
-export default function DebugInfoPage({ url }: { url: string }) {
+import getSiteUrl from "@lib/getSiteUrl";
+
+export default function DebugInfoPage({
+  url,
+  siteUrl,
+}: {
+  url: string;
+  siteUrl: string;
+}) {
   return (
     <>
       <div>
         URL:
         {url}
       </div>
+      <div>Site URL: {siteUrl}</div>
     </>
   );
 }
 
 export function getServerSideProps() {
-  const port = process.env.PORT || "3000";
-  const url = process.env.VERCEL_URL || `http://localhost:${port}`;
-
-  console.log({ port, url });
+  const siteUrl = getSiteUrl();
 
   return {
     props: {
-      url,
+      siteUrl,
     },
   };
 }

@@ -134,7 +134,9 @@ export async function getSinglePost(
   const { status } = gqlResponse;
   const {
     data: { post: postData },
-  } = await gqlResponse.json();
+  } = await gqlResponse
+    .json()
+    .catch((err) => console.error(err, status, gqlResponse));
 
   if (!postData || status != 200) {
     return {

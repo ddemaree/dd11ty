@@ -1,5 +1,5 @@
 import { Cloudinary } from "@cloudinary/url-gen";
-import { Resize } from "@cloudinary/url-gen/actions";
+import { scale } from "@cloudinary/url-gen/actions/resize";
 import { JSDOM } from "jsdom";
 
 const cld = new Cloudinary({
@@ -59,10 +59,13 @@ export default function sanitizeHtml(htmlInput: string): string {
   scriptTags.forEach((tag) => tag.parentNode?.removeChild(tag));
 
   // Replace WordPress lazy-load images with simpler markup
-  const imageNodes = document.querySelectorAll(
-    "img[src^='data:']"
-  ) as NodeListOf<HTMLImageElement>;
-  for (let x = 0, thisNode = imageNodes[x]; x < imageNodes.length; x++) {
+  const imageNodes = Array.from(
+    document.querySelectorAll("img[src^=data]") as NodeListOf<HTMLImageElement>
+  ) as HTMLImageElement[];
+
+  for (let x = 0; x < imageNodes.length; x++) {
+    var thisNode = imageNodes[x];
+
     const originalWidth = thisNode.width;
     const originalHeight = thisNode.height;
     const aspectRatio = originalWidth / originalHeight;
@@ -79,11 +82,11 @@ export default function sanitizeHtml(htmlInput: string): string {
     const sizes = [1440, 960, 480];
     const srcSet = sizes
       .map((size) =>
-        [cldImage.resize(Resize.scale(size)).toURL(), `${size}w`].join(" ")
+        [cldImage.resize(scale(size)).toURL(), `${size}w`].join(" ")
       )
       .join(", ");
 
-    cldImage.resize(Resize.scale(1350));
+    cldImage.resize(scale(1350));
     thisNode.src = cldImage.toURL();
     thisNode.srcset = srcSet;
     thisNode.sizes = "(max-width: 1440px) 100vw, 1440px";
@@ -96,6 +99,7 @@ export default function sanitizeHtml(htmlInput: string): string {
 
   // console.log(document.body.innerHTML);
   output = document.body.innerHTML.replace(/\n{2,}/g, "\n\n");
+  // console.log(output);
 
   return output;
 }
