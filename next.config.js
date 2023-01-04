@@ -63,6 +63,8 @@ const nextConfig = {
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
     // Important: return the modified config
+    config.experiments = { ...config.experiments, topLevelAwait: true };
+
     config.externals = [
       ...config.externals,
       "jsdom",

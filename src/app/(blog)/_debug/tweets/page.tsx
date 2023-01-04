@@ -4,6 +4,13 @@ import extractTweetIds from "@lib/twitter/extractTweetIds";
 import fetchTweets from "@lib/twitter/fetchTweets";
 
 const htmlContent = `
+
+<h2>Code Blocks</h2>
+
+<pre class=\"wp-block-code\"><code>&lt;!-- index.html -->\n&lt;html>\n  &lt;head>\n    &lt;title>A throwaway web page experiment&lt;\/title>\n    &lt;link href=\".\/styles.css\" rel=\"stylesheet\" \/>\n  &lt;\/head>\n  &lt;body>\n    &lt;h1>Time to code!&lt;\/h1>\n    &lt;div id=\"vue-app\">&lt;\/div>\n    &lt;script src=\".\/app.js\">&lt;\/script>\n  &lt;\/body>\n&lt;\/html><\/code><\/pre>
+
+<h2>Tweets</h2>
+
 <p>Here are some tweets:</p>
 
 <figure class="twitter-tweet"><blockquote>
@@ -32,11 +39,11 @@ export default async function DebugTweetsPage() {
   const tweetIds = extractTweetIds(htmlContent);
   const tweets = await fetchTweets(tweetIds);
   const plainReactContent = parse(htmlContent);
-  const reactContent = htmlToReact(htmlContent.trim(), tweets);
+  const reactContent = await htmlToReact(htmlContent.trim(), tweets);
 
   return (
-    <div className=" mx-auto max-w-lg w-inset">
-      <h1>Tweet previews</h1>
+    <div className=" mx-auto max-w-xl w-inset [&_h2]:font-bold [&_h2]:text-3xl [&_h2]:mt-12">
+      <h1 className="font-semibold text-5xl leading-tight">Blocks</h1>
 
       <div className="space-y-6">{reactContent}</div>
     </div>
