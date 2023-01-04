@@ -7,6 +7,10 @@ const htmlContent = `
 <p>Here are some tweets:</p>
 
 <figure class="twitter-tweet"><blockquote>
+  <a href="https://twitter.com/bfcarlson/status/1609988081825751041?s=20&t=LdkT_MVPutbQtZ3jiZ-MaA">Tweet</a>
+</blockquote></figure>
+
+<figure class="twitter-tweet"><blockquote>
   <a href="https://twitter.com/davidhoang/status/1610061657388257281?s=20&t=n152ZgLW6quQOL5DY63xFg">Tweet</a>
 </blockquote></figure>
 
@@ -31,12 +35,10 @@ export default async function DebugTweetsPage() {
   const reactContent = htmlToReact(htmlContent.trim(), tweets);
 
   return (
-    <div className=" mx-auto max-w-md w-inset">
+    <div className=" mx-auto max-w-lg w-inset">
       <h1>Tweet previews</h1>
-      <h2>Original</h2>
-      {/* <div dangerouslySetInnerHTML={{ __html: htmlContent }} /> */}
-      {plainReactContent}
-      {reactContent}
+
+      <div className="space-y-6">{reactContent}</div>
     </div>
   );
 }

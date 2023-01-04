@@ -4,19 +4,6 @@ import Tweet from "@lib/twitter/Tweet";
 import _ from "lodash";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
 
-function mapTypes(node: DOMNode, children: DOMNode[], indentLevel = 0) {
-  console.log(
-    _.repeat(" ", indentLevel),
-    node.type,
-    node.name,
-    node.children.length
-  );
-
-  if (node.children && indentLevel <= 2) {
-    mapTypes(node, indentLevel + 1);
-  }
-}
-
 export default function htmlToReact(htmlString: string, tweets: any[]) {
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {

@@ -97,9 +97,7 @@ export default function sanitizeHtml(htmlInput: string): string {
     thisNode.removeAttribute("onload");
   }
 
-  // console.log(document.body.innerHTML);
   output = document.body.innerHTML.replace(/\n{2,}/g, "\n\n");
-  // console.log(output);
 
   return output;
 }

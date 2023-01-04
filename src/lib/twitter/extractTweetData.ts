@@ -14,9 +14,7 @@ export default function extractTweetData(jsonData) {
   const usersData = keyBy(includes?.users, "id") as any;
   const tweetsData = keyBy(includes?.tweets, "id");
 
-  console.log(mediaData);
-
-  const outputTweets = data.map((tweet) => {
+  const processTweet = (tweet, quoteLevel = 0) => {
     let {
       text,
       entities,
@@ -47,11 +45,12 @@ export default function extractTweetData(jsonData) {
       let before = unicodeSubstring(text, lastEnd, start);
       if (before) parts.push(before);
 
+      if (obj.url) obj._url = obj.url;
+
       if (obj.url && obj.media_key) {
         outputObj = {
           ...obj,
           ...mediaData[obj.media_key],
-          original_url: obj.url,
         };
       } else if (obj.expanded_url && obj.title) {
         outputObj = {
@@ -68,13 +67,15 @@ export default function extractTweetData(jsonData) {
           id: obj.id,
           profile_image_url: obj.profile_image_url,
         };
-      } else if (obj.expanded_url && obj.expanded_url.match(/twitter\.com/)) {
+      } else if (
+        obj.expanded_url &&
+        obj.expanded_url.match(/https?:\/\/twitter\.com/)
+      ) {
         // Quoted tweet
-        console.log(tweetsData);
-
-        outputObj = obj;
+        const quotedId = obj.expanded_url.match(/\/(\d+)$/).at(1);
+        const quotedTweet = processTweet(tweetsData[quotedId], quoteLevel + 1);
+        outputObj = quotedTweet;
       } else {
-        console.log(entities);
         console.log({
           start,
           end,
@@ -98,7 +99,9 @@ export default function extractTweetData(jsonData) {
     tweet.parts = parts;
 
     return tweet;
-  });
+  };
+
+  const outputTweets = data.map(processTweet);
 
   return outputTweets;
 }

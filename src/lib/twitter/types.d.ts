@@ -24,7 +24,12 @@ interface TwitterQuotedTweet {
   url: string;
 }
 
-type TwitterPart = string | TwitterMedia | TwitterMention | TwitterWebsite;
+type TwitterPart =
+  | string
+  | TwitterMedia
+  | TwitterMention
+  | TwitterWebsite
+  | Tweet;
 
 interface Tweet {
   author: TwitterUser;
