@@ -8,10 +8,10 @@ import path from "path";
 
 // console.log(path.join(process.cwd(), "node_modules/shiki/themes"))
 
-// const highlighter = await shiki.getHighlighter({ paths: {
-//   themes: path.join(process.cwd(), "node_modules/shiki/themes"),
-//   languages: path.join(process.cwd(), "node_modules/shiki/languages")
-// } });
+const highlighter = await shiki.getHighlighter({ paths: {
+  themes: path.join(process.cwd(), "node_modules/shiki/themes"),
+  languages: path.join(process.cwd(), "node_modules/shiki/languages")
+} });
 
 export default async function htmlToReact(htmlString: string, tweets: any[]) {
 
