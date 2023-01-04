@@ -4,10 +4,18 @@ import Tweet from "@lib/twitter/Tweet";
 import _ from "lodash";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
 import shiki from "shiki";
+import path from "path";
 
-const highlighter = await shiki.getHighlighter({});
+// console.log(path.join(process.cwd(), "node_modules/shiki/themes"))
 
-export default function htmlToReact(htmlString: string, tweets: any[]) {
+// const highlighter = await shiki.getHighlighter({ paths: {
+//   themes: path.join(process.cwd(), "node_modules/shiki/themes"),
+//   languages: path.join(process.cwd(), "node_modules/shiki/languages")
+// } });
+
+export default async function htmlToReact(htmlString: string, tweets: any[]) {
+
+
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {
       if (!(node instanceof Element)) {
@@ -34,7 +42,7 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
         const codeNode = $node("code");
         const codeSrc = codeNode.text().trim();
 
-        console.log(highlighter.codeToHtml(codeSrc, { lang: "markup" }));
+        // console.log(highlighter.codeToHtml(codeSrc, { lang: "markup" }));
 
         return <figure className="code-block">CODE</figure>;
       }

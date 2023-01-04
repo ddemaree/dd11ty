@@ -41,6 +41,9 @@ export default async function DebugTweetsPage() {
   const plainReactContent = parse(htmlContent);
   const reactContent = await htmlToReact(htmlContent.trim(), tweets);
 
+  const shiki = await import('shiki');
+  const highlighter = shiki.getHighlighter({ theme: 'nord' });
+
   return (
     <div className=" mx-auto max-w-xl w-inset [&_h2]:font-bold [&_h2]:text-3xl [&_h2]:mt-12">
       <h1 className="font-semibold text-5xl leading-tight">Blocks</h1>
