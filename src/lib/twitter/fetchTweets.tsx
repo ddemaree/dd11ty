@@ -32,11 +32,6 @@ const fetchTweets = async (tweetIds: string | string[] = []) => {
       );
 
       return _doFetchTweets(addlTweetIds).then((addlJsonData) => {
-        console.log(
-          Object.keys(jsonData.includes),
-          Object.keys(addlJsonData.includes)
-        );
-
         jsonData.data = [...jsonData.data, ...addlJsonData.data];
         jsonData.includes = {
           media: [

@@ -3,6 +3,9 @@ import htmlToReact from "@lib/text/htmlToReact";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
 import fetchTweets from "@lib/twitter/fetchTweets";
 
+import shiki from "shiki";
+import Highlight from "prism-react-renderer";
+
 const htmlContent = `
 
 <h2>Code Blocks</h2>
@@ -38,14 +41,23 @@ const htmlContent = `
 export default async function DebugTweetsPage() {
   const tweetIds = extractTweetIds(htmlContent);
   const tweets = await fetchTweets(tweetIds);
-  const plainReactContent = parse(htmlContent);
   const reactContent = await htmlToReact(htmlContent.trim(), tweets);
+
+  const codeSample = `export default function SamplePage({ greeting = "Hello!" }) {
+    return (
+      <div>{greeting}</div>
+    )
+  }`;
+
+  // const highlighter = await shiki.getHighlighter({ theme: "nord" });
 
   return (
     <div className=" mx-auto max-w-xl w-inset [&_h2]:font-bold [&_h2]:text-3xl [&_h2]:mt-12">
       <h1 className="font-semibold text-5xl leading-tight">Blocks</h1>
-
       <div className="space-y-6">{reactContent}</div>
+      <Highlight {...defaultProps} code={codeSample} language="jsx">
+        {(highlight) => <pre>CODE</pre>}
+      </Highlight>
     </div>
   );
 }
