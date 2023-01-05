@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
 import Link from "next/link";
 
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -48,13 +48,6 @@ function MainNavItem({
 }
 
 export default function MainNavigation() {
-  const headersList = headers();
-  const urlHeader = headersList.get("x-request-url") as string;
-  const requestUrl = new URL(urlHeader);
-
-  const { pathname } = requestUrl;
-  const pathSegments = pathname.replace(/^\//, "").split("/");
-
   return (
     <header className="px-inset h-16 flex gap-8 items-center justify-between">
       <div>
@@ -65,18 +58,8 @@ export default function MainNavigation() {
       </div>
       <div className="flex gap-6">
         <nav className="flex gap-4 items-center">
-          <MainNavItem
-            href="/"
-            label="Home"
-            isActive={requestUrl.pathname === "/"}
-            icon={faHomeAlt}
-          />
-          <MainNavItem
-            href="/posts"
-            label="Blog"
-            isActive={["posts", "post"].includes(pathSegments[0])}
-            icon={faNewspaper}
-          />
+          <MainNavItem href="/" label="Home" icon={faHomeAlt} />
+          <MainNavItem href="/posts" label="Blog" icon={faNewspaper} />
         </nav>
         <nav className="flex">
           <MainNavItem

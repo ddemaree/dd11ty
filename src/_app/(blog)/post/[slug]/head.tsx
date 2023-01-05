@@ -2,7 +2,7 @@ import DescriptionTags from "@components/head/Description";
 import SocialImageTags from "@components/head/SocialImage";
 import TitleTag from "@components/head/Title";
 import { getSinglePost, WordpressPost } from "@lib/wordpress";
-import DefaultHeadTags from "src/app/DefaultHeadTags";
+import DefaultHeadTags from "src/_app/DefaultHeadTags";
 
 export default async function Head({
   params: { slug },

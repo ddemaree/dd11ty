@@ -1,4 +1,5 @@
-import { isArray, compact, flattenDeep, pullAll } from "lodash";
+import { add } from "cheerio/lib/api/traversing";
+import { isArray, compact, flattenDeep, pullAll, isEmpty } from "lodash";
 import extractTweetData from "./extractTweetData";
 
 function getTwApiUrl(ids) {
@@ -31,22 +32,28 @@ const fetchTweets = async (tweetIds: string | string[] = []) => {
         tweetIds
       );
 
+      if (isEmpty(addlTweetIds)) {
+        return jsonData;
+      }
+
       return _doFetchTweets(addlTweetIds).then((addlJsonData) => {
-        jsonData.data = [...jsonData.data, ...addlJsonData.data];
-        jsonData.includes = {
-          media: [
-            ...(jsonData.includes.media ?? []),
-            ...(addlJsonData.includes.media ?? []),
-          ],
-          tweets: [
-            ...(jsonData.includes.tweets ?? []),
-            ...(addlJsonData.includes.tweets ?? []),
-          ],
-          users: [
-            ...(jsonData.includes.users ?? []),
-            ...(addlJsonData.includes.users ?? []),
-          ],
-        };
+        if (!isEmpty(addlJsonData)) {
+          jsonData.data = [...jsonData.data, ...addlJsonData.data];
+          jsonData.includes = {
+            media: [
+              ...(jsonData.includes.media ?? []),
+              ...(addlJsonData.includes.media ?? []),
+            ],
+            tweets: [
+              ...(jsonData.includes.tweets ?? []),
+              ...(addlJsonData.includes.tweets ?? []),
+            ],
+            users: [
+              ...(jsonData.includes.users ?? []),
+              ...(addlJsonData.includes.users ?? []),
+            ],
+          };
+        }
 
         return jsonData;
       });

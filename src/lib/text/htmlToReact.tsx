@@ -4,7 +4,7 @@ import Tweet from "@lib/twitter/Tweet";
 import _ from "lodash";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
 
-export default async function htmlToReact(htmlString: string, tweets: any[]) {
+export default function htmlToReact(htmlString: string, tweets: any[]) {
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {
       if (!(node instanceof Element)) {

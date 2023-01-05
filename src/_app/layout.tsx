@@ -10,8 +10,8 @@ import "../styles/blog.css";
 
 import localFont from "@next/font/local";
 import { Inter, Source_Serif_4 } from "@next/font/google";
-import MainNavigation from "./MainNavigation";
-import MainFooter from "./MainFooter";
+import MainNavigation from "../components/MainNavigation";
+import MainFooter from "../components/MainFooter";
 
 const interFont = Inter({
   variable: "--font--inter",

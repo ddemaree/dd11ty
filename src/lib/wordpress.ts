@@ -33,10 +33,10 @@ function wrapWordpressPost(inputPostData: any): WordpressPost {
     databaseId,
     slug,
     title,
-    content,
     date,
     excerpt,
-    featuredImage,
+    featuredImage: featuredImage ?? null,
+    content: inputPostData?.content ?? null,
   };
 
   return post;
@@ -46,7 +46,7 @@ async function makeGQLRequest(
   query: string,
   variables: any
 ): Promise<Response> {
-  const password = process.env.WP_PASSWORD;
+  const password = process.env.NEXT_PUBLIC_WP_PASSWORD;
   const authString = Buffer.from("ddemaree" + ":" + password).toString(
     "base64"
   );
@@ -96,12 +96,14 @@ query PostsQuery($startCursor: String) {
       hasNextPage
     }
     nodes {
+      databaseId
       slug
       title
       date: dateGmt
       excerpt(format: RAW)
       featuredImage {
         node {
+          databaseId
           sourceUrl
           srcSet
           sizes
