@@ -1,4 +1,4 @@
-import parse, { DOMNode, Element } from "html-react-parser";
+import parse, { DOMNode, Element, domToReact, htmlToDOM } from "html-react-parser";
 import * as cheerio from "cheerio";
 import Tweet from "@lib/twitter/Tweet";
 import _ from "lodash";
@@ -7,16 +7,7 @@ import extractTweetIds from "@lib/twitter/extractTweetIds";
 export default function htmlToReact(htmlString: string, tweets: any[]) {
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {
-      if (!(node instanceof Element)) {
-        return;
-      }
-
-      let $node: cheerio.CheerioAPI;
-      try {
-        $node = cheerio.load(node);
-      } catch (err) {
-        console.error(err);
-      }
+      if (!(node instanceof Element)) return;
 
       const { name, attribs, children } = node;
       if (name && name === "figure" && attribs?.class.match(/twitter/)) {
@@ -35,6 +26,8 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
       }
     },
   });
+
+  // const reactContent = parse(htmlString);
 
   return reactContent;
 }
