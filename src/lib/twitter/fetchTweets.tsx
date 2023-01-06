@@ -19,6 +19,12 @@ async function _doFetchTweets(tweetIds: string[] = []) {
 }
 
 const fetchTweets = async (tweetIds: string | string[] = []) => {
+  if (tweetIds.length === 0) {
+    return {
+      data: [],
+    };
+  }
+
   return _doFetchTweets(tweetIds)
     .then((jsonData) => {
       // Get any other referenced tweets

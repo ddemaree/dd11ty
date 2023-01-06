@@ -4,7 +4,7 @@ import sanitizeHtml from "@lib/text/sanitizeHtml";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
 import fetchTweets from "@lib/twitter/fetchTweets";
 import { getSinglePost, WordpressPost } from "@lib/wordpress";
-// import PostHeader from "./PostHeader";
+import PostHeader from "@components/PostHeader";
 
 export default function BlogPostPage({
   post,
@@ -21,7 +21,7 @@ export default function BlogPostPage({
 
   return (
     <article>
-      {/* <PostHeader {...{ title, date, subtitle, image: featuredImage }} /> */}
+      <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
       <main className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
         {reactContent}
       </main>

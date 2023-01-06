@@ -1,7 +1,8 @@
 import DisplayDate from "@components/DisplayDate";
 import { WordpressImage } from "@lib/wordpress";
+import clsx from "clsx";
 import Image from "next/image";
-import "./PostHeader.scss";
+import styles from "./PostHeader.module.scss";
 
 export default function PostHeader({
   title,
@@ -15,14 +16,12 @@ export default function PostHeader({
   image?: WordpressImage;
 }) {
   return (
-    <header className="post-header">
-      <div className="post-header-inner @container/post-header">
-        <h1 className="post-header__title text-stone-900 dark:text-white">
-          {title}
-        </h1>
-        {subtitle && <p className="post-header__subtitle">{subtitle}</p>}
+    <header className={styles.postHeader}>
+      <div className={clsx(styles.inner, "@container/post-header")}>
+        <h1 className={styles.title}>{title}</h1>
+        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         {date && (
-          <div className="post-header__dateline">
+          <div className={styles.dateline}>
             <DisplayDate dateString={date} />
           </div>
         )}

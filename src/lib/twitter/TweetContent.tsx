@@ -1,9 +1,14 @@
+import { uniqueId } from "lodash";
 import Tweet from "./Tweet";
 
 export default function TweetContent({ parts = [], quoteLevel = 0 }) {
+  const keyPrefix = uniqueId();
+
   return (
     <div className=" leading-snug">
-      {parts.map((part: TwitterPart) => {
+      {parts.map((part: TwitterPart, idx: number) => {
+        const key = `${keyPrefix}-${idx}`;
+
         if (typeof part === "string") {
           // TODO: Handle line breaks
 
@@ -32,7 +37,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
         // Tweet photo
         if (part?.media_key && part?.url && part?.type === "photo") {
           return (
-            <figure className=" mt-4">
+            <figure key={key} className=" mt-4">
               <img
                 src={part.url}
                 alt="tweet image"
@@ -46,6 +51,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
         if (part?.username) {
           return (
             <a
+              key={key}
               className="font-medium hover:underline"
               href={`https://twitter.com/${part.username}`}
             >

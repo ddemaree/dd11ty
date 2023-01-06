@@ -6,23 +6,12 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
-import "../styles/blog.css";
+import "../styles/blog.scss";
 
 import localFont from "@next/font/local";
-import { Inter, Source_Serif_4 } from "@next/font/google";
 
 import MainNavigation from "@components/MainNavigation";
 import MainFooter from "@components/MainFooter";
-
-const interFont = Inter({
-  variable: "--font--inter",
-  subsets: ["latin"],
-});
-
-const sourceSerifFont = Source_Serif_4({
-  variable: "--font--source-serif",
-  subsets: ["latin"],
-});
 
 const monaSans = localFont({
   src: "../assets/fonts/Mona-Sans.woff2",
@@ -39,11 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Helmet
         htmlAttributes={{
           lang: "en",
-          className: clsx([
-            monaSans.variable,
-            interFont.variable,
-            sourceSerifFont.variable,
-          ]),
+          className: clsx([monaSans.variable]),
         }}
         title="⚡️ David Demaree • Internet Person &amp; Product Leader"
         meta={[
