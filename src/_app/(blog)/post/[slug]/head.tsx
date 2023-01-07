@@ -1,6 +1,6 @@
 import DescriptionTags from "@components/head/Description";
 import SocialImageTags from "@components/head/SocialImage";
-import TitleTag from "@components/head/Title";
+import SEOTitleTag from "@components/head/Title";
 import { getSinglePost, WordpressPost } from "@lib/wordpress";
 import DefaultHeadTags from "src/_app/DefaultHeadTags";
 
@@ -15,7 +15,7 @@ export default async function Head({
   return (
     <>
       <title>{`${title} • David Demaree's blog`}</title>
-      <TitleTag title={`${title} • David Demaree's blog`} />
+      <SEOTitleTag title={`${title} • David Demaree's blog`} />
       <DescriptionTags description={subtitle} />
       <DefaultHeadTags />
       <SocialImageTags slug={slug} />

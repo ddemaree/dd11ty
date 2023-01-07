@@ -5,6 +5,9 @@ export type WordpressImage = {
   sizes: string;
   caption: string;
   altText: string;
+  cloudinaryId?: string;
+  width: number | null;
+  height: number | null;
 };
 
 export type WordpressPost = {
@@ -14,7 +17,7 @@ export type WordpressPost = {
   date: string;
   content: string;
   excerpt: string;
-  featuredImage?: WordpressImage;
+  featuredImage?: WordpressImage | null;
 };
 
 export type WordpressResponse = {
@@ -23,7 +26,40 @@ export type WordpressResponse = {
   error?: string;
 };
 
-function wrapWordpressPost(inputPostData: any): WordpressPost {
+function wrapWordpressImage(
+  inputImage: any,
+  fullImageData?: any
+): WordpressImage | null {
+  if (!inputImage) return null;
+
+  const { width, height, ...mediaDetails } = fullImageData?.media_details || {
+    width: null,
+    height: null,
+    id: null,
+    source_url: null,
+  };
+  const cloudinaryData = fullImageData?._cloudinary;
+  const cloudinaryId = cloudinaryData?._public_id ?? null;
+
+  const outputImage: WordpressImage = {
+    databaseId: fullImageData?.id ?? inputImage.databaseId,
+    sourceUrl: fullImageData?.source_url ?? inputImage.sourceUrl,
+    srcSet: inputImage.srcSet,
+    sizes: inputImage.sizes,
+    caption: inputImage.caption,
+    altText: inputImage.altText,
+    cloudinaryId,
+    width,
+    height,
+  };
+
+  return outputImage;
+}
+
+function wrapWordpressPost(
+  inputPostData: any,
+  inputImage?: any
+): WordpressPost {
   const { databaseId, slug, title, content, date, excerpt, ...postData } =
     inputPostData;
 
@@ -35,7 +71,7 @@ function wrapWordpressPost(inputPostData: any): WordpressPost {
     title,
     date,
     excerpt,
-    featuredImage: featuredImage ?? null,
+    featuredImage: wrapWordpressImage(featuredImage, inputImage),
     content: inputPostData?.content ?? null,
   };
 
@@ -128,6 +164,12 @@ export async function getAllPosts(): Promise<WordpressPost[]> {
   return postObjs.map((p: any) => wrapWordpressPost(p)) as WordpressPost[];
 }
 
+export async function getMedia(id: string | number) {
+  return fetch(
+    `https://demareedotme.wpengine.com/wp-json/wp/v2/media/${id}`
+  ).then((res) => res.json());
+}
+
 export async function getSinglePost(
   slug: string | number
 ): Promise<WordpressResponse> {
@@ -148,7 +190,12 @@ export async function getSinglePost(
     };
   }
 
-  const post = wrapWordpressPost(postData);
+  let imageData;
+  if (postData.featuredImage) {
+    imageData = await getMedia(postData.featuredImage.node.databaseId);
+  }
+
+  const post = wrapWordpressPost(postData, imageData);
 
   return {
     status,

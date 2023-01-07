@@ -1,4 +1,6 @@
+import { fill } from "@cloudinary/url-gen/actions/resize";
 import DisplayDate from "@components/DisplayDate";
+import cloudinary from "@lib/cloudinary";
 import { WordpressImage } from "@lib/wordpress";
 import clsx from "clsx";
 import Image from "next/image";
@@ -15,6 +17,12 @@ export default function PostHeader({
   date: string;
   image?: WordpressImage;
 }) {
+  let bannerImgUrl: string = "";
+  if (featuredImage) {
+    const clImg = cloudinary.image(featuredImage?.cloudinaryId);
+    bannerImgUrl = clImg.resize(fill(1200, 900).gravity("auto")).toURL();
+  }
+
   return (
     <header className={styles.postHeader}>
       <div className={clsx(styles.inner, "@container/post-header")}>
@@ -27,13 +35,14 @@ export default function PostHeader({
         )}
       </div>
       {featuredImage && (
-        <figure className="post-featured-image mt-10">
+        <figure className="post-featured-image w-full max-w-wide mt-10">
           <Image
-            width={1000}
-            height={562}
-            src={featuredImage.sourceUrl}
+            width={1200}
+            height={900}
+            src={bannerImgUrl}
             alt={featuredImage.altText}
             className="h-full w-full object-cover"
+            priority={true}
           />
         </figure>
       )}

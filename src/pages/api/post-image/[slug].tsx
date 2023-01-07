@@ -70,7 +70,7 @@ export default async function handler(
       let [[imgMainColor]] = adminImageData.colors;
       mainColor = imgMainColor;
 
-      imgUrl = `https://res.cloudinary.com/demaree/images/c_fill,w_1200,h_600,g_auto/${cldPublicId}.jpg`;
+      imgUrl = `https://res.cloudinary.com/demaree/image/upload/c_fill,w_1200,h_600,g_auto/${cldPublicId}.jpg`;
 
       const mc = chroma(mainColor);
       imgLuma = mc.luminance();

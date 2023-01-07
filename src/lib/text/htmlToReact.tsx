@@ -37,6 +37,23 @@ function getDropCapTexts(initialText: string) {
   };
 }
 
+function DropCapFragment({ text: initialText }: { text: string }) {
+  const { firstLetter, firstWord, restOfFirstWord, remainingWords } =
+    getDropCapTexts(initialText);
+  return (
+    <>
+      <span className="drop-cap">
+        <span aria-hidden="true">
+          <span className="initial">{firstLetter}</span>
+          <span>{restOfFirstWord}</span>
+        </span>
+        <span className="sr-only">{firstWord}</span>
+      </span>{" "}
+      {remainingWords}
+    </>
+  );
+}
+
 /*
 
 This function converts vanilla HTML (especially that provided by WordPress) to React components, substituting certain block formats like Tweets or code blocks into fancy React equivalents.
@@ -60,21 +77,15 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
           node.childNodes[0]?.type === "text" &&
           !node.previousSibling
         ) {
-          const initialText = node.childNodes[0].data;
-
-          const { firstLetter, firstWord, restOfFirstWord, remainingWords } =
-            getDropCapTexts(initialText);
+          // TODO: What if the first element is not a text node?
+          const [initialTextNode, ...otherChildNodes] = node.childNodes;
+          const initialText = initialTextNode.data;
+          const remainingElements = domToReact(otherChildNodes);
 
           return (
             <p className="has-drop-cap">
-              <span className="drop-cap">
-                <span aria-hidden="true">
-                  <span className="initial">{firstLetter}</span>
-                  <span>{restOfFirstWord}</span>
-                </span>
-                <span className="sr-only">{firstWord}</span>
-              </span>{" "}
-              {remainingWords}
+              <DropCapFragment text={initialText} />
+              {remainingElements}
             </p>
           );
         }
@@ -119,12 +130,12 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
                       return (
                         <div key={key} {...lineProps}>
                           <span>
-                            {line.map((token, key) => (
-                              <span
-                                key={key}
-                                {...getTokenProps({ token, key })}
-                              />
-                            ))}
+                            {line.map((token, key) => {
+                              const { tokenKey, ...tokenProps } = getTokenProps(
+                                { token, key }
+                              );
+                              return <span key={tokenKey} {...tokenProps} />;
+                            })}
                           </span>
                         </div>
                       );

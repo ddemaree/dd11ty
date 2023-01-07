@@ -12,6 +12,7 @@ import localFont from "@next/font/local";
 
 import MainNavigation from "@components/MainNavigation";
 import MainFooter from "@components/MainFooter";
+import { getSocialImageData } from "@components/head/SocialImage";
 
 const monaSans = localFont({
   src: "../assets/fonts/Mona-Sans.woff2",
@@ -36,7 +37,25 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             name: "viewport",
             content: "width=device-width, initial-scale=1",
           },
-          { property: "og:title", content: "Hello next.js!" },
+          { name: "twitter:creator", content: "@ddemaree" },
+          { name: "twitter:site", content: "@ddemaree" },
+          { property: "og:type", content: "website" },
+          ...getSocialImageData({}),
+        ]}
+        link={[
+          { rel: "icon", href: "/dyn-icon.svg" },
+          {
+            rel: "alternate",
+            type: "application/rss+xml",
+            title: "David Demaree's blog • RSS",
+            href: "/feed/rss",
+          },
+          {
+            rel: "alternate",
+            type: "application/json",
+            title: "David Demaree's blog • JSON",
+            href: "/feed/json",
+          },
         ]}
       />
       <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto]">

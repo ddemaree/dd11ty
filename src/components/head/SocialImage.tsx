@@ -6,10 +6,7 @@ interface TitleSocialImageProps {
   slug?: string;
 }
 
-export default function SocialImageTags({
-  title = "",
-  slug = "",
-}: TitleSocialImageProps) {
+export function getSocialImageURL({ title, slug }: TitleSocialImageProps) {
   const urlHost = getSiteUrl();
   const urlProtocol = isDevelopment() ? "http" : "https";
   const urlBase = `${urlProtocol}://${urlHost}`;
@@ -26,11 +23,29 @@ export default function SocialImageTags({
     socialImageUrl = `${urlBase}/api/og-image`;
   }
 
-  return (
-    <>
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="og:image" content={socialImageUrl} />
-      <meta name="twitter:image" content={socialImageUrl} />
-    </>
-  );
+  return socialImageUrl;
+}
+
+export default function SocialImageTags({
+  title = "",
+  slug = "",
+}: TitleSocialImageProps) {
+  const socialImageUrl = getSocialImageURL({ title, slug });
+
+  return <>{getSocialImageTags({ title, slug })}</>;
+}
+
+export function getSocialImageData({ title, slug }: TitleSocialImageProps) {
+  const content = getSocialImageURL({ title, slug });
+  return [
+    { name: "twitter:card", content: "summary_large_image" },
+    { property: "og:image", content },
+    { name: "twitter:image", content },
+  ];
+}
+
+export function getSocialImageTags({ title, slug }: TitleSocialImageProps) {
+  return getSocialImageData({ title, slug }).map((c, x) => (
+    <meta key={x} {...c} />
+  ));
 }

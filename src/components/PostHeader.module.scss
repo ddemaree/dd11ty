@@ -4,6 +4,10 @@
   --post-header-spacing: clamp(48px, #{math.floor(320 / 28)}vw, 64px);
   $percentWidth: math.floor(320 / 28);
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .inner {
     @apply w-inset max-w-content mx-auto;
   }

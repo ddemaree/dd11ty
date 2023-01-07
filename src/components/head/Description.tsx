@@ -11,3 +11,17 @@ export default function DescriptionTags({
     </>
   );
 }
+
+export function seoDescriptionData(content: string) {
+  return [
+    { name: "description", content },
+    { property: "og:description", content },
+    { name: "twitter:description", content },
+  ];
+}
+
+export function seoDescriptionTags(description: string) {
+  return seoDescriptionData(description).map((content, x) => (
+    <meta key={x} {...content} />
+  ));
+}
