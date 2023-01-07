@@ -11,12 +11,7 @@ const cld = new Cloudinary({
   },
 });
 
-export default function sanitizeHtml(htmlInput: string): string {
-  let output = "";
-
-  const dom = new JSDOM(`<!DOCTYPE html>${htmlInput}`);
-  const document = dom.window.document;
-
+function doDropCap(document) {
   // Make drop caps great again
   const firstNode = document.querySelector("p:first-of-type");
   if (firstNode && firstNode?.firstChild?.nodeName === "#text") {
@@ -54,7 +49,15 @@ export default function sanitizeHtml(htmlInput: string): string {
 
     textNode.replaceWith(wrapper, " ", remainder);
   }
+}
 
+export default function sanitizeHtml(htmlInput: string): string {
+  let output = "";
+
+  const dom = new JSDOM(`<!DOCTYPE html>${htmlInput}`);
+  const document = dom.window.document;
+
+  // Remove all script tags
   const scriptTags = document.querySelectorAll("script");
   scriptTags.forEach((tag) => tag.parentNode?.removeChild(tag));
 

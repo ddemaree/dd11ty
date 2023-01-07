@@ -12,12 +12,75 @@ import extractTweetIds from "@lib/twitter/extractTweetIds";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import clsx from "clsx";
 
+function getFirstTextNode(node) {
+  const firstChildNode = node.childNodes[0];
+  if (firstChildNode.type === "text") return firstChildNode;
+  else return getFirstTextNode(node);
+}
+
+function getDropCapTexts(initialText: string) {
+  const words = initialText?.split(" ");
+  const firstWord = words?.slice(0, 1)[0] as string;
+  const remainingWords = words?.slice(1).join(" ") as string;
+
+  const letters = firstWord?.split("") as string[];
+  const firstLetter = letters?.slice(0, 1)[0];
+  const restOfFirstWord = letters?.slice(1).join("");
+
+  return {
+    words,
+    firstWord,
+    remainingWords,
+    letters,
+    firstLetter,
+    restOfFirstWord,
+  };
+}
+
+/*
+
+This function converts vanilla HTML (especially that provided by WordPress) to React components, substituting certain block formats like Tweets or code blocks into fancy React equivalents.
+
+In addition to enabling React blocks, this is also the de facto browser formatter for rich content — stuff like drop caps, which shouldn't be provided to RSS feeds, are implemented here.
+
+*/
 export default function htmlToReact(htmlString: string, tweets: any[]) {
+  let paragraphCount = 0;
+
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {
       if (!(node instanceof Element)) return;
 
       const { name, attribs, children } = node;
+
+      // Drop caps: Find the first text node within the first paragraph element in the doc. This is usually the first child node, but may be inside a link or other phrase element
+      if (name === "p") {
+        if (
+          paragraphCount === 0 &&
+          node.childNodes[0]?.type === "text" &&
+          !node.previousSibling
+        ) {
+          const initialText = node.childNodes[0].data;
+
+          const { firstLetter, firstWord, restOfFirstWord, remainingWords } =
+            getDropCapTexts(initialText);
+
+          return (
+            <p className="has-drop-cap">
+              <span className="drop-cap">
+                <span aria-hidden="true">
+                  <span className="initial">{firstLetter}</span>
+                  <span>{restOfFirstWord}</span>
+                </span>
+                <span className="sr-only">{firstWord}</span>
+              </span>{" "}
+              {remainingWords}
+            </p>
+          );
+        }
+        paragraphCount++;
+      }
+
       if (name && name === "figure" && attribs?.class.match(/twitter/)) {
         const [tweetId] = extractTweetIds(node);
 
@@ -47,19 +110,25 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
                   style={style}
                 >
                   <code className="font-mono [font-size:0.875em] space-y-0">
-                    {tokens.map((line, i) => (
-                      <div key={i} {...getLineProps({ line, key: i })}>
-                        {/* <LineNo>{i + 1}</LineNo> */}
-                        <span>
-                          {line.map((token, key) => (
-                            <span
-                              key={key}
-                              {...getTokenProps({ token, key })}
-                            />
-                          ))}
-                        </span>
-                      </div>
-                    ))}
+                    {tokens.map((line, i) => {
+                      const { key, ...lineProps } = getLineProps({
+                        line,
+                        key: i,
+                      });
+
+                      return (
+                        <div key={key} {...lineProps}>
+                          <span>
+                            {line.map((token, key) => (
+                              <span
+                                key={key}
+                                {...getTokenProps({ token, key })}
+                              />
+                            ))}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </code>
                 </pre>
               )}
@@ -69,8 +138,6 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
       }
     },
   });
-
-  // const reactContent = parse(htmlString);
 
   return reactContent;
 }

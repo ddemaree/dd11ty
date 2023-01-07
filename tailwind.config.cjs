@@ -40,10 +40,9 @@ module.exports = {
       "no-cq": "not (container-type: inline-size)",
     },
     fontFamily: ({ theme }) => ({
-      // sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
-      sans: "var(--font--mona-sans)",
+      sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
       serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
-      mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
+      mono: ["RecVar", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
     }),
     extend: {

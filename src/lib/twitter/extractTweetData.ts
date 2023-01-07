@@ -2,26 +2,14 @@ import { isArray, keyBy } from "lodash";
 import unicodeSubstring from "unicode-substring";
 
 export default function extractTweetData(jsonData) {
-  const {
-    data,
-    includes,
-  }: {
-    data: any[];
-    includes: { media: any[]; users: any[]; tweets: any[] };
-  } = jsonData;
+  const { data, includes } = jsonData;
 
   const mediaData = keyBy(includes?.media, "media_key") as any;
   const usersData = keyBy(includes?.users, "id") as any;
   const tweetsData = keyBy(includes?.tweets, "id");
 
   const processTweet = (tweet, quoteLevel = 0) => {
-    let {
-      text,
-      entities,
-    }: {
-      text: string;
-      entities: { urls?: any[]; annotations?: any[]; mentions?: any[] };
-    } = tweet;
+    let { text, entities } = tweet;
 
     const urls = entities?.urls ?? [];
     const annotations = entities?.annotations ?? [];
@@ -35,7 +23,8 @@ export default function extractTweetData(jsonData) {
     let lastEnd = 0;
     let parts: TwitterPart[] = [];
 
-    allAnnotations.forEach(({ start, end, ...obj }) => {
+    allAnnotations.forEach((obj) => {
+      const { start, end } = obj;
       let outputObj;
 
       if (!obj.username && !obj.url) {
@@ -65,7 +54,7 @@ export default function extractTweetData(jsonData) {
         outputObj = {
           username: obj.username,
           id: obj.id,
-          profile_image_url: obj.profile_image_url,
+          profile_image_url: obj.profile_image_url || null,
         };
       } else if (
         obj.expanded_url &&

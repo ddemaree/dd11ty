@@ -1,5 +1,15 @@
 @use "sass:color";
 @import url("https://cdn.demaree.net/fonts/tiempos/fonts.css");
+@import "./recursive.css";
+
+@font-face {
+  font-family: "mona-sans";
+  src: url("/fonts/Mona-Sans.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-size-adjust: from-font;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;

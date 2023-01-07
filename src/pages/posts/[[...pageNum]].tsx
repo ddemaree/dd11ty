@@ -58,7 +58,12 @@ export default function BlogIndexPage({
           <div className="grid grid-cols-1 gap-x-8 grid-flow-row @md/post-card:grid-cols-[1fr_25cqi] items-center desc:col-span-1 desc:col-start-1">
             <div>
               <Link href={`/post/${post.slug}`} className={styles.title}>
-                <h1 className="title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025]">
+                <h1
+                  className={clsx([
+                    styles.postTitle,
+                    "title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025]",
+                  ])}
+                >
                   {post.title}
                 </h1>
               </Link>
