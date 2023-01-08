@@ -1,14 +1,14 @@
-import { isArray, keyBy } from "lodash";
-import unicodeSubstring from "unicode-substring";
+import unicodeSubstring from "@lib/text/unicodeSubstring";
+import { keyBy } from "lodash";
 
-export default function extractTweetData(jsonData) {
+export default function extractTweetData(jsonData: any) {
   const { data, includes } = jsonData;
 
   const mediaData = keyBy(includes?.media, "media_key") as any;
   const usersData = keyBy(includes?.users, "id") as any;
   const tweetsData = keyBy(includes?.tweets, "id");
 
-  const processTweet = (tweet, quoteLevel = 0) => {
+  const processTweet = (tweet: any, quoteLevel = 0) => {
     let { text, entities } = tweet;
 
     const urls = entities?.urls ?? [];

@@ -10,12 +10,12 @@ export default function PostHeader({
   title,
   subtitle,
   date,
-  image: featuredImage,
+  image: featuredImage = null,
 }: {
   title: string;
-  subtitle?: string;
   date: string;
-  image?: WordpressImage;
+  subtitle?: string;
+  image?: WordpressImage | null;
 }) {
   let bannerImgUrl: string = "";
   if (featuredImage) {

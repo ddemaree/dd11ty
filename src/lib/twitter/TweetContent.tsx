@@ -1,4 +1,5 @@
 import { uniqueId } from "lodash";
+import Image from "next/image";
 import Tweet from "./Tweet";
 
 export default function TweetContent({ parts = [], quoteLevel = 0 }) {
@@ -20,7 +21,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
             <>
               {substrings.reduce(
                 (output: any[], substr: string, idx: number) => {
-                  if (idx > 0) output.push(<br />);
+                  if (idx > 0) output.push(<br key={`br-${idx}`} />);
 
                   if (substr) output.push(substr);
 
@@ -38,7 +39,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
         if (part?.media_key && part?.url && part?.type === "photo") {
           return (
             <figure key={key} className=" mt-4">
-              <img
+              <Image
                 src={part.url}
                 alt="tweet image"
                 width={part.width}
@@ -63,19 +64,31 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
         // Quoted tweet
         if (part?.parts) {
           return (
-            <Tweet id={part.id} tweet={part} quoteLevel={quoteLevel + 1} />
+            <Tweet
+              key={key}
+              id={part.id}
+              tweet={part}
+              quoteLevel={quoteLevel + 1}
+            />
           );
         }
 
         if (part?.type === "website") {
-          const image = (part.images as any[])?.at(0);
+          const image = (part.images as TwitterMedia[])?.at(0);
 
           return (
             <a
+              key={key}
               href={part.url}
               className="flex flex-col rounded-lg overflow-hidden border border-gray-200 group"
             >
-              {image && <img src={image.url} />}
+              {image && (
+                <Image
+                  alt={`Tweet image for ${part.title}`}
+                  src={image.url}
+                  width={image.width}
+                />
+              )}
               <div className="p-4 leading-snug">
                 <div className="font-semibold group-hover:underline">
                   {part.title}
@@ -97,7 +110,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
         }
 
         return (
-          <div>
+          <div key={key}>
             {"Unhandled part:"}
             <pre>{JSON.stringify(part, undefined, 2)}</pre>
           </div>

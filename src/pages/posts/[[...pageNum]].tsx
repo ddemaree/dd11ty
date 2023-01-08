@@ -1,16 +1,16 @@
 import DisplayDate from "@components/DisplayDate";
-import DescriptionTags, {
-  seoDescriptionTags,
-} from "@components/head/Description";
-import { seoTitleTags } from "@components/head/Title";
 import paginate from "@lib/paginate";
 import { getAllPosts, WordpressPost } from "@lib/wordpress";
 import clsx from "clsx";
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
-import { Helmet } from "react-helmet";
+import DescriptionTags, {
+  seoDescriptionTags,
+} from "@components/head/Description";
+import { seoTitleTags } from "@components/head/Title";
 
 import styles from "./posts-page.module.scss";
+import Image from "next/image";
 
 function pageUrl(pageNum: number): string {
   if (pageNum === 1) return `/posts`;
@@ -37,13 +37,7 @@ export async function getServerSideProps({
   };
 }
 
-function PostPreview({
-  post,
-  index = null,
-}: {
-  post: WordpressPost;
-  index: number | null;
-}) {
+function PostPreview({ post, index }: { post: WordpressPost; index?: number }) {
   console.log(post.featuredImage);
 
   return (
@@ -72,7 +66,8 @@ function PostPreview({
         {post.featuredImage && (
           <figure className="w-full order-first @md:order-last @md:w-[clamp(180px,25cqi,216px)] @md/post-card:col-start-2 @md/post-card:row-start-1 @md/post-card:row-span-full">
             <a href={`/post/${post.slug}`}>
-              <img
+              <Image
+                alt="Image for post"
                 src={post.featuredImage.sourceUrl}
                 className="bg-gray-400 w-full aspect-video @md:aspect-square @2xl:aspect-[5/4] object-cover object-top rounded-lg border border-gray-300 shadow"
               />
@@ -105,10 +100,10 @@ export default function BlogIndexPage({
 
   return (
     <section className="flex flex-col gap-y-10 w-inset max-w-[50rem] mx-auto space-y-8">
-      <Helmet title={titleString}>
+      {/* <Helmet title={titleString}>
         {seoTitleTags(titleString)}
         {seoDescriptionTags("Notes on tech, business, and culture")}
-      </Helmet>
+      </Helmet> */}
       <header className=" text-purple-500 h-[26vh] flex flex-col items-center justify-center">
         <h1 className=" leading-none font-light [font-size:3.5rem] [font-variation-settings:'wdth'_140]">
           {pageNum === 1 ? "Posts" : `Page ${pageNum}`}

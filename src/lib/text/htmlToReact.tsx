@@ -12,12 +12,6 @@ import extractTweetIds from "@lib/twitter/extractTweetIds";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import clsx from "clsx";
 
-function getFirstTextNode(node) {
-  const firstChildNode = node.childNodes[0];
-  if (firstChildNode.type === "text") return firstChildNode;
-  else return getFirstTextNode(node);
-}
-
 function getDropCapTexts(initialText: string) {
   const words = initialText?.split(" ");
   const firstWord = words?.slice(0, 1)[0] as string;
