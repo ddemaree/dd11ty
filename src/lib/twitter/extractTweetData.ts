@@ -4,6 +4,10 @@ import { keyBy } from "lodash";
 export default function extractTweetData(jsonData: any) {
   const { data, includes } = jsonData;
 
+  if (!data) {
+    return [];
+  }
+
   const mediaData = keyBy(includes?.media, "media_key") as any;
   const usersData = keyBy(includes?.users, "id") as any;
   const tweetsData = keyBy(includes?.tweets, "id");
@@ -90,7 +94,7 @@ export default function extractTweetData(jsonData: any) {
     return tweet;
   };
 
-  const outputTweets = data.map(processTweet);
+  const outputTweets = data.map(processTweet) as Tweet[];
 
   return outputTweets;
 }

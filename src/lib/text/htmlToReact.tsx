@@ -1,16 +1,10 @@
-import parse, {
-  DOMNode,
-  Element,
-  domToReact,
-  htmlToDOM,
-} from "html-react-parser";
 import * as cheerio from "cheerio";
-import Tweet from "@lib/twitter/Tweet";
 import _ from "lodash";
-import extractTweetIds from "@lib/twitter/extractTweetIds";
-
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import clsx from "clsx";
+import parse, { DOMNode, Element, domToReact } from "html-react-parser";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import Tweet from "@lib/twitter/Tweet";
+import extractTweetIds from "@lib/twitter/extractTweetIds";
 
 function getDropCapTexts(initialText: string) {
   const words = initialText?.split(" ");

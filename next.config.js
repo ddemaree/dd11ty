@@ -10,6 +10,10 @@ const nextConfig = {
         port: "",
         pathname: "/demaree/**",
       },
+      {
+        hostname: "pbs.twimg.com",
+        port: "",
+      },
     ],
   },
   async redirects() {

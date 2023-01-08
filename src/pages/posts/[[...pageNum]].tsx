@@ -69,6 +69,8 @@ function PostPreview({ post, index }: { post: WordpressPost; index?: number }) {
               <Image
                 alt="Image for post"
                 src={post.featuredImage.sourceUrl}
+                width={400}
+                height={400}
                 className="bg-gray-400 w-full aspect-video @md:aspect-square @2xl:aspect-[5/4] object-cover object-top rounded-lg border border-gray-300 shadow"
               />
             </a>

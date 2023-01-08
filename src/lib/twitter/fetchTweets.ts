@@ -44,10 +44,7 @@ async function _doFetchTweets(tweetIds: string[] = []) {
 export default async function fetchTweets(tweetIds: string | string[] = []) {
   // If there were no tweet IDs just bail out
   if (tweetIds.length === 0) {
-    return {
-      data: [],
-      includes: {},
-    };
+    return [];
   }
 
   tweetIds = Array.from(tweetIds);
@@ -66,7 +63,7 @@ export default async function fetchTweets(tweetIds: string | string[] = []) {
   ) as string[];
 
   if (isEmpty(addlTweetIds)) {
-    return jsonData;
+    return extractTweetData(jsonData);
   }
 
   const addlJsonData = await _doFetchTweets(addlTweetIds);
@@ -82,8 +79,8 @@ export default async function fetchTweets(tweetIds: string | string[] = []) {
     };
   }
 
-  return {
+  return extractTweetData({
     data,
     includes,
-  };
+  });
 }
