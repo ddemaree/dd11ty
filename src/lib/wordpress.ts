@@ -114,6 +114,7 @@ const SINGLE_POST_QUERY = `
           sizes
           altText
           caption(format: RAW)
+          cloudinaryId
         }
       }
     }
@@ -145,6 +146,7 @@ query PostsQuery($startCursor: String) {
           sizes
           altText
           caption(format: RAW)
+          cloudinaryId
         }
       } 
     }

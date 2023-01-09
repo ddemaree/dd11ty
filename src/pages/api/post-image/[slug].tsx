@@ -35,6 +35,7 @@ export default async function handler(
 
   const { post } = (await getSinglePost(slug)) as WordpressResponse;
 
+  console.log(post);
   if (!post) {
     return res.status(404);
   }
@@ -45,38 +46,32 @@ export default async function handler(
   let textColor = "#ffffff";
   let imgUrl, imgLuma;
 
-  if (image?.databaseId) {
-    const imageData = await fetch(
-      `https://demareedotme.wpengine.com/wp-json/wp/v2/media/${image.databaseId}`
-    ).then((res) => res.json());
+  const cldPublicId = image.cloudinaryId;
 
-    const cldPublicId = imageData?._cloudinary?._public_id;
+  // Just in case the featured image isn't from my Cloudinary
+  if (cldPublicId) {
+    const adminImageUrl = `https://api.cloudinary.com/v1_1/demaree/resources/image/upload/${cldPublicId}?colors=true`;
 
-    // Just in case the featured image isn't from my Cloudinary
-    if (cldPublicId) {
-      const adminImageUrl = `https://api.cloudinary.com/v1_1/demaree/resources/image/upload/${cldPublicId}?colors=true`;
+    const authString = Buffer.from(
+      process.env.CLOUDINARY_API_KEY + ":" + process.env.CLOUDINARY_API_SECRET
+    ).toString("base64");
 
-      const authString = Buffer.from(
-        process.env.CLOUDINARY_API_KEY + ":" + process.env.CLOUDINARY_API_SECRET
-      ).toString("base64");
+    const adminImageData = await fetch(adminImageUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${authString}`,
+      },
+    }).then((res) => res.json());
 
-      const adminImageData = await fetch(adminImageUrl, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Basic ${authString}`,
-        },
-      }).then((res) => res.json());
+    let [[imgMainColor]] = adminImageData.colors;
+    mainColor = imgMainColor;
 
-      let [[imgMainColor]] = adminImageData.colors;
-      mainColor = imgMainColor;
+    imgUrl = `https://res.cloudinary.com/demaree/image/upload/c_fill,w_1200,h_600,g_auto/${cldPublicId}.jpg`;
 
-      imgUrl = `https://res.cloudinary.com/demaree/image/upload/c_fill,w_1200,h_600,g_auto/${cldPublicId}.jpg`;
-
-      const mc = chroma(mainColor);
-      imgLuma = mc.luminance();
-      if (imgLuma > 0.45) {
-        textColor = "#000000";
-      }
+    const mc = chroma(mainColor);
+    imgLuma = mc.luminance();
+    if (imgLuma > 0.45) {
+      textColor = "#000000";
     }
   }
 
