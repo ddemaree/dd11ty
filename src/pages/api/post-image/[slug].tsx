@@ -29,13 +29,16 @@ export default async function handler(
   const { searchParams } = new URL(req.url as string);
   let slug = searchParams.get("slug") as string;
 
+  if (slug === "sentry-test") {
+    throw new Error("Sentry Backend Error");
+  }
+
   if (slug.match(/\.png$/)) {
     slug = slug.replace(/\.png$/, "");
   }
 
-  const { post } = (await getSinglePost(slug)) as WordpressResponse;
+  const { post } = await getSinglePost(slug); // as WordpressResponse;
 
-  console.log(post);
   if (!post) {
     return res.status(404);
   }
@@ -46,7 +49,7 @@ export default async function handler(
   let textColor = "#ffffff";
   let imgUrl, imgLuma;
 
-  const cldPublicId = image.cloudinaryId;
+  const cldPublicId = image ? image.cloudinaryId : null;
 
   // Just in case the featured image isn't from my Cloudinary
   if (cldPublicId) {
@@ -97,7 +100,7 @@ export default async function handler(
             }}
           ></div>
         )}
-        <div tw="flex flex-col w-full h-full relative" style={{ zIndex: "20" }}>
+        <div tw="flex flex-col w-full h-full relative" style={{ zIndex: 20 }}>
           <div tw="flex w-full items-end justify-start flex-1 px-16 relative text-left">
             <div
               tw="text-[82px] leading-[1.1] relative z-20 max-w-[20ch]"

@@ -1,5 +1,6 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { AppProps } from "next/app";
-import { Helmet } from "react-helmet";
+
 import clsx from "clsx";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -33,6 +34,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </main>
         <MainFooter />
       </div>
+      <Analytics />
     </>
   );
 }

@@ -26,29 +26,22 @@ export type WordpressResponse = {
   error?: string;
 };
 
-function wrapWordpressImage(
-  inputImage: any,
-  fullImageData?: any
-): WordpressImage | null {
+function wrapWordpressImage(inputImage: any): WordpressImage | null {
   if (!inputImage) return null;
 
-  const { width, height, ...mediaDetails } = fullImageData?.media_details || {
+  const { width, height } = inputImage?.mediaDetails || {
     width: null,
     height: null,
-    id: null,
-    source_url: null,
   };
-  const cloudinaryData = fullImageData?._cloudinary;
-  const cloudinaryId = cloudinaryData?._public_id ?? null;
 
   const outputImage: WordpressImage = {
-    databaseId: fullImageData?.id ?? inputImage.databaseId,
-    sourceUrl: fullImageData?.source_url ?? inputImage.sourceUrl,
+    databaseId: inputImage.databaseId,
+    sourceUrl: inputImage.sourceUrl,
     srcSet: inputImage.srcSet,
     sizes: inputImage.sizes,
     caption: inputImage.caption,
     altText: inputImage.altText,
-    cloudinaryId,
+    cloudinaryId: inputImage.cloudinaryId,
     width,
     height,
   };
@@ -56,10 +49,7 @@ function wrapWordpressImage(
   return outputImage;
 }
 
-function wrapWordpressPost(
-  inputPostData: any,
-  inputImage?: any
-): WordpressPost {
+function wrapWordpressPost(inputPostData: any): WordpressPost {
   const { databaseId, slug, title, content, date, excerpt, ...postData } =
     inputPostData;
 
@@ -71,7 +61,7 @@ function wrapWordpressPost(
     title,
     date,
     excerpt,
-    featuredImage: wrapWordpressImage(featuredImage, inputImage),
+    featuredImage: wrapWordpressImage(featuredImage),
     content: inputPostData?.content ?? null,
   };
 
@@ -115,6 +105,10 @@ const SINGLE_POST_QUERY = `
           altText
           caption(format: RAW)
           cloudinaryId
+          mediaDetails {
+            height
+            width
+          }
         }
       }
     }
@@ -147,6 +141,10 @@ query PostsQuery($startCursor: String) {
           altText
           caption(format: RAW)
           cloudinaryId
+          mediaDetails {
+            height
+            width
+          }
         }
       } 
     }
@@ -164,12 +162,6 @@ export async function getAllPosts(): Promise<WordpressPost[]> {
   } = data;
 
   return postObjs.map((p: any) => wrapWordpressPost(p)) as WordpressPost[];
-}
-
-export async function getMedia(id: string | number) {
-  return fetch(
-    `https://demareedotme.wpengine.com/wp-json/wp/v2/media/${id}`
-  ).then((res) => res.json());
 }
 
 export async function getSinglePost(
@@ -192,12 +184,7 @@ export async function getSinglePost(
     };
   }
 
-  let imageData;
-  if (postData.featuredImage) {
-    imageData = await getMedia(postData.featuredImage.node.databaseId);
-  }
-
-  const post = wrapWordpressPost(postData, imageData);
+  const post = wrapWordpressPost(postData);
 
   return {
     status,
