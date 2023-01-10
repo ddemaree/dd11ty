@@ -20,7 +20,7 @@ const { title, content, excerpt, date, featuredImage } = post;
 const cleanContent = sanitizeHtml(content);
 
 ---
-<html lang="en">
+<html lang="en" data-theme={`light`}>
 	<head>
     <BaseHead title={title} description={excerpt} />
 	</head>
