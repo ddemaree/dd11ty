@@ -77,11 +77,11 @@ async function makeGQLRequest(
     "base64"
   );
 
-  return fetch("https://demareedotme.wpengine.com/graphql", {
+  return fetch("https://wp.demaree.me/graphql", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Basic ${authString}`,
+      // Authorization: `Basic ${authString}`,
     },
     body: JSON.stringify({ query, variables }),
   });
@@ -95,7 +95,7 @@ const SINGLE_POST_QUERY = `
       title
       date: dateGmt
       content
-      excerpt(format: RAW)
+      excerpt: rawExcerpt
       featuredImage {
         node {
           databaseId
@@ -103,7 +103,7 @@ const SINGLE_POST_QUERY = `
           srcSet
           sizes
           altText
-          caption(format: RAW)
+          caption
           cloudinaryId
           mediaDetails {
             height
@@ -131,7 +131,7 @@ query PostsQuery($startCursor: String) {
       slug
       title
       date: dateGmt
-      excerpt(format: RAW)
+      excerpt: rawExcerpt
       featuredImage {
         node {
           databaseId
@@ -139,7 +139,7 @@ query PostsQuery($startCursor: String) {
           srcSet
           sizes
           altText
-          caption(format: RAW)
+          caption
           cloudinaryId
           mediaDetails {
             height
@@ -154,7 +154,6 @@ query PostsQuery($startCursor: String) {
 
 export async function getAllPosts(): Promise<WordpressPost[]> {
   const gqlResponse = await makeGQLRequest(ALL_POSTS_QUERY, {});
-  const { status } = gqlResponse;
   const { data } = await gqlResponse.json();
 
   const {
