@@ -6,6 +6,7 @@ const cloudinary = new Cloudinary({
   },
   url: {
     secure: true, // force https, set to false to force http
+    analytics: false,
   },
 });
 

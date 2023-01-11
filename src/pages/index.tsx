@@ -14,6 +14,12 @@ import {
   faMastodon,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import {
+  ApolloClient,
+  createHttpLink,
+  gql,
+  InMemoryCache,
+} from "@apollo/client";
 
 function HomePageLink({
   label,

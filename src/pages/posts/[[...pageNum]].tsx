@@ -38,8 +38,6 @@ export async function getServerSideProps({
 }
 
 function PostPreview({ post, index }: { post: WordpressPost; index?: number }) {
-  console.log(post.featuredImage);
-
   return (
     <article key={post.slug} className="@container/post-card">
       <div className="grid grid-cols-1 gap-x-8 grid-flow-row @md/post-card:grid-cols-[1fr_25cqi] items-center desc:col-span-1 desc:col-start-1">

@@ -90,3 +90,4 @@ const sentryWebpackPluginOptions = {
 };
 
 module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+// module.exports = nextConfig;

@@ -14,7 +14,7 @@ export default function DisplayDate({
   const formattedDate = dt.toLocaleString(format);
 
   return (
-    <time className={className} dateTime={dateString}>
+    <time className={className} dateTime={dt.toISODate()}>
       {formattedDate}
     </time>
   );

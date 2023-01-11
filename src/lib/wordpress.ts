@@ -1,3 +1,11 @@
+import {
+  ApolloClient,
+  DocumentNode,
+  InMemoryCache,
+  gql,
+  TypedDocumentNode,
+} from "@apollo/client";
+
 export type WordpressImage = {
   databaseId: number | string;
   sourceUrl: string;
@@ -68,26 +76,28 @@ function wrapWordpressPost(inputPostData: any): WordpressPost {
   return post;
 }
 
-async function makeGQLRequest(
-  query: string,
-  variables: any
-): Promise<Response> {
-  const password = process.env.NEXT_PUBLIC_WP_PASSWORD;
-  const authString = Buffer.from("ddemaree" + ":" + password).toString(
-    "base64"
-  );
+const cache = new InMemoryCache();
 
-  return fetch("https://wp.demaree.me/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      // Authorization: `Basic ${authString}`,
-    },
-    body: JSON.stringify({ query, variables }),
-  });
+const client = new ApolloClient({
+  uri: "https://wp.demaree.me/graphql",
+  cache,
+  name: "demaree-dot-me",
+  version: "1.3",
+  // ssrMode: true,
+});
+
+async function makeGQLRequest(
+  query: string | DocumentNode | TypedDocumentNode,
+  variables: any
+) {
+  if (typeof query === "string") {
+    query = gql(query);
+  }
+
+  return client.query({ query, variables });
 }
 
-const SINGLE_POST_QUERY = `
+const SINGLE_POST_QUERY = gql`
   query PostQuery($id: ID!) {
     post(id: $id, idType: SLUG) {
       databaseId
@@ -115,46 +125,46 @@ const SINGLE_POST_QUERY = `
   }
 `;
 
-const ALL_POSTS_QUERY = `
-query PostsQuery($startCursor: String) {
-  posts(
-    first: 100
-    after: $startCursor
-    where: {status: PUBLISH, dateQuery: {after: {year: 2015}}}
-  ) {
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-    nodes {
-      databaseId
-      slug
-      title
-      date: dateGmt
-      excerpt: rawExcerpt
-      featuredImage {
-        node {
-          databaseId
-          sourceUrl
-          srcSet
-          sizes
-          altText
-          caption
-          cloudinaryId
-          mediaDetails {
-            height
-            width
+const ALL_POSTS_QUERY = gql`
+  query PostsQuery($startCursor: String) {
+    posts(
+      first: 100
+      after: $startCursor
+      where: { status: PUBLISH, dateQuery: { after: { year: 2015 } } }
+    ) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      nodes {
+        databaseId
+        slug
+        title
+        date: dateGmt
+        excerpt: rawExcerpt
+        featuredImage {
+          node {
+            databaseId
+            sourceUrl
+            srcSet
+            sizes
+            altText
+            caption
+            cloudinaryId
+            mediaDetails {
+              height
+              width
+            }
           }
         }
-      } 
+      }
     }
   }
-}
 `;
 
 export async function getAllPosts(): Promise<WordpressPost[]> {
   const gqlResponse = await makeGQLRequest(ALL_POSTS_QUERY, {});
-  const { data } = await gqlResponse.json();
+  const { data } = gqlResponse;
 
   const {
     posts: { nodes: postObjs },
@@ -166,18 +176,15 @@ export async function getAllPosts(): Promise<WordpressPost[]> {
 export async function getSinglePost(
   slug: string | number
 ): Promise<WordpressResponse> {
-  const gqlResponse = await makeGQLRequest(SINGLE_POST_QUERY, { id: slug });
+  const gqlResult = await makeGQLRequest(SINGLE_POST_QUERY, { id: slug });
 
-  const { status } = gqlResponse;
   const {
     data: { post: postData },
-  } = await gqlResponse
-    .json()
-    .catch((err) => console.error(err, status, gqlResponse));
+  } = await gqlResult;
 
-  if (!postData || status != 200) {
+  if (!postData) {
     return {
-      status,
+      status: 200,
       error: `No post found with slug '${slug}'`,
       post: null,
     };
@@ -186,7 +193,7 @@ export async function getSinglePost(
   const post = wrapWordpressPost(postData);
 
   return {
-    status,
+    status: 200,
     post,
   };
 }
