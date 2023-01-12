@@ -1,16 +1,13 @@
+import { GetServerSidePropsContext } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import clsx from "clsx";
+
 import DisplayDate from "@components/DisplayDate";
 import paginate from "@lib/paginate";
 import { getAllPosts, WordpressPost } from "@lib/wordpress";
-import clsx from "clsx";
-import { GetServerSidePropsContext } from "next";
-import Link from "next/link";
-import DescriptionTags, {
-  seoDescriptionTags,
-} from "@components/head/Description";
-import { seoTitleTags } from "@components/head/Title";
 
 import styles from "./posts-page.module.scss";
-import Image from "next/image";
 
 function pageUrl(pageNum: number): string {
   if (pageNum === 1) return `/posts`;

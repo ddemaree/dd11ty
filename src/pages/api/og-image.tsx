@@ -1,5 +1,6 @@
 import { ImageResponse } from "@vercel/og";
 import DDIcon from "@components/DDIcon";
+import { SOCIAL_IMAGE_PARAMS } from "@lib/siteUtils";
 
 export const config = {
   runtime: "experimental-edge",
@@ -73,8 +74,7 @@ export default async function handler({ url }: { url: string }) {
       </CardLayout>
     ),
     {
-      width: 1200,
-      height: 630,
+      ...SOCIAL_IMAGE_PARAMS,
       fonts: [
         {
           data: fontData,

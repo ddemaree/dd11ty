@@ -4,7 +4,10 @@ import {
   InMemoryCache,
   gql,
   TypedDocumentNode,
+  createHttpLink,
 } from "@apollo/client";
+
+import fetch from "cross-fetch";
 
 export type WordpressImage = {
   databaseId: number | string;
@@ -78,8 +81,14 @@ function wrapWordpressPost(inputPostData: any): WordpressPost {
 
 const cache = new InMemoryCache();
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: "https://wp.demaree.me/graphql",
+  // fetch,
+  useGETForQueries: true,
+});
+
+const client = new ApolloClient({
+  link: httpLink,
   cache,
   name: "demaree-dot-me",
   version: "1.3",
@@ -97,38 +106,46 @@ async function makeGQLRequest(
   return client.query({ query, variables });
 }
 
-const SINGLE_POST_QUERY = gql`
-  query PostQuery($id: ID!) {
-    post(id: $id, idType: SLUG) {
-      databaseId
-      slug
-      title
-      date: dateGmt
-      content
-      excerpt: rawExcerpt
-      featuredImage {
-        node {
-          databaseId
-          sourceUrl
-          srcSet
-          sizes
-          altText
-          caption
-          cloudinaryId
-          mediaDetails {
-            height
-            width
-          }
+const BASIC_POST_FIELDS = gql`
+  fragment BasicPostFields on Post {
+    databaseId
+    slug
+    title
+    date: dateGmt
+    excerpt: rawExcerpt
+    featuredImage {
+      node {
+        databaseId
+        sourceUrl
+        srcSet
+        sizes
+        altText
+        caption
+        cloudinaryId
+        mediaDetails {
+          height
+          width
         }
       }
     }
   }
 `;
 
+const SINGLE_POST_QUERY = gql`
+  ${BASIC_POST_FIELDS}
+  query PostQuery($id: ID!) {
+    post(id: $id, idType: SLUG) {
+      ...BasicPostFields
+      content
+    }
+  }
+`;
+
 const ALL_POSTS_QUERY = gql`
-  query PostsQuery($startCursor: String) {
+  ${BASIC_POST_FIELDS}
+  query PostsQuery($startCursor: String, $numPosts: Int) {
     posts(
-      first: 100
+      first: $numPosts
       after: $startCursor
       where: { status: PUBLISH, dateQuery: { after: { year: 2015 } } }
     ) {
@@ -137,33 +154,16 @@ const ALL_POSTS_QUERY = gql`
         hasNextPage
       }
       nodes {
-        databaseId
-        slug
-        title
-        date: dateGmt
-        excerpt: rawExcerpt
-        featuredImage {
-          node {
-            databaseId
-            sourceUrl
-            srcSet
-            sizes
-            altText
-            caption
-            cloudinaryId
-            mediaDetails {
-              height
-              width
-            }
-          }
-        }
+        ...BasicPostFields
       }
     }
   }
 `;
 
-export async function getAllPosts(): Promise<WordpressPost[]> {
-  const gqlResponse = await makeGQLRequest(ALL_POSTS_QUERY, {});
+export async function getAllPosts(
+  numPosts: number = 100
+): Promise<WordpressPost[]> {
+  const gqlResponse = await makeGQLRequest(ALL_POSTS_QUERY, { numPosts });
   const { data } = gqlResponse;
 
   const {

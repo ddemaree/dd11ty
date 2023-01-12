@@ -1,13 +1,13 @@
-import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
+import { GetStaticPathsContext, GetStaticPropsContext } from "next";
 import htmlToReact from "@lib/text/htmlToReact";
 import sanitizeHtml from "@lib/text/sanitizeHtml";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
 import fetchTweets from "@lib/twitter/fetchTweets";
-import { getSinglePost, WordpressPost } from "@lib/wordpress";
+import { getAllPosts, getSinglePost, WordpressPost } from "@lib/wordpress";
 import PostHeader from "@components/PostHeader";
-// import { Helmet } from "react-helmet";
-// import { getSocialImageData } from "@components/head/SocialImage";
-// import { seoDescriptionData } from "@components/head/Description";
+
+import { NextSeo } from "next-seo";
+import { getSocialImageURL } from "@lib/siteUtils";
 
 export default function BlogPostPage({
   post,
@@ -27,12 +27,27 @@ export default function BlogPostPage({
   return (
     <article>
       {/* <Helmet
-        title={`${title} • demaree.me`}
+        title={}
         meta={[
           ...getSocialImageData({ slug }),
           ...seoDescriptionData(subtitle || "A blog post by David Demaree"),
         ]}
       /> */}
+      <NextSeo
+        title={title}
+        titleTemplate={"%s • demaree.me"}
+        description={subtitle}
+        additionalMetaTags={[{ name: "@twitter:site", content: "@ddemaree" }]}
+        openGraph={{
+          images: [
+            { url: getSocialImageURL({ slug }), width: 1200, height: 630 },
+          ],
+        }}
+      />
+      {/* <Head>
+        <title>{`${title} • demaree.me`}</title>
+        <SEOTitleTag title={title} />
+      </Head> */}
       <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
       <main className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
         {reactContent}
@@ -41,9 +56,22 @@ export default function BlogPostPage({
   );
 }
 
-export async function getServerSideProps({
-  params,
-}: GetServerSidePropsContext) {
+export async function getStaticPaths({}: GetStaticPathsContext) {
+  const posts = await getAllPosts(20);
+
+  const paths = posts.map(({ slug }) => ({
+    params: {
+      slug,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps({ params }: GetStaticPropsContext) {
   const { slug } = params as { slug: string };
   const { error, post } = await getSinglePost(slug);
 
@@ -67,5 +95,6 @@ export async function getServerSideProps({
       tweetIds,
       tweets,
     },
+    revalidate: 30,
   };
 }

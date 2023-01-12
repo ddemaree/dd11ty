@@ -42,6 +42,14 @@ function DropCapFragment({ text: initialText }: { text: string }) {
   );
 }
 
+interface HtmlToReactOptions {
+  codeBlocks: boolean;
+}
+
+const DEFAULT_OPTIONS: HtmlToReactOptions = {
+  codeBlocks: true,
+};
+
 /*
 
 This function converts vanilla HTML (especially that provided by WordPress) to React components, substituting certain block formats like Tweets or code blocks into fancy React equivalents.
@@ -49,8 +57,15 @@ This function converts vanilla HTML (especially that provided by WordPress) to R
 In addition to enabling React blocks, this is also the de facto browser formatter for rich content — stuff like drop caps, which shouldn't be provided to RSS feeds, are implemented here.
 
 */
-export default function htmlToReact(htmlString: string, tweets: any[]) {
+export default function htmlToReact(
+  htmlString: string,
+  tweets: any[],
+  options: HtmlToReactOptions = DEFAULT_OPTIONS
+) {
   let paragraphCount = 0;
+
+  // Merge in default options
+  options = Object.assign({}, DEFAULT_OPTIONS, options);
 
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {
@@ -87,53 +102,64 @@ export default function htmlToReact(htmlString: string, tweets: any[]) {
         return <Tweet id={tweetId} tweet={tweet} key={`tweet-${tweet.id}`} />;
       }
 
-      // Should cover all top level code blocks with a language-* class
-      // (We can't do much with un-tagged code blocks)
-      const classMatch = attribs?.class?.match(/language-([a-z]+)/);
-      if (name && name === "pre" && classMatch) {
-        const codeNode = cheerio.load(node)("code");
-        const codeSrc = codeNode.text().trim();
+      if (options.codeBlocks) {
+        // Should cover all top level code blocks with a language-* class
+        // (We can't do much with un-tagged code blocks)
+        const classMatch = attribs?.class?.match(/language-([a-z]+)/);
+        if (name && name === "pre" && classMatch) {
+          const codeNode = cheerio.load(node)("code");
+          const codeSrc = codeNode.text().trim();
 
-        // Get the language
-        let languageName = classMatch.at(1) as Language;
+          // Get the language
+          let languageName = classMatch.at(1) as Language;
 
-        return (
-          <figure className="code-block relative block bg-yellow-300">
-            <Highlight {...defaultProps} language={languageName} code={codeSrc}>
-              {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <pre
-                  className={clsx(
-                    className,
-                    "m-0 p-4 rounded-lg w-full max-w-full overflow-hidden"
-                  )}
-                  style={style}
-                >
-                  <code className="font-mono [font-size:0.875em] space-y-0">
-                    {tokens.map((line, i) => {
-                      const { key, ...lineProps } = getLineProps({
-                        line,
-                        key: i,
-                      });
+          return (
+            <figure className="code-block relative block bg-yellow-300">
+              <Highlight
+                {...defaultProps}
+                language={languageName}
+                code={codeSrc}
+              >
+                {({
+                  className,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps,
+                }) => (
+                  <pre
+                    className={clsx(
+                      className,
+                      "m-0 p-4 rounded-lg w-full max-w-full overflow-hidden"
+                    )}
+                    style={style}
+                  >
+                    <code className="font-mono [font-size:0.875em] space-y-0">
+                      {tokens.map((line, i) => {
+                        const { key, ...lineProps } = getLineProps({
+                          line,
+                          key: i,
+                        });
 
-                      return (
-                        <div key={key} {...lineProps}>
-                          <span>
-                            {line.map((token, key) => {
-                              const { tokenKey, ...tokenProps } = getTokenProps(
-                                { token, key }
-                              );
-                              return <span key={tokenKey} {...tokenProps} />;
-                            })}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </code>
-                </pre>
-              )}
-            </Highlight>
-          </figure>
-        );
+                        return (
+                          <div key={key} {...lineProps}>
+                            <span>
+                              {line.map((token, key) => {
+                                const { tokenKey, ...tokenProps } =
+                                  getTokenProps({ token, key });
+                                return <span key={tokenKey} {...tokenProps} />;
+                              })}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </code>
+                  </pre>
+                )}
+              </Highlight>
+            </figure>
+          );
+        }
       }
     },
   });

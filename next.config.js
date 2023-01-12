@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 const { withSentryConfig } = require("@sentry/nextjs");
+const { withAxiom } = require("next-axiom");
 
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -67,10 +71,11 @@ const nextConfig = {
 
     config.externals = [
       ...config.externals,
-      "jsdom",
-      "bufferutil",
       "canvas",
-      "utf-8-validate",
+      // "jsdom",
+      // "bufferutil",
+      // "utf-8-validate",
+      // "encoding",
     ];
 
     return config;
@@ -89,5 +94,11 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+if (process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT) {
+  module.exports = withAxiom(
+    withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+  );
+} else {
+  module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+}
 // module.exports = nextConfig;
