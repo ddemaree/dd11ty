@@ -73,6 +73,7 @@ const nextConfig = {
       ...config.externals,
       "canvas",
       "jsdom",
+      "shiki",
       // "bufferutil",
       // "utf-8-validate",
       // "encoding",

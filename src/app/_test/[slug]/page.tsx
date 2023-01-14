@@ -9,6 +9,8 @@ import fetchTweets from "@lib/twitter/fetchTweets";
 
 import { NewPrismHighlight } from "./NewPrismHighlight";
 
+import shiki from "shiki";
+
 export default async function BlogPage({
   params,
 }: {
@@ -33,6 +35,10 @@ export default async function BlogPage({
       Code: NewPrismHighlight,
     },
   });
+
+  // const highlighter = await shiki.getHighlighter({ theme: "nord" });
+  // const source = highlighter.codeToThemedTokens(`<h1>Hello</h1>`, "html");
+  // console.log(source);
 
   return (
     <article>
