@@ -55,16 +55,13 @@ const DEFAULT_SITE_URL_OPTIONS: {
   forceProduction: false,
 };
 
-export function getSiteURL(
-  options = DEFAULT_SITE_URL_OPTIONS,
-  returnAsString = true
-) {
+export function getSiteURL(options = DEFAULT_SITE_URL_OPTIONS) {
   options = Object.assign({}, DEFAULT_SITE_URL_OPTIONS, options);
   const { pathname, forceProduction } = options;
   const hostname = getSiteHostname(forceProduction);
   const protocol = isDevelopment() ? "http" : "https";
   const url = new URL(pathname as string, `${protocol}://${hostname}`);
-  return returnAsString ? url.toString() : url;
+  return url.toString();
 }
 
 interface TitleSocialImageProps {

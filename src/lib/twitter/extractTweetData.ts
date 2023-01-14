@@ -50,7 +50,7 @@ export default function extractTweetData(jsonData: any) {
           type: "website",
           url: obj.expanded_url,
           display_url: obj.display_url,
-          images: obj.images,
+          images: obj.images || [],
           title: obj.title,
           description: obj.description,
         } as TwitterWebsite;

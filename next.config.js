@@ -72,7 +72,7 @@ const nextConfig = {
     config.externals = [
       ...config.externals,
       "canvas",
-      // "jsdom",
+      "jsdom",
       // "bufferutil",
       // "utf-8-validate",
       // "encoding",
@@ -88,17 +88,16 @@ const sentryWebpackPluginOptions = {
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore
-
-  silent: true, // Suppresses all logs
+  // silent: true, // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-if (process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT) {
-  module.exports = withAxiom(
-    withSentryConfig(nextConfig, sentryWebpackPluginOptions)
-  );
-} else {
-  module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
-}
-// module.exports = nextConfig;
+// if (process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT) {
+//   module.exports = withAxiom(
+//     withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+//   );
+// } else {
+//   module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+// }
+module.exports = nextConfig;

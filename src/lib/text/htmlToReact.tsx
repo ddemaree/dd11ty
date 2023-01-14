@@ -1,10 +1,13 @@
 import * as cheerio from "cheerio";
+
+// import clsx from "clsx";
+// import Highlight, { defaultProps, Language } from "prism-react-renderer";
+
 import _ from "lodash";
-import clsx from "clsx";
 import parse, { DOMNode, Element, domToReact } from "html-react-parser";
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import Tweet from "@lib/twitter/Tweet";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
+import { PrismHighlightProps } from "@components/PrismHighlight";
 
 function getDropCapTexts(initialText: string) {
   const words = initialText?.split(" ");
@@ -44,10 +47,16 @@ function DropCapFragment({ text: initialText }: { text: string }) {
 
 interface HtmlToReactOptions {
   codeBlocks: boolean;
+  tweets: boolean;
+  components?: {
+    Code?: (props: PrismHighlightProps) => JSX.Element;
+  };
 }
 
 const DEFAULT_OPTIONS: HtmlToReactOptions = {
   codeBlocks: true,
+  tweets: true,
+  components: {},
 };
 
 /*
@@ -62,10 +71,10 @@ export default function htmlToReact(
   tweets: any[],
   options: HtmlToReactOptions = DEFAULT_OPTIONS
 ) {
-  let paragraphCount = 0;
+  let paragraphCount = -1;
 
   // Merge in default options
-  options = Object.assign({}, DEFAULT_OPTIONS, options);
+  options = _.merge({}, DEFAULT_OPTIONS, options);
 
   const reactContent = parse(htmlString, {
     replace(node: DOMNode) {
@@ -75,6 +84,7 @@ export default function htmlToReact(
 
       // Drop caps: Find the first text node within the first paragraph element in the doc. This is usually the first child node, but may be inside a link or other phrase element
       if (name === "p") {
+        paragraphCount++;
         if (
           paragraphCount === 0 &&
           node.childNodes[0]?.type === "text" &&
@@ -92,17 +102,26 @@ export default function htmlToReact(
             </p>
           );
         }
-        paragraphCount++;
       }
 
-      if (name && name === "figure" && attribs?.class.match(/twitter/)) {
-        const [tweetId] = extractTweetIds(node);
+      if (options.tweets) {
+        if (name && name === "figure" && attribs?.class?.match(/twitter/)) {
+          const [tweetId] = extractTweetIds(node);
 
-        const tweet = tweets.find((tweet) => tweet.id === tweetId);
-        return <Tweet id={tweetId} tweet={tweet} key={`tweet-${tweet.id}`} />;
+          const tweet = tweets.find((tweet) => tweet.id === tweetId);
+          if (tweet) {
+            return (
+              <Tweet id={tweetId} tweet={tweet} key={`tweet-${tweet.id}`} />
+            );
+          } else {
+            console.log(`Could not find tweet with id ${tweetId}`);
+          }
+        }
       }
 
-      if (options.codeBlocks) {
+      if (options.codeBlocks && options?.components?.Code) {
+        const { Code } = options.components;
+
         // Should cover all top level code blocks with a language-* class
         // (We can't do much with un-tagged code blocks)
         const classMatch = attribs?.class?.match(/language-([a-z]+)/);
@@ -111,54 +130,10 @@ export default function htmlToReact(
           const codeSrc = codeNode.text().trim();
 
           // Get the language
-          let languageName = classMatch.at(1) as Language;
+          let languageName = classMatch.at(1);
+          const { Code } = options?.components;
 
-          return (
-            <figure className="code-block relative block bg-yellow-300">
-              <Highlight
-                {...defaultProps}
-                language={languageName}
-                code={codeSrc}
-              >
-                {({
-                  className,
-                  style,
-                  tokens,
-                  getLineProps,
-                  getTokenProps,
-                }) => (
-                  <pre
-                    className={clsx(
-                      className,
-                      "m-0 p-4 rounded-lg w-full max-w-full overflow-hidden"
-                    )}
-                    style={style}
-                  >
-                    <code className="font-mono [font-size:0.875em] space-y-0">
-                      {tokens.map((line, i) => {
-                        const { key, ...lineProps } = getLineProps({
-                          line,
-                          key: i,
-                        });
-
-                        return (
-                          <div key={key} {...lineProps}>
-                            <span>
-                              {line.map((token, key) => {
-                                const { tokenKey, ...tokenProps } =
-                                  getTokenProps({ token, key });
-                                return <span key={tokenKey} {...tokenProps} />;
-                              })}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </code>
-                  </pre>
-                )}
-              </Highlight>
-            </figure>
-          );
+          return <Code code={codeSrc} language={languageName} />;
         }
       }
     },

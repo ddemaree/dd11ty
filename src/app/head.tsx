@@ -1,9 +1,7 @@
-export default function Head() {
-  return (
-    <>
-      <title></title>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <link rel="icon" href="/favicon.ico" />
-    </>
-  )
+// app/head.js
+import { DEFAULT_META } from "@lib/meta";
+import { NextSeo } from "next-seo";
+
+export default async function Head() {
+  return <NextSeo {...DEFAULT_META} useAppDir={true} />;
 }

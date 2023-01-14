@@ -5,10 +5,9 @@ export default function extractTweetIds(htmlString: string | AnyNode) {
 
   load(htmlString)("a[href*=twitter.com/]").each((idx, elem) => {
     const href = load(elem)("a").first().attr("href") as string;
-    const tweetId = href
-      .match(/twitter.com\/[^\/]+\/status\/(\d+)/)
-      ?.at(1) as string;
-    tweetIds.push(tweetId);
+    const tweetMatch = href.match(/twitter.com\/[^\/]+\/status\/(\d+)/);
+    const tweetId = tweetMatch?.at(1) as string;
+    if (tweetId) tweetIds.push(tweetId);
   });
 
   return tweetIds;
