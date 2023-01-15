@@ -12,25 +12,24 @@ import { postMeta } from "@lib/meta";
 export default function BlogPostPage({
   post,
   cleanContent,
-  tweets,
 }: {
   post: WordpressPost;
-  tweets: Tweet[];
   cleanContent: string;
 }) {
   const { title, excerpt: subtitle, date, featuredImage } = post;
 
-  const reactContent = htmlToReact(cleanContent, tweets, {
-    tweets: true,
-  });
+  // const reactContent = htmlToReact(cleanContent, tweets, {
+  //   tweets: true,
+  // });pnpm a
 
   return (
     <article>
       <NextSeo {...postMeta(post)} />
       <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
-      <main className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
-        {reactContent}
-      </main>
+      <main
+        className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100"
+        dangerouslySetInnerHTML={{ __html: cleanContent }}
+      />
     </article>
   );
 }
@@ -62,15 +61,15 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
 
   const cleanContent = await sanitizeHtml(post.content);
   const tweetIds = extractTweetIds(cleanContent);
-  const tweets = await fetchTweets(tweetIds);
+  // const tweets = await fetchTweets(tweetIds);
 
   return {
     props: {
       error: error ?? null,
       post,
       cleanContent,
-      tweetIds,
-      tweets,
+      tweetIds: [],
+      tweets: [],
     },
     revalidate: 30,
   };

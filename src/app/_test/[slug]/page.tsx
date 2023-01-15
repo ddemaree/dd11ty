@@ -2,10 +2,20 @@ import PostHeader from "@components/PostHeader";
 import htmlToReact from "@lib/text/htmlToReact";
 import sanitizeHtml from "@lib/text/sanitizeHtml";
 import extractTweetIds from "@lib/twitter/extractTweetIds";
-import { getSinglePost } from "@lib/wordpress";
+import { getAllPosts, getSinglePost } from "@lib/wordpress";
 import { notFound } from "next/navigation";
 
 import fetchTweets from "@lib/twitter/fetchTweets";
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export default async function BlogPage({
   params,
