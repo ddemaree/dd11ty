@@ -293,9 +293,8 @@ body {
       font-variation-settings: "wdth" 96;
       font-weight: 440;
       line-height: 1;
-      margin-right: 0.15em;
+      margin-right: 0.25em;
       transform: translateX(0.025em);
-      min-width: 1em;
       text-align: center;
     }
 
@@ -311,23 +310,23 @@ body {
       margin-top: -0.5em;
     }
 
-    @screen sm {
-      .drop-cap .initial {
-        font-size: 5.25em !important;
-        // transform: translateX(0.075em);
-        font-variation-settings: "wdth" 120;
-        min-width: 0.5em;
-        text-shadow: 3px 3px 0px #0002;
-      }
+    // @screen sm {
+    //   .drop-cap .initial {
+    //     font-size: 5.25em !important;
+    //     // transform: translateX(0.075em);
+    //     font-variation-settings: "wdth" 120;
+    //     min-width: 0.5em;
+    //     text-shadow: 3px 3px 0px #0002;
+    //   }
 
-      .drop-cap .initial:before {
-        margin-bottom: 0;
-      }
+    //   .drop-cap .initial:before {
+    //     margin-bottom: 0;
+    //   }
 
-      .drop-cap .initial:after {
-        margin-top: -0.1em;
-      }
-    }
+    //   .drop-cap .initial:after {
+    //     margin-top: -0.1em;
+    //   }
+    // }
   }
 
   .prose-grid {

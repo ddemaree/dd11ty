@@ -1,3 +1,4 @@
+import { merge } from "lodash";
 import { NextSeoProps } from "next-seo";
 import { getSocialImageURL, SOCIAL_IMAGE_PARAMS } from "./siteUtils";
 import { WordpressPost } from "./wordpress";
@@ -20,7 +21,7 @@ export const DEFAULT_META: NextSeoProps = {
 };
 
 export function postMeta(post: WordpressPost): NextSeoProps {
-  return {
+  return merge({}, DEFAULT_META, {
     title: post.title,
     description: post.excerpt,
     openGraph: {
@@ -28,5 +29,5 @@ export function postMeta(post: WordpressPost): NextSeoProps {
         { url: getSocialImageURL({ slug: post.slug }), ...SOCIAL_IMAGE_PARAMS },
       ],
     },
-  };
+  });
 }

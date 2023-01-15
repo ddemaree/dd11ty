@@ -65,7 +65,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
     };
   }
 
-  const cleanContent = sanitizeHtml(post.content);
+  const cleanContent = await sanitizeHtml(post.content);
   const tweetIds = extractTweetIds(cleanContent);
   const tweets = await fetchTweets(tweetIds);
 

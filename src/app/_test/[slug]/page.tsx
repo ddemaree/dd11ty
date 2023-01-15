@@ -9,8 +9,6 @@ import fetchTweets from "@lib/twitter/fetchTweets";
 
 import { NewPrismHighlight } from "./NewPrismHighlight";
 
-import shiki from "shiki";
-
 export default async function BlogPage({
   params,
 }: {
@@ -21,7 +19,7 @@ export default async function BlogPage({
 
   if (!post) notFound();
 
-  const cleanContent = sanitizeHtml(post.content);
+  const cleanContent = await sanitizeHtml(post.content);
   const tweetIds = extractTweetIds(cleanContent);
   // const tweets = await fetchTweets(tweetIds);
   const tweets: Tweet[] = [];
@@ -29,16 +27,12 @@ export default async function BlogPage({
   const { title, excerpt: subtitle, date, featuredImage } = post;
 
   const reactContent = htmlToReact(cleanContent, tweets, {
-    codeBlocks: true,
+    codeBlocks: false,
     tweets: false,
     components: {
       Code: NewPrismHighlight,
     },
   });
-
-  // const highlighter = await shiki.getHighlighter({ theme: "nord" });
-  // const source = highlighter.codeToThemedTokens(`<h1>Hello</h1>`, "html");
-  // console.log(source);
 
   return (
     <article>

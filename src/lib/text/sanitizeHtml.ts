@@ -1,6 +1,7 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 import { JSDOM } from "jsdom";
+import shiki, { renderToHtml } from "shiki";
 
 const cld = new Cloudinary({
   cloud: {
@@ -11,7 +12,9 @@ const cld = new Cloudinary({
   },
 });
 
-export default function sanitizeHtml(htmlInput: string): string {
+const highlighter = await shiki.getHighlighter({ theme: "dracula" });
+
+export default async function sanitizeHtml(htmlInput: string): Promise<string> {
   let output = "";
 
   const dom = new JSDOM(`<!DOCTYPE html>${htmlInput}`);
@@ -58,6 +61,52 @@ export default function sanitizeHtml(htmlInput: string): string {
     thisNode.removeAttribute("data-sizes");
     thisNode.removeAttribute("data-transformations");
     thisNode.removeAttribute("onload");
+  }
+
+  const codeBlocks = document.querySelectorAll(
+    'pre[class*="language-"] > code'
+  );
+  if (codeBlocks.length > 0) {
+    for (
+      let codeBlockIdx = 0;
+      codeBlockIdx < codeBlocks.length;
+      codeBlockIdx++
+    ) {
+      var thisCodeBlock = codeBlocks[codeBlockIdx];
+      var thisPreBlock = thisCodeBlock.parentElement as HTMLPreElement;
+      var codeSrc = thisCodeBlock.textContent as string;
+
+      var languageClass = Array.from(thisPreBlock.classList).find((c) =>
+        c.match(/^language-/)
+      );
+
+      if (languageClass) {
+        var languageName = languageClass.replace("language-", "");
+        var highlightedCode = highlighter.codeToHtml(codeSrc, {
+          lang: languageName,
+        });
+
+        // var tokens = highlighter.codeToThemedTokens(codeSrc, languageName);
+        // var highlightedCode = renderToHtml(tokens, {
+        //   elements: {
+        //     token({ style, children, token }) {
+        //       console.log(
+        //         style,
+        //         token.explanation?.map((t) => t.scopes)
+        //       );
+        //       return `<span style="${style}">${children}</span>`;
+        //     },
+        //   },
+        // });
+
+        // console.log(highlighter.getTheme("dracula"));
+
+        // console.log(highlightedCode);
+        thisCodeBlock.innerHTML = highlightedCode;
+      }
+
+      console.log();
+    }
   }
 
   output = document.body.innerHTML.replace(/\n{2,}/g, "\n\n");
