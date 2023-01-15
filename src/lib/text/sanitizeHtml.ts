@@ -1,18 +1,22 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 import { JSDOM } from "jsdom";
-import shiki, { renderToHtml } from "shiki";
+import getShiki from "@lib/shiki";
 
 const cld = new Cloudinary({
   cloud: {
     cloudName: "demaree",
   },
   url: {
-    secure: true, // force https, set to false to force http
+    secure: true,
   },
 });
 
-const highlighter = await shiki.getHighlighter({ theme: "dracula" });
+const highlighter = await getShiki({
+  langs: [],
+  theme: "github-dark",
+  wrap: false,
+});
 
 export default async function sanitizeHtml(htmlInput: string): Promise<string> {
   let output = "";
@@ -86,22 +90,6 @@ export default async function sanitizeHtml(htmlInput: string): Promise<string> {
           lang: languageName,
         });
 
-        // var tokens = highlighter.codeToThemedTokens(codeSrc, languageName);
-        // var highlightedCode = renderToHtml(tokens, {
-        //   elements: {
-        //     token({ style, children, token }) {
-        //       console.log(
-        //         style,
-        //         token.explanation?.map((t) => t.scopes)
-        //       );
-        //       return `<span style="${style}">${children}</span>`;
-        //     },
-        //   },
-        // });
-
-        // console.log(highlighter.getTheme("dracula"));
-
-        // console.log(highlightedCode);
         thisCodeBlock.innerHTML = highlightedCode;
       }
 
