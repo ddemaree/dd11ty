@@ -7,24 +7,20 @@ import { getAllPosts, getSinglePost, WordpressPost } from "@lib/wordpress";
 import PostHeader from "@components/PostHeader";
 
 import { NextSeo } from "next-seo";
-import { getSocialImageURL } from "@lib/siteUtils";
 import { postMeta } from "@lib/meta";
 
 export default function BlogPostPage({
   post,
   cleanContent,
   tweets,
-  slug,
 }: {
   post: WordpressPost;
   tweets: Tweet[];
   cleanContent: string;
-  slug: string;
 }) {
-  const { title, content, excerpt: subtitle, date, featuredImage } = post;
+  const { title, excerpt: subtitle, date, featuredImage } = post;
 
   const reactContent = htmlToReact(cleanContent, tweets, {
-    codeBlocks: false,
     tweets: true,
   });
 
@@ -58,7 +54,6 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   const { slug } = params as { slug: string };
   const { error, post } = await getSinglePost(slug);
 
-  // TODO: Handle 404
   if (!post) {
     return {
       notFound: true,
@@ -71,7 +66,6 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
 
   return {
     props: {
-      slug,
       error: error ?? null,
       post,
       cleanContent,

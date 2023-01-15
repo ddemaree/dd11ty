@@ -1,8 +1,5 @@
 import * as cheerio from "cheerio";
 
-// import clsx from "clsx";
-// import Highlight, { defaultProps, Language } from "prism-react-renderer";
-
 import _ from "lodash";
 import parse, { DOMNode, Element, domToReact } from "html-react-parser";
 import Tweet from "@lib/twitter/Tweet";
@@ -46,17 +43,11 @@ function DropCapFragment({ text: initialText }: { text: string }) {
 }
 
 interface HtmlToReactOptions {
-  codeBlocks: boolean;
   tweets: boolean;
-  components?: {
-    Code?: (props: PrismHighlightProps) => JSX.Element;
-  };
 }
 
 const DEFAULT_OPTIONS: HtmlToReactOptions = {
-  codeBlocks: true,
   tweets: true,
-  components: {},
 };
 
 /*
@@ -80,7 +71,7 @@ export default function htmlToReact(
     replace(node: DOMNode) {
       if (!(node instanceof Element)) return;
 
-      const { name, attribs, children } = node;
+      const { name, attribs } = node;
 
       // Drop caps: Find the first text node within the first paragraph element in the doc. This is usually the first child node, but may be inside a link or other phrase element
       if (name === "p") {
@@ -116,24 +107,6 @@ export default function htmlToReact(
           } else {
             console.log(`Could not find tweet with id ${tweetId}`);
           }
-        }
-      }
-
-      if (options.codeBlocks && options?.components?.Code) {
-        const { Code } = options.components;
-
-        // Should cover all top level code blocks with a language-* class
-        // (We can't do much with un-tagged code blocks)
-        const classMatch = attribs?.class?.match(/language-([a-z]+)/);
-        if (name && name === "pre" && classMatch) {
-          const codeNode = cheerio.load(node)("code");
-          const codeSrc = codeNode.text().trim();
-
-          // Get the language
-          let languageName = classMatch.at(1);
-          const { Code } = options?.components;
-
-          return <Code code={codeSrc} language={languageName} />;
         }
       }
     },

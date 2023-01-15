@@ -2,8 +2,8 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import imgDavidStitch from "../assets/images/dd-stitch-transparent.png";
-import styles from "./styles.module.css";
+import imgDavidStitch from "../../assets/images/dd-stitch-transparent.png";
+import styles from "../../pages/index.module.css";
 
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

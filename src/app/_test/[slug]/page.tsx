@@ -7,8 +7,6 @@ import { notFound } from "next/navigation";
 
 import fetchTweets from "@lib/twitter/fetchTweets";
 
-import { NewPrismHighlight } from "./NewPrismHighlight";
-
 export default async function BlogPage({
   params,
 }: {
@@ -27,11 +25,7 @@ export default async function BlogPage({
   const { title, excerpt: subtitle, date, featuredImage } = post;
 
   const reactContent = htmlToReact(cleanContent, tweets, {
-    codeBlocks: false,
     tweets: false,
-    components: {
-      Code: NewPrismHighlight,
-    },
   });
 
   return (
