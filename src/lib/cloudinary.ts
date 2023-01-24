@@ -1,6 +1,6 @@
-import { Cloudinary } from "@cloudinary/url-gen";
+import { Cloudinary, CloudinaryImage } from "@cloudinary/url-gen";
 
-import { fill } from "@cloudinary/url-gen/actions/resize";
+import { fill, scale } from "@cloudinary/url-gen/actions/resize";
 import { getInfo } from "@cloudinary/url-gen/qualifiers/flag";
 import { blur } from "@cloudinary/url-gen/actions/effect";
 import { quality } from "@cloudinary/url-gen/actions/delivery";
@@ -9,11 +9,20 @@ export const cld = new Cloudinary({
   cloud: { cloudName: "demaree" },
   url: {
     secure: true,
+    analytics: false,
   },
 });
 
 export function cloudinaryImage(src) {
   return cld.image(src);
+}
+
+export function cloudinaryResizeImage(src: string | CloudinaryImage, size) {
+  if (typeof src === "string") {
+    src = cloudinaryImage(src);
+  }
+
+  return src.resize(scale(size)).toURL();
 }
 
 function fullCloudinaryImg(src) {

@@ -42,6 +42,18 @@ module.exports = {
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
     }),
     extend: {
+      colors: {
+        hairline: "var(--color-hairline)",
+        background: "var(--color-background)",
+        text: {
+          DEFAULT: "var(--color-text-normal)",
+          normal: "var(--color-text-normal)",
+          "low-emphasis": "var(--color-text-low-emphasis)",
+          "high-emphasis": "var(--color-text-high-emphasis)",
+          active: "var(--color-text-active)",
+          code: "var(--color-text-code)",
+        },
+      },
       fontSize: {
         title: `clamp(2rem, 10vmin, 3rem)`,
       },

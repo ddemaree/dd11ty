@@ -1,8 +1,9 @@
 ---
-import BaseHead from '@components/BaseHead.astro';
 import PostHeader from '@components/PostHeader.astro';
+import Prose from '@components/Prose.astro';
+import SiteLayout from '@layouts/SiteLayout.astro';
+
 import { getSinglePost } from '@lib/wordpress';
-import SiteLayout from '@components/SiteLayout.astro';
 import sanitizeHtml from '@lib/sanitizeHtml';
 
 const { slug } = Astro.params;
@@ -17,21 +18,10 @@ if(!post) {
 
 const { title, content, excerpt, date, featuredImage } = post;
 
-const cleanContent = sanitizeHtml(content);
-
 ---
-<html lang="en" data-theme={`light`}>
-	<head>
-    <BaseHead title={title} description={excerpt} />
-	</head>
-	<body>
-		<SiteLayout section="blog">
-			<article class="content">
-				<PostHeader title={title} subtitle={excerpt} date={date} image={featuredImage} />
-				<main class="mt-8 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
-					<Fragment set:html={cleanContent} />
-				</main>
-			</article>
-		</SiteLayout>
-	</body>
-</html>
+<SiteLayout title={title} description={excerpt} section="blog">
+	<article class="content">
+		<PostHeader title={title} subtitle={excerpt} date={date} image={featuredImage} />
+		<Prose content={content} />
+	</article>
+</SiteLayout>

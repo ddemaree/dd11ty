@@ -2,23 +2,14 @@
   ID = "demaree-next"
 
 [build]
-  command = "hugo --gc --minify -e production"
-  publish = "public"
+  command = "astro build"
+  publish = "dist"
 
 [build.environment]
   NODE_ENV = "production"
-  HUGO_ENV = "production"
   NODE_VERSION = "16"
-  HUGO_VERSION = "0.93.0"
-  HUGO_ENABLEGITINFO = "true"
-
-[context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL -e staging"
-
-[context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL -e staging"
 
 [[redirects]]
   from = "/feed"
-  to = "/feed.xml"
+  to = "/feeds/posts.xml"
   status = 301

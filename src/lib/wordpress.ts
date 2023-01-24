@@ -111,7 +111,10 @@ query PostsQuery($startCursor: String) {
 export async function getAllPosts(): Promise<WordpressPost[]> {
   const gqlResponse = await makeGQLRequest(ALL_POSTS_QUERY, {});
   const { status } = gqlResponse;
-  const { data } = await gqlResponse.json();
+  console.log(gqlResponse);
+  const { data } = await gqlResponse.json().catch((err) => {
+    console.log(err, gqlResponse);
+  });
 
   const {
     posts: { nodes: postObjs },

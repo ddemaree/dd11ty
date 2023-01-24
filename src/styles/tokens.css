@@ -1,0 +1,98 @@
+.text-style-link-default {
+  font-size: 1.25rem;
+  font-family: "Ivar Text";
+  font-weight: 500;
+  font-style: normal;
+  line-height: 150%;
+  text-decoration: underline;
+  text-transform: none;
+}
+.text-style-caption {
+  font-size: 1.125rem;
+  font-family: "Mona Sans";
+  font-weight: 500;
+  font-style: normal;
+  line-height: 150%;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-title {
+  font-size: 3rem;
+  font-family: "Mona Sans";
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-subtitle {
+  font-size: 1.875rem;
+  font-family: "Mona Sans";
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-dateline {
+  font-size: 1.125rem;
+  font-family: "Mona Sans";
+  font-weight: 700;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.text-style-inline-code {
+  font-size: 1.125rem;
+  font-family: "Recursive";
+  line-height: 150%;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-code-block {
+  font-size: 1.125rem;
+  font-family: "Recursive";
+  line-height: 150%;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-normal {
+  font-size: 1.25rem;
+  font-family: "Ivar Text";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 150%;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-tweet-dateline {
+  font-size: 1rem;
+  font-family: "Mona Sans";
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-tweet-user-name {
+  font-size: 1.25rem;
+  font-family: "Mona Sans";
+  font-weight: 700;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-tweet-normal {
+  font-size: 1.125rem;
+  font-family: "Mona Sans";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 137.5%;
+  text-decoration: none;
+  text-transform: none;
+}
+.text-style-tweet-mention {
+  font-size: 1.125rem;
+  font-family: "Mona Sans";
+  font-weight: 600;
+  font-style: normal;
+  line-height: 137.5%;
+  text-decoration: none;
+  text-transform: none;
+}

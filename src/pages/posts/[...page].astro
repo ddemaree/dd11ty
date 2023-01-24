@@ -1,7 +1,7 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
 import BlogPostPreview from "@components/BlogPostPreview.astro";
-import SiteLayout from "@components/SiteLayout.astro";
+import SiteLayout from "@layouts/SiteLayout.astro";
+import paginate from "@lib/paginate";
 import { getAllPosts } from "@lib/wordpress";
 
 const { page = 1 } = Astro.params;
@@ -11,18 +11,7 @@ const title = `David Demaree's blog` + (currentPage > 1 ? ` • Page ${currentPa
 
 const allPosts = await getAllPosts();
 
-const pageSize = 8;
-const startIndex = Math.min( (pageSize * (currentPage - 1)), allPosts.length );
-const endIndex = Math.min( (startIndex + pageSize), allPosts.length);
-const currentPosts = allPosts.slice(startIndex, endIndex);
-
-const totalPages = Math.ceil(allPosts.length / pageSize);
-
-const hasPreviousPage = currentPage > 1;
-const previousPage = hasPreviousPage ? (currentPage - 1) : null;
-
-const nextPage = currentPage + 1;
-const hasNextPage = (nextPage + 1) <= totalPages;
+const { current: currentPosts, previousPage, nextPage } = paginate(allPosts, currentPage, {pageSize: 8});
 
 function paginationClasses() : string[] {
   return [
@@ -36,30 +25,21 @@ function pageUrl(pageNum: number) : string {
 }
 
 ---
-<html lang="en">
-	<head>
-    <BaseHead title={title} description="Writing about tech, business, and culture by a guy who likes keyboards" />
-	</head>
-	<body>
-		<SiteLayout section="blog">
-      <main class=" w-inset max-w-[50rem] mx-auto @container/posts-list space-y-8 supports-[container-name]:space-y-[10cqi]">
-        <header class=" text-purple-500 h-[26vh] flex flex-col items-center justify-center">
-          <h1 class=" leading-none font-light [font-size:3.5rem] [font-variation-settings:'wdth'_140]">
-            {currentPage === 1 ? "Posts" : `Page ${page}`}
-          </h1>
-        </header>
-        <div class="flex flex-col gap-y-12 supports-[container-name]:gap-y-[max(3rem,6cqi)]">
-          {currentPosts.map(post => <BlogPostPreview post={post} />)}
-        </div>
-        <footer>
-          <div class="pagination flex flex-wrap justify-between @md:justify-center gap-4 py-12 [font-size:1.5rem] font-semibold">
-            {hasPreviousPage ? <a href={pageUrl(previousPage)} class:list={paginationClasses()}>&larr; Newer</a> : <span class="placeholder"></span>}
-            {hasNextPage ? <a href={pageUrl(nextPage)} class:list={paginationClasses()}>Older &rarr;</a> : <span class="placeholder"></span>}
-          </div>
-        </footer>
-      </main>
-
-			
-		</SiteLayout>
-	</body>
-</html>
+<SiteLayout title={title} description="Writing about tech, business, and culture by a guy who likes keyboards" section="blog">
+  <main class=" w-inset max-w-[50rem] mx-auto @container/posts-list space-y-8 supports-[container-name]:space-y-[10cqi]">
+    <header class=" text-purple-500 h-[26vh] flex flex-col items-center justify-center">
+      <h1 class=" leading-none font-light [font-size:3.5rem] [font-variation-settings:'wdth'_140]">
+        {currentPage === 1 ? "Posts" : `Page ${page}`}
+      </h1>
+    </header>
+    <div class="flex flex-col gap-y-12 supports-[container-name]:gap-y-[max(3rem,6cqi)]">
+      {currentPosts.map(post => <BlogPostPreview post={post} />)}
+    </div>
+    <footer>
+      <div class="pagination flex flex-wrap justify-between @md:justify-center gap-4 py-12 [font-size:1.5rem] font-semibold">
+        {previousPage ? <a href={pageUrl(previousPage)} class:list={paginationClasses()}>&larr; Newer</a> : <span class="placeholder"></span>}
+        {nextPage ? <a href={pageUrl(nextPage)} class:list={paginationClasses()}>Older &rarr;</a> : <span class="placeholder"></span>}
+      </div>
+    </footer>
+  </main>
+</SiteLayout>

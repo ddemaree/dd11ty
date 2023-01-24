@@ -18,8 +18,6 @@ onMount(() => {
 })
 
 function toggleOpen() {
-  console.log(lottie);
-
   if(menuOpen) {
     lottie.goToAndStop(36, true);
     lottie.playSegments([36, 86], true);

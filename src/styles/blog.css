@@ -1,8 +1,67 @@
 @import url("https://cdn.demaree.net/fonts/tiempos/fonts.css");
+@import "./caps/roslindale-caps.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-hairline-dark: rgba(82, 82, 82, 1);
+  --color-hairline-light: rgba(163, 163, 163, 1);
+
+  --color-background-dark: rgba(23, 23, 23, 1);
+  --color-background-light: rgba(249, 250, 251, 1);
+
+  --color-text-dark-normal: rgba(214, 211, 209, 1);
+  --color-text-dark-low-emphasis: rgba(163, 163, 163, 1);
+  --color-text-dark-high-emphasis: rgba(255, 255, 255, 1);
+  --color-text-dark-active: rgba(239, 68, 68, 1);
+  --color-text-dark-code: rgba(56, 189, 248, 1);
+
+  --color-text-light-normal: rgba(38, 38, 38, 1);
+  --color-text-light-low-emphasis: rgba(82, 82, 82, 1);
+  --color-text-light-high-emphasis: rgba(0, 0, 0, 1);
+  --color-text-light-active: rgba(220, 38, 38, 1);
+  --color-text-light-code: rgba(2, 132, 199, 1);
+
+  --color-tweet-bg: rgba(255, 255, 255, 1);
+  --color-tweet-active-dark: rgba(56, 189, 248, 1);
+  --color-tweet-bg-dark: rgba(31, 41, 55, 1);
+  --color-tweet-border-dark: rgba(55, 65, 81, 1);
+
+  /* Defaults for named colors */
+  --color-hairline: var(--color-hairline-light);
+  --color-background: var(--color-background-light);
+  --color-text-normal: var(--color-text-light-normal);
+  --color-text: var(--color-text-normal);
+  --color-text-low-emphasis: var(--color-text-light-low-emphasis);
+  --color-text-high-emphasis: var(--color-text-light-high-emphasis);
+  --color-text-active: var(--color-text-light-active);
+  --color-text-code: var(--color-text-light-code);
+}
+
+@layer components {
+  .theme-light {
+    --color-hairline: var(--color-hairline-light);
+    --color-background: var(--color-background-light);
+    --color-text-normal: var(--color-text-light-normal);
+    --color-text: var(--color-text-normal);
+    --color-text-low-emphasis: var(--color-text-light-low-emphasis);
+    --color-text-high-emphasis: var(--color-text-light-high-emphasis);
+    --color-text-active: var(--color-text-light-active);
+    --color-text-code: var(--color-text-light-code);
+  }
+  .theme-dark {
+    --color-hairline: var(--color-hairline-dark);
+    --color-background: var(--color-background-dark);
+    --color-text-normal: var(--color-text-dark-normal);
+    --color-text: var(--color-text-normal);
+    --color-text-low-emphasis: var(--color-text-dark-low-emphasis);
+    --color-text-high-emphasis: var(--color-text-dark-high-emphasis);
+    --color-text-active: var(--color-text-dark-active);
+    --color-text-code: var(--color-text-dark-code);
+  }
+}
 
 @font-face {
   src: url("/fonts/Mona-Sans.woff") format("woff"),
@@ -18,8 +77,6 @@
   font-family: "source-serif-4";
   font-weight: 300 900;
   font-style: normal;
-  /* font-weight: 725;
-  font-variation-settings: 'wdth' 725; */
   font-display: swap;
 }
 
@@ -36,317 +93,123 @@
 }
 
 body {
-  @apply bg-stone-100 dark:bg-neutral-900 dark:text-neutral-50;
+  @apply bg-background text-text-normal;
 }
 
 @layer components {
   .dateline {
     @apply font-sans font-semibold tracking-wide uppercase;
   }
+}
 
-  .prose {
-    --tw-prose-body: theme("colors.zinc.700");
-    --tw-prose-headings: theme("colors.zinc.900");
-    --tw-prose-lead: theme("colors.zinc.600");
-    --tw-prose-links: theme("colors.zinc.900");
-    --tw-prose-bold: theme("colors.zinc.900");
-    --tw-prose-counters: theme("colors.zinc.500");
-    --tw-prose-bullets: theme("colors.zinc.300");
-    --tw-prose-hr: theme("colors.zinc.200");
-    --tw-prose-quotes: theme("colors.zinc.900");
-    --tw-prose-quote-borders: theme("colors.zinc.200");
-    --tw-prose-captions: theme("colors.zinc.500");
-    --tw-prose-code: theme("colors.zinc.900");
-    --tw-prose-pre-code: theme("colors.zinc.200");
-    --tw-prose-pre-bg: theme("colors.zinc.800");
-    --tw-prose-th-borders: theme("colors.zinc.300");
-    --tw-prose-td-borders: theme("colors.zinc.200");
-    --tw-prose-invert-body: theme("colors.zinc.300");
-    --tw-prose-invert-headings: colors.white;
-    --tw-prose-invert-lead: theme("colors.zinc.400");
-    --tw-prose-invert-links: colors.white;
-    --tw-prose-invert-bold: colors.white;
-    --tw-prose-invert-counters: theme("colors.zinc.400");
-    --tw-prose-invert-bullets: theme("colors.zinc.600");
-    --tw-prose-invert-hr: theme("colors.zinc.700");
-    --tw-prose-invert-quotes: theme("colors.zinc.100");
-    --tw-prose-invert-quote-borders: theme("colors.zinc.700");
-    --tw-prose-invert-captions: theme("colors.zinc.400");
-    --tw-prose-invert-code: colors.white;
-    --tw-prose-invert-pre-code: theme("colors.zinc.300");
-    --tw-prose-invert-pre-bg: "rgb(0 0 0 / 50%)";
-    --tw-prose-invert-th-borders: theme("colors.zinc.600");
-    --tw-prose-invert-td-borders: theme("colors.zinc.700");
+:where([data-theme="dark"]) .hb-line path {
+  fill: white;
+  stroke: white;
+}
 
-    --prose-text-size: clamp(17px, 2.5vw, 20px);
+@layer components {
+  .text-style-link-default {
+    @apply font-serif font-medium;
+    /* font-size: 1.25rem;
+    font-family: "Ivar Text";
+    font-weight: 500;
+    font-style: normal;
+    line-height: 150%;
+    text-decoration: underline;
+    text-transform: none; */
+  }
 
-    --flow-spacing-xs: calc(var(--prose-text-size) * 0.375);
-    --flow-spacing-sm: calc(var(--prose-text-size) * 0.75);
-    --flow-spacing-normal: calc(var(--prose-text-size) * 1.5);
-    --flow-spacing-big: calc(var(--prose-text-size) * 3);
+  .text-style-caption {
+    @apply font-sans font-normal text-text-low-emphasis;
+  }
 
-    --prose-indent: 1.625em;
+  .text-style-dateline {
+    @apply font-sans leading-none uppercase;
+    font-weight: 570;
+  }
 
-    color: var(--tw-prose-body);
-    font-size: var(--prose-text-size);
-    /* font-variation-settings: "opsz" 18; */
-    line-height: 1.6;
+  /* title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.25rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025] */
 
-    & :where(* + *),
-    & :where(blockquote * + *) {
-      margin-block-start: var(--flow-spacing-normal);
-    }
+  .text-style-title {
+    --fv-width: 98;
+    @apply leading-none font-sans md:[--fv-width:112];
 
-    & > :where(figure, img, picture, hr, pre[class*="language-"]) {
-      &,
-      & + * {
-        margin-block-start: var(--flow-spacing-big);
-      }
-    }
+    font-size: clamp(28px, 8vw, 44px);
+    font-size: clamp(28px, 8cqi, 44px);
+    font-weight: 640;
+    font-variation-settings: "wdth" var(--fv-width);
 
-    :where(img) {
-      margin: unset;
-    }
+    letter-spacing: -0.01em;
 
-    :where(a) {
-      @apply transition-colors underline decoration-1 underline-offset-4;
-      color: var(--tw-prose-links);
-    }
-
-    :where(a:hover) {
-      @apply text-red-500;
-    }
-
-    :where(b, strong) {
-      color: var(--tw-prose-bold);
-      font-weight: 600;
-    }
-
-    :where(a, blockquote, thead th) :where(b, strong) {
-      color: inherit;
-    }
-
-    :where(ol, ul) {
-      padding-inline-start: var(--prose-indent);
-
-      :where(ol, ul) {
-        margin-block: var(--flow-spacing-xs) 0;
-      }
-
-      > li {
-        padding-inline-start: 0.375em;
-      }
-    }
-
-    > :where(ol, ul) {
-      > li p {
-        margin-block: 0.75em;
-      }
-    }
-
-    li {
-      margin-block: var(--flow-spacing-xs);
-    }
-
-    ol {
-      list-style-type: decimal;
-    }
-
-    /* OMITTED: OL [type] attribute styles */
-
-    ul {
-      list-style-type: disc;
-    }
-
-    ol > li::marker {
-      @apply font-sans font-semibold;
-      color: var(--tw-prose-counters);
-      font-size: 0.875em;
-    }
-
-    ul > li::marker {
-      color: var(--tw-prose-bullets);
-    }
-
-    :where(ul, ol) :where(ul, ol) {
-      margin-block-start: 0.5em;
-      margin-block-end: 0;
-    }
-
-    hr {
-      border-color: var(--tw-prose-hr);
-      border-top-width: 1px;
-
-      + * {
-        margin-block-start: 0;
-      }
-    }
-
-    :where(blockquote) {
-      border-left-color: var(--tw-prose-quote-borders);
-      border-left-width: 0.25em;
-      color: var(--tw-prose-quotes);
-      padding-inline-start: calc(var(--prose-indent) - 0.25em);
-    }
-
-    figure blockquote {
-      margin: 0;
-    }
-
-    :where(h1, h2, h3, h4, h5, h6) {
-      color: var(--tw-prose-headings);
-      font-family: var(--font-sans);
-      font-weight: 600;
-      letter-spacing: -0.01ch;
-      line-height: 1.1;
-      margin-block-start: var(--flow-spacing-big);
-
-      + :where(p) {
-        margin-block-start: var(--flow-spacing-sm);
-      }
-
-      :where(b, strong) {
-        color: inherit;
-        font-weight: 700;
-      }
-    }
-
-    :where(h1) {
-      font-size: 2em;
-    }
-
-    :where(h2) {
-      font-size: 1.75em;
-    }
-
-    :where(h3) {
-      font-size: 1.5em;
-    }
-
-    :where(figure) {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    :where(figcaption, .wp-block-pullquote__citation) {
-      color: var(--tw-prose-captions);
-      font-family: var(--font-sans);
-      font-size: 0.875em;
-      font-style: normal;
-      line-height: 1.375;
-      margin-block-start: 0.875em;
-      margin-block-end: 0;
-      max-width: 60ch;
-      text-align: center;
-    }
-
-    code {
-      color: var(--tw-prose-code);
-      font-weight: 500;
-    }
-
-    :where(a, h1, h2, h3, h4, h5, h6, blockquote, thead th) code {
-      color: inherit;
-    }
-
-    /* TODO: Code styles, need to see how they interact with prism */
-    pre {
-      color: var(--tw-prose-pre-code);
-      background-color: var(--tw-prose-pre-bg);
-      overflow-x: auto;
-      font-weight: 400;
-
-      code {
-        background-color: transparent;
-        color: inherit;
-        font-weight: inherit;
-        font-size: inherit;
-      }
-    }
-
-    /* OMITTED: table styles */
-
-    :where(.wp-block-embed__wrapper) {
-      display: contents;
-    }
-
-    :where(figure iframe[src*="youtube.com"]) {
-      aspect-ratio: 16 / 9;
-      height: auto;
-      width: 100%;
-    }
-
-    :where(figure[class*="gallery"]) {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: var(--flow-spacing-sm);
-      align-items: unset;
-
-      :where(figure:has(img)) {
-        display: flex;
-        flex-direction: row;
-        flex-grow: 1;
-        margin: unset;
-        width: calc(50% - (var(--flow-spacing-sm) / 2));
-
-        img {
-          flex: 1 0 0%;
-          height: 100%;
-          object-fit: cover;
-          width: 100%;
-        }
-      }
-    }
-
-    .drop-cap .initial {
-      @apply font-sans;
-      float: left;
-      font-size: 5.25em;
-      font-variation-settings: "wdth" 120;
-      font-weight: 440;
-      line-height: 1;
-      margin-right: 0.1em;
-      margin-left: -0.05em;
-    }
-
-    .drop-cap .initial:before,
-    .drop-cap .initial:after {
-      content: "";
-      display: block;
-    }
-    .drop-cap .initial:before {
-      /* margin-bottom: -0.0125em; */
-    }
-    .drop-cap .initial:after {
-      margin-top: -0.25em;
+    &.text-style-title-sm {
+      font-size: clamp(26px, 4.5vw, 36px);
+      font-size: clamp(26px, 4.5cqi, 36px);
     }
   }
 
-  .prose-grid {
-    display: grid;
-    grid-auto-flow: row;
-    /* prettier-ignore */
-    grid-template-columns: [full-start] 1fr [wide-start] minmax(var(--inset-x), 7rem) [content-start] min( calc(100% - (var(--inset-x) * 2)), 45rem ) [content-end] minmax(var(--inset-x), 7rem) [wide-end] 1fr [full-end];
-    justify-items: start;
-
-    > :is(*, p, .aligncontent) {
-      grid-column: content;
-    }
-
-    > .alignwide,
-    > .size-large {
-      grid-column: wide;
-    }
-
-    > .alignfull {
-      grid-column: full;
-    }
-
-    .wp-block-embed {
-      justify-self: center;
-    }
+  .text-style-subtitle {
+    font-size: 1.875rem;
+    font-family: "Mona Sans";
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-inline-code {
+    font-size: 1.125rem;
+    font-family: "Recursive";
+    line-height: 150%;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-code-block {
+    font-size: 1.125rem;
+    font-family: "Recursive";
+    line-height: 150%;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-normal {
+    font-size: 1.25rem;
+    font-family: "Ivar Text";
+    font-weight: 400;
+    font-style: normal;
+    line-height: 150%;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-tweet-dateline {
+    font-size: 1rem;
+    font-family: "Mona Sans";
+    font-weight: 500;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-tweet-user-name {
+    font-size: 1.25rem;
+    font-family: "Mona Sans";
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-tweet-normal {
+    font-size: 1.125rem;
+    font-family: "Mona Sans";
+    font-weight: 400;
+    font-style: normal;
+    line-height: 137.5%;
+    text-decoration: none;
+    text-transform: none;
+  }
+  .text-style-tweet-mention {
+    font-size: 1.125rem;
+    font-family: "Mona Sans";
+    font-weight: 600;
+    font-style: normal;
+    line-height: 137.5%;
+    text-decoration: none;
+    text-transform: none;
   }
 }

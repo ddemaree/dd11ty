@@ -1,0 +1,40 @@
+---
+import BaseHead from '@components/BaseHead.astro';
+import SiteFooter from '@components/SiteFooter.astro';
+import SiteHeader from '@components/SiteHeader.astro';
+
+export type SiteSection = "home" | "blog";
+
+export interface Props {
+  section?: SiteSection;
+  title: string;
+  description: string;
+  permalink?: string;
+}
+
+const { section, title, description, permalink } = Astro.props;
+
+export type ColorScheme = 'light' | 'dark' | 'system' | 'arc' | undefined;
+
+const chPreferredColorScheme = Astro.request.headers.get('sec-ch-prefers-color-scheme') as ColorScheme;
+const themeCookie = Astro.cookies.get('_dd_theme');
+const themeCookieValue = themeCookie.value as ColorScheme;
+
+const selectedColorScheme = themeCookieValue || chPreferredColorScheme || 'system';
+
+---
+<html lang="en" data-theme={selectedColorScheme}>
+	<head>
+		<BaseHead title={title} description={description} permalink={permalink} />
+	</head>
+
+	<body>
+    <div class="site-layout grid grid-cols-1 grid-rows-[auto_1fr] min-h-screen">
+      <SiteHeader activeSection={section} />
+      <div class="site-layout-main">
+        <slot />
+      </div>
+      <SiteFooter />
+    </div>
+	</body>
+</html>

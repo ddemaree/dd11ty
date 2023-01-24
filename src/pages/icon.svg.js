@@ -1,25 +1,25 @@
-/*
+import colors from "tailwindcss/colors";
 
-  {{ if not hugo.IsProduction -}}
-  .a { fill: blue; }
-  .b { fill: white; }
-  {{- else -}}
-  @media (prefers-color-scheme: dark) {
-    .a { fill: #222; }
-    .b { fill: #F66 }
-  }
-  {{- end }}
+const env = import.meta.env.NODE_ENV;
+const isDev = env === "development";
 
-*/
+const keyColor = isDev ? colors.blue[500] : colors.red[500];
 
 const headers = new Headers();
 headers.set("Content-Type", "image/svg+xml");
+headers.set(
+  "Cache-Control",
+  "public, s-maxage=1200, stale-while-revalidate=600"
+);
 
 const body = `<svg width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
+  .a { fill: ${keyColor}; }
+  .b { fill: white; }
+
   @media (prefers-color-scheme: dark) {
     .a { fill: #222; }
-    .b { fill: #F66 }
+    .b { fill: ${keyColor}; }
   }
 </style>
 <rect width="520" height="520" class="a" fill="#EF4444"/>

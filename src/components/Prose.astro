@@ -1,0 +1,278 @@
+---
+import sanitizeHtml from '@lib/sanitizeHtml';
+
+export interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+const cleanContent = await sanitizeHtml(content);
+---
+<main class="mt-8 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal">
+  <Fragment set:html={cleanContent} />
+</main>
+
+<style is:global>
+.prose {
+  @apply font-serif text-text;
+
+  --prose-text-size: clamp(17px, 2.5vw, 20px);
+  --prose-indent: 1.625em;
+
+  --flow-spacing-xs: calc(var(--prose-text-size) * 0.375);
+  --flow-spacing-sm: calc(var(--prose-text-size) * 0.75);
+  --flow-spacing-normal: calc(var(--prose-text-size) * 1.5);
+  --flow-spacing-big: calc(var(--prose-text-size) * 3);
+
+  font-size: var(--prose-text-size);
+  line-height: 1.6;
+
+  & :where(* + *),
+  & :where(blockquote * + *) {
+    margin-block-start: var(--flow-spacing-normal);
+  }
+
+  & > :where(figure, img, picture, hr, pre[class*="language-"]) {
+    &,
+    & + * {
+      margin-block-start: var(--flow-spacing-big);
+    }
+  }
+
+  :where(img, iframe) {
+    margin: unset;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  :where(a) {
+    @apply text-text-high-emphasis transition-colors underline decoration-1 underline-offset-4;
+  }
+
+  :where(a:hover) {
+    @apply text-text-active;
+  }
+
+  :where(b, strong) {
+    @apply text-text-high-emphasis;
+    font-weight: 600;
+  }
+
+  :where(a, blockquote, thead th) :where(b, strong) {
+    color: inherit;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    @apply text-text-high-emphasis font-sans font-semibold;
+    letter-spacing: -0.01ch;
+    line-height: 1.1;
+    margin-block-start: var(--flow-spacing-big);
+
+    + :where(p) {
+      margin-block-start: var(--flow-spacing-sm);
+    }
+
+    :where(b, strong) {
+      color: inherit;
+      font-weight: 700;
+    }
+  }
+
+  :where(h1) {
+    font-size: 2em;
+  }
+
+  :where(h2) {
+    font-size: 1.75em;
+  }
+
+  :where(h3) {
+    font-size: 1.5em;
+  }
+
+  :where(ol, ul) {
+    padding-inline-start: var(--prose-indent);
+
+    :where(ol, ul) {
+      margin-block: var(--flow-spacing-xs) 0;
+    }
+
+    :where(> li) {
+      padding-inline-start: 0.375em;
+    }
+  }
+
+  > :where(ol, ul) {
+    > li p {
+      margin-block: 0.75em;
+    }
+  }
+
+  li {
+    margin-block: var(--flow-spacing-xs);
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol > li::marker {
+    @apply font-sans font-semibold;
+    /* color: var(--tw-prose-counters); */
+    font-size: 0.875em;
+  }
+
+  ul > li::marker {
+    /* color: var(--tw-prose-bullets); */
+  }
+
+  :where(ul, ol) :where(ul, ol) {
+    margin-block-start: 0.5em;
+    margin-block-end: 0;
+  }
+
+  hr {
+    @apply border-hairline;
+    border-top-width: 1px;
+
+    + * {
+      margin-block-start: 0;
+    }
+  }
+
+  :where(blockquote) {
+    @apply border-l-hairline text-text-normal;
+    border-left-width: 0.25em;
+    padding-inline-start: calc(var(--prose-indent) - 0.25em);
+  }
+
+  figure blockquote {
+    margin: 0;
+  }
+
+  :where(figure) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  :where(figcaption, .wp-block-pullquote__citation) {
+    @apply text-text-low-emphasis font-sans;
+    font-size: 0.875em;
+    font-style: normal;
+    line-height: 1.375;
+    margin-block-start: 0.875em;
+    margin-block-end: 0;
+    max-width: 60ch;
+    text-align: center;
+  }
+
+  code {
+    @apply text-text-code font-medium;
+  }
+
+  :where(a, h1, h2, h3, h4, h5, h6, blockquote, thead th) code {
+    color: inherit;
+  }
+
+  pre {
+    @apply text-text-code font-normal;
+    overflow-x: auto;
+
+    code {
+      background-color: transparent;
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+    }
+  }
+
+  :where(.wp-block-embed__wrapper) {
+    display: contents;
+  }
+
+  :where(figure iframe[src*="youtube.com"]) {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    width: 100%;
+  }
+
+  :where(figure[class*="gallery"]) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--flow-spacing-sm);
+    align-items: unset;
+
+    :where(figure:has(img)) {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      margin: unset;
+      width: calc(50% - (var(--flow-spacing-sm) / 2));
+
+      img {
+        flex: 1 0 0%;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+
+  &.prose-grid {
+    display: grid;
+    grid-auto-flow: row;
+    /* prettier-ignore */
+    grid-template-columns: [full-start] 1fr [wide-start] minmax(var(--inset-x), 7rem) [content-start] min( calc(100% - (var(--inset-x) * 2)), 45rem ) [content-end] minmax(var(--inset-x), 7rem) [wide-end] 1fr [full-end];
+    justify-items: start;
+
+    > :is(*, p, .aligncontent) {
+      grid-column: content;
+    }
+
+    > .alignwide,
+    > .size-large {
+      grid-column: wide;
+    }
+
+    > .alignfull {
+      grid-column: full;
+    }
+
+    .wp-block-embed {
+      justify-self: center;
+    }
+  }
+}
+
+.drop-cap .initial {
+  font-family: 'RoslindaleDisplayCapsVariable';
+  float: left;
+  font-size: 5.25em;
+  font-variation-settings: "wdth" 120;
+  font-weight: 340;
+  line-height: 1;
+  margin-right: 0.1em;
+}
+
+.drop-cap .initial:before,
+.drop-cap .initial:after {
+  content: "";
+  display: block;
+}
+
+.drop-cap .initial:after {
+  margin-top: -0.25em;
+}
+
+.drop-cap .initial:before {
+  margin-bottom: 4px;
+}
+</style>

@@ -1,24 +1,82 @@
 ---
-import Icon from './Icon.astro';
-import { faDDLogo } from '../lib/ddIcon';
 import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+import Icon from './Icon.astro';
+import { faDDLogo } from '../lib/ddIcon';
 import NavLink from './NavLink.astro';
+import MenuButton from './MenuButton.svelte';
+import { SiteSection } from '@layouts/SiteLayout.astro';
+
+export interface Props {
+	activeSection?: SiteSection;
+}
+
+const { activeSection } = Astro.props;
 ---
-<header class="h-16 sm:h-20 flex px-8 items-center justify-between">
-	<a href="/" class="contents text-primary">
+<header class="nav-parent h-20 sm:h-20 flex px-8 items-center justify-between">
+	<a href="/" class="text-primary relative z-50">
 		<Icon icon={faDDLogo} size="2x" />
 		<span class="sr-only">David Demaree</span>
 	</a>
 
-	<div class="flex gap-x-6">
-		<nav class="flex gap-x-2">
-			<NavLink label="Blog" url="/posts" icon={faNewspaper} />
+	<div class="menu-container">
+		<nav class="menu-top">
+			<NavLink label="Home" url="/" icon={faHomeAlt} isActive={activeSection === "home"} />
+			<NavLink label="Blog" url="/posts" icon={faNewspaper} isActive={activeSection === "blog"} />
 		</nav>
 		
-		<nav class="flex gap-x-2">
+		<nav class="menu-bottom">
 			<NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
 			<NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
 		</nav>
 	</div>
+	<MenuButton client:only="svelte" />
 </header>
+
+<style is:global>
+
+  .menu-container {
+    display: flex;
+    column-gap: 1.5rem;
+  }
+
+  .menu-top {
+    @apply flex flex-col sm:flex-row gap-x-2 gap-y-4 w-full flex-1 items-center justify-start;
+  }
+
+  .menu-bottom {
+    @apply flex justify-center py-[0.5em] nav-open:mb-4 sm:mb-0 sm:py-0;
+  }
+
+  @media screen and (max-width: 639px) {
+    .menu-open body {
+      overflow: hidden;
+      height: 100vw;
+    }
+    .menu-container {
+      @apply fixed inset-0 z-20 bg-orange-300 pt-20 transition-transform translate-x-full;
+
+      font-size: max(5vw, 2rem);
+      flex-direction: column;
+    }
+
+    .menu-container .menu-top .nav-link {
+      width: 100%;
+      padding-inline: var(--inset-x) !important;
+      border-radius: 0 !important;
+      font-variation-settings: 'wdth' 112;
+    }
+
+    .menu-open .menu-container {
+      @apply translate-x-0;
+      --t--nav-link-bg: theme('colors.orange.400');
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    .menu-container {
+      position: relative;
+    }
+  }
+</style>
