@@ -1,0 +1,177 @@
+---
+import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+import Icon from './Icon.astro';
+import { faDDLogo } from '../lib/ddIcon';
+import NavLink from './NavLink.astro';
+import { SiteSection } from '@layouts/SiteLayout.astro';
+import MenuButton from './MenuButton.svelte';
+
+export interface Props {
+	activeSection?: SiteSection;
+}
+
+const { activeSection } = Astro.props;
+---
+<header class="nav-parent">
+	<a href="/" class="site-logo">
+		<Icon icon={faDDLogo} size="2x" />
+		<span class="sr-only">David Demaree</span>
+	</a>
+
+	<div class="menu-container">
+		<nav class="menu-top">
+			<NavLink label="Home" url="/" icon={faHomeAlt} isActive={activeSection === "home"} />
+			<NavLink label="Blog" url="/posts" icon={faNewspaper} isActive={activeSection === "blog"} />
+		</nav>
+		
+		<nav class="menu-bottom">
+			<NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
+			<NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
+		</nav>
+	</div>
+
+	<MenuButton client:only="svelte" />
+</header>
+
+<style is:global>
+  .nav-parent {
+    align-items: center;
+    display: flex;
+    height: 5rem;
+    justify-content: space-between;
+  }
+
+  .nav-parent a {
+    color: var(--color-text-high-emphasis);
+    text-decoration: none;
+  }
+
+  .site-logo, .menu-button {
+    z-index: 50;
+  }
+
+  .menu-container {
+    display: flex;
+    column-gap: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .menu-container > * {
+    display: contents;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  @media screen and (max-width: 630px) {
+    .menu-open body {
+      overflow: hidden;
+      height: 100vw;
+    }
+
+    .menu-button {
+      display: block;
+    }
+
+    .menu-container {
+      inset: 0;
+      position: fixed;
+      z-index: 20;
+      overflow-y: auto;
+      display: none;
+      grid-template-rows: 1fr auto;
+      padding-block-start: 5rem;
+      padding-block-end: 1.5rem;
+      row-gap: 1.5rem;
+      background-color: var(--color-background-mobile-menu, #fff2);
+      backdrop-filter: blur(0.5rem);
+    }
+
+    .menu-container:before {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .menu-open .menu-container {
+      display: grid;
+    }
+
+    .menu-container.enter-active, .menu-container.leave-active {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .menu-container.enter-from, .menu-container.leave-to {
+      transform: translateX(100%);
+    }
+    
+    .menu-container.enter-to, .menu-container.leave-from {
+      transform: translateX(0);
+    }
+
+    .menu-container {
+      flex-direction: column;
+      font-size: max(5vw, 2rem);
+    }
+
+    .menu-container > * {
+      display: flex;
+      font-size: 2rem;
+      padding-inline: var(--dd-layout-padding-inline);
+      justify-content: center;
+      align-items: center;
+      row-gap: 1rem;
+    }
+
+    .menu-container .menu-top {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+
+    .menu-container .menu-top a {
+      background-color: black;
+      color: white;
+      font-weight: 600;
+      padding-inline: 4vw;
+      
+      font-size: clamp(2rem, 10vw, 3.5rem);
+      column-gap: 3vw;
+      min-width: 9ch;
+    }
+
+    .menu-container .menu-top a:active {
+      background-color: red;
+    }
+
+    .menu-container .menu-top :global(.icon-label) {
+      color: red;
+    }
+  }
+
+  /* @media screen and (max-width: 639px) {
+
+    .menu-container .menu-top .nav-link {
+      border-radius: 0 !important;
+      font-variation-settings: 'wdth' 112;
+      padding-inline: var(--inset-x) !important;
+      width: 100%;
+    }
+
+    .menu-open .menu-container {
+      @apply translate-x-0;
+      --t--nav-link-bg: theme('colors.orange.400');
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    .menu-container {
+      position: relative;
+    }
+  } */
+</style>

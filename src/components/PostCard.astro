@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { blogPostURL } from '@lib/utils';
+
+export interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props
+const { title, excerpt, date } = post.data
+
+const postURL = blogPostURL(post.slug);
+---
+<article>
+  <a href={postURL}>
+    <h1>{title}</h1>
+  </a>
+</article>

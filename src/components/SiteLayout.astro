@@ -1,0 +1,91 @@
+---
+import BaseHead from '@components/BaseHead.astro';
+import SiteFooter, { FooterOptions } from '@components/SiteFooter.astro';
+import SiteHeader from '@components/SiteHeader.astro';
+import clsx, { ClassValue } from 'clsx';
+
+import "../styles/global.scss";
+
+export type SiteSection = "home" | "about" | "blog";
+
+export interface Props {
+  title: string;
+  section?: SiteSection;
+  description?: string;
+  permalink?: string;
+  footerOptions?: FooterOptions;
+  mainClass?: ClassValue;
+  bodyClass?: ClassValue;
+}
+
+const { section, title, description, permalink, footerOptions, mainClass, bodyClass } = Astro.props;
+const mainClassValue = clsx("site-layout-main", mainClass);
+
+export type ColorScheme = 'light' | 'dark' | 'system' | 'arc' | undefined;
+
+// const chPreferredColorScheme = Astro.request.headers.get('sec-ch-prefers-color-scheme') as ColorScheme;
+// const themeCookie = Astro.cookies.get('_dd_theme');
+// const themeCookieValue = themeCookie.value as ColorScheme;
+
+// const selectedColorScheme = themeCookieValue || chPreferredColorScheme || 'system';
+const selectedColorScheme = 'system';
+
+---
+<html lang="en" data-theme={selectedColorScheme}>
+	<head>
+		<BaseHead title={title} description={description} permalink={permalink} />
+	</head>
+
+	<body class={clsx(bodyClass)}>
+    <div class="site-layout grid grid-cols-1 grid-rows-[auto_1fr] min-h-screen">
+      <SiteHeader activeSection={section} />
+      <div class={mainClassValue}>
+        <slot />
+      </div>
+      <SiteFooter {...footerOptions} />
+    </div>
+    <svg class="hidden" width="10" height="10" viewBox="0 0 10 10">
+      <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
+        <path
+          fill="red"
+          stroke="none"
+          d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
+        />
+      </clipPath>
+      <clipPath id="squircleBoxClip" clipPathUnits="objectBoundingBox">
+        <circle cx="5" cy="5" r="5" fill="red" />
+      </clipPath>
+    </svg>
+	</body>
+</html>
+
+<style is:global>
+
+  @layer patterns {
+    :root {
+      --dd-layout-padding-block: 1.5rem;
+      --dd-layout-padding-inline: clamp(1rem, 5.5vw, 2.5rem);
+    }
+
+    :where(.site-layout, .site-layout-main) {
+      display: grid;
+      grid-auto-flow: row;
+      grid-auto-rows: auto;
+      justify-items: center;
+    }
+
+    :where(.site-layout) {
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    :where(.site-layout > *, .site-layout-main > *) {
+      width: 100%;
+    }
+
+    :where(.site-layout > *) { 
+      padding-block: var(--dd-layout-padding-block);
+      padding-inline: var(--dd-layout-padding-inline);
+    }
+  }
+</style>

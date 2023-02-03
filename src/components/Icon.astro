@@ -1,0 +1,109 @@
+---
+import type { IconDefinition, IconLookup, IconName, IconPrefix, SizeProp } from '@fortawesome/fontawesome-svg-core'
+import clsx from 'clsx';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { icon as faIcon, library, findIconDefinition } from '@fortawesome/fontawesome-svg-core'
+
+import {fas} from '@fortawesome/pro-solid-svg-icons';
+import {fab} from '@fortawesome/free-brands-svg-icons';
+import { faDDLogo } from '@lib/ddIcon';
+library.add(faDDLogo, fas, fab);
+
+export interface Props {
+  icon: IconLookup | IconDefinition | IconName | "dd-icon";
+	prefix?: IconPrefix;
+  class?: string;
+  size?: SizeProp;
+  style?: "rounded" | "circle" | "square";
+	fixedWidth?: boolean;
+	wrapperClass?: string;
+	label?: string;
+	labelClass?: string;
+	wrapper?: boolean;
+}
+
+const { 
+	icon,
+	size, 
+	class: className = '',
+	style,
+	wrapperClass,
+	fixedWidth = false,
+	label,
+	labelClass = '',
+	prefix = 'fas',
+	wrapper: hasWrapper = true
+} = Astro.props;
+
+let iconDefinition: IconDefinition;
+
+if(icon === "dd-icon") {
+	iconDefinition = faDDLogo;
+}
+else if(typeof (icon as IconDefinition).icon === 'object') {
+	iconDefinition = icon as IconDefinition;
+}
+else if(typeof (icon as IconLookup).iconName === 'string') {
+	iconDefinition = findIconDefinition(icon as IconLookup);
+}
+else if(typeof icon === 'string') {
+	iconDefinition = findIconDefinition({iconName: icon, prefix});
+}
+
+let classes = [className];
+
+if(size) {
+  classes.push(`fa-${size}`);
+}
+
+if(fixedWidth) classes.push('fa-fw');
+
+const [ html ] = faIcon(iconDefinition, { classes: clsx(classes) })?.html || []
+
+const hasDefaultSlot = Astro.slots.has('default')
+
+const WrapTag = hasWrapper ? 'span' : Fragment;
+
+---
+<WrapTag class="icon-wrap">
+	{html && <span class:list={['icon-wrapper', (style && `icon-wrapper-${style}`), wrapperClass]}>
+		<Fragment set:html={html} />
+	</span>}
+	{label && <span class={clsx("icon-label", labelClass)}>{label}</span>}
+	{hasDefaultSlot && <span class={clsx("icon-label", labelClass)}><slot name="default" /></span>}
+</WrapTag>
+
+<style>
+	.icon-wrap {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+  .icon-wrapper-rounded {
+    display: inline-block;
+		font-size: 2.5rem;
+		line-height: 1;
+		position: relative;
+    height: 1em;
+    width: 1em;
+	}
+
+	.icon-wrapper-rounded:before {
+		@apply bg-current;
+    position: absolute;
+		height: 1em;
+		width: 1em;
+		content: '';
+		display: inline-block;
+		border-radius: 0.18em;
+	}
+
+	.icon-wrapper-rounded :global(svg) {
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		color: rgb(255 255 255 / 0.9);
+		transform: scale(68%);
+	}
+</style>

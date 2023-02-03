@@ -1,0 +1,13 @@
+---
+import PostCard from "@components/PostCard.astro";
+import SiteLayout from "@components/SiteLayout.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("blog");
+---
+<SiteLayout title="David's blog">
+  <h1>Posts</h1>
+
+  {entries.map(post => <PostCard post={post} />)}
+</SiteLayout>
+

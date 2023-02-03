@@ -1,0 +1,15 @@
+---
+import { DateTime } from 'luxon';
+
+export interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+const dt = DateTime.fromJSDate(date)
+dt.setZone('America/New_York');
+
+---
+<time datetime={dt.toISODate()}>
+  {dt.toLocaleString(DateTime.DATE_FULL)}
+</time>

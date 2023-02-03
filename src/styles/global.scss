@@ -1,0 +1,115 @@
+@use "./fonts";
+
+@layer reset, baseline, patterns, utils, overrides;
+
+@layer reset {
+  @import "reset";
+}
+
+@layer baseline {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: fonts.$sans;
+    margin: unset;
+    padding: unset;
+  }
+  a {
+    color: var(--color-text-active);
+    font-weight: 500;
+  }
+}
+
+@layer baseline {
+  :root {
+    --font-sans: #{fonts.$sans};
+    --font-serif: #{fonts.$serif};
+    --font-mono: #{fonts.$mono};
+
+    --width-content: 45rem;
+    --width-wide: 59rem;
+  }
+
+  :root {
+    --color-hairline-dark: rgba(82, 82, 82, 1);
+    --color-hairline-light: rgba(163, 163, 163, 1);
+
+    --color-background-dark: rgba(23, 23, 23, 1);
+    --color-background-light: rgba(249, 250, 251, 1);
+
+    --color-text-dark-normal: rgba(214, 211, 209, 1);
+    --color-text-dark-low-emphasis: rgba(163, 163, 163, 1);
+    --color-text-dark-high-emphasis: rgba(255, 255, 255, 1);
+    --color-text-dark-active: rgba(239, 68, 68, 1);
+    --color-text-dark-code: rgba(56, 189, 248, 1);
+
+    --color-text-light-normal: rgba(38, 38, 38, 1);
+    --color-text-light-low-emphasis: rgba(82, 82, 82, 1);
+    --color-text-light-high-emphasis: rgba(0, 0, 0, 1);
+    --color-text-light-active: rgba(220, 38, 38, 1);
+    --color-text-light-code: rgba(2, 132, 199, 1);
+
+    --color-tweet-bg: rgba(255, 255, 255, 1);
+    --color-tweet-active-dark: rgba(56, 189, 248, 1);
+    --color-tweet-bg-dark: rgba(31, 41, 55, 1);
+    --color-tweet-border-dark: rgba(55, 65, 81, 1);
+
+    /* Defaults for named colors */
+    --color-hairline: var(--color-hairline-light);
+    --color-background: var(--color-background-light);
+    --color-text-normal: var(--color-text-light-normal);
+    --color-text: var(--color-text-normal);
+    --color-text-low-emphasis: var(--color-text-light-low-emphasis);
+    --color-text-high-emphasis: var(--color-text-light-high-emphasis);
+    --color-text-active: var(--color-text-light-active);
+    --color-text-code: var(--color-text-light-code);
+  }
+}
+
+@layer patterns {
+  .theme-light {
+    --color-hairline: var(--color-hairline-light);
+    --color-background: var(--color-background-light);
+    --color-text-normal: var(--color-text-light-normal);
+    --color-text: var(--color-text-normal);
+    --color-text-low-emphasis: var(--color-text-light-low-emphasis);
+    --color-text-high-emphasis: var(--color-text-light-high-emphasis);
+    --color-text-active: var(--color-text-light-active);
+    --color-text-code: var(--color-text-light-code);
+  }
+  .theme-dark {
+    --color-hairline: var(--color-hairline-dark);
+    --color-background: var(--color-background-dark);
+    --color-text-normal: var(--color-text-dark-normal);
+    --color-text: var(--color-text-normal);
+    --color-text-low-emphasis: var(--color-text-dark-low-emphasis);
+    --color-text-high-emphasis: var(--color-text-dark-high-emphasis);
+    --color-text-active: var(--color-text-dark-active);
+    --color-text-code: var(--color-text-dark-code);
+  }
+}
+
+@layer patterns {
+  :where(.unstyled-link) {
+    @include fonts.unstyled-link();
+  }
+
+  .flex-image {
+    img {
+      object-fit: cover;
+      min-height: 300px;
+    }
+  }
+}
+
+@layer utils {
+  .hidden {
+    display: block;
+  }
+  .contents {
+    display: contents;
+  }
+  .object-cover {
+    object-fit: cover;
+  }
+}

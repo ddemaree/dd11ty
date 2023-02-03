@@ -1,0 +1,48 @@
+{
+  "name": "@ddemaree/website",
+  "version": "23.1.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vitest"
+  },
+  "author": "David Demaree (david@demaree.me)",
+  "dependencies": {
+    "@astrojs/image": "^0.14.0",
+    "@astrojs/mdx": "^0.16.0",
+    "@astrojs/svelte": "^2.0.1",
+    "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/vercel": "^3.0.1",
+    "@cloudinary/url-gen": "^1.9.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/pro-regular-svg-icons": "^6.2.1",
+    "@fortawesome/pro-solid-svg-icons": "^6.2.1",
+    "@fortawesome/sharp-solid-svg-icons": "^6.2.1",
+    "@lottiefiles/svelte-lottie-player": "^0.3.0",
+    "@tailwindcss/container-queries": "^0.1.0",
+    "astro": "^2.0.4",
+    "clsx": "^1.2.1",
+    "feed": "^4.2.2",
+    "lodash": "^4.17.21",
+    "luxon": "^3.2.1",
+    "reading-time": "^1.5.0",
+    "sass": "^1.58.0",
+    "sharp": "^0.31.3",
+    "svelte": "^3.54.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.2.0",
+    "hast-util-select": "^5.0.5",
+    "vercel": "^28.15.0",
+    "vitest": "^0.28.4",
+    "vitest-fixture": "^0.5.1",
+    "zx": "^7.1.1"
+  }
+}
