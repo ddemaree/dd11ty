@@ -5,9 +5,13 @@
   command = "astro build"
   publish = "dist"
 
-[build.environment]
+[[plugins]]
+  # Installs the Lighthouse Build Plugin for all deploy contexts
+  package = "@netlify/plugin-lighthouse"
+
+[context.production]
   NODE_ENV = "production"
-  NODE_VERSION = "16"
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/feed"
