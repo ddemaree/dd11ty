@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
 import svelte from "@astrojs/svelte";
+import path from "path";
 // import vercel from "@astrojs/vercel/serverless";
 
 import { site, remarkPlugins, shikiConfig } from "./src/lib/sharedConfig";
@@ -34,4 +35,12 @@ export default defineConfig({
     }),
     svelte(),
   ],
+
+  vite: {
+    resolve: {
+      alias: {
+        "~": path.resolve(process.cwd(), "src"),
+      },
+    },
+  },
 });

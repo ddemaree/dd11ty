@@ -1,0 +1,7 @@
+$headerBlockPadding: clamp(1rem, 4vw, 2.5rem);
+
+@mixin topHeader() {
+  --header-block-padding: #{$headerBlockPadding};
+  padding-block: var(--header-block-padding);
+  margin-top: calc(-1 * (var(--header-block-padding)));
+}

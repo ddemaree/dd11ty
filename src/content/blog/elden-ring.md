@@ -3,6 +3,7 @@ slug: elden-ring
 title: Because I Could Not Stop For Death
 excerpt: How I learned to stop worrying and love "Elden Ring"
 date: 2022-05-14
+image: https://res.cloudinary.com/demaree/image/upload/bitsandletters-assets/IMG_4374_58991dafd.jpg 
 ---
 
 <figure class="alignwide flex-image">

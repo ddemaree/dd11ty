@@ -1,18 +1,73 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { blogPostURL } from '@lib/utils';
+import { pathToRegexp, match } from 'path-to-regexp';
 
 export interface Props {
 	post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props
-const { title, excerpt, date } = post.data
+const { title, excerpt, date, image } = post.data
 
 const postURL = blogPostURL(post.slug);
+
+function cloudinaryUrl(imgSrc) {
+  if(!imgSrc) return null;
+  const imgUrl = new URL(imgSrc);
+
+  if(imgUrl.host === 'res.cloudinary.com') {
+    const keys = [];
+    const pathMatch = match("/:cloudName/:assetType/:deliveryType/:transformations([a-z+]_[.+])?/:publicId+");
+    const result = pathMatch(imgUrl.pathname)
+
+    const [_, cloudName, assetType, deliveryType, ...parts] = imgUrl.pathname.split('/');
+
+    console.log({cloudName, assetType, deliveryType, parts, result, pathname: imgUrl.pathname, keys})
+  }
+
+  return imgSrc;
+}
+
+
 ---
-<article>
+<article class="post-card">
   <a href={postURL}>
-    <h1>{title}</h1>
+    <div class="content">
+      <h2>{title}</h2>
+      {excerpt && <p class="excerpt">{excerpt}</p>}
+    </div>
+    <figure>
+      <img src={cloudinaryUrl(image)} alt="" />
+    </figure>
   </a>
 </article>
+<style lang="scss">
+
+.post-card {
+  container-type: inline-size;
+  container-name: post-card;
+}
+
+.post-card > a {
+  all: unset;
+  cursor: pointer;
+  display: block;
+}
+
+.post-card h2 {
+  // font-family: 'soehne-breit-web';
+  font-weight: 700;
+  font-size: 5cqw;
+  letter-spacing: -0.02em;
+  color: var(--color-text-high-emphasis);
+  line-height: 1.125;
+}
+
+.post-card .excerpt {
+  font-size: 3cqw;
+  color: var(--color-text-low-emphasis);
+  line-height: 1.375;
+}
+
+</style>

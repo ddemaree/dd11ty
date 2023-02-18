@@ -2,8 +2,11 @@
 import SiteLayout from "@components/SiteLayout.astro";
 import BioText from "../inc/shortBio.mdx";
 import MyLinks from "@components/MyLinks.astro";
+
+const title = "David Demaree's web site"
+const description = "Web designer, product person, keyboard enthusiast"
 ---
-<SiteLayout title="David's web site" footerOptions={{showBio: false, showLinks: false}} bodyClass="page-home">
+<SiteLayout {...{title, description}} footerOptions={{showBio: false, showLinks: false}} bodyClass="page-home">
   <div class="home-wrap">
     <div class="home">
       <div class="home-content">
@@ -26,7 +29,7 @@ import MyLinks from "@components/MyLinks.astro";
 
 .page-home .site-layout-main {
   --weird-image-inset: clamp(-2rem, calc(10vw - 2rem), 8rem);
-  --weird-image-opacity: 0.3;
+  --weird-image-opacity: 0.2;
 }
 
 .page-home .site-layout-main:before {
@@ -43,7 +46,7 @@ import MyLinks from "@components/MyLinks.astro";
 }
 
 .page-home .site-layout-main:after {
-  background-image: url(/dd-pattern-trans.png);
+  background-image: var(--svg-wavy-lines);
   opacity: var(--weird-image-opacity);
   mix-blend-mode: luminosity;
   position: fixed;

@@ -4,10 +4,40 @@ import SiteLayout from "@components/SiteLayout.astro";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("blog");
+
+const seo = {
+  title: "David Demaree's blog",
+  description: "Writing about tech, business, culture, video games, and other stuff, probably"
+}
+
 ---
-<SiteLayout title="David's blog">
-  <h1>Posts</h1>
+<SiteLayout {...seo} mainClass="posts-main">
+  <header>
+    <h1>Blog</h1>
+  </header>
 
   {entries.map(post => <PostCard post={post} />)}
 </SiteLayout>
+
+<style lang="scss">
+  @use "~/styles/layout";
+
+  :global(.posts-main) {
+    background-color: adjust-color($color: pink, $lightness: 5%);
+    display: grid;
+    row-gap: 1.75rem;
+  }
+
+  :global(.site-layout-main) {
+    padding-block: 5vw 10vw;
+  }
+
+  header {
+    text-align: center;
+    font-size: clamp(1.5rem, 8vw, 2.75rem);
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-shadow: 2px 2px 0 black;
+  }  
+</style>
 
