@@ -58,14 +58,14 @@ function cloudinaryUrl(imgSrc) {
 .post-card h2 {
   // font-family: 'soehne-breit-web';
   font-weight: 700;
-  font-size: 5cqw;
+  font-size: min(5cqw,3rem);
   letter-spacing: -0.02em;
   color: var(--color-text-high-emphasis);
   line-height: 1.125;
 }
 
 .post-card .excerpt {
-  font-size: 3cqw;
+  font-size: clamp(1.25rem, 3cqw, 1.75rem);
   color: var(--color-text-low-emphasis);
   line-height: 1.375;
 }

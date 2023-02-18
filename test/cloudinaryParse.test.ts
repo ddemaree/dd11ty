@@ -37,13 +37,6 @@ function isTransformationString(urlPart) {
   return urlPart.match(/([a-z]+_[^\;,]+,?)+/);
 }
 
-// function getDeliveryType(urlType) {
-//   const _keys = Object.keys(DELIVERY_TYPES);
-//   return _keys.find(
-//     (k) => DELIVERY_TYPES[k] === urlType || DELIVERY_TYPES[k].includes(urlType)
-//   );
-// }
-
 function parseCloudinaryURL(srcUrl: string): CloudinaryParams {
   let publicId, assetType, deliveryType, transformations, version;
   const srcUrlObj = new URL(srcUrl);

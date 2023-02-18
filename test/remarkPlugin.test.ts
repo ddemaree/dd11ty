@@ -7,7 +7,7 @@ import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import { select } from "hast-util-select";
 
-import remarkEmbed from "@lib/remarkEmbed";
+import { remarkEmbeds } from "@lib/remarkEmbed";
 
 describe("Remark plugin", () => {
   test("converts twitter embeds", async ({ markdowns }) => {
@@ -17,7 +17,7 @@ describe("Remark plugin", () => {
     const output = await renderMarkdown(src, {
       fileURL,
       contentDir: new URL("./test/data", `file://${__dirname}`),
-      remarkPlugins: [remarkEmbed],
+      remarkPlugins: [remarkEmbeds],
       frontmatter: {},
     });
 
