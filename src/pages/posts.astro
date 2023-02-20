@@ -1,9 +1,10 @@
 ---
 import PostCard from "@components/PostCard.astro";
 import SiteLayout from "@components/SiteLayout.astro";
+import { sortByDate } from "@lib/utils";
 import { getCollection } from "astro:content";
 
-const entries = await getCollection("blog");
+const entries = sortByDate(await getCollection("blog"));
 
 const seo = {
   title: "David Demaree's blog",
@@ -11,7 +12,7 @@ const seo = {
 }
 
 ---
-<SiteLayout {...seo} mainClass="posts-main">
+<SiteLayout {...seo} mainClass="posts-main" section="blog">
   <header>
     <h1>Blog</h1>
   </header>
@@ -25,7 +26,11 @@ const seo = {
   :global(.posts-main) {
     background-color: adjust-color($color: pink, $lightness: 5%);
     display: grid;
-    row-gap: 1.75rem;
+    row-gap: max(6vh, 8vw);
+  }
+
+  :global(.posts-main > *) {
+    max-width: 780px;
   }
 
   :global(.site-layout-main) {
@@ -37,7 +42,7 @@ const seo = {
     font-size: clamp(1.5rem, 8vw, 2.75rem);
     -webkit-text-stroke: 1px black;
     color: white;
-    text-shadow: 2px 2px 0 black;
+    text-shadow: 0.08em 0.08em 0 black;
   }  
 </style>
 

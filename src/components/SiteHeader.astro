@@ -22,7 +22,8 @@ const { activeSection } = Astro.props;
 
 	<div class="menu-container">
 		<nav class="menu-top">
-			<NavLink label="Home" url="/" icon={faHomeAlt} isActive={activeSection === "home"} />
+      <NavLink label="Home" url="/" icon={faHomeAlt} isActive={activeSection === "home"} />
+			<NavLink label="About" url="/" icon="user-ninja" isActive={activeSection === "about"} />
 			<NavLink label="Blog" url="/posts" icon={faNewspaper} isActive={activeSection === "blog"} />
 		</nav>
 		
@@ -54,7 +55,7 @@ const { activeSection } = Astro.props;
 
   .menu-container {
     display: flex;
-    column-gap: 1rem;
+    column-gap: 0.25rem;
     font-size: 1.25rem;
   }
 

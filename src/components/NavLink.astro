@@ -1,12 +1,12 @@
 ---
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import type { IconDefinition, IconLookup, IconName } from '@fortawesome/fontawesome-svg-core'
 import Icon from './Icon.astro';
 import clsx from 'clsx';
 
 export type Props = {
   label: string;
   url: string | URL;
-  icon?: IconDefinition;
+  icon?: IconDefinition | IconLookup | IconName | "dd-icon";
   isActive?: boolean;
   alwaysHideLabel?: boolean;
 }
@@ -15,7 +15,7 @@ const { icon, url, label, isActive = false, alwaysHideLabel = false } = Astro.pr
 
 const classes = [
   'nav-link',
-  (alwaysHideLabel && 'scale-125'),
+  (alwaysHideLabel && 'icon-only'),
   (isActive && 'is-active')
 ]
 
@@ -27,17 +27,34 @@ const labelClasses = [
 
 ---
 <a href={url} class={clsx(classes)}>
-  {icon && <Icon icon={icon} fixedWidth={true} size="xs" wrapper={false} label={label} labelClass={labelClasses}></Icon>}
+  {icon && <Icon icon={icon} fixedWidth={true} size={alwaysHideLabel ? "md" : "xs"} wrapper={false} label={label} labelClass={labelClasses}></Icon>}
   {!icon && <span class:list={labelClasses}>{label}</span>}
 </a>
 
 <style>
 .nav-link {
   display: inline-flex;
-  column-gap: 0.35em;
+  column-gap: 0.25em;
+  font-weight: 700;
+}
+
+.nav-link {
+  background-color: #cbd5e100;
+  color: #334155 !important;
+  border-radius: 1em;
+  padding-inline: 0.5em;
+}
+
+.nav-link.icon-only {
+  padding-inline: 0.3em;
+}
+
+.nav-link:hover {
+  background-color: #cbd5e166;
+  color: black;
 }
 
 .nav-link.is-active {
-  background-color: var(--t--nav-link-bg, theme('colors.slate.300'));
+  background-color: #cbd5e1ff;
 }
 </style>

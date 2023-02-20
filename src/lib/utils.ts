@@ -1,5 +1,6 @@
 import { site, remarkPlugins } from "./sharedConfig";
 import { renderMarkdown as astroRenderMarkdown } from "@astrojs/markdown-remark";
+import { CollectionEntry } from "astro:content";
 
 /* 
 Returns the configured Astro site URL. This is the same behavior as the
@@ -57,8 +58,12 @@ export async function renderMarkdown(source: string): Promise<string> {
 Sorts an array of objects with a `date` property (such as blog posts) in descending order by date.
 
 */
-export function sortByDate(entries: { date: Date }[]) {
+export function sortByDate(entries: CollectionEntry<"blog">[]) {
+  function dateValue(obj) {
+    return (obj.date || obj.data?.date).valueOf();
+  }
+
   return [...entries].sort((a, b) => {
-    return b.date.valueOf() - a.date.valueOf();
+    return dateValue(b) - dateValue(a);
   });
 }

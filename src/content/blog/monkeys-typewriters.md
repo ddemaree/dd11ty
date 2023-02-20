@@ -5,6 +5,7 @@ excerpt: >-
   An AI luddite stops worrying and learns to have fun making weird stuff with
   robots.
 date: 2022-09-26
+image: https://res.cloudinary.com/demaree/image/upload/v1664123356/bitsandletters-assets/ddemaree_skeleton_typing_a_letter_to_his_wife_b12ed4df-adc1-427f-9ff4-1f812a5577cc.png
 ---
 This week I saw [a Reddit post about someone using OpenAI’s “DaVinci” GPT-3 natural language AI model to generate outlines and even first drafts of schoolwork](https://www.reddit.com/r/OpenAI/comments/xlvygv/artifical_intelligence_allows_me_to_get_straight/?utm_source=share&utm_medium=web2x&context=3). Until recently, I’d been an AI luddite — I didn’t really understood how/where people were playing with these models, and sentences like “GPT-3 can write a novel” didn’t sound threatening so much as unrealistic. _Um, no? Computers can’t do that?_
 

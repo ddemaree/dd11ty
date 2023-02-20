@@ -1,83 +1,5 @@
+import { parseCloudinaryURL } from "@lib/cloudinary";
 import { describe, expect, test } from "vitest";
-
-interface CloudinaryParams {
-  cloudName: string;
-  assetType: "image" | "video" | "raw";
-  deliveryType: "upload" | "fetch";
-  publicId: string;
-  transformations?: "string";
-  version?: string;
-}
-
-const ASSET_TYPES = {
-  image: ["image", "images"],
-  raw: ["raw", "files"],
-  video: ["video", "videos"],
-};
-
-function isAssetType(type) {
-  const allTypes = Object.values(ASSET_TYPES).flat();
-  return !!allTypes.includes(type);
-}
-
-function getAssetType(urlType) {
-  const _keys = Object.keys(ASSET_TYPES);
-  return _keys.find(
-    (k) => ASSET_TYPES[k] === urlType || ASSET_TYPES[k].includes(urlType)
-  );
-}
-
-const DELIVERY_TYPES = ["upload", "fetch", "twitter_name"];
-
-function isDeliveryType(urlType) {
-  return DELIVERY_TYPES.includes(urlType);
-}
-
-function isTransformationString(urlPart) {
-  return urlPart.match(/([a-z]+_[^\;,]+,?)+/);
-}
-
-function parseCloudinaryURL(srcUrl: string): CloudinaryParams {
-  let publicId, assetType, deliveryType, transformations, version;
-  const srcUrlObj = new URL(srcUrl);
-  const { pathname } = srcUrlObj;
-
-  const parts = pathname.split("/");
-  parts.shift(); // remove empty first element
-
-  const cloudName = parts.shift();
-
-  // SEO-friendly URL, remaining parts are all public ID
-  if (!isAssetType(parts[0])) {
-    assetType = "image";
-    deliveryType = "upload";
-    publicId = parts.join("/");
-
-    return { cloudName, assetType, deliveryType, publicId };
-  }
-
-  assetType = getAssetType(parts.shift());
-  deliveryType = isDeliveryType(parts[0]) ? parts.shift() : "upload";
-
-  if (isTransformationString(parts[0])) {
-    transformations = parts.shift();
-  }
-
-  if (parts[0].match(/^v\d+$/)) {
-    version = parts.shift();
-  }
-
-  publicId = parts.join("/");
-
-  return {
-    cloudName,
-    assetType,
-    deliveryType,
-    publicId,
-    transformations,
-    version,
-  };
-}
 
 describe("parseCloudinaryURL", () => {
   test("simplest image upload", () => {
@@ -141,7 +63,17 @@ describe("parseCloudinaryURL", () => {
       "https://res.cloudinary.com/demaree/image/twitter_name/ddemaree.jpg"
     );
 
-    console.log(result);
     expect(result.publicId).toEqual("ddemaree.jpg");
+  });
+
+  test("Fetched external URL", () => {
+    const result = parseCloudinaryURL(
+      "https://res.cloudinary.com/demaree/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd1e2c39d-9348-46a2-8845-95d6da30fb37_1752x1360.png"
+    );
+
+    expect(result.deliveryType).toEqual("fetch");
+    expect(result.publicId).toEqual(
+      "https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd1e2c39d-9348-46a2-8845-95d6da30fb37_1752x1360.png"
+    );
   });
 });

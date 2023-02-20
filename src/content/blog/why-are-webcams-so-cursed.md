@@ -5,6 +5,7 @@ excerpt: >-
   Reviewers say the camera on Apple's new display is horrible. Not surprised,
   tbh.
 date: 2022-03-20
+image: https://res.cloudinary.com/demaree/image/fetch/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd1e2c39d-9348-46a2-8845-95d6da30fb37_1752x1360.png
 ---
 **Last week, Apple announced their first new mainstream computer monitor in more than a decade**. The new Apple Studio Display is not the most impressive monitor, but with a 5K, wide-gamut color panel it’s pretty good. The new Studio also doesn’t have a full docking solution, in that it has 3 USB-C ports which will still require dongles, but at least the dongles can stay on your desk and be hidden out of sight.
 

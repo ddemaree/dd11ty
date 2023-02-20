@@ -5,6 +5,7 @@ excerpt: >-
   I got a new camera for summer vacation shooting. Fuji's fixed-lens compact is
   a lot of fun.
 date: 2021-07-26
+image: https://res.cloudinary.com/demaree/image/upload/bitsandletters-assets/IMG_2826.jpg
 ---
 When we went to Disney World in 2019, wanting something other than my phone to take nice vacation photos, I bought a [Sony RX100 VA](https://www.dpreview.com/news/8036228182/sony-replaces-rx100-v-with-rx100-va-bringing-rx100-vi-processor-and-firmware), a great, pocketable compact camera with a solid Zeiss lens. During Covid, I’ve been using it for video calls.
 

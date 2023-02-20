@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { blogPostURL } from '@lib/utils';
-import { pathToRegexp, match } from 'path-to-regexp';
+import { isCloudinaryURL, parseCloudinaryURL, resizeCloudinaryURL } from '@lib/cloudinary';
+import Date from './Date.astro';
 
 export interface Props {
 	post: CollectionEntry<"blog">;
@@ -12,23 +13,14 @@ const { title, excerpt, date, image } = post.data
 
 const postURL = blogPostURL(post.slug);
 
-function cloudinaryUrl(imgSrc) {
-  if(!imgSrc) return null;
-  const imgUrl = new URL(imgSrc);
+let imageUrl;
 
-  if(imgUrl.host === 'res.cloudinary.com') {
-    const keys = [];
-    const pathMatch = match("/:cloudName/:assetType/:deliveryType/:transformations([a-z+]_[.+])?/:publicId+");
-    const result = pathMatch(imgUrl.pathname)
-
-    const [_, cloudName, assetType, deliveryType, ...parts] = imgUrl.pathname.split('/');
-
-    console.log({cloudName, assetType, deliveryType, parts, result, pathname: imgUrl.pathname, keys})
-  }
-
-  return imgSrc;
+if( image && isCloudinaryURL(image) ) {
+  const { publicId, deliveryType } = parseCloudinaryURL(image);
+  imageUrl = resizeCloudinaryURL(publicId, deliveryType);
 }
 
+const { remarkPluginFrontmatter: { minutesRead } } = await post.render();
 
 ---
 <article class="post-card">
@@ -36,10 +28,15 @@ function cloudinaryUrl(imgSrc) {
     <div class="content">
       <h2>{title}</h2>
       {excerpt && <p class="excerpt">{excerpt}</p>}
+      {date && <p class="date">
+        <Date date={date} />
+        <span class="sep">{" • "}</span>
+        <span class="reading-time">{minutesRead}</span>
+      </p>}
     </div>
-    <figure>
-      <img src={cloudinaryUrl(image)} alt="" />
-    </figure>
+    {imageUrl && <figure class="post-image">
+      <img src={imageUrl} alt="" />
+    </figure>}
   </a>
 </article>
 <style lang="scss">
@@ -52,22 +49,81 @@ function cloudinaryUrl(imgSrc) {
 .post-card > a {
   all: unset;
   cursor: pointer;
-  display: block;
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1rem;
 }
 
 .post-card h2 {
   // font-family: 'soehne-breit-web';
   font-weight: 700;
-  font-size: min(5cqw,3rem);
+  font-size: clamp(1.65rem, 5cqw, 3rem);
   letter-spacing: -0.02em;
   color: var(--color-text-high-emphasis);
-  line-height: 1.125;
+  line-height: 1;
 }
 
 .post-card .excerpt {
-  font-size: clamp(1.25rem, 3cqw, 1.75rem);
+  font-size: clamp(1.125rem, 3cqw, 1.75rem);
   color: var(--color-text-low-emphasis);
-  line-height: 1.375;
+  line-height: 1.25;
+  margin-block-start: 0.25em;
+}
+
+:where(.post-card) .post-image {
+  order: -1;
+  border: 4px solid currentColor;
+  box-shadow: 4px 4px 0 #0003;
+  transition: all 0.2s;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border: 4px solid white;
+  }
+}
+
+:where(.post-card > a:hover) .post-image {
+  transform: scale(105%);
+}
+
+:where(.post-card > a:hover) .post-image:hover {
+  transform: scale(115%);
+}
+
+.post-card .date {
+  font-family: var(--font-mono);
+  font-size: clamp(0.875rem, 3.5cqw, 1.125rem);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-block-start: 0.5em;
+}
+
+.post-card .excerpt + .date {
+  margin-block-start: 0.75em;
+}
+
+@container post-card (max-width: 440px) {
+  .post-card .date > * {
+    display: block;
+  }
+
+  .post-card .date .sep {
+    display: none;
+  }
+}
+
+@container post-card (min-width: 520px) {
+  .post-card > a {
+    // background-color: yellow;
+    grid-template-columns: 1fr 30cqw;
+  }
+
+  .post-card .post-image {
+    order: unset;
+  }
 }
 
 </style>
