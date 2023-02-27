@@ -1,5 +1,15 @@
 {
   "framework": "astro",
+  "rewrites": [
+    {
+      "source": "/wf",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/wf/:path*",
+      "destination": "/api/proxy"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

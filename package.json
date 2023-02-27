@@ -28,8 +28,10 @@
     "@lottiefiles/svelte-lottie-player": "^0.3.0",
     "@tailwindcss/container-queries": "^0.1.0",
     "astro": "^2.0.4",
+    "cheerio": "1.0.0-rc.12",
     "clsx": "^1.2.1",
     "feed": "^4.2.2",
+    "jsdom": "^21.1.0",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
     "path-to-regexp": "^6.2.1",
@@ -42,7 +44,6 @@
     "@types/luxon": "^3.2.0",
     "hast-util-select": "^5.0.5",
     "netlify": "^13.1.2",
-    "vercel": "^28.15.0",
     "vitest": "^0.28.4",
     "vitest-fixture": "^0.5.1",
     "zx": "^7.1.1"
