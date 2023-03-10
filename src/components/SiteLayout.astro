@@ -3,10 +3,9 @@ import BaseHead from '@components/BaseHead.astro';
 import SiteFooter, { FooterOptions } from '@components/SiteFooter.astro';
 import SiteHeader from '@components/SiteHeader.astro';
 import clsx, { ClassValue } from 'clsx';
+import { SiteSection } from '~/env';
 
 import "../styles/global.scss";
-
-export type SiteSection = "home" | "about" | "blog";
 
 export interface Props {
   title: string;

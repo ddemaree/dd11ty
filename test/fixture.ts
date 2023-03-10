@@ -1,5 +1,6 @@
 import path from "path";
 import { test as base } from "vitest-fixture";
+export { describe, expect } from "vitest";
 
 type MarkdownMap = { [index: string]: string };
 
@@ -8,7 +9,7 @@ export const test = base.extend<{ name: string; markdowns: MarkdownMap }>({
   markdowns: async ({}, use) => {
     let mdFixtureMap: MarkdownMap = {};
 
-    let _mdFiles = await import.meta.glob("./data/*.md", {
+    let _mdFiles = await import.meta.glob("./data/*.{md,html}", {
       eager: true,
       as: "raw",
     });

@@ -2,11 +2,10 @@
 import { faHomeAlt, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { faMastodon, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
+import { SiteSection } from '~/env';
+import { faDDLogo } from '~/lib/ddIcon';
 import Icon from './Icon.astro';
-import { faDDLogo } from '../lib/ddIcon';
-import NavLink from './NavLink.astro';
-import { SiteSection } from '@layouts/SiteLayout.astro';
-import MenuButton from './MenuButton.svelte';
+import SiteMenu from './SiteMenu';
 
 export interface Props {
 	activeSection?: SiteSection;
@@ -20,7 +19,7 @@ const { activeSection } = Astro.props;
 		<span class="sr-only">David Demaree</span>
 	</a>
 
-	<div class="menu-container">
+	<!-- <div class="menu-container">
 		<nav class="menu-top">
       <NavLink label="Home" url="/" icon={faHomeAlt} isActive={activeSection === "home"} />
 			<NavLink label="About" url="/" icon="user-ninja" isActive={activeSection === "about"} />
@@ -31,9 +30,9 @@ const { activeSection } = Astro.props;
 			<NavLink label="Mastodon" url="https://mastodon.social/@demaree" icon={faMastodon} alwaysHideLabel />
 			<NavLink label="Twitter" url="https://twitter.com/ddemaree" icon={faTwitter} alwaysHideLabel />
 		</nav>
-	</div>
+	</div> -->
 
-	<MenuButton client:only="svelte" />
+  <SiteMenu activeSection={activeSection} client:load />
 </header>
 
 <style is:global>

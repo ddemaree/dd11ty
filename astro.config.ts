@@ -3,18 +3,16 @@ import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
 import svelte from "@astrojs/svelte";
+import react from "@astrojs/react";
 import path from "path";
-// import vercel from "@astrojs/vercel/serverless";
 
 import { site, remarkPlugins, shikiConfig } from "./src/lib/sharedConfig";
 
-// https://astro.build/config
+// import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   srcDir: "./src",
-
   // TODO: Allow the site property to be overridden via env var or something?
   site,
-
   // output: "server",
   // adapter: vercel(),
 
@@ -22,11 +20,10 @@ export default defineConfig({
     shikiConfig,
     remarkPlugins,
   },
-
   integrations: [
     tailwind({
       config: {
-        applyBaseStyles: false,
+        applyBaseStyles: true,
       },
     }),
     mdx(),
@@ -34,8 +31,8 @@ export default defineConfig({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
     svelte(),
+    react(),
   ],
-
   vite: {
     resolve: {
       alias: {
