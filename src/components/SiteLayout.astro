@@ -34,6 +34,9 @@ const selectedColorScheme = 'system';
 <html lang="en" data-theme={selectedColorScheme}>
 	<head>
 		<BaseHead title={title} description={description} permalink={permalink} />
+    <style is:inline>
+      *[x-cloak] { display: none; }
+    </style>
 	</head>
 
 	<body class={clsx(bodyClass)}>

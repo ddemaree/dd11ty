@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
 import { parse } from "@fortawesome/fontawesome-svg-core";
@@ -9,45 +9,68 @@ import { siteState, useSiteState } from "@lib/store";
 import menus, { MenuItem } from "~/inc/menus";
 import { SiteSection } from "~/env";
 import "~/inc/iconLibrary";
-import clsx from "clsx";
+import useMediaQuery from "@lib/hooks/useMediaQuery";
+import clsx, { ClassValue } from "clsx";
 
 export const SiteMenu = ({
   activeSection,
 }: {
   activeSection?: SiteSection;
 }) => {
-  const { menuOpen, isSmallScreen } = useSiteState();
+  const [clientReady, setClientReady] = useState(false);
+  const { menuOpen } = useSiteState();
+  const _isSmallScreen = useMediaQuery("(max-width: 550px)", true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
   function toggleMenuOpen(e: MouseEvent) {
     e.preventDefault();
+    console.log(height);
     siteState.setKey("menuOpen", !menuOpen);
   }
+
+  useEffect(() => {
+    setClientReady(true);
+  });
 
   return (
     <motion.nav
       animate={menuOpen ? "open" : "closed"}
+      whileHover={menuOpen ? "open" : ["closed", "hover"]}
       ref={containerRef}
       initial={false}
-      custom={height}
       className="z-40"
     >
-      {!isSmallScreen && (
+      {!_isSmallScreen && (
         <div className="menu-not-mobile flex gap-3">
           <ul className="contents">
             {menus.main.map((item, index) => (
-              <BasicNavItem key={`menu-main-${index}`} item={item} />
+              <li key={index} className="contents">
+                <BasicNavLink
+                  key={`menu-main-${index}`}
+                  item={item}
+                  isActive={() => item.slug && activeSection === item.slug}
+                />
+              </li>
             ))}
           </ul>
         </div>
       )}
-      {isSmallScreen && (
+      {clientReady && _isSmallScreen && (
         <>
           <MenuSidebar />
           <MenuItemsWrapper menuOpen={menuOpen}>
             {menus.main.map((item, index) => (
-              <FancyNavItem key={`menu-main-${index}`} item={item} />
+              <motion.li
+                variants={navItemVariants}
+                key={`menu-main-${index}`}
+                className="text-4xl"
+              >
+                <BasicNavLink
+                  item={item}
+                  isActive={() => item.slug && activeSection === item.slug}
+                />
+              </motion.li>
             ))}
           </MenuItemsWrapper>
           <MenuToggleButton toggle={toggleMenuOpen} />
@@ -86,21 +109,31 @@ const MenuItemsWrapper = ({ children, menuOpen }) => {
 };
 
 const MenuSidebar = () => {
+  const [headerHeight, setHeaderHeight] = useState(80);
+
+  const menuDotCenterY = headerHeight / 2;
+
   const sidebarVariants: Variants = {
-    open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 260px 32px)`,
-      bottom: "0px",
-      position: "fixed",
-      transition: {
-        type: "spring",
-        stiffness: 20,
-        restDelta: 2,
-      },
-    }),
+    open() {
+      return {
+        clipPath: `circle(3000px at 260px ${menuDotCenterY}px)`,
+        bottom: "0px",
+        position: "fixed",
+        backgroundColor: "var(--menu-open-bg, #f0f)",
+        opacity: 1,
+        transition: {
+          type: "spring",
+          stiffness: 40,
+          restDelta: 2,
+        },
+      };
+    },
     closed: {
-      clipPath: "circle(24px at 260px 32px)",
+      clipPath: `circle(24px at 260px ${menuDotCenterY}px)`,
       position: "absolute",
       bottom: "60px",
+      backgroundColor: "var(--menu-closed-bg, #ff00ff00)",
+      opacity: 0,
       transition: {
         delay: 0.2,
         type: "spring",
@@ -108,10 +141,22 @@ const MenuSidebar = () => {
         damping: 40,
       },
     },
+    hover: {
+      clipPath: `circle(30px at 260px ${menuDotCenterY}px)`,
+      backgroundColor: "var(--menu-open-bg, #f0f)",
+      opacity: 0.3,
+    },
   };
+
+  useEffect(() => {
+    const header = document.querySelector("header.nav-parent");
+    setHeaderHeight(header.clientHeight);
+  });
+
   return (
     <motion.div
-      className="top-0 right-0 w-[300px] bg-pink-200 shadow-md"
+      className="top-0 right-0 w-[300px] shadow-md"
+      custom={headerHeight}
       variants={sidebarVariants}
     />
   );
@@ -134,39 +179,33 @@ const navItemVariants: Variants = {
   },
 };
 
-function BasicNavItem({
+function BasicNavLink({
   item,
   isActive,
-  _isFancy: _isFancy = false,
+  activeClass = "scale-105",
 }: {
   item: MenuItem;
   isActive?: boolean | (() => boolean);
-  _isFancy?: boolean;
+  activeClass?: ClassValue;
 }) {
   const { title, href, icon } = item;
 
   const _iconLookup = parse.icon(icon);
 
-  const className = clsx("contents font-semibold", _isFancy && "text-4xl");
+  const applyActiveStyle =
+    typeof isActive === "function" ? isActive() : !!isActive;
 
-  const ListItemTag = _isFancy ? motion.li : "li";
-  const listItemProps: { className: string; variants?: Variants } = {
-    className,
-  };
-  if (_isFancy) listItemProps.variants = navItemVariants;
+  const classValue = clsx(
+    "relative flex gap-1 items-center after:block after:absolute after:bottom-[-4px] after:h-[4px] after:inset-x-0 after:w-full after:bg-red-600 after:rounded-[4px] after:origin-center after:scale-x-0 after:transition-all hover:after:scale-x-100 hover:text-red-500",
+    applyActiveStyle && activeClass
+  );
 
   return (
-    <ListItemTag {...listItemProps}>
-      <a href={href} className="flex gap-1 items-center">
-        {/* <FontAwesomeIcon icon={_iconLookup} fixedWidth size="sm" /> */}
-        <span>{title}</span>
-      </a>
-    </ListItemTag>
+    <a href={href} data-active={applyActiveStyle} className={classValue}>
+      <FontAwesomeIcon icon={_iconLookup} fixedWidth size="sm" />
+      <span className="font-semibold">{title}</span>
+    </a>
   );
-}
-
-function FancyNavItem(props) {
-  return <BasicNavItem _isFancy {...props} />;
 }
 
 const Path = (props: any) => (
@@ -181,7 +220,7 @@ const Path = (props: any) => (
 
 export const MenuToggleButton = ({ toggle }) => (
   <button
-    className="absolute top-2 right-4 w-12 h-12 rounded-full bg-transparent select-none"
+    className="absolute top-[15px] right-4 w-12 h-12 rounded-full bg-transparent select-none"
     onClick={toggle}
   >
     <motion.svg
