@@ -2,9 +2,23 @@
 import PostCard from "@components/PostCard.astro";
 import SiteLayout from "@components/SiteLayout.astro";
 import { sortByDate } from "@lib/utils";
+import { getAllPosts } from "@lib/wordpress/getAllPosts";
+import wrapPost from "@lib/wordpress/wrapPost";
 import { getCollection } from "astro:content";
+import readingTime from "reading-time";
+import rehypeParse from "rehype-parse/lib";
+import { unified } from "unified";
 
 const entries = sortByDate(await getCollection("blog"));
+
+function getReadingTime(string) {
+  // unified().use(rehypeParse).use() 
+  // readingTime()
+}
+
+const posts = await fetch('https://wp2.demaree.me/wp-json/wp/v2/posts')
+  .then(r => r.json())
+  .then(posts => posts.map(p => wrapPost({...p, _rest: true})));
 
 const seo = {
   title: "David Demaree's blog",
@@ -17,7 +31,7 @@ const seo = {
     <h1>Blog</h1>
   </header>
 
-  {entries.map(post => <PostCard post={post} />)}
+  {posts.map(post => <PostCard post={post} />)}
 </SiteLayout>
 
 <style lang="scss">

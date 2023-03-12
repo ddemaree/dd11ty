@@ -60,9 +60,7 @@ const ALL_POSTS_QUERY = gql`
 `;
 
 export async function getAllPosts(): Promise<WordpressPost[]> {
-  const gqlResponse = await gqlRequest(ALL_POSTS_QUERY, {
-    slugs: ALLOWED_POSTS,
-  });
+  const gqlResponse = await gqlRequest(ALL_POSTS_QUERY);
   const { data } = gqlResponse;
   const posts = data?.posts?.nodes ?? [];
   return posts.map((p: any) => wrapPost(p)) as WordpressPost[];

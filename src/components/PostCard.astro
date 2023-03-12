@@ -3,31 +3,25 @@ import type { CollectionEntry } from 'astro:content';
 import { blogPostURL } from '@lib/utils';
 import { isCloudinaryURL, parseCloudinaryURL, resizeCloudinaryURL } from '@lib/cloudinary';
 import Date from './Date.astro';
+import { WordpressPost } from '@lib/wordpress/types';
 
 export interface Props {
-	post: CollectionEntry<"blog">;
+	post: WordpressPost
 }
 
 const { post } = Astro.props
-const { title, excerpt, date, image } = post.data
+const { title, excerpt, date } = post;
 
 const postURL = blogPostURL(post.slug);
 
-let imageUrl;
-
-if( image && isCloudinaryURL(image) ) {
-  const { publicId, deliveryType } = parseCloudinaryURL(image);
-  imageUrl = resizeCloudinaryURL(publicId, deliveryType);
-}
-
-const { remarkPluginFrontmatter: { minutesRead } } = await post.render();
+let imageUrl, minutesRead;
 
 ---
 <article class="post-card">
   <a href={postURL}>
     <div class="content">
-      <h2>{title}</h2>
-      {excerpt && <p class="excerpt">{excerpt}</p>}
+      <h2 set:html={title} />
+      {excerpt && <div class="excerpt" set:html={excerpt} />}
       {date && <p class="date">
         <Date date={date} />
         <span class="sep">{" • "}</span>

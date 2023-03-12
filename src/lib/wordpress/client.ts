@@ -8,14 +8,9 @@ import {
 export { gql } from "@apollo/client/core";
 
 function getWpAuthString() {
-  if (!process.env.WP_PASSWORD) {
-    throw new Error("The WP_PASSWORD environment variable is not set");
-  }
-
-  const password = process.env.WP_PASSWORD;
-  const authString = Buffer.from("ddemaree" + ":" + password).toString(
-    "base64"
-  );
+  const username = import.meta.env["WP_USER"];
+  const password = import.meta.env["WP_PASSWORD"];
+  const authString = Buffer.from(username + ":" + password).toString("base64");
 
   return authString;
 }

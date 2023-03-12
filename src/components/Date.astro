@@ -2,11 +2,18 @@
 import { DateTime } from 'luxon';
 
 export interface Props {
-  date: Date;
+  date: Date | string;
 }
 
 const { date } = Astro.props;
-const dt = DateTime.fromJSDate(date)
+let dt: DateTime;
+
+if(typeof date === 'string') {
+  dt = DateTime.fromISO(date) 
+} else {
+  dt = DateTime.fromJSDate(date);
+}
+
 dt.setZone('America/New_York');
 
 ---

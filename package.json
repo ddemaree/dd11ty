@@ -30,7 +30,6 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@fortawesome/sharp-solid-svg-icons": "^6.2.1",
     "@lottiefiles/svelte-lottie-player": "^0.3.0",
-    "@motionone/solid": "^10.15.5",
     "@nanostores/react": "^0.4.1",
     "@tailwindcss/container-queries": "^0.1.0",
     "@types/react": "^18.0.21",
@@ -52,6 +51,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "reading-time": "^1.5.0",
+    "rehype-infer-reading-time-meta": "^1.1.0",
     "rehype-parse": "^8.0.4",
     "rehype-stringify": "^9.0.3",
     "sass": "^1.58.0",
@@ -60,12 +60,14 @@
     "svelte": "^3.54.0",
     "twitter-text": "^3.1.0",
     "unified": "^10.1.2",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^4.1.2",
+    "urql": "^3.0.4"
   },
   "devDependencies": {
     "@types/luxon": "^3.2.0",
     "hast-util-select": "^5.0.5",
     "netlify": "^13.1.2",
+    "rimraf": "^4.4.0",
     "vitest": "^0.28.4",
     "vitest-fixture": "^0.5.1",
     "zx": "^7.1.1"
