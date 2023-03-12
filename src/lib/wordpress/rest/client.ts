@@ -6,7 +6,7 @@ type WordpressRestClientOptions = {
 };
 
 export class WordpressRestClient {
-  initialize(opts: WordpressRestClientOptions = {}) {
+  constructor(opts: WordpressRestClientOptions = {}) {
     this.baseUrl = opts.baseUrl;
     this.basePath = opts.basePath ?? "/wp-json/wp/v2";
   }

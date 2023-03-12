@@ -1,5 +1,4 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import { blogPostURL } from '@lib/utils';
 import { isCloudinaryURL, parseCloudinaryURL, resizeCloudinaryURL } from '@lib/cloudinary';
 import Date from './Date.astro';
@@ -10,22 +9,26 @@ export interface Props {
 }
 
 const { post } = Astro.props
-const { title, excerpt, date } = post;
+const { title, excerpt, date, featuredImage } = post;
 
 const postURL = blogPostURL(post.slug);
 
 let imageUrl, minutesRead;
 
+if(featuredImage) {
+  // imageUrl = featuredImage.sourceUrl;
+}
+
 ---
 <article class="post-card">
-  <a href={postURL}>
+  <a href={postURL} class="bg-white p-6 group">
     <div class="content">
-      <h2 set:html={title} />
-      {excerpt && <div class="excerpt" set:html={excerpt} />}
+      <h2 class="balance-text group-hover:underline" set:html={title} />
+      {excerpt && <div class="excerpt balance-text-p" set:html={excerpt} />}
       {date && <p class="date">
         <Date date={date} />
-        <span class="sep">{" • "}</span>
-        <span class="reading-time">{minutesRead}</span>
+        {minutesRead && <span class="sep">{" • "}</span>
+        <span class="reading-time">{minutesRead}</span>}
       </p>}
     </div>
     {imageUrl && <figure class="post-image">
@@ -33,6 +36,7 @@ let imageUrl, minutesRead;
     </figure>}
   </a>
 </article>
+
 <style lang="scss">
 
 .post-card {
@@ -46,6 +50,9 @@ let imageUrl, minutesRead;
   display: grid;
   row-gap: 1rem;
   column-gap: 1rem;
+  box-shadow: 0.3em 0.3em 0 #0006;
+  border: 1px solid black;
+  border-radius: 0.2rem;
 }
 
 .post-card h2 {
@@ -106,17 +113,6 @@ let imageUrl, minutesRead;
 
   .post-card .date .sep {
     display: none;
-  }
-}
-
-@container post-card (min-width: 520px) {
-  .post-card > a {
-    // background-color: yellow;
-    grid-template-columns: 1fr 30cqw;
-  }
-
-  .post-card .post-image {
-    order: unset;
   }
 }
 

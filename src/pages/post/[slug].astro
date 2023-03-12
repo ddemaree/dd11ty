@@ -4,11 +4,15 @@ import Prose from '@components/Prose.astro';
 import Date from '@components/Date.astro';
 import { getEntryBySlug, getCollection } from 'astro:content';
 import Icon from '@components/Icon.astro';
+import wp from '@lib/wordpress/rest';
+import transformGutenberg from '@lib/wordpress/transformGutenberg';
 
 const { slug } = Astro.params;
-const entry = await getEntryBySlug('blog', slug as string);
-const { title, excerpt, date } = entry.data;
-const { Content } = await entry!.render();
+const post = await wp.getSinglePost(slug);
+
+const { title, excerpt, date, content: _content } = post;
+
+const content = await transformGutenberg(_content);
 
 export async function getStaticPaths() {
   const entries = await getCollection("blog");
@@ -16,15 +20,15 @@ export async function getStaticPaths() {
 }
 
 ---
-<SiteLayout title={entry?.data.title}>
+<SiteLayout title={title}>
   <article>
-    <header class="post-header">
-      <h1 class="post-title">{title}</h1>
-      {excerpt && <p class="post-excerpt">{excerpt}</p>}
-      <p class="post-dateline"><Date date={date} /></p>
+    <header class="font-sans post-header text-center">
+      <h1 class="post-title text-5xl font-bold leading-none" set:html={title} />
+      {excerpt && <div class="post-excerpt balance-text-p text-2xl" set:html={excerpt} />}
+      <p class="post-dateline pt-4"><Date date={date} /></p>
     </header>
     <Prose>
-      <Content />
+      <Fragment set:html={content} />
 
       <div class="end-ornament">
         <Icon icon="dd-icon" />
@@ -54,7 +58,7 @@ export async function getStaticPaths() {
       display: flex;
       align-items: center;
       flex-direction: column;
-      margin-top: calc(-1 * (var(--post-header-padding-block)));
+      margin-top: calc(-0.85 * (var(--post-header-padding-block)));
     }
 
     :where(header.post-header > *) {

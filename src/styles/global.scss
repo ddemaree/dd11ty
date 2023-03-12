@@ -1,11 +1,25 @@
 @use "./fonts";
 @use "./layout";
 
-@layer reset, baseline, patterns, utils, overrides;
+@layer _first, reset;
 
-@layer reset {
-  @import "reset";
+@layer tailwind.base {
+  @tailwind base;
 }
+
+@layer tailwind.components {
+  @tailwind components;
+}
+
+@layer tailwind.utilities {
+  @tailwind utilities;
+}
+
+@layer tailwind.variants {
+  @tailwind variants;
+}
+
+@layer baseline, patterns, utils, overrides;
 
 @layer baseline {
   body {

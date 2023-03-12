@@ -25,7 +25,6 @@ export const SiteMenu = ({
 
   function toggleMenuOpen(e: MouseEvent) {
     e.preventDefault();
-    console.log(height);
     siteState.setKey("menuOpen", !menuOpen);
   }
 
@@ -268,7 +267,6 @@ export const useDimensions = (ref: any) => {
     const onResize = function (e: UIEvent) {
       dimensions.current.width = ref.current.offsetWidth;
       dimensions.current.height = ref.current.offsetHeight;
-      console.log({ dimensions, ref });
     };
 
     window.addEventListener("resize", onResize);

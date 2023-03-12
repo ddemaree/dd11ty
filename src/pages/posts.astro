@@ -1,24 +1,9 @@
 ---
 import PostCard from "@components/PostCard.astro";
 import SiteLayout from "@components/SiteLayout.astro";
-import { sortByDate } from "@lib/utils";
-import { getAllPosts } from "@lib/wordpress/getAllPosts";
-import wrapPost from "@lib/wordpress/wrapPost";
-import { getCollection } from "astro:content";
-import readingTime from "reading-time";
-import rehypeParse from "rehype-parse/lib";
-import { unified } from "unified";
+import wp from "@lib/wordpress/rest";
 
-const entries = sortByDate(await getCollection("blog"));
-
-function getReadingTime(string) {
-  // unified().use(rehypeParse).use() 
-  // readingTime()
-}
-
-const posts = await fetch('https://wp2.demaree.me/wp-json/wp/v2/posts')
-  .then(r => r.json())
-  .then(posts => posts.map(p => wrapPost({...p, _rest: true})));
+const posts = await wp.getAllPosts();
 
 const seo = {
   title: "David Demaree's blog",
@@ -40,7 +25,7 @@ const seo = {
   :global(.posts-main) {
     background-color: adjust-color($color: pink, $lightness: 5%);
     display: grid;
-    row-gap: max(6vh, 8vw);
+    row-gap: 1rem;
   }
 
   :global(.posts-main > *) {
@@ -57,6 +42,12 @@ const seo = {
     -webkit-text-stroke: 1px black;
     color: white;
     text-shadow: 0.08em 0.08em 0 black;
-  }  
+    padding-bottom: calc(5vw - 1rem);
+  }
+
+  header h1 {
+    font-weight: 700;
+    font-size: 1.5em;
+  }
 </style>
 

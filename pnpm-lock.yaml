@@ -24,6 +24,7 @@ specifiers:
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
   astro: ^2.0.4
+  balance-text: ^3.3.1
   cheerio: 1.0.0-rc.12
   cloudinary: ^1.35.0
   clsx: ^1.2.1
@@ -81,6 +82,7 @@ dependencies:
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   astro: 2.0.6_sass@1.58.0
+  balance-text: 3.3.1
   cheerio: 1.0.0-rc.12
   cloudinary: 1.35.0
   clsx: 1.2.1
@@ -1637,6 +1639,10 @@ packages:
 
   /bail/2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
+    dev: false
+
+  /balance-text/3.3.1:
+    resolution: {integrity: sha512-tpnHvo1w0rJ5rbu+jZKf7NLKKg6XZ6eAwREP/9jEDJ+ZTBi6jQFqn/UGARL3/oqD8SgQbyTwBXBjhKDdTgoPRw==}
     dev: false
 
   /balanced-match/1.0.2:
