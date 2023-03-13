@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 <SiteLayout title={title}>
   <article>
     <header class="font-sans post-header text-center">
-      <h1 class="post-title text-5xl font-bold leading-none" set:html={title} />
+      <h1 class="balance-text post-title text-5xl font-bold leading-none" set:html={title} />
       {excerpt && <div class="post-excerpt balance-text-p text-2xl" set:html={excerpt} />}
       <p class="post-dateline pt-4"><Date date={date} /></p>
     </header>

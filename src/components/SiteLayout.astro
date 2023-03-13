@@ -69,12 +69,14 @@ const selectedColorScheme = 'system';
 
 <style is:global>
 
-  @layer patterns {
+  @layer dd.base {
     :root {
       --dd-layout-padding-block: 1.5rem;
       --dd-layout-padding-inline: clamp(1rem, 5.5vw, 2.5rem);
     }
+  }
 
+  @layer dd.components {
     :where(.site-layout, .site-layout-main) {
       display: grid;
       grid-auto-flow: row;
