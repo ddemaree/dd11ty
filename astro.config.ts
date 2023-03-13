@@ -9,7 +9,7 @@ import path from "path";
 import { site, remarkPlugins, shikiConfig } from "./src/lib/sharedConfig";
 
 import vercel from "@astrojs/vercel/serverless";
-import netlify from "@astrojs/netlify/edge-functions";
+import netlify from "@astrojs/netlify/functions";
 
 let output = "static";
 let adapter = null;
@@ -41,9 +41,9 @@ export default defineConfig({
       },
     }),
     mdx(),
-    // image({
-    //   serviceEntryPoint: "@astrojs/image/sharp",
-    // }),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     svelte(),
     react(),
   ],
