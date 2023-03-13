@@ -27,8 +27,8 @@ export default defineConfig({
   srcDir: "./src",
   // TODO: Allow the site property to be overridden via env var or something?
   site,
-  // output: "server",
-  // adapter: vercel(),
+  output,
+  adapter,
 
   markdown: {
     shikiConfig,
