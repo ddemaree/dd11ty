@@ -8,6 +8,20 @@ import path from "path";
 
 import { site, remarkPlugins, shikiConfig } from "./src/lib/sharedConfig";
 
+import vercel from "@astrojs/vercel/serverless";
+import netlify from "@astrojs/netlify/edge-functions";
+
+let output = "static";
+let adapter = null;
+
+if (process.env.NETLIFY) {
+  output = "server";
+  adapter = netlify();
+} else if (process.env.VERCEL) {
+  output = "server";
+  adapter = vercel();
+}
+
 // import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   srcDir: "./src",
