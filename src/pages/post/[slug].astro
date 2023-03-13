@@ -5,14 +5,15 @@ import Date from '@components/Date.astro';
 import { getEntryBySlug, getCollection } from 'astro:content';
 import Icon from '@components/Icon.astro';
 import wp from '@lib/wordpress/rest';
-import transformGutenberg from '@lib/wordpress/transformGutenberg';
+// import transformGutenberg from '@lib/wordpress/transformGutenberg';
 
 const { slug } = Astro.params;
 const post = await wp.getSinglePost(slug);
 
 const { title, excerpt, date, content: _content } = post;
 
-const content = await transformGutenberg(_content);
+// const content = await transformGutenberg(_content);
+const content = _content;
 
 export async function getStaticPaths() {
   const entries = await getCollection("blog");

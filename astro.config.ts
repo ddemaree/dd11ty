@@ -10,7 +10,7 @@ import { site, remarkPlugins, shikiConfig } from "./src/lib/sharedConfig";
 import vercel from "@astrojs/vercel/serverless";
 import netlify from "@astrojs/netlify/functions";
 
-let output = "static";
+let output: "static" | "server" = "static";
 let adapter = null;
 
 if (process.env.NETLIFY || import.meta.env.NETLIFY) {
@@ -24,6 +24,7 @@ if (process.env.NETLIFY || import.meta.env.NETLIFY) {
 // import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   srcDir: "./src",
+  outDir: "./dist",
 
   // TODO: Allow the site property to be overridden via env var or something?
   site,

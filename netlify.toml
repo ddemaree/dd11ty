@@ -2,12 +2,12 @@
   ID = "demaree-next"
 
 [build]
-  command = "astro build"
+  command = "pnpm build"
   publish = "dist"
 
-[[plugins]]
+# [[plugins]]
   # Installs the Lighthouse Build Plugin for all deploy contexts
-  package = "@netlify/plugin-lighthouse"
+  # package = "@netlify/plugin-lighthouse"
 
 [context.production]
   NODE_ENV = "production"
@@ -19,4 +19,7 @@
   status = 301
 
 [functions]
-  external_node_modules = ["prismjs", "astro", "shiki"]
+  external_node_modules = ["astro", "shiki"]
+
+[dev]
+  framework = "astro"
