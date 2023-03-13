@@ -17,3 +17,6 @@
   from = "/feed"
   to = "/feeds/posts.xml"
   status = 301
+
+[functions]
+  external_node_modules = ["prismjs", "astro", "shiki"]
