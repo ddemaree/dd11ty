@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
-import image from "@astrojs/image";
 import svelte from "@astrojs/svelte";
 import react from "@astrojs/react";
 import path from "path";
@@ -25,6 +24,7 @@ if (process.env.NETLIFY || import.meta.env.NETLIFY) {
 // import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   srcDir: "./src",
+
   // TODO: Allow the site property to be overridden via env var or something?
   site,
   output,
@@ -41,9 +41,6 @@ export default defineConfig({
       },
     }),
     mdx(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     svelte(),
     react(),
   ],
