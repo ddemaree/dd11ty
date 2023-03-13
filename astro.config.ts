@@ -41,9 +41,9 @@ export default defineConfig({
       },
     }),
     mdx(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
+    // image({
+    //   serviceEntryPoint: "@astrojs/image/sharp",
+    // }),
     svelte(),
     react(),
   ],
