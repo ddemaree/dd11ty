@@ -14,10 +14,10 @@ import netlify from "@astrojs/netlify/edge-functions";
 let output = "static";
 let adapter = null;
 
-if (process.env.NETLIFY) {
+if (process.env.NETLIFY || import.meta.env.NETLIFY) {
   output = "server";
   adapter = netlify();
-} else if (process.env.VERCEL) {
+} else if (process.env.VERCEL || import.meta.env.VERCEL) {
   output = "server";
   adapter = vercel();
 }
