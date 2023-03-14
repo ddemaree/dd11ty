@@ -1,5 +1,4 @@
-import clsx from "clsx";
-
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -8,10 +7,11 @@ config.autoAddCss = false;
 
 import "../styles/blog.css";
 
-import localFont from "@next/font/local";
-import { Inter, Source_Serif_4 } from "@next/font/google";
+import localFont from "next/font/local";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import MainNavigation from "./MainNavigation";
 import MainFooter from "./MainFooter";
+import clsx from "clsx";
 
 const interFont = Inter({
   variable: "--font--inter",
@@ -31,6 +31,20 @@ const monaSans = localFont({
     'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
   ],
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "David Demaree's website",
+    template: "%s | David Demaree",
+  },
+  description: "A good man, and thorough",
+  icons: {
+    icon: "/site/icon.svg",
+  },
+  types: {
+    "application/rss+xml": "/feed",
+  },
+};
 
 export default function RootLayout({
   children,

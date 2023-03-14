@@ -25,6 +25,12 @@ const nextConfig = {
         port: "",
         pathname: "/demaree/**",
       },
+      {
+        protocol: "https",
+        hostname: "wp2.demaree.me",
+        port: "",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
   async redirects() {

@@ -1,34 +1,47 @@
-// `app/page.js` is the UI for the root `/` URL
+import type { Metadata } from "next";
 
-// import sanitizeHtml from "@lib/sanitizeHtml";
-import sanitizeHtml from "@lib/sanitizeHtml";
-import { getSinglePost, WordpressPost } from "@lib/wordpress";
+import { getSinglePost, wpToReact, WordpressPost } from "@lib/wordpress";
+
 import PostHeader from "./PostHeader";
 
-import parse from "html-react-parser";
+type SinglePostPageProps = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({
+  params: { slug },
+}: SinglePostPageProps): Promise<Metadata> {
+  const post = await getSinglePost(slug);
+
+  if (post) {
+    const { title } = post;
+
+    return {
+      title,
+    };
+  }
+}
 
 export default async function BlogPostPage({
   params: { slug },
-}: {
-  params: { slug: string };
-}) {
-  const { error, post } = await getSinglePost(slug);
+}: SinglePostPageProps) {
+  const post = await getSinglePost(slug);
+
   const {
     title,
-    content,
+    content: _content,
     excerpt: subtitle,
     date,
     featuredImage,
   } = post as WordpressPost;
 
-  const cleanContent = sanitizeHtml(content);
-  const reactContent = parse(cleanContent);
+  const Content = await wpToReact(_content);
 
   return (
     <article>
       <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
       <main className="mt-12 prose prose-lg prose-grid font-serif prose-figcaption:font-sans font-normal dark:text-slate-100">
-        {reactContent}
+        <Content />
       </main>
     </article>
   );

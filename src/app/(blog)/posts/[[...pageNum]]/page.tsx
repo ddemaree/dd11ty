@@ -1,8 +1,8 @@
-import DisplayDate from "@components/DisplayDate";
+import Link from "next/link";
+import clsx from "clsx";
 import paginate from "@lib/paginate";
 import { getAllPosts, WordpressPost } from "@lib/wordpress";
-import clsx from "clsx";
-import Link from "next/link";
+import DisplayDate from "@components/DisplayDate";
 
 import "./posts-page.scss";
 
@@ -47,14 +47,16 @@ export default async function BlogIndexPage({
           <div className="grid grid-cols-1 gap-x-8 grid-flow-row @md/post-card:grid-cols-[1fr_25cqi] items-center desc:col-span-1 desc:col-start-1">
             <div>
               <Link href={`/post/${post.slug}`} className="post-preview-title">
-                <h1 className="title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025]">
-                  {post.title}
-                </h1>
+                <h1
+                  className="title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025]"
+                  dangerouslySetInnerHTML={{ __html: post.title }}
+                />
               </Link>
               {post.excerpt && (
-                <p className="description mt-[0.375em] @lg:[font-size:1.125rem] leading-snug max-w-prose text-gray-400">
-                  {post.excerpt}
-                </p>
+                <div
+                  className="description mt-[0.375em] @lg:[font-size:1.125rem] leading-snug max-w-prose text-gray-400"
+                  dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                />
               )}
               <p className="publish-date dateline mt-[0.75em]">
                 <DisplayDate dateString={post.date} />
