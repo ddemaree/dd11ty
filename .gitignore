@@ -97,3 +97,4 @@ next-env.d.ts
 __next
 _old*
 .astro
+astro-src

@@ -1,6 +1,6 @@
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
-import paginate from "@lib/paginate";
 import { getAllPosts, WordpressPost } from "@lib/wordpress";
 import DisplayDate from "@components/DisplayDate";
 
@@ -28,6 +28,8 @@ export default async function BlogIndexPage({
   pageNum = Number(pageNum);
 
   const { posts, totalPages } = await getAllPosts({ page: pageNum });
+  if (!posts) notFound();
+
   const previousPage = pageNum - 1 < 0 ? null : pageNum - 1;
   const nextPage = pageNum + 1 > totalPages ? null : pageNum + 1;
 
