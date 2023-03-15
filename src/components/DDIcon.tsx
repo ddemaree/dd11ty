@@ -1,4 +1,4 @@
-import { svgPathData } from "@lib/faDDLogo";
+import { svgPathData } from "@lib/icons/faDDLogo";
 
 export default function DDIcon({
   size = "1.5em",
