@@ -1,11 +1,11 @@
-import _ from "lodash";
-import { ImageResponse } from "@vercel/og";
-import { getSinglePost } from "@lib/wordpress";
 import { NextApiRequest, NextApiResponse } from "next";
-import chroma from "chroma-js";
+import { ImageResponse } from "@vercel/og";
+import _ from "lodash";
 import colors from "tailwindcss/colors";
-import DDIcon from "@components/DDIcon";
 import { decode } from "html-entities";
+
+import { getSinglePost } from "@lib/wordpress";
+import DDIcon from "@components/DDIcon";
 
 export const config = {
   runtime: "edge",
@@ -41,45 +41,10 @@ export default async function handler(
   }
 
   const title = post.title;
-  const image = post.featuredImage;
+  // const image = post.featuredImage;
   let mainColor = colors.red[500];
   let textColor = "#ffffff";
-  let imgUrl, imgLuma;
-
-  if (image?.databaseId) {
-    const imageData = await fetch(
-      `https://demareedotme.wpengine.com/wp-json/wp/v2/media/${image.databaseId}`
-    ).then((res) => res.json());
-
-    const cldPublicId = imageData?._cloudinary?._public_id;
-
-    // Just in case the featured image isn't from my Cloudinary
-    if (cldPublicId) {
-      const adminImageUrl = `https://api.cloudinary.com/v1_1/demaree/resources/image/upload/${cldPublicId}?colors=true`;
-
-      const authString = Buffer.from(
-        process.env.CLOUDINARY_API_KEY + ":" + process.env.CLOUDINARY_API_SECRET
-      ).toString("base64");
-
-      const adminImageData = await fetch(adminImageUrl, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Basic ${authString}`,
-        },
-      }).then((res) => res.json());
-
-      let [[imgMainColor]] = adminImageData.colors;
-      mainColor = imgMainColor;
-
-      imgUrl = `https://res.cloudinary.com/demaree/images/c_fill,w_1200,h_600,g_auto/${cldPublicId}.jpg`;
-
-      const mc = chroma(mainColor);
-      imgLuma = mc.luminance();
-      if (imgLuma > 0.45) {
-        textColor = "#000000";
-      }
-    }
-  }
+  let imgUrl = null;
 
   const fontData = await fontMonaSemiboldWide;
   const fontDataMonaMedium = await fontMonaMedium;

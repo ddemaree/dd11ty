@@ -12,7 +12,7 @@ function unwrapField(
   if (!value) return "";
   if (typeof value === "string") return value;
 
-  if (value.hasOwnProperty("raw") && returnRaw) {
+  if (value.hasOwnProperty("raw") && returnRaw && value.raw) {
     return value.raw;
   }
 
@@ -26,7 +26,8 @@ export default function wrapPost(
     inputPostData;
 
   const inputImage = _embedded["wp:featuredmedia"]?.at(0);
-  let featuredImage: WordpressImage;
+  let featuredImage: WordpressImage | undefined = undefined;
+
   if (inputImage) {
     featuredImage = {
       sourceUrl: inputImage.source_url,

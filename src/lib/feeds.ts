@@ -6,8 +6,11 @@ import { getAllPosts } from "./wordpress";
 export async function getFeed() {
   // TODO: Get content as well as metadata
   const allPosts = await getAllPosts();
+  const _items = allPosts.posts;
 
-  const items = allPosts
+  if (!_items) throw new Error("No posts in response");
+
+  const rssItems = _items
     .map((post) => {
       const url = `https://demaree.me/post/${post.slug}`;
       const date = DateTime.fromISO(post.date).toJSDate();
@@ -25,7 +28,7 @@ export async function getFeed() {
       return b.date.valueOf() - a.date.valueOf();
     });
 
-  const maxDate = _.max(items.map((i) => i.date));
+  const maxDate = _.max(rssItems.map((i) => i.date));
 
   const feed = new Feed({
     copyright: `©${new Date().getFullYear()} David Demaree, all rights reserved`,
@@ -40,8 +43,8 @@ export async function getFeed() {
     updated: maxDate, // optional, default = today
     generator: "awesome", // optional, default = 'Feed for Node.js'
     feedLinks: {
-      json: "https://demaree.me/feed/json",
-      rss: "https://demaree.me/feed/rss",
+      // json: "https://demaree.me/feed/json",
+      rss: "https://demaree.me/feed",
     },
     author: {
       name: "David Demaree",
@@ -50,7 +53,7 @@ export async function getFeed() {
     },
   });
 
-  items.forEach(feed.addItem);
+  rssItems.forEach(feed.addItem);
 
   return feed;
 }
