@@ -1,9 +1,18 @@
+import { WordpressPost, WordpressRestEntity, WordpressRestPost } from "./types";
+
 type HttpMethod = "GET" | "POST";
 
 type WordpressRestClientOptions = {
   baseUrl?: string;
   basePath?: string;
 };
+
+interface WordpressRestResponse<Type = WordpressRestPost> {
+  items: Type[];
+  posts?: WordpressPost[];
+  totalItems: number;
+  totalPages: number;
+}
 
 export class WordpressRestClient {
   private _baseUrl: string;
@@ -27,7 +36,19 @@ export class WordpressRestClient {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((r) => r.json());
+    }).then(async (r) => {
+      const items = await r.json();
+      const totalItems = Number(r.headers.get("X-WP-Total"));
+      const totalPages = Number(r.headers.get("X-WP-TotalPages"));
+
+      const response: WordpressRestResponse = {
+        items,
+        totalItems,
+        totalPages,
+      };
+
+      return response;
+    });
   }
 
   private getEndpointUrl(pathname: string) {

@@ -1,5 +1,4 @@
 import { ImageResponse } from "@vercel/og";
-// import deorphanText from "../../src/deorphanText";
 import DDIcon from "@components/DDIcon";
 
 export const config = {

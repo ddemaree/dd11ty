@@ -1,0 +1,130 @@
+---
+import SiteLayout from '@components/SiteLayout.astro';
+import Prose from '@components/Prose.astro';
+import Date from '@components/Date.astro';
+import { getEntryBySlug, getCollection } from 'astro:content';
+import Icon from '@components/Icon.astro';
+import wp from '@lib/wordpress/rest';
+// import transformGutenberg from '@lib/wordpress/transformGutenberg';
+
+const { slug } = Astro.params;
+const post = await wp.getSinglePost(slug);
+
+const { title, excerpt, date, content: _content } = post;
+
+// const content = await transformGutenberg(_content);
+const content = _content;
+
+export async function getStaticPaths() {
+  const entries = await getCollection("blog");
+  return entries.map(({ slug }) => ({ params: { slug }}));
+}
+
+---
+<SiteLayout title={title}>
+  <article>
+    <header class="font-sans post-header text-center">
+      <h1 class="balance-text post-title text-5xl font-bold leading-none" set:html={title} />
+      {excerpt && <div class="post-excerpt balance-text-p text-2xl" set:html={excerpt} />}
+      <p class="post-dateline pt-4"><Date date={date} /></p>
+    </header>
+    <Prose>
+      <Fragment set:html={content} />
+
+      <div class="end-ornament">
+        <Icon icon="dd-icon" />
+      </div>
+    </Prose>
+  </article>
+</SiteLayout>
+
+<style lang="scss">
+  @use "../../styles/fonts";
+
+  @layer patterns {
+    :where(article) {
+      font-family: fonts.$serif;
+    }
+
+    article :global(h1, h2, h3) {
+      font-family: fonts.$sans;
+      font-weight: 600; 
+    }
+
+    header.post-header {
+      --post-header-padding-block: clamp(1rem, 4vw, 2.5rem);
+      font-family: fonts.$sans;
+      padding-block: var(--post-header-padding-block);
+      padding-inline: var(--dd-layout-padding-inline);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: calc(-0.85 * (var(--post-header-padding-block)));
+    }
+
+    :where(header.post-header > *) {
+      max-width: var(--width-content);
+      width: 100%;
+    }
+
+    :where(header.post-header > * + *) {
+      margin-block-start: 0.5rem;
+    }
+
+    .post-title {
+      color: var(--color-text-high-emphasis);
+      font-size: clamp(1.75rem, 7vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.3px;
+    }
+
+    .post-excerpt {
+      color: var(--color-text-low-emphasis);
+      font-size: clamp(1.25rem, 5vw, 1.5rem);
+      line-height: 1.125;
+    }
+
+    .post-dateline {
+      font-size: clamp(1rem, 4.5vw, 1.125rem);
+      font-weight: 500;
+      margin-block-start: 1rem;
+      text-transform: uppercase;
+    }
+
+    .end-ornament {
+      --end-ornament-pattern-color: #ddd;
+      --end-ornament-height: 12px;
+      color: #888;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-block-start: var(--prose-flow-spacing-big);
+      margin-block-end: 2rem;
+      font-size: 1.75rem;
+      line-height: 1;
+      position: relative;
+    }
+
+    .end-ornament:before,
+    .end-ornament:after {
+      position: absolute;
+      display: block;
+      content: ' ';
+      height: var(--end-ornament-height);
+      top: calc(50% - (var(--end-ornament-height) / 2));
+      width: 44%;
+      background-image: linear-gradient(32deg, var(--end-ornament-pattern-color), var(--end-ornament-pattern-color) 50%, transparent 51%, transparent);
+      background-size: 2% calc(var(--end-ornament-height) / 3);
+    }
+
+    .end-ornament:before {
+      left: 0;
+    }
+
+    .end-ornament:after {
+      right: 0;
+    }
+  }
+</style>

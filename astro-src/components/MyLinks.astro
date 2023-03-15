@@ -1,0 +1,80 @@
+---
+import Icon from "./Icon.astro";
+---
+<div class="site-footer-links">
+  <ul>
+    <li>
+      <a href="mailto:david@demaree.me?subject=sup">
+        <Icon icon="paper-plane" size="sm" fixedWidth>
+          david@demaree.me
+        </Icon>
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/ddemaree">
+        <Icon icon="twitter" prefix="fab" size="sm" fixedWidth>
+          Twitter
+        </Icon>
+      </a>
+    </li>
+    <li>
+      <a href="https://mastodon.social/@demaree">
+        <Icon icon="mastodon" prefix="fab" size="sm" fixedWidth>
+          Mastodon
+        </Icon>
+      </a>
+    </li>
+    <li>
+      <a href="https://linkedin.com/in/ddemaree">
+        <Icon icon="linkedin" prefix="fab" size="sm" fixedWidth>
+          LinkedIn
+        </Icon>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/ddemaree">
+        <Icon icon="github" prefix="fab" size="sm" fixedWidth>
+          GitHub
+        </Icon>
+      </a>
+    </li>
+    <li>
+      <a href="/feeds/posts.xml">
+        <Icon icon="feed" size="sm" fixedWidth>RSS</Icon>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+  :where(.site-footer-links) {
+    column-gap: 0.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.125em;
+    justify-content: center;
+    line-height: 1.2;
+    text-align: center;
+    row-gap: 0.75rem;
+  }
+
+  :where(.site-footer-links a) {
+    text-decoration: none;
+  }
+
+  :where(.site-footer-links *) {
+    margin: unset;
+    padding: unset;
+  }
+
+  :where(.site-footer-links ul) {
+    list-style: none;
+    display: contents;
+  }
+
+  :where(.site-footer-links li:has(a[href^="mailto"])) {
+    flex-grow: 1;
+    width: 100%;
+    font-size: 1.125em;
+  }
+</style>

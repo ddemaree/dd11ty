@@ -1,0 +1,119 @@
+---
+import { blogPostURL } from '@lib/utils';
+import { isCloudinaryURL, parseCloudinaryURL, resizeCloudinaryURL } from '@lib/cloudinary';
+import Date from './Date.astro';
+import { WordpressPost } from '@lib/wordpress/types';
+
+export interface Props {
+	post: WordpressPost
+}
+
+const { post } = Astro.props
+const { title, excerpt, date, featuredImage } = post;
+
+const postURL = blogPostURL(post.slug);
+
+let imageUrl, minutesRead;
+
+if(featuredImage) {
+  // imageUrl = featuredImage.sourceUrl;
+}
+
+---
+<article class="post-card">
+  <a href={postURL} class="bg-white p-6 group">
+    <div class="content">
+      <h2 class="balance-text group-hover:underline" set:html={title} />
+      {excerpt && <div class="excerpt balance-text-p" set:html={excerpt} />}
+      {date && <p class="date">
+        <Date date={date} />
+        {minutesRead && <span class="sep">{" • "}</span>
+        <span class="reading-time">{minutesRead}</span>}
+      </p>}
+    </div>
+    {imageUrl && <figure class="post-image">
+      <img src={imageUrl} alt="" />
+    </figure>}
+  </a>
+</article>
+
+<style lang="scss">
+
+.post-card {
+  container-type: inline-size;
+  container-name: post-card;
+}
+
+.post-card > a {
+  all: unset;
+  cursor: pointer;
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  box-shadow: 0.3em 0.3em 0 #0006;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+}
+
+.post-card h2 {
+  // font-family: 'soehne-breit-web';
+  font-weight: 700;
+  font-size: clamp(1.65rem, 5cqw, 3rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text-high-emphasis);
+  line-height: 1;
+}
+
+.post-card .excerpt {
+  font-size: clamp(1.125rem, 3cqw, 1.75rem);
+  color: var(--color-text-low-emphasis);
+  line-height: 1.25;
+  margin-block-start: 0.25em;
+}
+
+:where(.post-card) .post-image {
+  order: -1;
+  border: 4px solid currentColor;
+  box-shadow: 4px 4px 0 #0003;
+  transition: all 0.2s;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border: 4px solid white;
+  }
+}
+
+:where(.post-card > a:hover) .post-image {
+  transform: scale(105%);
+}
+
+:where(.post-card > a:hover) .post-image:hover {
+  transform: scale(115%);
+}
+
+.post-card .date {
+  font-family: var(--font-mono);
+  font-size: clamp(0.875rem, 3.5cqw, 1.125rem);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-block-start: 0.5em;
+}
+
+.post-card .excerpt + .date {
+  margin-block-start: 0.75em;
+}
+
+@container post-card (max-width: 440px) {
+  .post-card .date > * {
+    display: block;
+  }
+
+  .post-card .date .sep {
+    display: none;
+  }
+}
+
+</style>

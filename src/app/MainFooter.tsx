@@ -1,10 +1,33 @@
+import MyLinks from "@components/MyLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faFeed } from "@fortawesome/sharp-solid-svg-icons";
-import Link from "next/link";
+import { faHeart } from "@fortawesome/sharp-solid-svg-icons";
 
-export default function MainFooter() {
+import ShortBio from "@components/ShortBioText.mdx";
+import Image from "next/image";
+
+export default function MainFooter({
+  showLinks = true,
+}: {
+  showLinks?: boolean;
+}) {
   return (
-    <footer className="px-inset py-8 min-h-[12rem] flex flex-col items-center justify-end text-sm">
+    <footer className="px-inset py-8 min-h-[12rem] flex flex-col gap-4 items-center justify-end text-sm">
+      <div className=" @container [&>*]:w-full">
+        <figure className=" [clip-path:url(#squircleClip)] w-40 h-40">
+          <Image
+            src="https://res.cloudinary.com/demaree/image/twitter_name/ddemaree.jpg"
+            width="120"
+            height="120"
+            alt="A man in an attic full of Legos"
+            className="w-full h-full"
+          />
+        </figure>
+        <div className="text-xl [&_p]:max-w-[44ch] flex flex-col gap-4">
+          <ShortBio />
+        </div>
+      </div>
+      {showLinks && <MyLinks />}
+
       <div className="text-center">
         <p className="m-0">
           Made with <FontAwesomeIcon icon={faHeart} className="text-red-500" />{" "}
@@ -14,15 +37,19 @@ export default function MainFooter() {
           &ldquo;Have courage, and be kind.&rdquo;
         </p>
       </div>
-      <div className="mt-4 flex gap-3 justify-center">
-        Subscribe to my feed:
-        <Link href="/feed/rss" className="font-medium text-primary flex gap-1">
-          <FontAwesomeIcon icon={faFeed} /> <span>RSS</span>
-        </Link>
-        <Link href="/feed/json" className="font-medium text-primary flex gap-1">
-          <FontAwesomeIcon icon={faFeed} /> <span>JSON</span>
-        </Link>
-      </div>
+
+      <svg width="10" height="10" viewBox="0 0 10 10">
+        <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
+          <path
+            fill="red"
+            stroke="none"
+            d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
+          />
+        </clipPath>
+        <clipPath id="squircleBoxClip" clipPathUnits="objectBoundingBox">
+          <circle cx="5" cy="5" r="5" fill="red" />
+        </clipPath>
+      </svg>
     </footer>
   );
 }

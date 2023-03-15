@@ -1,0 +1,22 @@
+{
+  "main": [
+    {
+      "title": "Home",
+      "href": "/",
+      "icon": "home-heart",
+      "slug": "home"
+    },
+    {
+      "title": "About",
+      "href": "/about",
+      "icon": "user-ninja",
+      "slug": "about"
+    },
+    {
+      "title": "Blog",
+      "href": "/posts",
+      "icon": "newspaper",
+      "slug": "blog"
+    }
+  ]
+}

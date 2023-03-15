@@ -25,15 +25,11 @@ export default async function BlogIndexPage({
 }: {
   params: { pageNum: string | number };
 }) {
-  const allPosts = await getAllPosts();
-
   pageNum = Number(pageNum);
 
-  const {
-    current: currentPage,
-    nextPage,
-    previousPage,
-  } = paginate(allPosts, pageNum);
+  const { posts, totalPages } = await getAllPosts({ page: pageNum });
+  const previousPage = pageNum - 1 < 0 ? null : pageNum - 1;
+  const nextPage = pageNum + 1 > totalPages ? null : pageNum + 1;
 
   return (
     <section className="flex flex-col gap-y-10 w-inset max-w-[50rem] mx-auto space-y-8">
@@ -42,7 +38,7 @@ export default async function BlogIndexPage({
           {pageNum === 1 ? "Posts" : `Page ${pageNum}`}
         </h1>
       </header>
-      {currentPage.map((post: WordpressPost) => (
+      {posts.map((post: WordpressPost) => (
         <article key={post.slug} className="@container/post-card">
           <div className="grid grid-cols-1 gap-x-8 grid-flow-row @md/post-card:grid-cols-[1fr_25cqi] items-center desc:col-span-1 desc:col-start-1">
             <div>

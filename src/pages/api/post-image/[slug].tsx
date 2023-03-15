@@ -5,9 +5,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import chroma from "chroma-js";
 import colors from "tailwindcss/colors";
 import DDIcon from "@components/DDIcon";
+import { decode } from "html-entities";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 // Make sure the font exists in the specified path:
@@ -33,7 +34,7 @@ export default async function handler(
     slug = slug.replace(/\.png$/, "");
   }
 
-  const { post } = (await getSinglePost(slug)) as WordpressResponse;
+  const post = await getSinglePost(slug);
 
   if (!post) {
     return res.status(404);
@@ -108,7 +109,7 @@ export default async function handler(
               tw="text-[82px] leading-[1.1] relative z-20 max-w-[20ch]"
               style={{ fontFamily: "MonaSansWide" }}
             >
-              {title}
+              {decode(title)}
             </div>
           </div>
           <div tw="flex w-full items-center justify-between leading-none pb-10 px-16">

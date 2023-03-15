@@ -16,6 +16,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
+    mdxRs: true,
   },
   images: {
     remotePatterns: [
@@ -59,8 +60,8 @@ const nextConfig = {
         destination: "/api/webfinger",
       },
       {
-        source: "/feed",
-        destination: "/feed/rss",
+        source: "/post/:slug/socialImage.png",
+        destination: "/api/post-image/:slug",
       },
     ];
   },
@@ -81,4 +82,5 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);

@@ -10,6 +10,7 @@ specifiers:
   '@fortawesome/react-fontawesome': ^0.2.0
   '@fortawesome/sharp-solid-svg-icons': ^6.2.1
   '@nanostores/react': ^0.4.1
+  '@next/mdx': ^13.2.4
   '@tailwindcss/container-queries': ^0.1.0
   '@tailwindcss/typography': ^0.5.8
   '@types/chroma-js': ^2.4.0
@@ -34,6 +35,7 @@ specifiers:
   hast-util-select: ^5.0.5
   hast-util-to-text: ^3.1.2
   hastscript: ^7.2.0
+  html-entities: ^2.3.3
   lodash: ^4.17.21
   luxon: ^3.1.1
   nanostores: ^0.7.4
@@ -68,6 +70,7 @@ dependencies:
   '@fortawesome/react-fontawesome': 0.2.0_z27bm67dtmuyyvss23ckjdrcuy
   '@fortawesome/sharp-solid-svg-icons': 6.2.1
   '@nanostores/react': 0.4.1_nkfnbc2tpc77iht7asm3uqwau4
+  '@next/mdx': 13.2.4
   '@tailwindcss/container-queries': 0.1.0_57kpwm2soybcwuljruzugnjjri
   '@tailwindcss/typography': 0.5.8_57kpwm2soybcwuljruzugnjjri
   '@types/lodash': 4.14.191
@@ -90,6 +93,7 @@ dependencies:
   hast-util-select: 5.0.5
   hast-util-to-text: 3.1.2
   hastscript: 7.2.0
+  html-entities: 2.3.3
   lodash: 4.17.21
   luxon: 3.1.1
   nanostores: 0.7.4
@@ -335,6 +339,20 @@ packages:
     resolution: {integrity: sha512-SBrOFS8PC3nQ5aeZmawJkjKkWjwK9RoxvBSv/86nZp0ubdoVQoko8r8htALd9ufp16NhacCdqhu9bzZLDWtALQ==}
     dependencies:
       glob: 7.1.7
+    dev: false
+
+  /@next/mdx/13.2.4:
+    resolution: {integrity: sha512-inl7u+OEa4Ok3uL052oa8EDw1bUkMGLVKzFfVBIgG19s29gxQvcWYzxa5t438J31ljApjh6Y5k4AD6yLaCAlQw==}
+    peerDependencies:
+      '@mdx-js/loader': '>=0.15.0'
+      '@mdx-js/react': '>=0.15.0'
+    peerDependenciesMeta:
+      '@mdx-js/loader':
+        optional: true
+      '@mdx-js/react':
+        optional: true
+    dependencies:
+      source-map: 0.7.4
     dev: false
 
   /@next/swc-android-arm-eabi/13.2.4:
@@ -2879,6 +2897,10 @@ packages:
       space-separated-tokens: 2.0.2
     dev: false
 
+  /html-entities/2.3.3:
+    resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
+    dev: false
+
   /html-void-elements/2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
     dev: false
@@ -4532,6 +4554,11 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+
+  /source-map/0.7.4:
+    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
+    engines: {node: '>= 8'}
+    dev: false
 
   /space-separated-tokens/2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
