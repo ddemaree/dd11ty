@@ -2,7 +2,7 @@ import { ImageResponse } from "@vercel/og";
 import DDIcon from "@components/DDIcon";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 // Make sure the font exists in the specified path:

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { getSinglePost, wpToReact, WordpressPost } from "@lib/wordpress";
+import { getSinglePost, WordpressPost } from "@lib/wordpress";
+import { wpToReact } from "@lib/wordpress/transformGutenberg";
 
 import PostHeader from "./PostHeader";
 
@@ -12,14 +13,13 @@ export async function generateMetadata({
   params: { slug },
 }: SinglePostPageProps): Promise<Metadata> {
   const post = await getSinglePost(slug);
+  if (!post) throw new Error("POOP");
 
-  if (post) {
-    const { title } = post;
+  const { title } = post;
 
-    return {
-      title,
-    };
-  }
+  return {
+    title,
+  };
 }
 
 export default async function BlogPostPage({

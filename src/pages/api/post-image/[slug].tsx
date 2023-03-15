@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { ImageResponse } from "@vercel/og";
-import { getSinglePost, WordpressResponse } from "@lib/wordpress";
+import { getSinglePost } from "@lib/wordpress";
 import { NextApiRequest, NextApiResponse } from "next";
 import chroma from "chroma-js";
 import colors from "tailwindcss/colors";
