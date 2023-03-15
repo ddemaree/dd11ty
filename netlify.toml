@@ -2,23 +2,12 @@
   ID = "demaree-next"
 
 [build]
-  command = "hugo --gc --minify -e production"
-  publish = "public"
+  command = "pnpm build"
+  publish = ".next"
 
 [build.environment]
   NODE_ENV = "production"
-  HUGO_ENV = "production"
-  NODE_VERSION = "16"
-  HUGO_VERSION = "0.93.0"
-  HUGO_ENABLEGITINFO = "true"
+  NODE_VERSION = "18"
 
-[context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL -e staging"
-
-[context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL -e staging"
-
-[[redirects]]
-  from = "/feed"
-  to = "/feed.xml"
-  status = 301
+[dev]
+  framework = "next"
