@@ -66,7 +66,7 @@ export default function RootLayout({
       ])}
     >
       <head />
-      <body>
+      <body className="bg-stone-50 dark:bg-[#121212] text-stone-700 dark:text-stone-300">
         <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto]">
           <MainNavigation />
           <main>{children}</main>

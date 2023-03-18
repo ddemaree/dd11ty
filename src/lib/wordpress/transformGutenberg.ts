@@ -5,7 +5,6 @@ import { unified, Preset } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeStringify from "rehype-stringify";
 import rehypeReact from "rehype-react";
-import rehypeInferReadingTime from "rehype-infer-reading-time-meta";
 import { visit, CONTINUE, SKIP } from "unist-util-visit";
 import { toText } from "hast-util-to-text";
 import { select } from "hast-util-select";
@@ -55,6 +54,8 @@ function hastTransformTweet(node: Element) {
     twText = toText(twQuote);
     twHTML = twtxt.autoLink(twText);
 
+    console.log({ twText, twHTML });
+
     let twHTMLStruct = fromHtml(`<div class="tw-text">${twHTML}</div>`, {
       fragment: true,
     });
@@ -84,8 +85,9 @@ function hastTransformTweet(node: Element) {
     h("a", { href: `https://twitter.com/${twHandle}` }, [
       "\n      ",
       h("img", {
-        src: `https://res.cloudinary.com/demaree/image/twitter_name/w_300/${twHandle}.jpg`,
+        src: `https://img.demaree.me/twitter_name/w_300,f_auto,q_auto/${twHandle}.jpg`,
         alt: `Twitter profile picture for ${twHandle}`,
+        className: "tweet-author-img",
       }),
       "\n      ",
       h("div", {}, [
@@ -113,7 +115,9 @@ function hastTransformTweet(node: Element) {
         h("p", { className: ["tweet-content"] }, twStruct),
         "\n    ",
         h("footer", { className: ["tweet-footer"] }, [
-          h("a", { href: twUrl?.toString() }, [twDate]),
+          h("a", { href: twUrl?.toString(), className: ["tweet-date"] }, [
+            twDate,
+          ]),
         ]),
         "\n  ",
       ]),
@@ -155,10 +159,12 @@ function rehypeTransformWPTweetEmbeds() {
   };
 }
 
+const MY_DOMAINS = ["wp2.demaree.me", "demaree.me"];
+
 function rehypeTransformWPLazyLoadImages() {
   return (tree: Root) => {
     visit(tree, "element", (node, index, parent) => {
-      const imgElement = select('img[src^="data"]', node);
+      const imgElement = select("img", node);
       if (node.tagName !== "figure" || !imgElement || !imgElement.properties)
         return SKIP;
 
@@ -166,14 +172,24 @@ function rehypeTransformWPLazyLoadImages() {
       delete imgElement.properties.dataCloudinary;
       delete imgElement.properties.dataResponsive;
 
-      const newSrc = `https://res.cloudinary.com/demaree/image/upload/w_1200,f_auto,q_auto/v${imgElement.properties.dataVersion}/${imgElement.properties.dataPublicId}`;
-      imgElement.properties.src = newSrc;
+      const origSrcURL = new URL(imgElement.properties.src as string);
+      let newSrc: string = "";
+
+      if (MY_DOMAINS.includes(origSrcURL.hostname)) {
+        newSrc = `https://img.demaree.me${origSrcURL.pathname}`;
+      } else if (origSrcURL.protocol === "data:") {
+        newSrc = `https://res.cloudinary.com/demaree/image/upload/w_1200,f_auto,q_auto/v${imgElement.properties.dataVersion}/${imgElement.properties.dataPublicId}`;
+      } else {
+        newSrc = `https://img.demaree.me/fetch/w_1000,q_auto,f_auto/${origSrcURL.toString()}`;
+      }
+
+      if (newSrc) imgElement.properties.src = newSrc;
     });
   };
 }
 
 export const rehypeTransformGutenberg: Preset = {
-  plugins: [rehypeTransformWPTweetEmbeds, rehypeTransformWPLazyLoadImages],
+  plugins: [rehypeTransformWPTweetEmbeds],
 };
 
 function rehypeProcessor() {

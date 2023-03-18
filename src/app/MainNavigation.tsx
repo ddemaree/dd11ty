@@ -8,6 +8,7 @@ import { faHomeAlt, faNewspaper } from "@fortawesome/sharp-solid-svg-icons";
 import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 import { faDDLogo } from "@lib/icons";
+import SiteMenu from "./SiteMenu";
 
 function MainNavItem({
   href,
@@ -55,14 +56,19 @@ export default function MainNavigation() {
   const pathSegments = pathname.replace(/^\//, "").split("/");
 
   return (
-    <header className="px-inset h-16 flex gap-8 items-center justify-between">
+    <header
+      id="nav-parent"
+      className="px-inset h-16 flex gap-8 items-center justify-between"
+    >
       <div>
         <Link href="/">
           <FontAwesomeIcon icon={faDDLogo} size="2x" />
           <span className="sr-only">David Demaree</span>
         </Link>
       </div>
-      <div className="flex gap-6">
+
+      <SiteMenu />
+      <div className="hidden flex gap-6">
         <nav className="flex gap-4 items-center">
           <MainNavItem
             href="/"

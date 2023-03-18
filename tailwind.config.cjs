@@ -3,6 +3,9 @@ const { reduce, isArray } = require("lodash");
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
+const ddTypographyPlugin = require("./src/lib/tailwind/typography/index.cjs");
+const ddColorTokens = require("./src/styles/tokens/tailwindColors.cjs");
+
 const resetSelectors = ["p", "h1", "h2", "h3", "h4", "h5", "h6", "figure"];
 const resets = {};
 
@@ -33,20 +36,23 @@ function mapToCSSVars(prefix, tokens) {
 module.exports = {
   darkMode: ["class", '[data-theme="dark"]'],
   important: true,
-  content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{html,js,jsx,md,mdx,ts,tsx}"],
   theme: {
     supports: {
       cq: "container-type: inline-size",
       "no-cq": "not (container-type: inline-size)",
     },
     fontFamily: ({ theme }) => ({
-      // sans: ["mona-sans", ...defaultTheme.fontFamily.sans],
-      sans: "var(--font--mona-sans)",
+      sans: ["soehne-web", ...defaultTheme.fontFamily.sans],
+      // sans: "var(--font--mona-sans)",
       serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
     }),
     extend: {
+      colors: {
+        ...ddColorTokens,
+      },
       fontSize: {
         title: `clamp(2rem, 10vmin, 3rem)`,
       },
@@ -73,32 +79,46 @@ module.exports = {
     },
   },
   plugins: [
+    ddTypographyPlugin,
+
     require("@tailwindcss/container-queries"),
+
+    plugin(function ({ addVariant, theme }) {
+      addVariant("tweets", ":is(& .dd-embed-tweet)");
+      addVariant("tweets-name", ":is(& .dd-embed-tweet .tweet-author-name)");
+      addVariant(
+        "tweets-handle",
+        ":is(& .dd-embed-tweet .tweet-author-handle)"
+      );
+      addVariant("tweets-footer", ":is(& .dd-embed-tweet .tweet-footer)");
+      addVariant("tweets-date", ":is(& .dd-embed-tweet .tweet-date)");
+      addVariant("tweets-content", ":is(& .dd-embed-tweet .tweet-content)");
+    }),
+
     plugin(function ({ addBase, theme }) {
       const fontFamilies = mapToCSSVars("font", theme("fontFamily"));
       const spacings = mapToCSSVars("spacing", theme("spacing"));
       const widths = mapToCSSVars("w", theme("width"));
       const maxWidths = mapToCSSVars("maxw", theme("maxWidth"));
 
-      addBase({
-        ":root": {
-          "--inset-x": "clamp(1.25rem, 6.25vw, 2rem)",
-          ...fontFamilies,
-          ...spacings,
-          ...widths,
-          ...maxWidths,
+      addBase([
+        {
+          ":root": {
+            colorScheme: "light",
+            "--inset-x": "clamp(1.25rem, 6.25vw, 2rem)",
+            "--width-content": "45rem",
+            "--width-wide": "59rem",
+            ...fontFamilies,
+            ...spacings,
+            ...widths,
+            ...maxWidths,
+          },
         },
-      });
+      ]);
     }),
     plugin(function ({ addVariant }) {
       addVariant("desc", ":where(& *)");
       addVariant("desc-links", ":where(& a)");
-
-      addVariant("nav-open", ".menu-open &");
-      // addVariant(
-      //   "nav-closed",
-      //   ":root:not(:has(.nav-parent .nav-state:checked)) &"
-      // );
     }),
   ],
 };

@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { WordpressImage } from "@lib/wordpress";
 import DisplayDate from "@components/DisplayDate";
 import "./PostHeader.scss";
 
@@ -7,12 +5,10 @@ export default function PostHeader({
   title,
   subtitle,
   date,
-  image: featuredImage,
 }: {
   title: string;
   subtitle?: string;
   date: string;
-  image?: WordpressImage;
 }) {
   return (
     <header className="post-header">
@@ -33,18 +29,6 @@ export default function PostHeader({
           </div>
         )}
       </div>
-      {featuredImage && (
-        <figure className="post-featured-image mt-10">
-          <Image
-            priority={true}
-            width={1000}
-            height={562}
-            src={featuredImage.sourceUrl}
-            alt={featuredImage.altText}
-            className="h-full w-full max-w-4xl object-cover"
-          />
-        </figure>
-      )}
     </header>
   );
 }
