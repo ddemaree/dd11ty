@@ -18,7 +18,7 @@ module.exports = (theme) => ({
         gridTemplateColumns:
           "[full-start] 1fr [wide-start] var(--prose-grid-inset) [content-start] min( calc(100% - (var(--dd-layout-padding-inline) * 2)), var(--width-content) ) [content-end] var(--prose-grid-inset) [wide-end] 1fr [full-end]",
         justifyItems: "start",
-        paddingBlockStart: "var(--prose-flow-spacing-normal)",
+        // paddingBlockStart: "var(--prose-flow-spacing-normal)",
 
         "& > :is(*, p)": {
           gridColumn: "content",

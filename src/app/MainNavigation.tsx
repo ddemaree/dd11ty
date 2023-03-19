@@ -53,7 +53,7 @@ export default function MainNavigation() {
   const requestUrl = new URL(urlHeader);
 
   const { pathname } = requestUrl;
-  const pathSegments = pathname.replace(/^\//, "").split("/");
+  const pathSegments = pathname.slice(1).split("/");
 
   return (
     <header
@@ -67,7 +67,7 @@ export default function MainNavigation() {
         </Link>
       </div>
 
-      <SiteMenu />
+      <SiteMenu activeSection="blog" />
       <div className="hidden flex gap-6">
         <nav className="flex gap-4 items-center">
           <MainNavItem

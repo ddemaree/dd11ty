@@ -54,8 +54,6 @@ function hastTransformTweet(node: Element) {
     twText = toText(twQuote);
     twHTML = twtxt.autoLink(twText);
 
-    console.log({ twText, twHTML });
-
     let twHTMLStruct = fromHtml(`<div class="tw-text">${twHTML}</div>`, {
       fragment: true,
     });

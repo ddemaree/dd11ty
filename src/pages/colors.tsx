@@ -80,7 +80,7 @@ export default function TestPage() {
     <div className={wrapperClass}>
       <button onClick={(e) => toggleMode()}>Switch mode</button>
       {tokensToGroups().map(({ family, colors }) => (
-        <div>
+        <div key={family}>
           <h2 className="font-mono font-semibold text-lg mb-2">{family}</h2>
           <div className="flex flex-wrap gap-2 font-mono text-sm">
             {colors.map(({ key, value }) => {
@@ -96,7 +96,7 @@ export default function TestPage() {
               );
 
               return (
-                <div className={classValue}>
+                <div className={classValue} key={key}>
                   <div
                     className="p-2 rounded"
                     style={{ backgroundColor: value }}

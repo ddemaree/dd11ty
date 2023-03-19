@@ -40,15 +40,20 @@ export const SiteMenu = ({
     <motion.nav
       animate={menuOpen ? "open" : "closed"}
       ref={containerRef}
+      whileHover={menuOpen ? "open" : ["closed", "hover"]}
       initial={false}
-      className="z-40"
+      className="z-40 [--sidebar-width:min(100vw,340px)]"
     >
       {!_isSmallScreen && (
-        <div className="hidden sm:flex menu-not-mobile gap-3">
+        <div className="hidden sm:flex menu-not-mobile gap-4">
           <ul className="contents">
             {menuItems.main.map((item, index) => (
               <li key={index} className="contents">
-                <BasicNavLink key={`menu-main-${index}`} item={item} />
+                <BasicNavLink
+                  key={`menu-main-${index}`}
+                  item={item}
+                  isActive={activeSection === item.slug}
+                />
               </li>
             ))}
           </ul>
@@ -56,7 +61,20 @@ export const SiteMenu = ({
       )}
       {clientReady && _isSmallScreen && (
         <>
-          <MenuSidebar />
+          <motion.div
+            className="inset-0 fixed bg-black/50 backdrop-blur"
+            variants={{
+              open: {
+                display: "block",
+                opacity: 1,
+              },
+              closed: {
+                display: "none",
+                opacity: 0,
+              },
+            }}
+          />
+          <MenuSidebar menuOpen={menuOpen} />
           <MenuItemsWrapper menuOpen={menuOpen}>
             {menuItems.main.map((item, index) => (
               <motion.li
@@ -64,7 +82,10 @@ export const SiteMenu = ({
                 key={`menu-main-${index}`}
                 className="text-4xl"
               >
-                <BasicNavLink item={item} />
+                <BasicNavLink
+                  item={item}
+                  isActive={activeSection === item.slug}
+                />
               </motion.li>
             ))}
           </MenuItemsWrapper>
@@ -93,7 +114,7 @@ const MenuItemsWrapper = ({ children, menuOpen }: MenuItemsWrapperProps) => {
     <AnimatePresence>
       {menuOpen && (
         <motion.ul
-          className="absolute flex flex-col gap-4 justify-center p-6 w-[280px] right-0 bottom-16 top-0"
+          className="absolute flex flex-col gap-4 justify-center p-6 w-[var(--sidebar-width)] right-0 bottom-16 top-0"
           variants={itemVariants}
           initial={"closed"}
           exit={"closed"}
@@ -105,43 +126,43 @@ const MenuItemsWrapper = ({ children, menuOpen }: MenuItemsWrapperProps) => {
   );
 };
 
-const MenuSidebar = () => {
-  // const [headerHeight, setHeaderHeight] = useState(80);
-  // useEffect(() => {
-  //   const header = document.querySelector("#nav-parent");
-  //   if (header) setHeaderHeight(header.clientHeight);
-  // }, []);
-
-  // const menuDotCenterY = headerHeight / 2;
-  // const menuDotCenterY = 40;
-
+const MenuSidebar = ({ menuOpen = false }: { menuOpen: boolean }) => {
   const sidebarVariants: Variants = {
     open: {
-      clipPath: `circle(80px at 260px 40px)`,
+      clipPath: `circle(1800px at 300px 40px)`,
       bottom: "0px",
       backgroundColor: "#dd4444",
-      // position: "fixed",
+      position: "fixed",
+      height: "100dvh",
       opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
     },
     closed: {
-      clipPath: `circle(24px at 260px 40px)`,
+      clipPath: `circle(24px at 300px 40px)`,
       backgroundColor: "#dd4444",
       position: "absolute",
       bottom: "60px",
       opacity: 0,
+      transition: {
+        duration: 0.5,
+      },
     },
     hover: {
-      clipPath: `circle(24px at 260px 40px)`,
+      clipPath: `circle(32px at 300px 40px)`,
       backgroundColor: "#dd4444",
       opacity: 0.3,
+      transition: {
+        duration: 0.2,
+      },
     },
   };
 
   return (
     <motion.div
-      className="top-0 right-0 w-[300px] shadow-md bg-slate-500"
+      className="top-0 right-0 w-[var(--sidebar-width)] shadow-md bg-red-800"
       variants={sidebarVariants}
-      initial="closed"
     />
   );
 };
@@ -181,15 +202,32 @@ function BasicNavLink({
   const applyActiveStyle =
     typeof isActive === "function" ? isActive() : !!isActive;
 
+  const underlineStyle =
+    "after:block after:absolute after:bottom-[-0.2em] after:h-[0.1em] after:inset-x-0 after:w-full after:bg-current after:rounded-[4px] after:origin-center";
+
   const classValue = clsx(
-    "relative flex gap-1 items-center after:block after:absolute after:bottom-[-4px] after:h-[4px] after:inset-x-0 after:w-full after:bg-red-600 after:rounded-[4px] after:origin-center after:scale-x-0 after:transition-all hover:after:scale-x-100 hover:text-red-500",
-    applyActiveStyle && activeClass
+    "hover:text-red-500",
+    applyActiveStyle && [activeClass]
+  );
+
+  const innerClassValue = clsx(
+    "relative inline-flex gap-1 items-center",
+    underlineStyle,
+    !applyActiveStyle &&
+      "hover:after:scale-x-100 after:scale-x-0 after:transition-all"
   );
 
   return (
     <a href={href} data-active={applyActiveStyle} className={classValue}>
-      <FontAwesomeIcon icon={_iconLookup} fixedWidth size="sm" />
-      <span className="font-semibold">{title}</span>
+      <span className={innerClassValue}>
+        <FontAwesomeIcon
+          icon={_iconLookup}
+          fixedWidth
+          size="sm"
+          className=" opacity-60"
+        />
+        <span className="font-semibold">{title}</span>
+      </span>
     </a>
   );
 }
@@ -198,7 +236,7 @@ const Path = (props: any) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
-    stroke="hsl(0, 0%, 18%)"
+    stroke="currentColor"
     strokeLinecap="round"
     {...props}
   />
@@ -214,7 +252,6 @@ export const MenuToggleButton = ({
     onClick={toggle}
   >
     <motion.svg
-      className="fill-current"
       style={{ position: "absolute", top: 15 }}
       initial={{ left: 13 }}
       variants={{
@@ -225,26 +262,28 @@ export const MenuToggleButton = ({
       height="23"
       viewBox="0 0 23 23"
     >
-      <Path
-        variants={{
-          closed: { d: "M 2 2.5 L 20 2.5" },
-          open: { d: "M 3 16.5 L 17 2.5" },
-        }}
-      />
-      <Path
-        d="M 2 9.423 L 20 9.423"
-        variants={{
-          closed: { opacity: 1 },
-          open: { opacity: 0 },
-        }}
-        transition={{ duration: 0.1 }}
-      />
-      <Path
-        variants={{
-          closed: { d: "M 2 16.346 L 20 16.346" },
-          open: { d: "M 3 2.5 L 17 16.346" },
-        }}
-      />
+      <g className="fill-current stroke-current">
+        <Path
+          variants={{
+            closed: { d: "M 2 2.5 L 20 2.5" },
+            open: { d: "M 3 16.5 L 17 2.5" },
+          }}
+        />
+        <Path
+          d="M 2 9.423 L 20 9.423"
+          variants={{
+            closed: { opacity: 1 },
+            open: { opacity: 0 },
+          }}
+          transition={{ duration: 0.1 }}
+        />
+        <Path
+          variants={{
+            closed: { d: "M 2 16.346 L 20 16.346" },
+            open: { d: "M 3 2.5 L 17 16.346" },
+          }}
+        />
+      </g>
     </motion.svg>
   </button>
 );
