@@ -9,6 +9,7 @@ specifiers:
   '@fortawesome/pro-solid-svg-icons': ^6.2.1
   '@fortawesome/react-fontawesome': ^0.2.0
   '@fortawesome/sharp-solid-svg-icons': ^6.2.1
+  '@headlessui/react': ^1.7.13
   '@nanostores/react': ^0.4.1
   '@next/mdx': ^13.2.4
   '@tailwindcss/container-queries': ^0.1.0
@@ -71,6 +72,7 @@ dependencies:
   '@fortawesome/pro-solid-svg-icons': 6.2.1
   '@fortawesome/react-fontawesome': 0.2.0_z27bm67dtmuyyvss23ckjdrcuy
   '@fortawesome/sharp-solid-svg-icons': 6.2.1
+  '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
   '@nanostores/react': 0.4.1_nkfnbc2tpc77iht7asm3uqwau4
   '@next/mdx': 13.2.4
   '@tailwindcss/container-queries': 0.1.0_57kpwm2soybcwuljruzugnjjri
@@ -272,6 +274,18 @@ packages:
     requiresBuild: true
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.2.1
+    dev: false
+
+  /@headlessui/react/1.7.13_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.8:

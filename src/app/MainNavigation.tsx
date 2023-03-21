@@ -9,6 +9,8 @@ import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 import { faDDLogo } from "@lib/icons";
 import SiteMenu from "./SiteMenu";
+import { SiteSection } from "./menus";
+import ThemeMenu from "./ThemeMenu";
 
 function MainNavItem({
   href,
@@ -52,13 +54,18 @@ export default function MainNavigation() {
   const urlHeader = headersList.get("x-request-url") as string;
   const requestUrl = new URL(urlHeader);
 
-  const { pathname } = requestUrl;
-  const pathSegments = pathname.slice(1).split("/");
+  const pathname = requestUrl.pathname.slice(1);
+  const pathSegments = pathname.split("/");
+  let sectionName: SiteSection | null = null;
+
+  if (pathname.match(/^post/)) sectionName = "blog";
+  else if (pathname.match(/^about/)) sectionName = "about";
+  else if (!pathname) sectionName = "home";
 
   return (
     <header
       id="nav-parent"
-      className="px-inset h-16 flex gap-8 items-center justify-between"
+      className="px-inset h-20 flex gap-8 items-center justify-between"
     >
       <div>
         <Link href="/">
@@ -67,37 +74,8 @@ export default function MainNavigation() {
         </Link>
       </div>
 
-      <SiteMenu activeSection="blog" />
-      <div className="hidden flex gap-6">
-        <nav className="flex gap-4 items-center">
-          <MainNavItem
-            href="/"
-            label="Home"
-            isActive={requestUrl.pathname === "/"}
-            icon={faHomeAlt}
-          />
-          <MainNavItem
-            href="/posts"
-            label="Blog"
-            isActive={["posts", "post"].includes(pathSegments[0])}
-            icon={faNewspaper}
-          />
-        </nav>
-        <nav className="flex">
-          <MainNavItem
-            href="https://twitter.com/ddemaree"
-            label="ddemaree on Twitter"
-            icon={faTwitter}
-            showIconOnly
-          />
-          <MainNavItem
-            href="https://mastodon.social/@demaree"
-            label="ddemaree on mastodon.social"
-            icon={faMastodon}
-            showIconOnly
-          />
-        </nav>
-      </div>
+      {/* <ThemeMenu /> */}
+      <SiteMenu activeSection={sectionName} />
     </header>
   );
 }

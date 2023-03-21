@@ -12,8 +12,8 @@ function unwrapField(
   if (!value) return "";
   if (typeof value === "string") return value;
 
-  if (value.hasOwnProperty("raw") && returnRaw && value.raw) {
-    return value.raw;
+  if (value.hasOwnProperty("raw") && returnRaw) {
+    return value.raw as string;
   }
 
   return value.rendered;
@@ -22,10 +22,10 @@ function unwrapField(
 export default function wrapPost(
   inputPostData: WordpressRestPost
 ): WordpressPost {
-  let { slug, title, content, date, excerpt, _embedded, ...postData } =
+  let { slug, title, content, date, excerpt, status, _embedded, ...postData } =
     inputPostData;
 
-  const inputImage = _embedded["wp:featuredmedia"]?.at(0);
+  const inputImage = _embedded && _embedded["wp:featuredmedia"]?.at(0);
   let featuredImage: WordpressImage | undefined = undefined;
 
   if (inputImage) {
@@ -42,6 +42,7 @@ export default function wrapPost(
     title: unwrapField(title, true),
     content: unwrapField(content),
     excerpt: unwrapField(excerpt, true),
+    status,
     featuredImage,
   };
 

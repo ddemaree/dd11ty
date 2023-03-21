@@ -12,9 +12,10 @@ function useTextBalancer(...refs: MutableRefObject<HTMLElement | null>[]) {
 
   useEffect(() => {
     _balanceRefs();
-    window.addEventListener("resize", _balanceRefs);
+    const _rebalanceRefs = _debounce(_balanceRefs, 100);
+    window.addEventListener("resize", _rebalanceRefs);
     return () => {
-      window.removeEventListener("resize", _balanceRefs);
+      window.removeEventListener("resize", _rebalanceRefs);
     };
   }, [...refs]);
 }

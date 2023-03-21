@@ -20,7 +20,7 @@ import _ from "lodash";
 export const SiteMenu = ({
   activeSection,
 }: {
-  activeSection?: SiteSection;
+  activeSection?: SiteSection | null;
 }) => {
   const [clientReady, setClientReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +35,10 @@ export const SiteMenu = ({
   useEffect(() => {
     setClientReady(true);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("overflow-hidden", menuOpen);
+  }, [menuOpen]);
 
   return (
     <motion.nav
@@ -67,10 +71,12 @@ export const SiteMenu = ({
               open: {
                 display: "block",
                 opacity: 1,
+                pointerEvents: "auto",
               },
               closed: {
                 display: "none",
                 opacity: 0,
+                pointerEvents: "none",
               },
             }}
           />
@@ -131,7 +137,6 @@ const MenuSidebar = ({ menuOpen = false }: { menuOpen: boolean }) => {
     open: {
       clipPath: `circle(1800px at 300px 40px)`,
       bottom: "0px",
-      backgroundColor: "#dd4444",
       position: "fixed",
       height: "100dvh",
       opacity: 1,
@@ -141,7 +146,6 @@ const MenuSidebar = ({ menuOpen = false }: { menuOpen: boolean }) => {
     },
     closed: {
       clipPath: `circle(24px at 300px 40px)`,
-      backgroundColor: "#dd4444",
       position: "absolute",
       bottom: "60px",
       opacity: 0,
@@ -151,7 +155,6 @@ const MenuSidebar = ({ menuOpen = false }: { menuOpen: boolean }) => {
     },
     hover: {
       clipPath: `circle(32px at 300px 40px)`,
-      backgroundColor: "#dd4444",
       opacity: 0.3,
       transition: {
         duration: 0.2,
@@ -161,7 +164,7 @@ const MenuSidebar = ({ menuOpen = false }: { menuOpen: boolean }) => {
 
   return (
     <motion.div
-      className="top-0 right-0 w-[var(--sidebar-width)] shadow-md bg-red-800"
+      className="top-0 right-0 w-[var(--sidebar-width)] shadow-md bg-red-400 dark:bg-red-800"
       variants={sidebarVariants}
     />
   );
@@ -193,7 +196,10 @@ function BasicNavLink({
   isActive?: boolean | (() => boolean);
   activeClass?: ClassValue;
 }) {
-  const { title, href, icon } = item;
+  const { title, href, icon, hidden } = item;
+
+  if (hidden) return null;
+
   let _iconLookup: IconLookup;
 
   if (_.isString(icon)) _iconLookup = parse.icon(icon);

@@ -1,7 +1,27 @@
 "use client";
 
-export default function Prose({ content }: { content: string }) {
+import clsx from "clsx";
+import { PropsWithChildren, HTMLAttributes } from "react";
+
+export default function Prose({
+  content,
+  children,
+  as: AsTag = "div",
+  className,
+  ...props
+}: PropsWithChildren<
+  HTMLAttributes<HTMLDivElement> & {
+    content: string;
+    as?: "div" | "section" | "article" | "main";
+  }
+>) {
   return (
-    <div className="prose" dangerouslySetInnerHTML={{ __html: content }} />
+    <AsTag
+      className={clsx("prose", className)}
+      dangerouslySetInnerHTML={{ __html: content }}
+      {...props}
+    >
+      {children}
+    </AsTag>
   );
 }

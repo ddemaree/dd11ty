@@ -47,8 +47,10 @@ export default function HomePage() {
           <div className={styles["intro-image"]}>
             <Image
               src={imgDavidStitch}
-              alt=""
+              alt="A man in a ridiculous hat"
               className="dark:mix-blend-multiply dark:opacity-80"
+              width={200}
+              priority
             />
           </div>
 

@@ -6,6 +6,8 @@ export type WordpressImage = {
   sizes?: string;
 };
 
+type WordpressPostStatus = "draft" | "publish" | "revision";
+
 export type WordpressPost = {
   slug: string;
   title: string;
@@ -13,6 +15,7 @@ export type WordpressPost = {
   content: string;
   excerpt: string;
   featuredImage?: WordpressImage;
+  status: WordpressPostStatus;
 };
 
 export type WordpressResponse = {
@@ -86,7 +89,7 @@ export interface WordpressRestPost extends WordpressRestEntity {
   modified: string;
   modified_gmt: string;
   slug: string;
-  status: "publish" | "draft";
+  status: WordpressPostStatus;
   type: "post";
   link: string;
   title: WordpressRestRenderedField;

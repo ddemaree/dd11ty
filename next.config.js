@@ -63,6 +63,17 @@ const nextConfig = {
         source: "/post/:slug/socialImage.png",
         destination: "/api/post-image/:slug",
       },
+      // $parent_id/$revision_id/$type/$status/$nonce
+      {
+        source: "/_preview/:parentId/:id/:type/:status/:nonce",
+        destination:
+          "/_preview?parent=:parentId&id=:id&type=:type&status=:status&n=:nonce",
+      },
+      {
+        source: "/_preview/:parentId/:id/:type/:status/json",
+        destination:
+          "/_preview/json?parent=:parentId&id=:id&type=:type&status=:status",
+      },
     ];
   },
   webpack: (

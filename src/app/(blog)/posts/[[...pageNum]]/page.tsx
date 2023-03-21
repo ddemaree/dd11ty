@@ -44,9 +44,9 @@ export default async function BlogIndexPage({
         <article key={post.slug} className="@container/post-card">
           <div className="grid grid-cols-1 gap-x-8 grid-flow-row @md/post-card:grid-cols-[1fr_25cqi] items-center desc:col-span-1 desc:col-start-1">
             <div>
-              <Link href={`/post/${post.slug}`} className="post-preview-title">
+              <Link href={`/post/${post.slug}`}>
                 <h1
-                  className="title font-bold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] [font-variation-settings:'wdth'_120] tracking-[-0.03ch] leading-[1.025]"
+                  className="title font-semibold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] leading-[1.025]"
                   dangerouslySetInnerHTML={{ __html: post.title }}
                 />
               </Link>

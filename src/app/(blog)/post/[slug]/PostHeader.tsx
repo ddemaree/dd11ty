@@ -9,10 +9,12 @@ export default function PostHeader({
   title,
   subtitle,
   date,
+  isDraft = false,
 }: {
   title: string;
   subtitle?: string;
   date: string;
+  isDraft?: boolean;
 }) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
@@ -33,7 +35,7 @@ export default function PostHeader({
             dangerouslySetInnerHTML={{ __html: subtitle }}
           />
         )}
-        {date && (
+        {!isDraft && date && (
           <div className="font-semibold uppercase mt-4 text-lg">
             <DisplayDate dateString={date} />
           </div>
