@@ -18,13 +18,15 @@ export default function getAllPosts(
   options = { ...defaultOptions, ...options };
   const { page, limit } = options;
 
-  const params = new URLSearchParams({
-    _embed: "true",
-    page: `${page}`,
-    per_page: `${limit}`,
-  });
-  return client.get(`/wp-json/wp/v2/posts?${params}`).then((res) => {
-    res.posts = res.items.map(wrapPost);
-    return res;
-  });
+  return client
+    .get(`/wp-json/wp/v2/posts`, {
+      _embed: "true",
+      page: `${page}`,
+      per_page: `${limit}`,
+    })
+    .then((res) => {
+      console.log(res);
+      res.posts = res.items.map(wrapPost);
+      return res;
+    });
 }

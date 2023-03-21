@@ -83,7 +83,7 @@ function hastTransformTweet(node: Element) {
     h("a", { href: `https://twitter.com/${twHandle}` }, [
       "\n      ",
       h("img", {
-        src: `https://img.demaree.me/twitter_name/w_300,f_auto,q_auto/${twHandle}.jpg`,
+        src: `https://res.cloudinary.com/demaree/image/twitter_name/w_300,f_auto,q_auto/${twHandle}.jpg`,
         alt: `Twitter profile picture for ${twHandle}`,
         className: "tweet-author-img",
       }),

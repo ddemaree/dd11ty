@@ -95,27 +95,38 @@ module.exports = {
       addVariant("tweets-content", ":is(& .dd-embed-tweet .tweet-content)");
     }),
 
-    plugin(function ({ addBase, theme }) {
-      const fontFamilies = mapToCSSVars("font", theme("fontFamily"));
-      const spacings = mapToCSSVars("spacing", theme("spacing"));
-      const widths = mapToCSSVars("w", theme("width"));
-      const maxWidths = mapToCSSVars("maxw", theme("maxWidth"));
+    plugin(
+      function ({ addBase, theme }) {
+        const fontFamilies = mapToCSSVars("font", theme("fontFamily"));
+        const spacings = mapToCSSVars("spacing", theme("spacing"));
+        const widths = mapToCSSVars("w", theme("width"));
+        const maxWidths = mapToCSSVars("maxw", theme("maxWidth"));
 
-      addBase([
-        {
-          ":root": {
-            colorScheme: "light",
-            "--inset-x": "clamp(1.25rem, 6.25vw, 2rem)",
-            "--width-content": "45rem",
-            "--width-wide": "59rem",
-            ...fontFamilies,
-            ...spacings,
-            ...widths,
-            ...maxWidths,
+        addBase([
+          {
+            ":root": {
+              colorScheme: "light",
+              "--inset-x": "clamp(1.25rem, 6.25vw, 2rem)",
+              // TODO: Deprecate these in favor of w-content and w-wide
+              "--width-content": theme("width.content"),
+              "--width-wide": theme("width.wide"),
+              ...fontFamilies,
+              ...spacings,
+              ...widths,
+              ...maxWidths,
+            },
+          },
+        ]);
+      },
+      {
+        extend: {
+          width: {
+            content: "45rem",
+            wide: "59rem",
           },
         },
-      ]);
-    }),
+      }
+    ),
     plugin(function ({ addVariant }) {
       addVariant("desc", ":where(& *)");
       addVariant("desc-links", ":where(& a)");

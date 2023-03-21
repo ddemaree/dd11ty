@@ -62,7 +62,7 @@ export default function RootLayout({
   const cookieTheme = cookieJar.get(COOKIE_NAME);
 
   return (
-    <html data-theme={colorSchemeHint}>
+    <html data-theme={""}>
       <head>
         <Script strategy="beforeInteractive">{`
         window.themeInfo = {};

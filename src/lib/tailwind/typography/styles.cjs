@@ -1,223 +1,345 @@
-module.exports = (theme) => ({
-  DEFAULT: {
-    css: [
-      {
-        "--dd-layout-padding-block": "1.5rem",
-        "--dd-layout-padding-inline": "clamp(1rem, 5.5vw, 2.5rem)",
-        "--prose-text-size": "clamp(17px, 2.5vw, 20px)",
-        "--prose-indent": "1.5em",
-        "--prose-flow-spacing-xs": "calc(var(--prose-text-size) * 0.375)",
-        "--prose-flow-spacing-sm": "calc(var(--prose-text-size) * 0.75)",
-        "--prose-flow-spacing-normal": "calc(var(--prose-text-size) * 1.5)",
-        "--prose-flow-spacing-big": "calc(var(--prose-text-size) * 3)",
-        "--prose-grid-inset": "minmax(var(--dd-layout-padding-inline), 7rem)",
-        display: "grid",
-        fontSize: "var(--prose-text-size)",
-        lineHeight: 1.6,
-        gridAutoFlow: "row",
-        gridTemplateColumns:
-          "[full-start] 1fr [wide-start] var(--prose-grid-inset) [content-start] min( calc(100% - (var(--dd-layout-padding-inline) * 2)), var(--width-content) ) [content-end] var(--prose-grid-inset) [wide-end] 1fr [full-end]",
-        justifyItems: "start",
-        // paddingBlockStart: "var(--prose-flow-spacing-normal)",
+module.exports = (theme) => {
+  return {
+    DEFAULT: {
+      css: [
+        {
+          // Nesting this with a & wraps the root level .prose class in a :where()
+          "--dd-layout-padding-block": "1.5rem",
+          "--dd-layout-padding-inline": "clamp(1rem, 5.5vw, 2.5rem)",
+          "--prose-grid-inset": "minmax(var(--dd-layout-padding-inline), 4rem)",
+          color: "var(--prose-base-color)",
+          display: "grid",
+          fontSize: "var(--prose-base-font-size)",
+          fontFamily: "var(--prose-base-font-family)",
+          lineHeight: 1.6,
+          gridAutoFlow: "row",
+          gridTemplateColumns:
+            "[full-start] 1fr [wide-start] var(--prose-grid-inset) [content-start] min( calc(100% - (var(--dd-layout-padding-inline) * 2)), var(--width-content) ) [content-end] var(--prose-grid-inset) [wide-end] 1fr [full-end]",
+          justifyItems: "start",
+          rowGap: "var(--prose-flow-spacing-normal)",
 
-        "& > :is(*, p)": {
-          gridColumn: "content",
-        },
+          "& > :is(*, p)": {
+            gridColumn: "content",
+          },
 
-        "& > :is(.alignwide, .size-large)": {
-          gridColumn: "wide",
-        },
+          "& > :is(.alignwide, .size-large)": {
+            gridColumn: "wide",
+          },
 
-        "& > .alignfull": {
-          gridColumn: "full",
-        },
+          "& > .alignfull": {
+            gridColumn: "full",
+          },
 
-        ".wp-block-embed, .dd-embed": {
-          justifySelf: "center",
-        },
+          "& .wp-block-embed, .dd-embed": {
+            justifySelf: "center",
+          },
 
-        ":where(* + *), :where(blockquote * + *)": {
-          marginBlockStart: "var(--prose-flow-spacing-normal)",
-        },
+          /* 
+          === SPACING ===
+          */
 
-        '> * + :where(figure, video, img, picture, hr, pre[class*="language-"]), > :where(figure, video, img, picture, hr, pre[class*="language-"]) + *':
-          {
+          // EXPERIMENTAL - use grid also for spacing
+          "> *": {
+            margin: "unset",
+
+            "&:is(figure, video, img, picture, hr)": {
+              marginBlockStart:
+                "calc(var(--prose-flow-spacing-normal) * 0.875)",
+
+              "&:has(+ :not(figure, video, img, picture, hr))": {
+                marginBlockEnd:
+                  "calc(var(--prose-flow-spacing-normal) * 0.875)",
+              },
+            },
+          },
+
+          "> *:not(figure, hr) + :is(h1, h2, h3, h4, h5, h6)": {
             marginBlockStart: "var(--prose-flow-spacing-big)",
           },
 
-        ":where(img, iframe)": {
-          margin: "unset",
-          width: "100%",
-          height: "auto",
-          maxWidth: "100%",
-        },
+          "> :is(h1, h2, h3, h4, h5, h6):has(+ :not(figure, hr))": {
+            marginBlockEnd:
+              "calc((-1 * var(--prose-flow-spacing-normal)) + 0.625rem)",
+          },
 
-        a: {
-          color: "var(--color-text-active)",
-          textDecoration: "underline",
-          fontWeight: 500,
-          textUnderlineOffset: "0.15em",
-          textDecorationThickness: "1px",
-        },
+          "blockquote * + *": {
+            marginBlockStart: "var(--prose-flow-spacing-normal)",
+          },
 
-        ":where(b, strong)": {
-          fontWeight: 600,
-        },
+          hr: {
+            width: "100%",
+            borderTop: "1px solid currentColor",
+          },
 
-        ":not(a, blockquote, thead th, figcaption) :where(b, strong)": {
-          color: "var(--color-text-high-emphasis)",
-        },
+          ":where(img, iframe)": {
+            margin: "unset",
+            width: "100%",
+            height: "auto",
+            maxWidth: "100%",
+          },
 
-        ":where(h1, h2, h3, h4, h5, h6)": {
-          fontFamily: "var(--font-sans)",
-          color: "var(--color-text-high-emphasis)",
-          fontWeight: 600,
-          letterSpacing: "-0.01ch",
-          lineHeight: 1.1,
-        },
+          a: {
+            color: "var(--prose-links-color)",
+            textDecoration: "underline",
+            fontWeight: "var(--prose-links-font-weight, 500)",
+            textUnderlineOffset: "0.15em",
+            textDecorationThickness: "1px",
+          },
 
-        ":where(* + :where(h1, h2, h3, h4, h5, h6))": {
-          marginBlockStart: "var(--prose-flow-spacing-big)",
-        },
+          ":where(b, strong)": {
+            fontWeight: "var(--prose-strong-font-weight, 600)",
+          },
 
-        h1: { fontSize: "2em" },
-        h2: { fontSize: "1.75em" },
-        h3: { fontSize: "1.5em" },
+          ":not(a, blockquote, thead th, figcaption) :is(b, strong)": {
+            color: "var(--prose-strong-color)",
+          },
 
-        ":is(ol, ul)": {
-          paddingInlineStart: "var(--prose-indent)",
+          ":is(h1, h2, h3, h4, h5, h6)": {
+            fontFamily: "var(--prose-headings-font-family)",
+            color: "var(--prose-headings-color)",
+            fontWeight: "var(--prose-headings-font-weight, 600)",
+            letterSpacing: "-0.01ch",
+            lineHeight: 1.1,
+          },
+
+          h1: { fontSize: "2em" },
+          h2: { fontSize: "1.75em" },
+          h3: { fontSize: "1.5em" },
 
           ":is(ol, ul)": {
-            marginBlock: "var(--prose-flow-spacing-xs) 0",
+            paddingInlineStart: "var(--prose-indent)",
+
+            ":is(ol, ul)": {
+              marginBlock: "var(--prose-flow-spacing-xs) 0",
+            },
+
+            "& > li": {
+              paddingInlineStart: "var(--prose-indent-nested)",
+              marginBlock: "var(--prose-flow-spacing-xs)",
+            },
           },
 
-          "& > li": {
-            paddingInlineStart: "0.375em",
-            marginBlock: "var(--prose-flow-spacing-xs)",
+          "> :is(ol, ul) > li p": {
+            marginBlock: "0.75em",
           },
-        },
 
-        "> :is(ol, ul) > li p": {
-          marginBlock: "0.75em",
-        },
+          ol: {
+            listStyleType: "decimal",
 
-        ol: {
-          listStyleType: "decimal",
-
-          "> li::marker": {
-            fontFamily: "var(--font-sans)",
-            fontWeight: 600,
-            fontSize: "0.875em",
+            "> li::marker": {
+              fontFamily: "var(--prose-lists-marker-font-family)",
+              fontWeight: 600,
+              fontSize: "0.875em",
+            },
           },
-        },
 
-        ul: {
-          listStyleType: "disc",
-        },
-
-        hr: {
-          borderColor: "var(--color-hairline)",
-          borderTopWidth: "1px",
-          "+ *": {
-            marginBlockStart: 0,
+          ul: {
+            listStyleType: "disc",
           },
-        },
 
-        blockquote: {
-          "--prose-quote-border-width": "0.20rem",
-          borderInlineStartColor: "var(--color-hairline)",
-          borderInlineStartStyle: "solid",
-          borderInlineStartWidth: "var(--prose-quote-border-width)",
-          color: "var(--color-text-low-emphasis)",
-          fontFamily: "var(--font-sans)",
-          paddingInlineStart:
-            "calc(var(--prose-indent) - var(--prose-quote-border-width) - 0.5rem)",
-          paddingInlineEnd: "var(--prose-indent)",
-          marginInlineStart: "0.5rem",
-        },
-
-        figure: {
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-
-          "> *": { margin: 0 },
-
-          'iframe[src*="youtube.com"], iframe[src*="cloudinary.com"]': {
-            aspectRatio: "16 / 9",
-            height: "auto",
+          hr: {
+            borderColor: "currentColor",
+            borderTopWidth: "2px",
+            color: "var(--prose-dividers-color)",
+            maxWidth: "calc(var(--w-content) * 0.7)",
+            justifySelf: "center",
             width: "100%",
           },
-        },
 
-        figcaption: {
-          color: "var(--color-text-low-emphasis)",
-          fontFamily: "var(--font-sans)",
-          fontSize: "0.875em",
-          lineHeight: 1.375,
-          marginBlockStart: "1em",
-          marginBlockEnd: 0,
-          maxWidth: "60ch",
-          textAlign: "center",
-          paddingInline: "var(--dd-layout-padding-inline)",
-        },
-
-        "pre, code": {
-          fontFamily: "var(--font-mono)",
-        },
-
-        "*:not(a, blockquote, thead th, figcaption) code": {
-          color: "var(--color-text-code)",
-        },
-
-        "*:not(pre) code": {
-          fontWeight: 500,
-        },
-
-        pre: {
-          color: "var(--color-text-code)",
-          fontFamily: "var(--font-mono)",
-          fontWeight: 400,
-          overflowX: "auto",
-
-          code: {
-            backgroundColor: "transparent",
-            color: "inherit",
-            fontWeight: "inherit",
-            fontSize: "inherit",
+          blockquote: {
+            borderInlineStartColor: "var(--prose-quotes-border-color)",
+            borderInlineStartStyle: "solid",
+            borderInlineStartWidth: "var(--prose-quotes-border-width)",
+            color: "var(--prose-quotes-color)",
+            fontFamily: "var(--prose-quotes-font-family)",
+            paddingInlineStart:
+              "calc(var(--prose-indent) - var(--prose-quotes-border-width) - 0.5rem)",
+            paddingInlineEnd: "var(--prose-indent)",
+            marginInlineStart: "0.5rem",
           },
-        },
 
-        // WP specific hacks
-
-        ".wp-block-embed__wrapper": {
-          display: "contents",
-        },
-
-        'figure[class*="gallery"]': {
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: "var(--prose-flow-spacing-sm)",
-          alignItems: "unset",
-
-          "figure:has(img)": {
+          figure: {
+            alignItems: "center",
             display: "flex",
-            flexDirection: "row",
-            flexGrow: 1,
-            margin: "unset",
-            width: "calc(50% - (var(--prose-flow-spacing-sm) / 2))",
+            flexDirection: "column",
+            width: "100%",
 
-            img: {
-              flex: "1 0 0%",
-              height: "100%",
-              objectFit: "cover",
+            "> *": { margin: 0 },
+
+            'iframe[src*="youtube.com"], iframe[src*="cloudinary.com"]': {
+              aspectRatio: "16 / 9",
+              height: "auto",
               width: "100%",
             },
           },
+
+          figcaption: {
+            color: "var(--prose-captions-color)",
+            fontFamily: "var(--prose-captions-font-family)",
+            fontSize: "0.875em",
+            lineHeight: 1.375,
+            marginBlockStart: "1em",
+            marginBlockEnd: 0,
+            maxWidth: "60ch",
+            textAlign: "center",
+            paddingInline: "var(--dd-layout-padding-inline)",
+
+            "*": {
+              color: "inherit",
+            },
+          },
+
+          "pre, code": {
+            fontFamily: "var(--prose-code-font-family)",
+          },
+
+          "*:not(a, blockquote, thead th, figcaption) code": {
+            color: "var(--prose-code-color)",
+          },
+
+          "*:not(pre) code": {
+            fontWeight: "var(--prose-inline-code-font-weight, 400)",
+          },
+
+          pre: {
+            color: "var(--prose-code-color)",
+            fontFamily: "var(--prose-code-font-family)",
+            fontWeight: 400,
+            overflowX: "auto",
+
+            code: {
+              backgroundColor: "transparent",
+              color: "inherit",
+              fontWeight: "inherit",
+              fontSize: "inherit",
+            },
+          },
+
+          // Top level code blocks
+          "> pre:not([class~='language']) > code": {
+            // backgroundColor: `var(--prose-code-background-color, ${theme(
+            //   "colors.neutral.100"
+            // )})`,
+            display: "block",
+            fontSize: "0.875em",
+            // padding: "1em",
+            // borderRadius: theme("borderRadius.md"),
+          },
+
+          // WP specific hacks
+
+          ".wp-block-embed__wrapper": {
+            display: "contents",
+          },
+
+          'figure[class*="gallery"]': {
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: "var(--prose-flow-spacing-sm)",
+            alignItems: "unset",
+
+            "figure:has(img)": {
+              display: "flex",
+              flexDirection: "row",
+              flexGrow: 1,
+              margin: "unset",
+              width: "calc(50% - (var(--prose-flow-spacing-sm) / 2))",
+
+              img: {
+                flex: "1 0 0%",
+                height: "100%",
+                objectFit: "cover",
+                width: "100%",
+              },
+            },
+          },
+
+          // Custom tweet markup
+          ".dd-embed-tweet": {
+            backgroundColor: "var(--tweets-background-color)",
+            borderColor: `var(--tweets-border-color, currentColor)`,
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderRadius: `var(--tweets-border-radius, ${
+              theme("borderRadius.md") || "0.5em"
+            })`,
+            color: "var(--tweets-content-color)",
+            columnGap: `var(--tweets-column-gap, 1rem)`,
+            display: "grid",
+            fontFamily: `var(--tweets-font-family, ${
+              theme("fontFamily.sans") || "system-ui"
+            })`,
+            gridAutoFlow: "row",
+            gridTemplateColumns: `var(--tweets-img-size, ${theme(
+              "spacing.16"
+            )} 1fr)`,
+            gridTemplateRows: `var(--tweets-img-size, auto 1fr)`,
+            maxWidth: "var(--tweets-max-width, 580px)",
+            lineHeight: 1.4,
+            padding: "var(--tweets-padding, 1em)",
+            rowGap: `var(--tweets-row-gap, 1rem)`,
+
+            "*": {
+              margin: "unset",
+            },
+
+            "> * ": {
+              gridColumn: "2 / -1",
+              width: "100%",
+            },
+
+            "& .tweet-header, & .tweet-header a": {
+              display: "contents",
+            },
+
+            ".tweet-header": {
+              lineHeight: 1.2,
+            },
+
+            ".tweet-author-img": {
+              clipPath: "url(#squircleClip)",
+              alignSelf: "start",
+              gridColumn: "1/2",
+              gridRow: "1/-1",
+              height: `var(--tweets-img-size, ${theme("spacing.16")})`,
+              width: `var(--tweets-img-size, ${theme("spacing.16")})`,
+            },
+
+            ".tweet-author-handle": {
+              color: "var(--tweets-handle-color)",
+              fontSize: "0.8em",
+              marginBlockStart: "0.125em",
+            },
+
+            ".tweet-author-name": {
+              color: "var(--tweets-name-color)",
+              fontWeight: 600,
+            },
+
+            ".tweet-content": {
+              color: "var(--tweets-content-color)",
+
+              a: {
+                color: "var(--tweets-links-color, inherit)",
+              },
+            },
+
+            ".tweet-footer": {
+              color: "var(--tweets-footer-color)",
+              fontSize: "var(--tweets-footer-font-size, 0.75em)",
+              marginBlockStart: theme("spacing.4"),
+              opacity: "0.6",
+            },
+
+            ".tweet-date": {
+              color: "var(--tweets-date-color)",
+              textDecoration: "none",
+              textTransform: "uppercase",
+            },
+          },
         },
-      },
-    ],
-  },
-});
+      ],
+    },
+  };
+};
