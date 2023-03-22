@@ -6,7 +6,7 @@ export type WordpressImage = {
   sizes?: string;
 };
 
-type WordpressPostStatus = "draft" | "publish" | "revision";
+export type WordpressPostStatus = "draft" | "publish" | "revision";
 
 export type WordpressPost = {
   slug: string;
@@ -107,3 +107,34 @@ export interface WordpressRestPost extends WordpressRestEntity {
     "wp:term"?: WordpressRestTerm[][];
   };
 }
+
+export type WordpressRestClientOptions = {
+  baseUrl?: string;
+  basePath?: string;
+};
+
+export interface WordpressRestError {
+  code: string;
+  message: string;
+  data: { status: number };
+}
+
+export interface WordpressRestResponse<Type = WordpressRestPost> {
+  items: Type[];
+  error?: WordpressRestError;
+  posts?: WordpressPost[];
+  totalItems: number;
+  totalPages: number;
+}
+
+export type HttpMethod = "GET" | "POST";
+
+export type Jsonable =
+  | boolean
+  | number
+  | string
+  | null
+  | { [key: string]: Jsonable }
+  | Array<Jsonable>;
+export type ParamsInput = Record<string, string>;
+export type BodyInput = Jsonable;

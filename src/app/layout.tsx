@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en-US" data-theme={""}>
       <head>
-        <Script strategy="beforeInteractive">{`
+        <Script id="dd-darkmode-init" strategy="beforeInteractive">{`
         window.themeInfo = {};
 
         const COOKIE_NAME = "${COOKIE_NAME}";

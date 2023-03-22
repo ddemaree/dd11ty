@@ -1,6 +1,7 @@
 import type { WordpressRestPost } from "./types";
 import client from "./client";
 import wrapPost from "./wrapPost";
+import WordpressError from "./error";
 
 export type WordpressAllPostsOptions = {
   page?: number;
@@ -25,6 +26,10 @@ export default function getAllPosts(
       per_page: `${limit}`,
     })
     .then((res) => {
+      if (!res.items || !Array.isArray(res.items)) {
+        console.log(res);
+        throw new WordpressError("Type error???");
+      }
       res.posts = res.items.map(wrapPost);
       return res;
     });

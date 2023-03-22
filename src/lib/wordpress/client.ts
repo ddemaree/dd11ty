@@ -1,35 +1,13 @@
-import { WordpressPost, WordpressRestPost } from "./types";
-
-type HttpMethod = "GET" | "POST";
-
-type Jsonable =
-  | boolean
-  | number
-  | string
-  | null
-  | { [key: string]: Jsonable }
-  | Array<Jsonable>;
-type ParamsInput = Record<string, string>;
-type BodyInput = Jsonable;
-
-type WordpressRestClientOptions = {
-  baseUrl?: string;
-  basePath?: string;
-};
-
-interface WordpressRestError {
-  code: string;
-  message: string;
-  data: { status: number };
-}
-
-interface WordpressRestResponse<Type = WordpressRestPost> {
-  items: Type[];
-  error?: WordpressRestError;
-  posts?: WordpressPost[];
-  totalItems: number;
-  totalPages: number;
-}
+import WordpressError from "./error";
+import type {
+  BodyInput,
+  HttpMethod,
+  ParamsInput,
+  WordpressRestClientOptions,
+  WordpressRestResponse,
+  WordpressPost,
+  WordpressRestPost,
+} from "./types";
 
 export class WordpressRestClient {
   private _baseUrl: string;
@@ -90,10 +68,18 @@ export class WordpressRestClient {
       const totalPages = Number(r.headers.get("X-WP-TotalPages"));
 
       const response: WordpressRestResponse = {
-        items: _data,
+        items: [],
         totalItems,
         totalPages,
       };
+
+      if (_data.code && _data.message) {
+        // Handle errors
+        // Add a default status code because sometimes WordPress omits it
+        const statusCode = r.status > 200 ? r.status : 567;
+        console.log(process.env);
+        throw new WordpressError({ data: { status: statusCode }, ..._data });
+      }
 
       if (Array.isArray(_data)) {
         response.items = _data;
@@ -101,9 +87,6 @@ export class WordpressRestClient {
         response.items = [_data];
         response.totalItems = 1;
         response.totalPages = 1;
-      } else if (_data.code && _data.message && _data.data) {
-        // Handle errors
-        response.error = _data;
       }
 
       return response;

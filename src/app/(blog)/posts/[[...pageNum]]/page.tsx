@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import clsx from "clsx";
 import { getAllPosts, WordpressPost } from "@lib/wordpress";
 import DisplayDate from "@components/DisplayDate";
@@ -83,8 +84,9 @@ export default async function BlogIndexPage({
             {post.featuredImage && (
               <figure className="w-full order-first @md:order-last @md:w-[clamp(180px,25cqi,216px)] @md/post-card:col-start-2 @md/post-card:row-start-1 @md/post-card:row-span-full">
                 <a href={`/post/${post.slug}`}>
-                  <img
+                  <Image
                     src={post.featuredImage.sourceUrl}
+                    alt="Image for post"
                     className="bg-gray-400 w-full aspect-video @md:aspect-square @2xl:aspect-[5/4] object-cover object-top rounded-lg border border-gray-300 shadow"
                   />
                 </a>
