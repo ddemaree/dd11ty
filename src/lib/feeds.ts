@@ -1,6 +1,7 @@
 import { Feed } from "feed";
 import _ from "lodash";
 import { DateTime } from "luxon";
+import { blogPostUrl, siteUrl } from "./urls";
 import { getAllPosts } from "./wordpress";
 
 export async function getFeed() {
@@ -12,7 +13,7 @@ export async function getFeed() {
 
   const rssItems = _items
     .map((post) => {
-      const url = `https://demaree.me/post/${post.slug}`;
+      const url = blogPostUrl(post.slug, true);
       const date = DateTime.fromISO(post.date).toJSDate();
       const { title, excerpt: description } = post;
 
@@ -34,8 +35,8 @@ export async function getFeed() {
     copyright: `©${new Date().getFullYear()} David Demaree, all rights reserved`,
     title: "David Demaree's blog",
     description: "Notes on tech, business, and culture",
-    id: "http://demaree.me/",
-    link: "http://demaree.me/",
+    id: siteUrl("/", true),
+    link: siteUrl("/", true),
     language: "en", // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
     // image: "http://example.com/image.png",
     // favicon: "http://example.com/favicon.ico",
@@ -43,8 +44,7 @@ export async function getFeed() {
     updated: maxDate, // optional, default = today
     generator: "awesome", // optional, default = 'Feed for Node.js'
     feedLinks: {
-      // json: "https://demaree.me/feed/json",
-      rss: "https://demaree.me/feed",
+      rss: siteUrl("/feed"),
     },
     author: {
       name: "David Demaree",

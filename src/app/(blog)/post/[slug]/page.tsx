@@ -6,6 +6,7 @@ import { wpToReact } from "@lib/wordpress/transformGutenberg";
 import PostHeader from "./PostHeader";
 
 import { decode } from "html-entities";
+import { blogPostUrl } from "@lib/urls";
 
 type SinglePostPageProps = {
   params: { slug: string };
@@ -21,6 +22,10 @@ export async function generateMetadata({
 
   return {
     title: decode(title),
+    description: decode(post.excerpt),
+    alternates: {
+      canonical: blogPostUrl(slug, true),
+    },
   };
 }
 

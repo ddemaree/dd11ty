@@ -85,7 +85,6 @@ export class WordpressRestClient {
       next: { revalidate: 1 },
     }).then(async (r) => {
       let _data = await r.json();
-      // console.log(_data);
 
       const totalItems = Number(r.headers.get("X-WP-Total"));
       const totalPages = Number(r.headers.get("X-WP-TotalPages"));

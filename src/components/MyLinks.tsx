@@ -36,9 +36,23 @@ function MyLinksItem({
   );
 }
 
-export default function MyLinks() {
+const myVariants = {
+  default: "text-center flex flex-wrap justify-center gap-2",
+  footer: "text-center flex flex-wrap justify-center gap-2",
+  homepage: "flex flex-wrap gap-x-3 gap-y-2 text-2xl",
+};
+
+export default function MyLinks({
+  className,
+  variant = "default",
+}: {
+  className?: ClassValue;
+  variant?: "default" | "footer" | "homepage";
+}) {
+  const classValue = clsx(myVariants[variant], className);
+
   return (
-    <div className="text-center flex flex-wrap justify-center gap-2">
+    <div className={classValue}>
       <ul className="contents">
         <MyLinksItem
           title="david@demaree.me"
@@ -53,7 +67,7 @@ export default function MyLinks() {
         />
         <MyLinksItem
           title="Mastodon"
-          href="https://me.dm/ddemaree"
+          href="https://me.dm/@ddemaree"
           icon={faMastodon}
         />
         <MyLinksItem

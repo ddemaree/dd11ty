@@ -25,7 +25,6 @@ export default function getAllPosts(
       per_page: `${limit}`,
     })
     .then((res) => {
-      console.log(res);
       res.posts = res.items.map(wrapPost);
       return res;
     });

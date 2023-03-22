@@ -1,3 +1,7 @@
-I'm **David Demaree**, a web designer, developer, and product leader.
+import clsx from 'clsx';
 
-Currently I'm leading designer experience at [Webflow](https://webflow.com/), building a new generation of visual pro tools for web developers. Before this I worked at Stripe, Google, Adobe, and Typekit.
+export default function Layout({children, className = "text-xl [&_p]:max-w-[480px] [&_p:first-of-type]:text-[1.3em] [&_p:first-of-type]:leading-tight flex flex-col gap-3"}) {
+  const classValue = clsx(className);
+  return <div className={classValue}>{children}</div>
+}
+

@@ -2,7 +2,7 @@ import MyLinks from "@components/MyLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/sharp-solid-svg-icons";
 
-import ShortBio from "@components/ShortBioText.mdx";
+import ShortBio from "@components/ShortBio";
 import Image from "next/image";
 
 export default function MainFooter({
@@ -11,9 +11,9 @@ export default function MainFooter({
   showLinks?: boolean;
 }) {
   return (
-    <footer className="px-inset py-8 min-h-[12rem] flex flex-col gap-4 items-center justify-end text-sm">
-      <div className=" @container [&>*]:w-full">
-        <figure className=" [clip-path:url(#squircleClip)] w-40 h-40">
+    <footer className="@container px-inset py-10 min-h-[12rem] flex flex-col gap-6 items-center justify-end text-sm">
+      <div className="grid grid-cols-1 @lg:grid-cols-[auto_1fr] grid-flow-row justify-items-center text-center @lg:text-left gap-3 gap-x-6">
+        <figure className="[clip-path:url(#squircleClip)] w-40 h-40">
           <Image
             src="https://res.cloudinary.com/demaree/image/twitter_name/ddemaree.jpg"
             width="120"
@@ -22,11 +22,11 @@ export default function MainFooter({
             className="w-full h-full"
           />
         </figure>
-        <div className="text-xl [&_p]:max-w-[44ch] flex flex-col gap-4">
-          <ShortBio />
-        </div>
+
+        <ShortBio />
       </div>
-      {showLinks && <MyLinks />}
+
+      {showLinks && <MyLinks className="text-xl max-w-[520px] py-4" />}
 
       <div className="text-center">
         <p className="m-0">
@@ -37,19 +37,6 @@ export default function MainFooter({
           &ldquo;Have courage, and be kind.&rdquo;
         </p>
       </div>
-
-      <svg width="10" height="10" viewBox="0 0 10 10">
-        <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
-          <path
-            fill="red"
-            stroke="none"
-            d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
-          />
-        </clipPath>
-        <clipPath id="squircleBoxClip" clipPathUnits="objectBoundingBox">
-          <circle cx="5" cy="5" r="5" fill="red" />
-        </clipPath>
-      </svg>
     </footer>
   );
 }

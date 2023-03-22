@@ -12,8 +12,6 @@ export default async function getPreviewPost(
     uri += `/revisions/${revision}`;
   }
 
-  console.log(uri);
-
   return client
     .get(uri, {
       _embed: "true",

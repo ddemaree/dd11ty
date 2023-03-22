@@ -1,46 +1,33 @@
 import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
-
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
-
-import "../styles/blog.css";
-
-import localFont from "next/font/local";
-import { Inter, Source_Serif_4 } from "next/font/google";
-import MainNavigation from "./MainNavigation";
-import MainFooter from "./MainFooter";
-import clsx from "clsx";
 import Script from "next/script";
 
-const interFont = Inter({
-  variable: "--font--inter",
-  subsets: ["latin"],
-});
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
-const sourceSerifFont = Source_Serif_4({
-  variable: "--font--source-serif",
-  subsets: ["latin"],
-});
-
-const monaSans = localFont({
-  src: "../assets/fonts/Mona-Sans.woff2",
-  variable: "--font--mona-sans",
-  weight: "200 900",
-  fallback: [
-    'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-  ],
-});
+import MainNavigation from "./MainNavigation";
+import "../styles/blog.css";
 
 export const metadata: Metadata = {
   title: {
     default: "David Demaree's website",
     template: "%s | David Demaree",
   },
-  description: "A good man, and thorough",
+  description:
+    "This is my personal website. I'm a web designer, programmer, and tech-industry product leader. I like LEGOs, cameras, keyboards, and great coffee.",
   icons: {
     icon: "/site/icon.svg",
+  },
+  openGraph: {
+    siteName: "David Demaree's website",
+    images: {
+      url: `/api/og-image`,
+    },
+  },
+  twitter: {
+    description:
+      "This is my personal website. I'm a web designer, programmer, and tech-industry product leader. I like LEGOs, cameras, keyboards, and great coffee.",
   },
   alternates: {
     types: {
@@ -62,7 +49,7 @@ export default function RootLayout({
   const cookieTheme = cookieJar.get(COOKIE_NAME);
 
   return (
-    <html data-theme={""}>
+    <html lang="en-US" data-theme={""}>
       <head>
         <Script strategy="beforeInteractive">{`
         window.themeInfo = {};
@@ -96,11 +83,22 @@ export default function RootLayout({
         `}</Script>
       </head>
       <body className="bg-stone-50 dark:bg-[#121212] text-stone-700 dark:text-stone-300">
-        <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto]">
+        <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-screen">
           <MainNavigation />
-          <main>{children}</main>
-          <MainFooter />
+          {children}
         </div>
+        <svg width="10" height="10" viewBox="0 0 10 10">
+          <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
+            <path
+              fill="red"
+              stroke="none"
+              d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
+            />
+          </clipPath>
+          <clipPath id="squircleBoxClip" clipPathUnits="objectBoundingBox">
+            <circle cx="5" cy="5" r="5" fill="red" />
+          </clipPath>
+        </svg>
       </body>
     </html>
   );

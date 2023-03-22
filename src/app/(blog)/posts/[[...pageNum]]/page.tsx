@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
@@ -18,6 +19,25 @@ function paginationClasses(
     addlClasses,
     "inline-flex px-[0.5em] py-[0.5em] leading-none bg-slate-200 rounded-lg",
   ]);
+}
+
+type BlogIndexPageProps = {
+  params: { pageNum: string | number };
+};
+
+export function generateMetadata({
+  params: { pageNum },
+}: BlogIndexPageProps): Metadata {
+  return {
+    title: pageNum === 1 ? "Posts" : `Page ${pageNum}`,
+    description:
+      "Notes from the desk of David Demaree. Writing about tech, business, digital culture, and whatever else crosses my mind.",
+    openGraph: {
+      images: {
+        url: `http://localhost:3000/api/og-image`,
+      },
+    },
+  };
 }
 
 export default async function BlogIndexPage({

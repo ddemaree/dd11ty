@@ -23,7 +23,6 @@ export default async function PreviewPost({
   let post: WordpressPost | undefined;
 
   if (_status === "revision") {
-    console.log({ parent, id, _status });
     post = await getPreviewPost(parent, id, nonce);
   } else {
     post = await getPreviewPost(id, 0, "");

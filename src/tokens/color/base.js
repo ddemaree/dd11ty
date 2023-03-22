@@ -1,8 +1,5 @@
 const chroma = require("chroma-js");
 
-// const gray = chroma([38, 38, 38]);
-// console.log(gray.luminance());
-
 const mainRed = chroma([220, 38, 38]);
 const mainGray = chroma([214, 211, 209]);
 const mainBlue = chroma([2, 132, 199]);
