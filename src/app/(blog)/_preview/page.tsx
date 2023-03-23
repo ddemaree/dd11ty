@@ -1,3 +1,5 @@
+import FooterOrnament from "@components/FooterOrnament";
+import { HStack, VStack } from "@components/Layout";
 import Prose from "@components/Prose";
 import { getPreviewPost, type WordpressPost } from "@lib/wordpress";
 import transformGutenberg from "@lib/wordpress/transformGutenberg";
@@ -12,6 +14,7 @@ interface PreviewSearchParams {
   type: string;
   status: string;
   n: string;
+  h?: string;
 }
 
 export default async function PreviewPost({
@@ -19,13 +22,20 @@ export default async function PreviewPost({
 }: {
   searchParams: PreviewSearchParams;
 }) {
-  const { parent, id, type, status: _status, n: nonce } = searchParams;
+  const {
+    parent,
+    id,
+    type,
+    status: _status,
+    n: nonce,
+    h: hostname,
+  } = searchParams;
   let post: WordpressPost | undefined;
 
   if (_status === "revision") {
-    post = await getPreviewPost(parent, id, nonce);
+    post = await getPreviewPost(parent, id, hostname);
   } else {
-    post = await getPreviewPost(id, 0, "");
+    post = await getPreviewPost(id, 0, hostname);
   }
 
   if (!post) throw new Error("POOP");
@@ -43,12 +53,13 @@ export default async function PreviewPost({
   if (!content) throw new Error("No content returned");
 
   return (
-    <article>
+    <VStack as="article">
       <PostHeader
         isDraft={status !== "publish"}
         {...{ title, date, subtitle }}
       />
       <Prose content={content.toString("utf-8")} />
-    </article>
+      <FooterOrnament />
+    </VStack>
   );
 }

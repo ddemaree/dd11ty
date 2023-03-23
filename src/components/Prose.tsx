@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { PropsWithChildren, HTMLAttributes } from "react";
+import { PropsWithChildren, HTMLAttributes, Fragment } from "react";
 
 export default function Prose({
   content,

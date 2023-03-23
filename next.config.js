@@ -32,6 +32,12 @@ const nextConfig = {
         port: "",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "http",
+        hostname: "ddwp.test",
+        port: "",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
   async redirects() {

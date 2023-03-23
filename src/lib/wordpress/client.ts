@@ -11,10 +11,18 @@ import type {
 
 export class WordpressRestClient {
   private _baseUrl: string;
+  private _initialBaseUrl: string;
 
   constructor(opts: WordpressRestClientOptions = {}) {
     this._baseUrl =
       opts.baseUrl || process.env.WP_URL || "https://wp2.demaree.me";
+    this._initialBaseUrl = this._baseUrl;
+  }
+
+  baseUrl(url?: string) {
+    console.log("Setting base URL to %s", url);
+    if (url) this._baseUrl = url;
+    return this;
   }
 
   get(pathname: string, params: ParamsInput = {}) {
@@ -77,7 +85,6 @@ export class WordpressRestClient {
         // Handle errors
         // Add a default status code because sometimes WordPress omits it
         const statusCode = r.status > 200 ? r.status : 567;
-        console.log(process.env);
         throw new WordpressError({ data: { status: statusCode }, ..._data });
       }
 

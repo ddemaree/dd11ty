@@ -1,0 +1,40 @@
+.endOrnament {
+  --end-ornament-pattern-color: #ddd;
+  --end-ornament-height: 12px;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-block-start: var(--prose-flow-spacing-big, 3rem);
+  margin-block-end: 2rem;
+  font-size: 1.75rem;
+  line-height: 1;
+  position: relative;
+}
+
+.endOrnament:before,
+.endOrnament:after {
+  position: absolute;
+  display: block;
+  content: " ";
+  height: var(--end-ornament-height);
+  top: calc(50% - (var(--end-ornament-height) / 2));
+  width: 44%;
+  background-image: linear-gradient(
+    32deg,
+    var(--end-ornament-pattern-color),
+    var(--end-ornament-pattern-color) 50%,
+    transparent 51%,
+    transparent
+  );
+  background-size: 2% calc(var(--end-ornament-height) / 3);
+}
+
+.endOrnament:before {
+  left: 0;
+}
+
+.endOrnament:after {
+  right: 0;
+}

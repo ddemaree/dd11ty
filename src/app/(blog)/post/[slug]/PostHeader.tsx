@@ -1,6 +1,7 @@
 "use client";
 
 import DisplayDate from "@components/DisplayDate";
+import { VStack } from "@components/Layout";
 import useTextBalancer from "@lib/hooks/useTextBalancer";
 import { useRef } from "react";
 import "./PostHeader.scss";
@@ -21,8 +22,8 @@ export default function PostHeader({
   useTextBalancer(titleRef, subtitleRef);
 
   return (
-    <header className="post-header py-8 md:py-10">
-      <div className="post-header-inner @container/post-header w-inset max-w-content mx-auto text-center flex flex-col items-center">
+    <header className="post-header w-full max-w-content px-inset py-8 md:py-10">
+      <VStack className="post-header-inner @container/post-header w-inset max-w-content mx-auto text-center">
         <h1
           ref={titleRef}
           className="font-medium text-stone-900 dark:text-white text-5xl leading-none font-serif-headline"
@@ -40,7 +41,7 @@ export default function PostHeader({
             <DisplayDate dateString={date} />
           </div>
         )}
-      </div>
+      </VStack>
     </header>
   );
 }
