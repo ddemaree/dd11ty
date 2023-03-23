@@ -3,11 +3,29 @@ import "../styles/blog.css";
 import baseTokens from "../tokens/color/base";
 import chroma from "chroma-js";
 import clsx from "clsx";
-import { useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faCheckCircle } from "@fortawesome/sharp-solid-svg-icons";
 
 const { base: baseColors } = baseTokens.color;
+
+const CONTRAST_TESTS = [
+  { label: "AA Large", threshold: 3 },
+  { label: "AA Normal", threshold: 4.5 },
+  { label: "AAA Large", threshold: 4.5 },
+  { label: "AAA Normal", threshold: 7 },
+];
+
+const contrastModes = ["white", "black"] as const;
+type ContrastMode = typeof contrastModes[number];
+
+const previewModes = ["swatches", "specimens"] as const;
+type PreviewMode = typeof previewModes[number];
+
+const ThemeContext = createContext<{
+  contrastMode: ContrastMode;
+  previewMode: PreviewMode;
+}>({ contrastMode: "white", previewMode: "swatches" });
 
 function tokensToGroups(tokens = baseColors) {
   return _.map(tokens, (colors, family) => {
@@ -36,36 +54,9 @@ function blackContrast(color: string | chroma.Color) {
   return textLum / blackLum;
 }
 
-const CONTRAST_TESTS = [
-  { label: "AA Large", threshold: 3 },
-  { label: "AA Normal", threshold: 4.5 },
-  { label: "AAA Large", threshold: 4.5 },
-  { label: "AAA Normal", threshold: 7 },
-];
-
 export default function TestPage() {
-  const [contrastMode, setContrastMode] = useState("black");
-
-  const Pass = () => (
-    <div
-      className={clsx(
-        "inline-flex items-center gap-1 px-1 rounded-full",
-        contrastMode === "white"
-          ? "text-black bg-green-400"
-          : "text-white bg-green-700"
-      )}
-    >
-      <FontAwesomeIcon icon={faCheckCircle} size="sm" />
-      <span>PASS</span>
-    </div>
-  );
-
-  const Fail = () => (
-    <div>
-      <FontAwesomeIcon icon={faClose} size="sm" />
-      <span>FAIL</span>
-    </div>
-  );
+  const [contrastMode, setContrastMode] = useState<ContrastMode>("black");
+  const [previewMode, setPreviewMode] = useState<PreviewMode>("swatches");
 
   const wrapperClass = clsx(
     "font-['soehne-web'] p-6 flex flex-col gap-6 min-h-screen",
@@ -78,7 +69,114 @@ export default function TestPage() {
 
   return (
     <div className={wrapperClass}>
-      <button onClick={(e) => toggleMode()}>Switch mode</button>
+      <form className="flex gap-6">
+        <div className="flex gap-3">
+          {contrastModes.map((mode) => (
+            <label key={mode} className="flex items-center gap-1">
+              <input
+                type="radio"
+                value={mode}
+                checked={contrastMode === mode}
+                onChange={(e) => setContrastMode(mode)}
+                name="contrastMode"
+              />
+              <span>{mode}</span>
+            </label>
+          ))}
+        </div>
+        <div className="flex gap-3">
+          {previewModes.map((mode) => (
+            <label key={mode} className="flex items-center gap-1">
+              <input
+                type="radio"
+                value={mode}
+                checked={previewMode === mode}
+                onChange={(e) => setPreviewMode(mode)}
+                name="previewMode"
+              />
+              <span>{mode}</span>
+            </label>
+          ))}
+        </div>
+      </form>
+
+      <ThemeContext.Provider value={{ contrastMode, previewMode }}>
+        {previewMode === "swatches" && <SwatchPreview />}
+        {previewMode === "specimens" && <SpecimenPreview />}
+      </ThemeContext.Provider>
+    </div>
+  );
+}
+
+const ContrastChip = ({
+  children,
+  color,
+}: PropsWithChildren<{ color: "green" | "red" }>) => {
+  const { contrastMode } = useContext(ThemeContext);
+
+  const classValue = clsx(
+    "inline-flex items-center gap-1 px-1 rounded-full",
+    contrastMode === "white"
+      ? `text-black bg-${color}-400`
+      : `text-white bg-${color}-700`
+  );
+
+  return <div className={classValue}>{children}</div>;
+};
+
+const Pass = () => (
+  <ContrastChip color="green">
+    <FontAwesomeIcon icon={faCheckCircle} size="sm" />
+    <span>PASS</span>
+  </ContrastChip>
+);
+
+const Fail = () => (
+  <ContrastChip color="red">
+    <FontAwesomeIcon icon={faClose} size="sm" />
+    <span>FAIL</span>
+  </ContrastChip>
+);
+
+function SpecimenPreview() {
+  const { contrastMode } = useContext(ThemeContext);
+  return (
+    <div>
+      {tokensToGroups().map(({ family, colors }) => (
+        <div key={family}>
+          <h2 className="font-mono font-semibold text-lg mb-2">{family}</h2>
+          <p
+            className={clsx(
+              "font-serif max-w-[59ch] mb-12",
+              contrastMode === "black" ? "text-neutral-200" : "text-neutral-800"
+            )}
+          >
+            It’s only been a few days since{" "}
+            <a
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className={clsx("underline font-medium")}
+              style={{ color: colors.find((c) => c.key === "50")?.value }}
+            >
+              Boots & Bones
+            </a>{" "}
+            opened across the street from the Grove Street PATH station, which
+            sits in the middle of Jersey City’s most prominent public square.
+            The front windows are flung open to spring breezes, and guys nursing
+            beers sit on barstools leaning out the windows as my editor and I
+            arrived for a First Look.
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SwatchPreview() {
+  const { contrastMode } = useContext(ThemeContext);
+
+  return (
+    <div>
       {tokensToGroups().map(({ family, colors }) => (
         <div key={family}>
           <h2 className="font-mono font-semibold text-lg mb-2">{family}</h2>
