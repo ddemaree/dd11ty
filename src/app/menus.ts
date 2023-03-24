@@ -10,8 +10,6 @@ import {
   faUserNinja,
 } from "@fortawesome/sharp-solid-svg-icons";
 
-export type MenuKey = "main" | "social" | "footer";
-
 export type SiteSection = "home" | "about" | "blog";
 
 export interface MenuItem {
@@ -19,38 +17,41 @@ export interface MenuItem {
   href: string;
   icon: string | IconName | IconLookup;
   iconFamily?: string | IconFamily;
-  slug?: string;
+  slug?: SiteSection | string;
   hidden?: boolean;
 }
 
-export interface MenuItemSet {
-  main: MenuItem[];
-  [key: string]: MenuItem[];
+function defineMenuItem(itemData: MenuItem) {
+  return itemData;
 }
 
-const menuItems: MenuItemSet = {
-  main: [
-    {
+function defineMenuSet(items: MenuItem[]) {
+  return items;
+}
+
+const menuItems = {
+  main: defineMenuSet([
+    defineMenuItem({
       title: "Home",
       href: "/",
       icon: faHomeHeart,
       slug: "home",
-    },
-    {
+    }),
+    defineMenuItem({
       title: "About",
       href: "/about",
       icon: faUserNinja,
       slug: "about",
       hidden: true,
-    },
-    {
+    }),
+    defineMenuItem({
       title: "Blog",
       href: "/posts",
       icon: faNewspaper,
       slug: "blog",
-    },
-  ],
-  social: [
+    }),
+  ]),
+  social: defineMenuSet([
     {
       title: "ddemaree on Twitter",
       href: "https://twitter.com/ddemaree",
@@ -58,10 +59,15 @@ const menuItems: MenuItemSet = {
     },
     {
       title: "ddemaree on Mastodon (me.dm)",
-      href: "https://me.dm/ddemaree",
+      href: "https://me.dm/@ddemaree",
       icon: faMastodon,
     },
-  ],
-};
+  ]),
+} as const;
 
 export default menuItems;
+
+export type MenuItemSet = typeof menuItems;
+export type MenuKey = keyof MenuItemSet;
+
+type SectionNames = typeof menuItems[MenuKey][number]["slug"];

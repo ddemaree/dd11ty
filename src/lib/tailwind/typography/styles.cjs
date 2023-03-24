@@ -75,7 +75,7 @@ module.exports = (theme) => {
             margin: "unset",
             width: "100%",
             height: "auto",
-            maxWidth: "100%",
+            maxWidth: "max-content",
           },
 
           a: {

@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from "clsx";
-import { PropsWithChildren, DOMAttributes } from "react";
+import { PropsWithChildren } from "react";
 
 type GenericProps = PropsWithChildren<{
   className?: ClassValue;

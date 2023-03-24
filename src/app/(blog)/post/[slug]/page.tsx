@@ -7,6 +7,8 @@ import PostHeader from "./PostHeader";
 
 import { decode } from "html-entities";
 import { blogPostUrl } from "@lib/urls";
+import { VStack } from "@components/Layout";
+import FooterOrnament from "@components/FooterOrnament";
 
 type SinglePostPageProps = {
   params: { slug: string };
@@ -45,11 +47,12 @@ export default async function BlogPostPage({
   const Content = await wpToReact(_content);
 
   return (
-    <article>
+    <VStack as="article">
       <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
       <main className="prose">
         <Content />
       </main>
-    </article>
+      <FooterOrnament />
+    </VStack>
   );
 }
