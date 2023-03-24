@@ -85,6 +85,7 @@ export default function rehypeTransformImages() {
       }
 
       if (newSrc) imgElement.properties.src = newSrc;
+      imgElement.properties.loading = "lazy";
     });
   };
 }

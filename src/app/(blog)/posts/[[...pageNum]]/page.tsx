@@ -8,8 +8,9 @@ import DisplayDate from "@components/DisplayDate";
 
 import "./posts-page.scss";
 import FooterOrnament from "@components/FooterOrnament";
-import { VStack } from "@components/Layout";
+import { Header, VStack } from "@components/Layout";
 import { imageUrl } from "@lib/urls";
+import { isUndefined } from "lodash";
 
 function pageUrl(pageNum: number): string {
   if (pageNum === 1) return `/posts`;
@@ -32,8 +33,14 @@ type BlogIndexPageProps = {
 export function generateMetadata({
   params: { pageNum },
 }: BlogIndexPageProps): Metadata {
+  let title: string = "Blog posts";
+
+  if (!isUndefined(pageNum)) {
+    title = `Blog posts - Page ${pageNum}`;
+  }
+
   return {
-    title: `Posts - Page ${pageNum}`,
+    title,
     description:
       "Notes from the desk of David Demaree. Writing about tech, business, digital culture, and whatever else crosses my mind.",
     openGraph: {
@@ -59,46 +66,29 @@ export default async function BlogIndexPage({
 
   return (
     <VStack>
-      <section className="flex flex-col gap-y-10 w-inset max-w-[50rem] mx-auto space-y-8">
-        <header className=" text-purple-500 h-[26vh] flex flex-col items-center justify-center">
-          <h1 className=" leading-none font-light [font-size:3.5rem] [font-variation-settings:'wdth'_140]">
+      <section className="flex flex-col gap-y-10 w-inset max-w-content mx-auto">
+        <Header>
+          <h1 className="text-4xl font-semibold">
             {pageNum === 1 ? "Posts" : `Page ${pageNum}`}
           </h1>
-        </header>
+        </Header>
         {posts.map((post: WordpressPost) => (
           <article key={post.slug} className="@container/post-card">
-            <div className="grid grid-cols-1 gap-x-8 grid-flow-row @md/post-card:grid-cols-[1fr_25cqi] items-center desc:col-span-1 desc:col-start-1">
-              <div>
-                <Link href={`/post/${post.slug}`}>
-                  <h1
-                    className="title font-semibold [font-size:min(1.875rem,_15cqi)] @lg:[font-size:2.5rem] leading-[1.025]"
-                    dangerouslySetInnerHTML={{ __html: post.title }}
-                  />
-                </Link>
-                {post.excerpt && (
-                  <div
-                    className="description mt-[0.375em] @lg:[font-size:1.125rem] leading-snug max-w-prose text-gray-400"
-                    dangerouslySetInnerHTML={{ __html: post.excerpt }}
-                  />
-                )}
-                <p className="publish-date dateline mt-[0.75em]">
-                  <DisplayDate dateString={post.date} />
-                </p>
-              </div>
-              {post.featuredImage && (
-                <figure className="w-full order-first @md:order-last @md:w-[clamp(180px,25cqi,216px)] @md/post-card:col-start-2 @md/post-card:row-start-1 @md/post-card:row-span-full">
-                  <a href={`/post/${post.slug}`}>
-                    <Image
-                      src={imageUrl(post.featuredImage.sourceUrl)}
-                      alt="Image for post"
-                      width={320}
-                      height={180}
-                      className="bg-gray-400 w-full aspect-video @md:aspect-square @2xl:aspect-[5/4] object-cover object-top rounded-lg border border-gray-300 shadow"
-                    />
-                  </a>
-                </figure>
-              )}
-            </div>
+            <Link href={`/post/${post.slug}`}>
+              <h1
+                className="title font-semibold text-2xl"
+                dangerouslySetInnerHTML={{ __html: post.title }}
+              />
+            </Link>
+            {post.excerpt && (
+              <div
+                className="description mt-[0.375em] @lg:[font-size:1.125rem] leading-snug max-w-prose text-gray-400"
+                dangerouslySetInnerHTML={{ __html: post.excerpt }}
+              />
+            )}
+            <p className="publish-date dateline mt-[0.75em]">
+              <DisplayDate dateString={post.date} />
+            </p>
           </article>
         ))}
 
