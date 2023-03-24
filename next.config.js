@@ -28,6 +28,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "img.demaree.me",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "wp2.demaree.me",
         port: "",
         pathname: "/wp-content/uploads/**",
@@ -37,6 +43,12 @@ const nextConfig = {
         hostname: "ddwp.test",
         port: "",
         pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },

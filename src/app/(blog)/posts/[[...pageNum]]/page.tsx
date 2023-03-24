@@ -9,6 +9,7 @@ import DisplayDate from "@components/DisplayDate";
 import "./posts-page.scss";
 import FooterOrnament from "@components/FooterOrnament";
 import { VStack } from "@components/Layout";
+import { imageUrl } from "@lib/urls";
 
 function pageUrl(pageNum: number): string {
   if (pageNum === 1) return `/posts`;
@@ -32,7 +33,7 @@ export function generateMetadata({
   params: { pageNum },
 }: BlogIndexPageProps): Metadata {
   return {
-    title: pageNum === 1 ? "Posts" : `Page ${pageNum}`,
+    title: `Posts - Page ${pageNum}`,
     description:
       "Notes from the desk of David Demaree. Writing about tech, business, digital culture, and whatever else crosses my mind.",
     openGraph: {
@@ -88,7 +89,7 @@ export default async function BlogIndexPage({
                 <figure className="w-full order-first @md:order-last @md:w-[clamp(180px,25cqi,216px)] @md/post-card:col-start-2 @md/post-card:row-start-1 @md/post-card:row-span-full">
                   <a href={`/post/${post.slug}`}>
                     <Image
-                      src={post.featuredImage.sourceUrl}
+                      src={imageUrl(post.featuredImage.sourceUrl)}
                       alt="Image for post"
                       width={320}
                       height={180}
