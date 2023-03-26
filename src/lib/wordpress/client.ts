@@ -20,7 +20,15 @@ export class WordpressRestClient {
   }
 
   baseUrl(url?: string) {
+    if (!url) return this;
+
     console.log("Setting base URL to %s", url);
+    // Assume that h= is a https URL; if this breaks, it'll be on
+    // localhost and I should just fix it
+    if (!url?.startsWith("http")) {
+      url = `https://${url}`;
+    }
+
     if (url) this._baseUrl = url;
     return this;
   }
@@ -85,7 +93,12 @@ export class WordpressRestClient {
         // Handle errors
         // Add a default status code because sometimes WordPress omits it
         const statusCode = r.status > 200 ? r.status : 567;
-        throw new WordpressError({ data: { status: statusCode }, ..._data });
+        throw new WordpressError({
+          data: { status: statusCode },
+          ..._data,
+          baseUrl: this._baseUrl,
+          url: url.toString(),
+        });
       }
 
       if (Array.isArray(_data)) {
@@ -94,6 +107,11 @@ export class WordpressRestClient {
         response.items = [_data];
         response.totalItems = 1;
         response.totalPages = 1;
+      } else {
+        console.log(_data);
+        throw new WordpressError(
+          "Response shape wasn't as expected; did you include `id` in `_fields`?"
+        );
       }
 
       return response;

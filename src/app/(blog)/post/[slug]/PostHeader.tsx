@@ -36,11 +36,20 @@ export default function PostHeader({
             dangerouslySetInnerHTML={{ __html: subtitle }}
           />
         )}
-        {!isDraft && date && (
-          <div className="font-semibold uppercase mt-4 text-lg">
-            <DisplayDate dateString={date} />
-          </div>
-        )}
+        <div className="font-semibold uppercase mt-4 text-lg">
+          {!isDraft && date && <DisplayDate dateString={date} />}
+          {isDraft && (
+            <span>
+              <span className="text-red-400">Draft</span>
+              {date && (
+                <>
+                  {" — "}
+                  <DisplayDate dateString={date} />
+                </>
+              )}
+            </span>
+          )}
+        </div>
       </VStack>
     </header>
   );

@@ -37,8 +37,10 @@ export default function wrapPost(
   }
 
   const post: WordpressPost = {
+    databaseId: postData.id,
     slug,
     date: postData.date_gmt,
+    modifiedDate: postData.modified_gmt,
     title: unwrapField(title, true),
     content: unwrapField(content),
     excerpt: unwrapField(excerpt, true),

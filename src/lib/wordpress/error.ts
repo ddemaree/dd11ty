@@ -20,7 +20,7 @@ export default class WordpressError extends Error {
         };
       }
     } else {
-      super(messageOrData.message);
+      super(`${messageOrData.message} (${messageOrData.code})`);
       this._errorData = messageOrData;
     }
   }

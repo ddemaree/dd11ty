@@ -9,9 +9,11 @@ export type WordpressImage = {
 export type WordpressPostStatus = "draft" | "publish" | "revision";
 
 export type WordpressPost = {
+  databaseId: number;
   slug: string;
   title: string;
   date: string;
+  modifiedDate: string;
   content: string;
   excerpt: string;
   featuredImage?: WordpressImage;
@@ -140,5 +142,6 @@ export type Jsonable =
   | null
   | { [key: string]: Jsonable }
   | Array<Jsonable>;
+
 export type ParamsInput = Record<string, string>;
 export type BodyInput = Jsonable;

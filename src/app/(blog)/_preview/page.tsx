@@ -1,9 +1,11 @@
 import FooterOrnament from "@components/FooterOrnament";
-import { HStack, VStack } from "@components/Layout";
+import { VStack } from "@components/Layout";
 import Prose from "@components/Prose";
 import { getPreviewPost, type WordpressPost } from "@lib/wordpress";
 import transformGutenberg from "@lib/wordpress/transformGutenberg";
 import PostHeader from "../post/[slug]/PostHeader";
+
+import RefreshPreview from "./RefreshPreview";
 
 export const fetchCache = "default-no-store";
 
@@ -53,13 +55,19 @@ export default async function PreviewPost({
   if (!content) throw new Error("No content returned");
 
   return (
-    <VStack as="article">
-      <PostHeader
-        isDraft={status !== "publish"}
-        {...{ title, date, subtitle }}
-      />
-      <Prose content={content.toString("utf-8")} />
-      <FooterOrnament />
-    </VStack>
+    <>
+      <div className="bg-yellow-300 text-center font-semibold text-[1.25rem] py-3 sticky top-0 z-50">
+        Preview Mode
+      </div>
+      <VStack as="article">
+        <PostHeader
+          isDraft={status !== "publish"}
+          {...{ title, date, subtitle }}
+        />
+        <Prose content={content.toString("utf-8")} />
+        <FooterOrnament />
+        {/* <RefreshPreview id={post.databaseId} /> */}
+      </VStack>
+    </>
   );
 }
