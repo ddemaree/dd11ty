@@ -27,7 +27,6 @@ export default function getAllPosts(
     })
     .then((res) => {
       if (!res.items || !Array.isArray(res.items)) {
-        console.log(res);
         throw new WordpressError("Type error???");
       }
       res.posts = res.items.map(wrapPost);

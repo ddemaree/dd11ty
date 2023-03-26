@@ -1,5 +1,11 @@
 module.exports = (theme) => {
   return {
+    simplified: {
+      css: {
+        gridTemplateColumns:
+          "[full-start wide-start content-start] 1fr [content-end wide-end full-end]",
+      },
+    },
     DEFAULT: {
       css: [
         {

@@ -7,6 +7,7 @@ config.autoAddCss = false;
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import MainNavigation from "./MainNavigation";
+import SiteContainer from "./SiteContainer";
 import "../styles/blog.css";
 
 export const metadata: Metadata = {
@@ -83,10 +84,10 @@ export default function RootLayout({
         `}</Script>
       </head>
       <body className="bg-stone-50 dark:bg-[#121212] text-stone-700 dark:text-stone-300">
-        <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-screen">
+        <SiteContainer>
           <MainNavigation />
           {children}
-        </div>
+        </SiteContainer>
         <svg width="10" height="10" viewBox="0 0 10 10">
           <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
             <path

@@ -27,6 +27,41 @@ function balanceTextElement(element: HTMLElement) {
   }
 }
 
+// export type CustomDomComponent<Props> = React.ForwardRefExoticComponent<
+//   React.PropsWithoutRef<Props> &
+//     React.RefAttributes<SVGElement | HTMLElement>
+// >;
+
+// function createBalanceProxy() {
+//   // function custom<Props extends {}>(
+//   //   Component: string | React.ComponentType<React.PropsWithChildren<Props>>
+//   // ): CustomDomComponent<Props> {
+//   //   // return createMotionComponent<
+//   //   //   Props,
+//   //   //   HTMLElement | SVGElement
+//   //   // >(createConfig(Component, customMotionComponentConfig));
+//   // }
+
+//   // if (typeof Proxy === "undefined") {
+//   //   return custom as typeof custom & DOMMotionComponents;
+//   // }
+
+//   function custom<Props extends {}>(
+//     Component: string | React.ComponentType<React.PropsWithChildren<Props>>
+//   ): CustomDomComponent<Props> {
+
+//   }
+
+//   const componentCache = new Map<string, any>();
+
+//   return new Proxy(custom, {
+//     get: (_target, key: string) => {
+
+//     }
+//   })
+
+// }
+
 // Make the element as narrow as possible while maintaining its current height (number of lines). Binary search.
 function squeezeContainer(
   element: HTMLElement,

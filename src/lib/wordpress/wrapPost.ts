@@ -44,6 +44,8 @@ export default function wrapPost(
     excerpt: unwrapField(excerpt, true),
     status,
     featuredImage,
+    wordCount: postData.word_count,
+    readingTime: postData.reading_time,
   };
 
   return post;

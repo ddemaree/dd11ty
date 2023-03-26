@@ -16,6 +16,8 @@ export type WordpressPost = {
   excerpt: string;
   featuredImage?: WordpressImage;
   status: WordpressPostStatus;
+  readingTime: number;
+  wordCount: number;
 };
 
 export type WordpressResponse = {
@@ -101,6 +103,8 @@ export interface WordpressRestPost extends WordpressRestEntity {
   meta: any[];
   categories: number[];
   tags: number[];
+  word_count: number;
+  reading_time: number;
   _rest?: boolean;
   _embedded: {
     "wp:featuredmedia"?: WordpressRestMedia[];

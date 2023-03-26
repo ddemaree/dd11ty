@@ -37,6 +37,7 @@
     "clsx": "^1.2.1",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
+    "fathom-client": "^3.5.0",
     "feed": "^4.2.2",
     "framer-motion": "^10.2.5",
     "hast-util-from-html": "^1.0.1",
@@ -58,21 +59,25 @@
     "rehype-react": "^7.1.2",
     "rehype-stringify": "^9.0.3",
     "sass": "^1.57.1",
-    "tailwindcss": "0.0.0-insiders.c33c523",
+    "tailwindcss": "0.0.0-insiders.3c4cfb5",
     "twitter-text": "^3.1.0",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
     "@types/chroma-js": "^2.4.0",
+    "@types/node": "18.15.3",
     "@types/react": "18.0.26",
     "@types/twitter-text": "^3.1.5",
+    "@vitejs/plugin-react": "3.1.0",
     "chroma-js": "^2.4.2",
-    "netlify": "^13.1.3",
+    "jsdom": "^21.1.1",
     "rimraf": "^4.4.0",
     "style-dictionary": "^3.7.2",
     "typescript": "4.9.4",
     "vercel": "^28.10.0",
+    "vitest": "0.29.3",
     "zx": "^7.1.1"
   }
 }
