@@ -10,32 +10,60 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { PropsWithChildren, useEffect, useRef, useState } from "react";
+import {
+  forwardRef,
+  PropsWithChildren,
+  // useEffect,
+  useRef,
+  useState,
+} from "react";
 
-import YouTube, {
-  YouTubeProps,
-  YouTubePlayer,
-  YouTubeEvent,
-} from "react-youtube";
 import Script from "next/script";
-
-declare global {
-  interface Window {
-    YT: any;
-  }
-}
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleDown,
+  faArrowRotateLeft,
+  faVolumeHigh,
+  faVolumeMute,
+} from "@fortawesome/sharp-solid-svg-icons";
 
 type RollerProps = PropsWithChildren<{ roll: string; initialLoad: boolean }>;
+
+const ROKRollVideo = forwardRef<HTMLVideoElement, { isMuted: boolean }>(
+  ({ isMuted = true }, ref) => {
+    return (
+      <video
+        ref={ref}
+        width="640"
+        height="360"
+        className="w-full"
+        autoPlay
+        muted={isMuted}
+      >
+        <source
+          src="https://res.cloudinary.com/demaree/video/upload/f_webm/rokroll_hjj4ox.webm"
+          type="video/mp4"
+        />
+        <source
+          src="https://res.cloudinary.com/demaree/video/upload/f_mp4/rokroll_hjj4ox.mp4"
+          type="video/mp4"
+        />
+        <p>You can't play this video</p>
+      </video>
+    );
+  }
+);
 
 export default function RandomRollOnScroll({
   roll,
   children,
   initialLoad = false,
 }: RollerProps) {
-  const videoId = roll.replace("https://www.youtube.com/embed/", "");
   const [scrollFinished, setScrollFinished] = useState(initialLoad);
+  const [isMuted, setIsMuted] = useState(true);
 
-  const ytPlayerRef = useRef<YouTubePlayer>(null);
+  const videoPlayerRef = useRef<HTMLVideoElement>(null);
+
   const realFakeTextRef = useRef(null);
   const { scrollYProgress: realFakeTextScrollYProgress } = useScroll({
     target: realFakeTextRef,
@@ -52,50 +80,7 @@ export default function RandomRollOnScroll({
     [1, 1, 0]
   );
 
-  // function learnTheSecret() {
-  //   if (ytPlayerRef.current !== null) {
-  //     ytPlayerRef.current.playVideo();
-  //   } else {
-  //     console.log("Player not ready yet.");
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   console.log("YT Player ref:", ytPlayerRef.current);
-
-  //   if (window.YT !== undefined) {
-  //     const player = new window.YT.Player("ytPlayerContainer", {
-  //       height: "390",
-  //       width: "640",
-  //       videoId: videoId,
-  //       playerVars: {
-  //         playsinline: 1,
-  //         modestbranding: 1,
-  //         autoplay: 1,
-  //         controls: 0,
-  //         fs: 0,
-  //         loop: 1,
-  //       },
-  //       events: {
-  //         onReady: (event: YouTubeEvent) => {
-  //           console.log("YT Player ready:", event.target);
-  //         },
-  //       },
-  //     });
-
-  //     ytPlayerRef.current = player;
-  //   }
-  // }, [videoId, scrollFinished]);
-
-  /* 
-  <box with real fake text> - track scrolling of this one
-
-  <box with cat fake text> - animate opacity of this one
-
-  <box with video> - animate this one onto the page
-  */
   useMotionValueEvent(realFakeTextScrollYProgress, "change", (latest) => {
-    // console.log("Element scroll: ", latest);
     if (latest >= 1) {
       setScrollFinished(true);
     }
@@ -134,27 +119,28 @@ export default function RandomRollOnScroll({
       >
         <div className="w-full h-full flex flex-col items-center justify-center">
           {scrollFinished && (
-            <div className="w-full max-w-[640px]">
-              <YouTube
-                videoId={videoId}
-                iframeClassName="w-full aspect-video"
-                onStateChange={(event) => {
-                  console.log("YT Player state change:", event.target);
+            <div className="w-full max-w-[720px] relative">
+              <ROKRollVideo isMuted={isMuted} ref={videoPlayerRef} />
+              <button
+                onClick={(e) => setIsMuted(!isMuted)}
+                className="absolute top-4 right-4 text-white text-2xl/none"
+              >
+                <FontAwesomeIcon icon={isMuted ? faVolumeMute : faVolumeHigh} />
+                <span className="sr-only">{isMuted ? "Muted" : "Loud"}</span>
+              </button>
+              <button
+                className="absolute top-4 left-4 text-2xl/none text-white"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (videoPlayerRef.current) {
+                    videoPlayerRef.current.currentTime = 0;
+                    videoPlayerRef.current.play();
+                  }
                 }}
-                onReady={(event) => {
-                  event.target.playVideo();
-                }}
-                opts={{
-                  width: "640",
-                  height: "390",
-                  playsinline: 1,
-                  modestbranding: 1,
-                  allow: "autoplay",
-                  // playerVars: {
-                  //   autoplay: 1,
-                  // },
-                }}
-              />
+              >
+                <FontAwesomeIcon icon={faArrowRotateLeft} />
+                <span className="sr-only">Restart video</span>
+              </button>
             </div>
           )}
         </div>
