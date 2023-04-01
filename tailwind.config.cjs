@@ -76,6 +76,9 @@ module.exports = {
         wide: "59rem",
         prose: "min(65ch, 45rem)",
       },
+      lineHeight: {
+        smart: "calc(1em + 1ex)",
+      },
     },
   },
   plugins: [
@@ -106,7 +109,7 @@ module.exports = {
           {
             ":root": {
               colorScheme: "light",
-              "--inset-x": "clamp(1.25rem, 6.25vw, 2rem)",
+              "--inset-x": "max(1.5rem, 5vw)",
               // TODO: Deprecate these in favor of w-content and w-wide
               "--width-content": theme("width.content"),
               "--width-wide": theme("width.wide"),

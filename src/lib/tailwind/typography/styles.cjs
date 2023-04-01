@@ -17,7 +17,7 @@ module.exports = (theme) => {
           display: "grid",
           fontSize: "var(--prose-base-font-size)",
           fontFamily: "var(--prose-base-font-family)",
-          lineHeight: 1.6,
+          lineHeight: "calc(1em + 1ex)",
           gridAutoFlow: "row",
           gridTemplateColumns:
             "[full-start] 1fr [wide-start] var(--prose-grid-inset) [content-start] min( calc(100% - (var(--dd-layout-padding-inline) * 2)), var(--width-content) ) [content-end] var(--prose-grid-inset) [wide-end] 1fr [full-end]",
@@ -48,7 +48,7 @@ module.exports = (theme) => {
           "> *": {
             margin: "unset",
 
-            "&:is(figure, video, img, picture, hr)": {
+            "& + *:is(figure, video, img, picture, hr)": {
               marginBlockStart:
                 "calc(var(--prose-flow-spacing-normal) * 0.875)",
 

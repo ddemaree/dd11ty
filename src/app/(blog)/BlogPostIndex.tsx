@@ -7,6 +7,7 @@ import { blogPostUrl } from "@lib/urls";
 import { WordpressPost } from "@lib/wordpress";
 import clsx from "clsx";
 import Link from "next/link";
+import { Fragment } from "react";
 
 function BlogPost({ post }: { post: WordpressPost }) {
   const content = post.content;
@@ -17,18 +18,27 @@ function BlogPost({ post }: { post: WordpressPost }) {
     <article key={post.slug} className="@container/post-card">
       <Link href={`/post/${post.slug}`}>
         <h2
-          className="title font-semibold text-4xl leading-[1.1]"
+          className="title text-black font-semibold text-4xl/none"
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
       </Link>
+      <p className="publish-date dateline mt-[1ex] font-medium font-mono uppercase">
+        <DisplayDate dateString={post.date} />
+        {postIsVeryLong && (
+          <>
+            {" • "}
+            <span>{`${post.readingTime} min read`}</span>
+          </>
+        )}
+      </p>
 
       {!postIsVeryLong && (
-        <Prose as="main" className="!prose-simplified mt-6" content={content} />
+        <Prose as="main" className="!prose-simplified mt-8" content={content} />
       )}
       {postIsVeryLong && (
         <>
           <div
-            className="text-xl mt-1 mb-3 leading-normal max-w-[44ch]"
+            className="text-xl/smart my-3 max-w-[44ch]"
             dangerouslySetInnerHTML={{ __html: post.excerpt }}
           />
           <div>
@@ -41,16 +51,6 @@ function BlogPost({ post }: { post: WordpressPost }) {
           </div>
         </>
       )}
-
-      <p className="publish-date dateline mt-6 font-medium">
-        <DisplayDate dateString={post.date} />
-        {postIsVeryLong && (
-          <>
-            {" • "}
-            <span>{`${post.readingTime} min read`}</span>
-          </>
-        )}
-      </p>
     </article>
   );
 }
@@ -112,10 +112,13 @@ export default function BlogPostIndex({
   totalPages: number;
 }): JSX.Element {
   return (
-    <VStack className="max-w-content">
+    <VStack className="py-[clamp(1.5rem,5vw,3rem)]">
       <section className="flex flex-col gap-y-10 w-inset max-w-content mx-auto">
-        {posts.map((post) => (
-          <BlogPost key={post.slug} post={post} />
+        {posts.map((post, index) => (
+          <Fragment key={index}>
+            {index > 0 && <hr className="border-slate-200" />}
+            <BlogPost key={post.slug} post={post} />
+          </Fragment>
         ))}
       </section>
       {totalPages > 1 && (

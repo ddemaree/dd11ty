@@ -21,8 +21,10 @@ export default function SiteContainer({
   }, [pathname, searchParams]);
 
   return (
-    <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-screen">
-      {children}
+    <div className="flex flex-col items-center">
+      <div className="grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-screen max-w-6xl w-full">
+        {children}
+      </div>
     </div>
   );
 }

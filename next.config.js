@@ -69,6 +69,11 @@ const nextConfig = {
         destination: "/post/:slug",
         permanent: false,
       },
+      {
+        source: "/p/okrs-the-complete-guide",
+        destination: "/2023/okrs-the-complete-guide",
+        permanent: false,
+      },
     ];
   },
   async rewrites() {

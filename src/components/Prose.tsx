@@ -1,27 +1,33 @@
 "use client";
 
 import clsx from "clsx";
-import { PropsWithChildren, HTMLAttributes, Fragment } from "react";
+import { PropsWithChildren, forwardRef, HTMLProps } from "react";
 
-export default function Prose({
-  content,
-  children,
-  as: AsTag = "div",
-  className,
-  ...props
-}: PropsWithChildren<
-  HTMLAttributes<HTMLDivElement> & {
-    content: string;
-    as?: "div" | "section" | "article" | "main";
-  }
->) {
+type ProseAsTag = "div" | "section" | "article" | "main";
+type ProseBaseProps = HTMLProps<HTMLDivElement> & {
+  as?: ProseAsTag;
+};
+
+type ProsePropsWithChildren = PropsWithChildren<ProseBaseProps>;
+type ProsePropsSansChildren = ProseBaseProps & { content: string };
+type ProseProps = ProsePropsWithChildren | ProsePropsSansChildren;
+
+const Prose = forwardRef<HTMLDivElement, ProseProps>((_props, ref) => {
+  const { content, children, as: AsTag = "div", className, ...props } = _props;
+  const innerHtml = content ? { __html: content } : undefined;
+
   return (
     <AsTag
       className={clsx("prose", className)}
-      dangerouslySetInnerHTML={{ __html: content }}
+      dangerouslySetInnerHTML={innerHtml}
+      ref={ref}
       {...props}
     >
       {children}
     </AsTag>
   );
-}
+});
+
+Prose.displayName = "Prose";
+
+export default Prose;
