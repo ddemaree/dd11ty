@@ -48,7 +48,7 @@ const ROKRollVideo = forwardRef<HTMLVideoElement, { isMuted: boolean }>(
           src="https://res.cloudinary.com/demaree/video/upload/f_mp4/rokroll_hjj4ox.mp4"
           type="video/mp4"
         />
-        <p>You can't play this video</p>
+        <p>You can&rsquo;t play this video</p>
       </video>
     );
   }
