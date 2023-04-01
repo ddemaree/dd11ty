@@ -54,6 +54,8 @@ const ROKRollVideo = forwardRef<HTMLVideoElement, { isMuted: boolean }>(
   }
 );
 
+ROKRollVideo.displayName = "ROKRollVideo";
+
 export default function RandomRollOnScroll({
   roll,
   children,
