@@ -10,18 +10,11 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import {
-  forwardRef,
-  PropsWithChildren,
-  // useEffect,
-  useRef,
-  useState,
-} from "react";
+import { forwardRef, PropsWithChildren, useRef, useState } from "react";
 
 import Script from "next/script";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowAltCircleDown,
   faArrowRotateLeft,
   faVolumeHigh,
   faVolumeMute,
@@ -57,8 +50,6 @@ const ROKRollVideo = forwardRef<HTMLVideoElement, { isMuted: boolean }>(
 ROKRollVideo.displayName = "ROKRollVideo";
 
 export default function RandomRollOnScroll({
-  roll,
-  children,
   initialLoad = false,
 }: RollerProps) {
   const [scrollFinished, setScrollFinished] = useState(initialLoad);
@@ -150,24 +141,3 @@ export default function RandomRollOnScroll({
     </>
   );
 }
-
-/* 
-
-
-<iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/_caMQpiwiaU"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/lOqy8cC72wA"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>*/
