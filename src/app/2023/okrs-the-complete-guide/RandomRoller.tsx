@@ -60,36 +60,32 @@ export default function RandomRollOnScroll({
   //   }
   // }
 
-  useEffect(() => {
-    console.log("YT Player ref:", ytPlayerRef.current);
+  // useEffect(() => {
+  //   console.log("YT Player ref:", ytPlayerRef.current);
 
-    if (window.YT !== undefined) {
-      const player = new window.YT.Player("ytPlayerContainer", {
-        height: "390",
-        width: "640",
-        videoId: videoId,
-        playerVars: {
-          playsinline: 1,
-          modestbranding: 1,
-          autoplay: 1,
-          controls: 0,
-          fs: 0,
-          loop: 1,
-        },
-        events: {
-          onReady: (event: YouTubeEvent) => {
-            console.log("YT Player ready:", event.target);
-          },
-        },
-      });
+  //   if (window.YT !== undefined) {
+  //     const player = new window.YT.Player("ytPlayerContainer", {
+  //       height: "390",
+  //       width: "640",
+  //       videoId: videoId,
+  //       playerVars: {
+  //         playsinline: 1,
+  //         modestbranding: 1,
+  //         autoplay: 1,
+  //         controls: 0,
+  //         fs: 0,
+  //         loop: 1,
+  //       },
+  //       events: {
+  //         onReady: (event: YouTubeEvent) => {
+  //           console.log("YT Player ready:", event.target);
+  //         },
+  //       },
+  //     });
 
-      ytPlayerRef.current = player;
-
-      // setTimeout(() => {
-      //   learnTheSecret();
-      // }, 1000);
-    }
-  }, [videoId, scrollFinished]);
+  //     ytPlayerRef.current = player;
+  //   }
+  // }, [videoId, scrollFinished]);
 
   /* 
   <box with real fake text> - track scrolling of this one
@@ -137,9 +133,27 @@ export default function RandomRollOnScroll({
         style={{ y: scrollFinished ? 0 : boxOffset }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center">
-          <div id="ytPlayerContainer"></div>
-          {/* <p>You've been rolled</p>
-          <p>Happy April 1</p> */}
+          {scrollFinished && (
+            <YouTube
+              videoId={videoId}
+              onStateChange={(event) => {
+                console.log("YT Player state change:", event.target);
+              }}
+              onReady={(event) => {
+                event.target.playVideo();
+              }}
+              opts={{
+                width: "640",
+                height: "390",
+                playsinline: 1,
+                modestbranding: 1,
+                allow: "autoplay",
+                // playerVars: {
+                //   autoplay: 1,
+                // },
+              }}
+            />
+          )}
         </div>
       </motion.div>
     </>
