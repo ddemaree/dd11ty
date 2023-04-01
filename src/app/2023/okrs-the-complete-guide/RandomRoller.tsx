@@ -134,25 +134,28 @@ export default function RandomRollOnScroll({
       >
         <div className="w-full h-full flex flex-col items-center justify-center">
           {scrollFinished && (
-            <YouTube
-              videoId={videoId}
-              onStateChange={(event) => {
-                console.log("YT Player state change:", event.target);
-              }}
-              onReady={(event) => {
-                event.target.playVideo();
-              }}
-              opts={{
-                width: "640",
-                height: "390",
-                playsinline: 1,
-                modestbranding: 1,
-                allow: "autoplay",
-                // playerVars: {
-                //   autoplay: 1,
-                // },
-              }}
-            />
+            <div className="w-full max-w-[640px]">
+              <YouTube
+                videoId={videoId}
+                iframeClassName="w-full aspect-video"
+                onStateChange={(event) => {
+                  console.log("YT Player state change:", event.target);
+                }}
+                onReady={(event) => {
+                  event.target.playVideo();
+                }}
+                opts={{
+                  width: "640",
+                  height: "390",
+                  playsinline: 1,
+                  modestbranding: 1,
+                  allow: "autoplay",
+                  // playerVars: {
+                  //   autoplay: 1,
+                  // },
+                }}
+              />
+            </div>
           )}
         </div>
       </motion.div>
