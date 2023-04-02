@@ -47,7 +47,6 @@ export default async function PreviewPost({
     content: _content,
     excerpt: subtitle,
     date,
-    featuredImage,
     status,
   } = post as WordpressPost;
 

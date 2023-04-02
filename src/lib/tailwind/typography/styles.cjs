@@ -199,7 +199,7 @@ module.exports = (theme) => {
             fontFamily: "var(--prose-code-font-family)",
           },
 
-          "*:not(a, blockquote, thead th, figcaption) code": {
+          "*:not(a, blockquote, thead th, figcaption) > code": {
             color: "var(--prose-code-color)",
           },
 
@@ -212,12 +212,17 @@ module.exports = (theme) => {
             fontFamily: "var(--prose-code-font-family)",
             fontWeight: 400,
             overflowX: "auto",
+            width: "100%",
+            maxWidth: "100%",
 
             code: {
               backgroundColor: "transparent",
               color: "inherit",
               fontWeight: "inherit",
               fontSize: "inherit",
+              width: "max-content",
+              borderRadius: "0.5em",
+              padding: "0.25em 0.5em",
             },
           },
 
@@ -230,6 +235,11 @@ module.exports = (theme) => {
             fontSize: "0.875em",
             // padding: "1em",
             // borderRadius: theme("borderRadius.md"),
+          },
+
+          "> pre[class~='language'] > code": {
+            padding: "0.5em",
+            fontSize: "0.875em",
           },
 
           // WP specific hacks
