@@ -2,10 +2,11 @@ import clsx from "clsx";
 import Content from "./text.mdx";
 import styles from "./styles.module.scss";
 
-export default function ShortBio({ className = "" }) {
-  const classValue = clsx(styles.default, className);
+type ShortBioProps = React.HTMLAttributes<HTMLDivElement>;
+
+export default function ShortBio({ className = "", ...props }: ShortBioProps) {
   return (
-    <div className={classValue}>
+    <div className={`${className}`.trim()} {...props}>
       <Content />
     </div>
   );

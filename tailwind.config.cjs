@@ -130,9 +130,32 @@ module.exports = {
         },
       }
     ),
-    plugin(function ({ addVariant }) {
-      addVariant("desc", ":where(& *)");
-      addVariant("desc-links", ":where(& a)");
+    plugin(function ({ addVariant, matchVariant }) {
+      // addVariant("desc", ":where(& *)");
+
+      matchVariant(
+        "desc",
+        (value) => {
+          return `& ${value}`;
+        },
+        {
+          values: {
+            any: "*", // any descendant
+            p: "p",
+            direct: "& > *", // direct descendant
+            links: "a",
+            headings: ":is(h1, h2, h3, h4, h5, h6)",
+            h1: "h1",
+            h2: "h2",
+            h3: "h3",
+            lists: ":is(ul, ol)",
+            listitems: ":is(ul, ol) > li",
+            ul: "ul",
+            ol: "ol",
+            li: "li",
+          },
+        }
+      );
     }),
   ],
 };

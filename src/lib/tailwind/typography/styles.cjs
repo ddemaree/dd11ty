@@ -1,5 +1,10 @@
 module.exports = (theme) => {
   return {
+    "no-grid": {
+      css: {
+        display: "block",
+      },
+    },
     simplified: {
       css: {
         gridTemplateColumns:
@@ -72,6 +77,24 @@ module.exports = (theme) => {
             marginBlockStart: "var(--prose-flow-spacing-normal)",
           },
 
+          "blockquote > cite": {
+            display: "block",
+            fontSize: "0.75em",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            marginBlockStart: "1em",
+            textAlign: "right",
+
+            "&:before": {
+              content: '"— "',
+            },
+
+            a: {
+              color: "inherit",
+              textDecoration: "none",
+            },
+          },
+
           hr: {
             width: "100%",
             borderTop: "1px solid currentColor",
@@ -112,7 +135,7 @@ module.exports = (theme) => {
           h2: { fontSize: "1.75em" },
           h3: { fontSize: "1.5em" },
 
-          ":is(ol, ul)": {
+          ":is(ol, ul):not(.wp-block-social-links)": {
             paddingInlineStart: "var(--prose-indent)",
 
             ":is(ol, ul)": {

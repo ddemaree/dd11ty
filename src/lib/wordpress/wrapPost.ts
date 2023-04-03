@@ -1,3 +1,4 @@
+import _WordpressPost from "./post";
 import type {
   WordpressImage,
   WordpressPost,
@@ -36,19 +37,6 @@ export default function wrapPost(
     };
   }
 
-  const post: WordpressPost = {
-    databaseId: postData.id,
-    slug,
-    date: postData.date_gmt,
-    modifiedDate: postData.modified_gmt,
-    title: unwrapField(title, true),
-    content: unwrapField(content),
-    excerpt: unwrapField(excerpt, true),
-    status,
-    featuredImage,
-    wordCount: postData.word_count,
-    readingTime: postData.reading_time,
-  };
-
-  return post;
+  const postInstance = new _WordpressPost(inputPostData);
+  return postInstance;
 }

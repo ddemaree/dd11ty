@@ -1,3 +1,5 @@
+import _WordpressPost from "./post";
+
 export type WordpressImage = {
   sourceUrl: string;
   caption: string;
@@ -8,7 +10,7 @@ export type WordpressImage = {
 
 export type WordpressPostStatus = "draft" | "publish" | "revision";
 
-export type WordpressPost = {
+export interface WordpressPost {
   databaseId: number;
   slug: string;
   title: string;
@@ -20,7 +22,10 @@ export type WordpressPost = {
   status: WordpressPostStatus;
   readingTime: number;
   wordCount: number;
-};
+  _post?: _WordpressPost;
+  render(): Promise<string>;
+  renderedContent: string;
+}
 
 export type WordpressResponse = {
   status: number;

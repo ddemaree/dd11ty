@@ -1,7 +1,0 @@
-import clsx from 'clsx';
-
-export default function Layout({children, className = "text-xl [&_p]:max-w-[480px] [&_p:first-of-type]:text-[1.3em] [&_p:first-of-type]:leading-tight flex flex-col gap-3"}) {
-  const classValue = clsx(className);
-  return <div className={classValue}>{children}</div>
-}
-

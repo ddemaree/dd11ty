@@ -1,4 +1,4 @@
-import MainFooter from "../MainFooter";
+import MainFooter from "@components/MainFooter";
 
 export default function BlogLayout({
   children,

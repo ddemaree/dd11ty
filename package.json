@@ -30,6 +30,7 @@
     "@types/react-dom": "18.0.10",
     "@vercel/edge": "^0.2.1",
     "@vercel/og": "^0.0.19",
+    "@wordpress/block-library": "^8.7.0",
     "autoprefixer": "^10.4.13",
     "balance-text": "^3.3.1",
     "cheerio": "1.0.0-rc.12",

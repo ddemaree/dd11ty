@@ -7,3 +7,4 @@
 @tailwind utilities;
 
 @import "./tokens/tokens.css";
+@import "@wordpress/block-library/build-style/style.css";

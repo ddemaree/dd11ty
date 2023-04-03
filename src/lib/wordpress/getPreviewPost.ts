@@ -19,7 +19,6 @@ export async function getPreviewModifiedTime(
   baseUrl?: string
 ) {
   const uri: string = _getPreviewEndpoint(id, revision);
-  console.log(`Getting last modified time with ${uri}`);
 
   return client
     .baseUrl(baseUrl)
@@ -41,7 +40,6 @@ export async function getPreviewPost(
   baseUrl?: string
 ) {
   const uri: string = _getPreviewEndpoint(id, revision);
-  console.log("Getting preview post with base url %s", baseUrl);
 
   return client
     .baseUrl(baseUrl)

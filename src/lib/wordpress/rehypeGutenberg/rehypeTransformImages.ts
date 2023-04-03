@@ -37,7 +37,6 @@ async function cloudinaryGetInfo(
 
   return fetch(img.toURL()).then(async (r) => {
     let json = await r.json();
-    console.log(json);
     return json;
   });
 }

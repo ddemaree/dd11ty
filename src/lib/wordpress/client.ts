@@ -21,8 +21,6 @@ export class WordpressRestClient {
 
   baseUrl(url?: string) {
     if (!url) return this;
-
-    console.log("Setting base URL to %s", url);
     // Assume that h= is a https URL; if this breaks, it'll be on
     // localhost and I should just fix it
     if (!url?.startsWith("http")) {
@@ -108,7 +106,6 @@ export class WordpressRestClient {
         response.totalItems = 1;
         response.totalPages = 1;
       } else {
-        console.log(_data);
         throw new WordpressError(
           "Response shape wasn't as expected; did you include `id` in `_fields`?"
         );
@@ -130,10 +127,7 @@ export class WordpressRestClient {
       return null;
     }
 
-    const authString = Buffer.from(username + ":" + password).toString(
-      "base64"
-    );
-
+    const authString = btoa(`${username}:${password}`);
     return authString;
   }
 }

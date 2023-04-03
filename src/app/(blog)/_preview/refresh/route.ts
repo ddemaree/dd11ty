@@ -20,7 +20,6 @@ export async function GET(request: NextRequest) {
   const previewParams = getPreviewSearchParams(request.url);
 
   const out = await getPreviewModifiedTime(previewParams.id, 0);
-  console.log(out.toMillis());
 
   return new Response(JSON.stringify({ lastModified: out.toMillis() }));
 }

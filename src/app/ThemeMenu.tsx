@@ -57,7 +57,6 @@ export default function ThemeMenu({
 
   useEffect(() => {
     const win = window as any;
-
     console.log(win.themeInfo);
   }, [currentTheme]);
 

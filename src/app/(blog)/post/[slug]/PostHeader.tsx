@@ -3,7 +3,7 @@
 import DisplayDate from "@components/DisplayDate";
 import { VStack } from "@components/Layout";
 import useTextBalancer from "@lib/hooks/useTextBalancer";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "./PostHeader.scss";
 
 export default function PostHeader({
@@ -23,10 +23,10 @@ export default function PostHeader({
 
   return (
     <header className="post-header w-full max-w-content px-inset py-8 md:py-10">
-      <VStack className="post-header-inner @container/post-header w-inset max-w-content mx-auto text-center">
+      <VStack className="post-header-inner @container/post-header mx-auto text-center">
         <h1
           ref={titleRef}
-          className="font-medium text-stone-900 dark:text-white text-5xl leading-none font-serif-headline"
+          className="font-medium text-stone-950 text-4xl/none text-[clamp(30px,9vw,44px)]"
           dangerouslySetInnerHTML={{ __html: title }}
         />
         {subtitle && (

@@ -86,7 +86,7 @@ module.exports = plugin.withOptions(
       prose-figcaption:font-sans prose-figcaption:text-stone-500 dark:prose-figcaption:text-stone-400 prose-a:text-red-500 dark:prose-a:text-red-500 prose-strong:text-black dark:prose-strong:text-white prose-headings:text-black dark:prose-headings:text-white tweets-handle:text-slate-400 dark:tweets-handle:text-slate-400 tweets-name:text-slate-900 dark:tweets-name:text-slate-100 tweets-name:m-0 tweets:bg-slate-200 dark:tweets:bg-slate-800  tweets-footer:mt-4 tweets-footer:text-sm tweets-date:text-slate-400 tweets-date:no-underline dark:tweets-content:text-slate-200 tweets-content:text-slate-700 */
       addBase({
         ":root": {
-          "--prose-base-font-size": "clamp(17px, 2.5vw, 20px)",
+          "--prose-base-font-size": "clamp(17px, 2.5vw, 19px)",
 
           "--prose-base-font-family": theme("fontFamily.serif"),
           "--prose-headings-font-family": theme("fontFamily.sans"),

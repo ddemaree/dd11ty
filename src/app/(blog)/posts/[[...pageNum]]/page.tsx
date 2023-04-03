@@ -43,11 +43,9 @@ export default async function BlogIndexPage({
   if (!posts) notFound();
 
   await Promise.all(
-    posts.map((p) =>
-      transformGutenberg(p.content).then((vfile) => {
-        if (vfile) p.content = vfile.toString("utf-8");
-      })
-    )
+    posts.map((p) => {
+      return p.render();
+    })
   );
 
   return (

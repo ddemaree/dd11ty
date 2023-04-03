@@ -1,12 +1,57 @@
 import clsx, { ClassValue } from "clsx";
-import { PropsWithChildren } from "react";
+import { HTMLAttributes, FunctionComponentFactory } from "react";
 
 type LayoutTagName = "div" | "section" | "article" | "main" | "header";
 
-type GenericProps = PropsWithChildren<{
-  className?: ClassValue;
+type FancyTagProps = HTMLAttributes<HTMLElement> & {
   as?: LayoutTagName;
-}>;
+  className?: ClassValue;
+};
+
+type StackProps = FancyTagProps & {
+  direction?: "row" | "column";
+  gap?: number | string;
+  noGap?: boolean;
+};
+
+export const Stack: FunctionComponentFactory<StackProps> = (_props = {}) => {
+  let {
+    as = "div",
+    className: _className,
+    direction = "row",
+    gap = 2,
+    children,
+    ...props
+  } = _props;
+
+  // Gap can be a CSS variable, calc function, or a unit
+  if (typeof gap === "string") {
+    if (
+      gap.startsWith("--") ||
+      gap.includes("calc(") ||
+      gap.includes("min(") ||
+      gap.includes("max(") ||
+      gap.match(/ex|em|rem|px|vw|vh|cqw|cqh/)
+    ) {
+      gap = `[${gap}]`;
+    }
+  }
+
+  const classValue = clsx(
+    "flex items-center justify-center",
+    direction === "row" ? "flex-row" : "flex-col",
+    (gap && (`gap-${gap}` as ClassValue)) || "gap-2",
+    _className
+  );
+
+  const Tag = as;
+
+  return (
+    <Tag className={classValue} {...props}>
+      {children}
+    </Tag>
+  );
+};
 
 function createFancyTag(
   displayName: string,
@@ -17,8 +62,11 @@ function createFancyTag(
     children,
     className,
     as: AsTag = defaultAsTag,
-  }: GenericProps) => (
-    <AsTag className={clsx(defaultClassValue, className)}>{children}</AsTag>
+    ...props
+  }: FancyTagProps) => (
+    <AsTag className={clsx(defaultClassValue, className)} {...props}>
+      {children}
+    </AsTag>
   );
   _comp.displayName = displayName;
   return _comp;

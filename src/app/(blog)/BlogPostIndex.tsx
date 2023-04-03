@@ -10,8 +10,6 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 function BlogPost({ post }: { post: WordpressPost }) {
-  const content = post.content;
-
   const postIsVeryLong = post.wordCount > 1500;
 
   return (
@@ -22,18 +20,24 @@ function BlogPost({ post }: { post: WordpressPost }) {
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
       </Link>
-      <p className="publish-date dateline mt-[1ex] font-medium font-mono uppercase">
+      <p className="publish-date dateline mt-[1ex] font-sans">
         <DisplayDate dateString={post.date} />
         {postIsVeryLong && (
           <>
-            {" • "}
+            <span className="sep mx-1 opacity-50" aria-hidden>
+              {" • "}
+            </span>
             <span>{`${post.readingTime} min read`}</span>
           </>
         )}
       </p>
 
       {!postIsVeryLong && (
-        <Prose as="main" className="!prose-simplified mt-8" content={content} />
+        <Prose
+          as="main"
+          className="!prose-simplified mt-8"
+          content={post.renderedContent}
+        />
       )}
       {postIsVeryLong && (
         <>
@@ -116,7 +120,7 @@ export default function BlogPostIndex({
       <section className="flex flex-col gap-y-10 w-inset max-w-content mx-auto">
         {posts.map((post, index) => (
           <Fragment key={index}>
-            {index > 0 && <hr className="border-slate-200" />}
+            {index > 0 && <hr className="border-slate-200 my-8" />}
             <BlogPost key={post.slug} post={post} />
           </Fragment>
         ))}
