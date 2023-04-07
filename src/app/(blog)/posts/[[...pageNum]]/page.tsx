@@ -44,7 +44,7 @@ export default async function BlogIndexPage({
 
   await Promise.all(
     posts.map((p) => {
-      return p.render();
+      return p.render(transformGutenberg);
     })
   );
 

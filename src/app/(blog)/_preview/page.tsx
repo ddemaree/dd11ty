@@ -1,12 +1,13 @@
-import FooterOrnament from "@components/FooterOrnament";
-import { VStack } from "@components/Layout";
-import Prose from "@components/Prose";
 import { getPreviewPost, type WordpressPost } from "@lib/wordpress";
 import transformGutenberg from "@lib/wordpress/transformGutenberg";
-import PostHeader from "../post/[slug]/PostHeader";
 
+import FooterOrnament from "@components/FooterOrnament";
+import { VStack } from "@components/Layout";
+import PostHeader from "@components/PostHeader";
+import Prose from "@components/Prose";
 import RefreshPreview from "./RefreshPreview";
 
+export const dynamic = "force-dynamic";
 export const fetchCache = "default-no-store";
 
 // "/_preview?parent=:parentId&id=:id&type=:type&status=:status&n=:nonce",
@@ -63,7 +64,7 @@ export default async function PreviewPost({
           isDraft={status !== "publish"}
           {...{ title, date, subtitle }}
         />
-        <Prose content={content.toString("utf-8")} />
+        <Prose content={content} />
         <FooterOrnament />
         {/* <RefreshPreview id={post.databaseId} /> */}
       </VStack>

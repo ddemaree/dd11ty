@@ -46,13 +46,14 @@ export class TextBalancer {
         // If the element already has text-wrap: balance, skip it
         // so a style attribute doesn't mess with anything
         const elemStyle = window.getComputedStyle(element);
+        // @ts-ignore
         if (elemStyle.textWrap === "balance") return;
 
+        // @ts-ignore
         element.style.textWrap = "balance";
       }
       // Otherwise, use our own implementation.
       else if (textElementIsMultipleLines(element)) {
-        console.log("Balancing ", element);
         element.style.maxWidth = "";
         squeezeContainer(element, element.clientHeight, 0, element.clientWidth);
       }

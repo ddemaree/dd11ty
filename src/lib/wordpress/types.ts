@@ -23,7 +23,7 @@ export interface WordpressPost {
   readingTime: number;
   wordCount: number;
   _post?: _WordpressPost;
-  render(): Promise<string>;
+  render(transform: (content: string) => Promise<string>): Promise<string>;
   renderedContent: string;
 }
 

@@ -97,13 +97,10 @@ export default class _WordpressPost implements WordpressPost {
     };
   }
 
-  async render() {
-    const { default: transform } = await import(
-      "@lib/wordpress/transformGutenberg"
-    );
-    const out = await transform(this.content);
+  async render(transform: (content: string) => Promise<string>) {
+    const out: string = await transform(this.content);
     if (out) {
-      this._renderedContent = out.toString("utf-8");
+      this._renderedContent = out;
     }
     return this._renderedContent;
   }

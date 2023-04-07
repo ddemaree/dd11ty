@@ -17,12 +17,10 @@ function sanitizeInput(src: string) {
   return src.trim().replace(/\n{2,}/g, "\n\n");
 }
 
-export default async function transformGutenberg(
-  src: string
-): Promise<void | VFile> {
+export default async function transformGutenberg(src: string): Promise<string> {
   const processor = rehypeProcessor().use(rehypeStringify);
   const out = await processor.process(sanitizeInput(src));
-  return out;
+  return out.toString("utf-8");
 }
 
 export async function wpToReact(src: string) {

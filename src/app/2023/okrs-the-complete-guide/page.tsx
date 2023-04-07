@@ -1,4 +1,4 @@
-import PostHeader from "src/app/(blog)/post/[slug]/PostHeader";
+import PostHeader from "@components/PostHeader";
 import RandomRollOnScroll from "./RandomRoller";
 
 const POSSIBLE_ROLLS: { [key: string]: string } = {

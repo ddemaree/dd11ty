@@ -1,9 +1,11 @@
 "use client";
 
+import { useRef } from "react";
+import useTextBalancer from "@lib/hooks/useTextBalancer";
+
 import DisplayDate from "@components/DisplayDate";
 import { VStack } from "@components/Layout";
-import useTextBalancer from "@lib/hooks/useTextBalancer";
-import { useEffect, useRef } from "react";
+
 import "./PostHeader.scss";
 
 export default function PostHeader({

@@ -1,24 +1,34 @@
 import type { Metadata } from "next";
 
-import { getSinglePost, WordpressPost } from "@lib/wordpress";
+import { getAllPosts, getSinglePost, WordpressPost } from "@lib/wordpress";
 import { wpToReact } from "@lib/wordpress/transformGutenberg";
-
-import PostHeader from "./PostHeader";
 
 import { decode } from "html-entities";
 import { blogPostUrl } from "@lib/urls";
+
 import { VStack } from "@components/Layout";
+import PostHeader from "@components/PostHeader";
 import FooterOrnament from "@components/FooterOrnament";
+import { notFound } from "next/navigation";
 
 type SinglePostPageProps = {
   params: { slug: string };
 };
 
+export async function generateStaticParams() {
+  const { posts } = await getAllPosts();
+  if (!posts) throw new Error("No posts returned");
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export async function generateMetadata({
   params: { slug },
 }: SinglePostPageProps): Promise<Metadata> {
   const post = await getSinglePost(slug);
-  if (!post) throw new Error("POOP");
+  if (!post) notFound();
 
   const { title } = post;
 

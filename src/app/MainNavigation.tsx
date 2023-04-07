@@ -1,51 +1,12 @@
-import clsx from "clsx";
 import { headers } from "next/headers";
 import Link from "next/link";
 
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faDDLogo } from "@lib/icons";
-import SiteMenu from "./SiteMenu";
-import { SiteSection } from "./menus";
-import ThemeMenu from "./ThemeMenu";
-
-function MainNavItem({
-  href,
-  label,
-  icon,
-  isActive = false,
-  showIconOnly = false,
-}: {
-  href: string;
-  label: string;
-  isActive?: boolean;
-  icon?: IconProp;
-  showIconOnly?: boolean;
-}) {
-  return (
-    <Link
-      href={href}
-      className={clsx([
-        "inline-flex gap-2 leading-none px-2 h-10 items-center rounded-xl hover:bg-orange-200 dark:hover:bg-stone-600",
-        isActive &&
-          " bg-stone-200 hover:bg-orange-300 dark:bg-stone-700 dark:hover:bg-stone-700",
-      ])}
-    >
-      {icon && (
-        <FontAwesomeIcon icon={icon} size={showIconOnly ? "lg" : "sm"} />
-      )}
-      <span
-        className={clsx([
-          !showIconOnly && "font-bold",
-          showIconOnly && "sr-only",
-        ])}
-      >
-        {label}
-      </span>
-    </Link>
-  );
-}
+import SiteMenu from "@components/SiteMenu";
+import { SiteSection } from "@components/menus";
+// import ThemeMenu from "@components/ThemeMenu";
 
 export default function MainNavigation() {
   const headersList = headers();
