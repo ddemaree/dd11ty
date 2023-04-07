@@ -41,6 +41,7 @@ export default async function HomePage() {
           variant={null}
           showLabels={false}
         />
+        {process.env.VERCEL_URL}
       </Stack>
     </Stack>
   );

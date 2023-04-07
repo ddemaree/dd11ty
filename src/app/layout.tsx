@@ -8,8 +8,10 @@ import MainNavigation from "./MainNavigation";
 import SiteContainer from "@components/SiteContainer";
 import ClipPaths from "@components/ClipPaths";
 import "../styles/blog.css";
+import { siteUrl } from "@lib/urls";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl("/", true)),
   title: {
     default: "David Demaree's website",
     template: "%s | David Demaree",
@@ -21,9 +23,6 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: "David Demaree's website",
-    images: {
-      url: `/api/og-image`,
-    },
   },
   twitter: {
     description:
