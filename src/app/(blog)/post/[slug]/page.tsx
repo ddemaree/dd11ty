@@ -15,14 +15,14 @@ type SinglePostPageProps = {
   params: { slug: string };
 };
 
-// export async function generateStaticParams() {
-//   const { posts } = await getAllPosts();
-//   if (!posts) throw new Error("No posts returned");
+export async function generateStaticParams() {
+  const { posts } = await getAllPosts();
+  if (!posts) throw new Error("No posts returned");
 
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({
   params: { slug },

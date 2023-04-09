@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PostHeader from "@components/PostHeader";
 import RandomRollOnScroll from "./RandomRoller";
 
@@ -22,8 +23,9 @@ export default function OKRRollPage() {
         title="The Complete Guide to OKRs"
         date="2023-04-01T00:00:00"
       />
-
-      <RandomRollOnScroll roll={roll} initialLoad={false} />
+      <Suspense fallback={<p>Loading…</p>}>
+        <RandomRollOnScroll roll={roll} initialLoad={false} />
+      </Suspense>
     </div>
   );
 }

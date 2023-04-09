@@ -1,21 +1,13 @@
 import { Suspense } from "react";
-import { headers } from "next/headers";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faDDLogo } from "@lib/icons";
-import SiteMenu from "@components/SiteMenu";
-import { SiteSection } from "@components/menus";
+import { SiteMenu, type SiteSection } from "@components/SiteMenu";
 // import ThemeMenu from "@components/ThemeMenu";
 
 export default function MainNavigation() {
-  const headersList = headers();
-  const urlHeader = headersList.get("x-request-url") as string;
-  const requestUrl = new URL(urlHeader);
-
-  const pathname = requestUrl.pathname.slice(1);
-  const pathSegments = pathname.split("/");
+  let pathname = "";
   let sectionName: SiteSection | null = null;
 
   if (pathname.match(/^post/)) sectionName = "blog";
@@ -34,9 +26,9 @@ export default function MainNavigation() {
         </Link>
       </div>
 
-      <Suspense>
-        {/* <ThemeMenu /> */}
-        <SiteMenu activeSection={sectionName} />
+      {/* <ThemeMenu /> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <SiteMenu />
       </Suspense>
     </header>
   );

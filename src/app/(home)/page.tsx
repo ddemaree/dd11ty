@@ -35,9 +35,7 @@ export default async function HomePage() {
       </figure>
       <Stack direction="column" className="gap-[2rem]">
         <div className="prose prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
-          <Suspense>
-            <HomeContent />
-          </Suspense>
+          <HomeContent />
         </div>
         <MyLinks
           className="flex gap-4 justify-center"

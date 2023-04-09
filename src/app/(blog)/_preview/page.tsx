@@ -3,7 +3,7 @@ import transformGutenberg from "@lib/wordpress/transformGutenberg";
 
 import FooterOrnament from "@components/FooterOrnament";
 import { VStack } from "@components/Layout";
-import PostHeader from "@components/PostHeader";
+import PostHeader from "@components/PostHeader/PostHeader";
 import Prose from "@components/Prose";
 import RefreshPreview from "./RefreshPreview";
 
