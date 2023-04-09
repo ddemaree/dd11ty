@@ -19,6 +19,7 @@ export interface WordpressPost {
   content: string;
   excerpt: string;
   featuredImage?: WordpressImage;
+  featuredImageURL?: string;
   status: WordpressPostStatus;
   readingTime: number;
   wordCount: number;

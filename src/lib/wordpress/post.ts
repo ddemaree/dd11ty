@@ -87,6 +87,23 @@ export default class _WordpressPost implements WordpressPost {
     return blogPostUrl(this.slug, true);
   }
 
+  private _firstImage: string;
+  get featuredImageURL() {
+    const featuredImage = this.getFeaturedImage();
+    if (featuredImage) {
+      return featuredImage.source_url;
+    }
+
+    if (!this._firstImage) {
+      const img = this.content.match(/<img.*?src="(.*?)"/);
+      if (img) {
+        this._firstImage = img[1];
+      }
+    }
+
+    return this._firstImage;
+  }
+
   toFeedItem() {
     return {
       title: this.title,
@@ -107,5 +124,12 @@ export default class _WordpressPost implements WordpressPost {
 
   get renderedContent() {
     return this._renderedContent;
+  }
+
+  private getFeaturedImage() {
+    if (this.__post._embedded["wp:featuredmedia"]) {
+      return this.__post._embedded["wp:featuredmedia"][0];
+    }
+    return null;
   }
 }
