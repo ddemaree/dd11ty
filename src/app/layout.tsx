@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     default: "David Demaree's website",
     template: "%s | David Demaree",
   },
+  authors: [{ name: "David Demaree", url: "https://demaree.me" }],
+  creator: "David Demaree",
   description:
     "This is my personal website. I'm a web designer, programmer, and tech-industry product leader. I like LEGOs, cameras, keyboards, and great coffee.",
   // icons: {
@@ -23,6 +25,8 @@ export const metadata: Metadata = {
   // },
   openGraph: {
     siteName: "David Demaree's website",
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     description:

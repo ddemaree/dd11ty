@@ -35,6 +35,13 @@ export async function generateMetadata({
   return {
     title: decode(title),
     description: decode(post.excerpt),
+    openGraph: {
+      title: decode(title),
+      description: decode(post.excerpt),
+      authors: ["David Demaree"],
+      type: "article",
+      publishedTime: post.date,
+    },
     alternates: {
       canonical: blogPostUrl(slug, true),
     },
