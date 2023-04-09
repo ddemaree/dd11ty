@@ -1,3 +1,5 @@
+import FontFaceObserver from "fontfaceobserver";
+
 /* 
 
 Balances text blocks, making them as narrow as possible while maintaining their current height (i.e. number of lines), preventing typographic 'widows' and
@@ -54,6 +56,7 @@ export class TextBalancer {
       }
       // Otherwise, use our own implementation.
       else if (textElementIsMultipleLines(element)) {
+        console.log("Balancing ", element);
         element.style.maxWidth = "";
         squeezeContainer(element, element.clientHeight, 0, element.clientWidth);
       }
@@ -69,8 +72,8 @@ export class TextBalancer {
     }, 100);
   }
 
-  watch() {
-    this.balance();
+  watch(doInitialBalance = true) {
+    if (doInitialBalance) this.balance();
 
     window.addEventListener("resize", this.resize.bind(this));
 

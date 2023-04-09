@@ -42,6 +42,7 @@
     "eslint-config-next": "13.1.1",
     "fathom-client": "^3.5.0",
     "feed": "^4.2.2",
+    "fontfaceobserver": "^2.3.0",
     "framer-motion": "^10.2.5",
     "hast-util-from-html": "^1.0.1",
     "hast-util-select": "^5.0.5",
@@ -56,6 +57,7 @@
     "postcss-lab-function": "^4.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-wrap-balancer": "^0.4.0",
     "react-youtube": "^10.1.0",
     "reading-time": "^1.5.0",
     "rehype-infer-reading-time-meta": "^1.1.0",
@@ -72,6 +74,7 @@
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@types/chroma-js": "^2.4.0",
+    "@types/fontfaceobserver": "^2.1.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.26",
     "@types/twitter-text": "^3.1.5",

@@ -1,13 +1,16 @@
-import { Metadata } from "next";
-import { siteUrl } from "@lib/urls";
-import styles from "./styles.module.css";
-
+import { type HTMLAttributes } from "react";
+import { type Metadata } from "next";
 import Image from "next/image";
-import imgDavidStitch from "@/assets/images/dd-stitch-transparent.png";
-import MyLinks from "@components/MyLinks";
+
+import { siteUrl } from "@lib/urls";
 import { Stack } from "@components/Layout";
-import HomeContent from "./HomeContent";
-import { Suspense } from "react";
+import MyLinks from "@components/MyLinks";
+// import BalanceText from "@components/BalanceText";
+import Balance from "react-wrap-balancer";
+
+import imgDavidStitch from "@/assets/images/dd-stitch-transparent.png";
+import Text from "./homeContent.mdx";
+import styles from "./styles.module.css";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +19,13 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
+  const components = {
+    p: (props: HTMLAttributes<HTMLParagraphElement>) => (
+      <p className="balance-text [text-wrap:balance]">
+        <Balance>{props.children}</Balance>
+      </p>
+    ),
+  };
   return (
     <Stack
       as="main"
@@ -35,7 +45,7 @@ export default async function HomePage() {
       </figure>
       <Stack direction="column" className="gap-[2rem]">
         <div className="prose prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
-          <HomeContent />
+          <Text components={components} />
         </div>
         <MyLinks
           className="flex gap-4 justify-center"

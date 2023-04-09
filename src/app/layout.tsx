@@ -4,11 +4,13 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import MainNavigation from "./MainNavigation";
+import { siteUrl } from "@lib/urls";
 import SiteContainer from "@/app/SiteContainer";
 import ClipPaths from "@components/ClipPaths";
+import MainNavigation from "./MainNavigation";
 import "../styles/blog.css";
-import { siteUrl } from "@lib/urls";
+
+import { Provider } from "react-wrap-balancer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl("/", true)),
@@ -44,10 +46,12 @@ export default function RootLayout({
   return (
     <html lang="en-US" data-theme={""}>
       <body className="bg-stone-50 dark:bg-[#121212] text-stone-700 dark:text-stone-300">
-        <SiteContainer>
-          <MainNavigation />
-          {children}
-        </SiteContainer>
+        <Provider>
+          <SiteContainer>
+            <MainNavigation />
+            {children}
+          </SiteContainer>
+        </Provider>
         <ClipPaths />
       </body>
     </html>
