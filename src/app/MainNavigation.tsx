@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { headers } from "next/headers";
 import Link from "next/link";
 
@@ -33,8 +34,10 @@ export default function MainNavigation() {
         </Link>
       </div>
 
-      {/* <ThemeMenu /> */}
-      <SiteMenu activeSection={sectionName} />
+      <Suspense>
+        {/* <ThemeMenu /> */}
+        <SiteMenu activeSection={sectionName} />
+      </Suspense>
     </header>
   );
 }

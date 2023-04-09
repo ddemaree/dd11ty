@@ -25,7 +25,7 @@ export default function hastTransformTweet(node: Element) {
   if (twLink) {
     twDate = toText(twLink);
     // TODO: Parse this date
-    twISODate = DateTime.fromFormat(twDate, "LLLL dd, YYYY").toISODate();
+    // twISODate = DateTime.fromFormat(twDate, "LLLL dd, YYYY").toISODate();
   }
 
   if (twLink && twLink.properties) {

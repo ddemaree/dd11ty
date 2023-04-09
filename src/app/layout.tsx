@@ -5,7 +5,7 @@ config.autoAddCss = false;
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import MainNavigation from "./MainNavigation";
-import SiteContainer from "@components/SiteContainer";
+import SiteContainer from "@/app/SiteContainer";
 import ClipPaths from "@components/ClipPaths";
 import "../styles/blog.css";
 import { siteUrl } from "@lib/urls";

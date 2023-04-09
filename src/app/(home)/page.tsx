@@ -7,6 +7,7 @@ import imgDavidStitch from "@/assets/images/dd-stitch-transparent.png";
 import MyLinks from "@components/MyLinks";
 import { Stack } from "@components/Layout";
 import HomeContent from "./HomeContent";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   alternates: {
@@ -34,14 +35,15 @@ export default async function HomePage() {
       </figure>
       <Stack direction="column" className="gap-[2rem]">
         <div className="prose prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
-          <HomeContent />
+          <Suspense>
+            <HomeContent />
+          </Suspense>
         </div>
         <MyLinks
           className="flex gap-4 justify-center"
           variant={null}
           showLabels={false}
         />
-        {process.env.VERCEL_URL}
       </Stack>
     </Stack>
   );
