@@ -1,6 +1,7 @@
 import { VStack } from "@components/Layout";
 import DisplayDate from "@components/DisplayDate";
-import BalanceText from "@components/BalanceText";
+
+import Balancer from "react-wrap-balancer";
 
 import "./PostHeader.scss";
 
@@ -18,15 +19,13 @@ export default function PostHeader({
   return (
     <header className="post-header w-full max-w-content px-inset py-8 md:py-10">
       <VStack className="post-header-inner @container/post-header mx-auto text-center">
-        <h1
-          className="balance-text font-medium text-stone-950 text-4xl/none text-[clamp(30px,9vw,44px)]"
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
+        <h1 className="balance-text font-medium text-stone-950 text-4xl/none text-[clamp(30px,9vw,44px)]">
+          <Balancer>{title}</Balancer>
+        </h1>
         {subtitle && (
-          <div
-            className="balance-text post-header__subtitle text-stone-500 dark:text-stone-400 text-2xl leading-snug mt-3"
-            dangerouslySetInnerHTML={{ __html: subtitle }}
-          />
+          <div className="balance-text post-header__subtitle text-stone-500 dark:text-stone-400 text-2xl leading-snug mt-3">
+            <Balancer>{subtitle}</Balancer>
+          </div>
         )}
         <div className="font-semibold uppercase mt-4 text-lg">
           {!isDraft && date && <DisplayDate dateString={date} />}
@@ -43,7 +42,6 @@ export default function PostHeader({
           )}
         </div>
       </VStack>
-      <BalanceText />
     </header>
   );
 }

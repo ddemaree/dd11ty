@@ -18,7 +18,7 @@ const Prose = forwardRef<HTMLDivElement, ProseProps>((_props, ref) => {
 
   return (
     <AsTag
-      className={clsx("prose", className)}
+      className={clsx("prose dark:prose-dark", className)}
       dangerouslySetInnerHTML={innerHtml}
       ref={ref}
       {...props}

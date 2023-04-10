@@ -1,5 +1,35 @@
 module.exports = (theme) => {
+  const modifiers = {
+    light: {
+      css: {
+        "--prose-base-color": theme("colors.neutral.800"),
+        "--prose-links-color": theme("colors.red.500"),
+        "--prose-strong-color": theme("colors.black"),
+        "--prose-headings-color": "var(--prose-strong-color)",
+        "--prose-dividers-color": theme("colors.neutral.300"),
+        "--prose-quotes-color": theme("colors.neutral.600"),
+        "--prose-quotes-border-color": theme("colors.neutral.200"),
+        "--prose-captions-color": theme("colors.neutral.500"),
+        "--prose-code-color": theme("colors.blue.500"),
+      },
+    },
+    dark: {
+      css: {
+        "--prose-base-color": theme("colors.neutral.300"),
+        "--prose-links-color": theme("colors.red.500"),
+        "--prose-strong-color": theme("colors.white"),
+        "--prose-headings-color": "var(--prose-strong-color)",
+        "--prose-dividers-color": theme("colors.neutral.700"),
+        "--prose-quotes-color": theme("colors.neutral.400"),
+        "--prose-quotes-border-color": theme("colors.neutral.800"),
+        "--prose-captions-color": theme("colors.neutral.500"),
+        "--prose-code-color": theme("colors.blue.500"),
+      },
+    },
+  };
+
   return {
+    ...modifiers,
     "no-grid": {
       css: {
         display: "block",
@@ -13,6 +43,7 @@ module.exports = (theme) => {
     },
     DEFAULT: {
       css: [
+        modifiers.light.css,
         {
           // Nesting this with a & wraps the root level .prose class in a :where()
           "--dd-layout-padding-block": "1.5rem",

@@ -5,7 +5,6 @@ import Image from "next/image";
 import { siteUrl } from "@lib/urls";
 import { Stack } from "@components/Layout";
 import MyLinks from "@components/MyLinks";
-// import BalanceText from "@components/BalanceText";
 import Balance from "react-wrap-balancer";
 
 import imgDavidStitch from "@/assets/images/dd-stitch-transparent.png";
@@ -38,13 +37,13 @@ export default async function HomePage() {
         <Image
           src={imgDavidStitch}
           alt="A man in a ridiculous hat"
-          className="dark:mix-blend-multiply dark:opacity-80"
+          className="dark:mix-blend-multiply dark:opacity-70"
           width={240}
           priority
         />
       </figure>
       <Stack direction="column" className="gap-[2rem]">
-        <div className="prose prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
+        <div className="prose dark:prose-dark prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
           <Text components={components} />
         </div>
         <MyLinks

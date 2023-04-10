@@ -1,6 +1,7 @@
 import { blogPostUrl } from "@lib/urls";
 import { DateTime } from "luxon";
 import { WordpressPost, WordpressRestPost } from "./types";
+import { decode } from "html-entities";
 
 export default class _WordpressPost implements WordpressPost {
   private __post: WordpressRestPost;
@@ -24,7 +25,11 @@ export default class _WordpressPost implements WordpressPost {
   }
 
   get title() {
-    return (this.__post.title.rendered as string) || "";
+    return (
+      (this.__post.title.raw as string) ||
+      decode(this.__post.title.rendered as string) ||
+      ""
+    );
   }
 
   get content() {

@@ -9,8 +9,8 @@ import SiteContainer from "@/app/SiteContainer";
 import ClipPaths from "@components/ClipPaths";
 import MainNavigation from "./MainNavigation";
 import "../styles/blog.css";
-
-import { Provider } from "react-wrap-balancer";
+import Script from "next/script";
+import DarkModeScript from "@components/DarkModeScript";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl("/", true)),
@@ -45,13 +45,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-US" data-theme={""}>
-      <body className="bg-stone-50 dark:bg-[#121212] text-stone-700 dark:text-stone-300">
-        <Provider>
-          <SiteContainer>
-            <MainNavigation />
-            {children}
-          </SiteContainer>
-        </Provider>
+      <head>
+        <DarkModeScript />
+      </head>
+      <body className="bg-stone-50 dark:bg-stone-950 text-stone-700 dark:text-stone-200">
+        <SiteContainer>
+          <MainNavigation />
+          {children}
+        </SiteContainer>
         <ClipPaths />
       </body>
     </html>
