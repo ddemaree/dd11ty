@@ -6,6 +6,13 @@ import clsx from "clsx";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faCheckCircle } from "@fortawesome/sharp-solid-svg-icons";
+import { TestContent } from "@components/ColorTests";
+
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config.cjs";
+import PostHeader from "@components/PostHeader";
+// @ts-ignore
+const { theme } = resolveConfig(tailwindConfig);
 
 const { base: baseColors } = baseTokens.color;
 
@@ -15,6 +22,33 @@ const CONTRAST_TESTS = [
   { label: "AAA Large", threshold: 4.5 },
   { label: "AAA Normal", threshold: 7 },
 ];
+
+const COLORS = {
+  light: {
+    background: theme?.colors.stone[50],
+    text: theme?.colors.stone[800],
+    boldText: theme?.colors.stone[950],
+    lightText: theme?.colors.stone[600],
+    link: chroma(theme?.colors.red[500]).darken(0.4).hex(),
+    code: theme?.colors.blue[600],
+    codeBackground: theme?.colors.slate[100],
+    dividers: theme?.colors.stone[200],
+    blockquote: theme?.colors.stone[600],
+    blockquoteBorder: theme?.colors.slate[200],
+  },
+  dark: {
+    background: theme?.colors.stone[950],
+    text: chroma(theme?.colors.stone[300]).darken(0.2).hex(),
+    boldText: theme?.colors.stone[100],
+    lightText: chroma(theme?.colors.stone[300]).darken(1.2).hex(),
+    link: chroma(theme?.colors.red[500]).brighten(0.3).hex(),
+    code: theme?.colors.blue[400],
+    codeBackground: theme?.colors.slate[900],
+    dividers: theme?.colors.stone[800],
+    blockquote: theme?.colors.slate[400],
+    blockquoteBorder: theme?.colors.slate[800],
+  },
+};
 
 const contrastModes = ["white", "black"] as const;
 type ContrastMode = typeof contrastModes[number];
@@ -41,22 +75,32 @@ function luminance(color: string | chroma.Color) {
 }
 
 function whiteContrast(color: string | chroma.Color) {
-  const whiteLum = 1.05;
-  const textLum = luminance(color);
-
-  return whiteLum / textLum;
+  return chroma.contrast(color, COLORS.light.background);
+  // const whiteLum = 1.05;
+  // const textLum = luminance(color);
+  // return whiteLum / textLum;
 }
 
 function blackContrast(color: string | chroma.Color) {
-  const blackLum = 0.05;
-  const textLum = luminance(color);
-
-  return textLum / blackLum;
+  return chroma.contrast(color, COLORS.dark.background);
+  // const blackLum = 0.05;
+  // const textLum = luminance(color);
+  // return textLum / blackLum;
 }
 
 export default function TestPage() {
   const [contrastMode, setContrastMode] = useState<ContrastMode>("black");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("swatches");
+
+  const currentColors = contrastMode === "white" ? COLORS.light : COLORS.dark;
+
+  const cssVars = Object.entries(currentColors).reduce(
+    (acc, [key, value]) => ({
+      ...acc,
+      [`--test-${key}`]: value,
+    }),
+    {}
+  );
 
   const wrapperClass = clsx(
     "font-['soehne-web'] p-6 flex flex-col gap-6 min-h-screen",
@@ -101,8 +145,33 @@ export default function TestPage() {
       </form>
 
       <ThemeContext.Provider value={{ contrastMode, previewMode }}>
-        {previewMode === "swatches" && <SwatchPreview />}
-        {previewMode === "specimens" && <SpecimenPreview />}
+        <div className="grid grid-cols-2 gap-6">
+          <div>
+            <div className=" flex flex-wrap gap-4">
+              {Object.keys(currentColors).map((key) => {
+                const color = currentColors[key as keyof typeof currentColors];
+
+                return <Swatch key={key} name={key} color={color} />;
+              })}
+            </div>
+          </div>
+
+          <div
+            className="bg-[--test-background] text-[--test-text] p-6 flex flex-col items-center [&_.post-header_h1]:text-[--test-boldText] [&_.post-header__subtitle]:text-[--test-lightText]"
+            style={{
+              ...cssVars,
+            }}
+          >
+            <PostHeader
+              title="Test Post"
+              subtitle="Colors have their own sort of logic."
+              date="2023-04-01T04:00:00Z"
+            />
+            <div className="prose text-[--test-text] prose-headings:text-[--test-boldText] prose-blockquote:text-[--test-blockquote] prose-blockquote:border-[--test-blockquoteBorder] prose-a:text-[--test-link] prose-strong:text-[--test-boldText] prose-code:text-[--test-code] prose-hr:border-[--test-dividers] prose-figcaption:text-[--test-lightText] [&>pre>code]:bg-[--test-codeBackground]">
+              <TestContent />
+            </div>
+          </div>
+        </div>
       </ThemeContext.Provider>
     </div>
   );
@@ -137,6 +206,45 @@ const Fail = () => (
     <span>FAIL</span>
   </ContrastChip>
 );
+
+const Swatch = ({ color, name }: { color: string; name: string }) => {
+  const { contrastMode } = useContext(ThemeContext);
+
+  const lum = luminance(color);
+  const contrast = {
+    white: whiteContrast(color),
+    black: blackContrast(color),
+  };
+
+  const classcolor = clsx(
+    "w-32 h-32",
+    contrast.white > contrast.black ? "text-white" : "text-black"
+  );
+
+  return (
+    <div className={classcolor}>
+      <div className="p-2 rounded" style={{ backgroundColor: color }}>
+        <div>{name}</div>
+        <div>{color}</div>
+      </div>
+      <div className="text-xs p-2" style={{ color: color }}>
+        {/* <div>{lum.toFixed(2)}</div> */}
+        {contrastMode === "white" && (
+          <>
+            <div className="mb-1">{contrast.white.toFixed(2)}</div>
+            {contrast.white >= 4.5 ? <Pass /> : <Fail />}
+          </>
+        )}
+        {contrastMode === "black" && (
+          <>
+            <div className="mb-1">{contrast.black.toFixed(2)}</div>
+            {contrast.black >= 4.5 ? <Pass /> : <Fail />}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 
 function SpecimenPreview() {
   const { contrastMode } = useContext(ThemeContext);
@@ -182,43 +290,7 @@ function SwatchPreview() {
           <h2 className="font-mono font-semibold text-lg mb-2">{family}</h2>
           <div className="flex flex-wrap gap-2 font-mono text-sm">
             {colors.map(({ key, value }) => {
-              const lum = luminance(value);
-              const contrast = {
-                white: whiteContrast(value),
-                black: blackContrast(value),
-              };
-
-              const classValue = clsx(
-                "w-32 h-32",
-                contrast.white > contrast.black ? "text-white" : "text-black"
-              );
-
-              return (
-                <div className={classValue} key={key}>
-                  <div
-                    className="p-2 rounded"
-                    style={{ backgroundColor: value }}
-                  >
-                    <div>{key}</div>
-                    <div>{value}</div>
-                  </div>
-                  <div className="text-xs p-2" style={{ color: value }}>
-                    {/* <div>{lum.toFixed(2)}</div> */}
-                    {contrastMode === "white" && (
-                      <>
-                        <div className="mb-1">{contrast.white.toFixed(2)}</div>
-                        {contrast.white >= 4.5 ? <Pass /> : <Fail />}
-                      </>
-                    )}
-                    {contrastMode === "black" && (
-                      <>
-                        <div className="mb-1">{contrast.black.toFixed(2)}</div>
-                        {contrast.black >= 4.5 ? <Pass /> : <Fail />}
-                      </>
-                    )}
-                  </div>
-                </div>
-              );
+              return <Swatch key={key} name={key} color={value} />;
             })}
           </div>
         </div>

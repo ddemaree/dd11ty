@@ -2,27 +2,27 @@ module.exports = (theme) => {
   const modifiers = {
     light: {
       css: {
-        "--prose-base-color": theme("colors.neutral.800"),
-        "--prose-links-color": theme("colors.red.500"),
-        "--prose-strong-color": theme("colors.black"),
         "--prose-headings-color": "var(--prose-strong-color)",
-        "--prose-dividers-color": theme("colors.neutral.300"),
+        "--prose-strong-color": theme("colors.black"),
+        "--prose-base-color": theme("colors.neutral.800"),
         "--prose-quotes-color": theme("colors.neutral.600"),
-        "--prose-quotes-border-color": theme("colors.neutral.200"),
         "--prose-captions-color": theme("colors.neutral.500"),
+        "--prose-dividers-color": theme("colors.neutral.300"),
+        "--prose-quotes-border-color": theme("colors.neutral.200"),
+        "--prose-links-color": theme("colors.red.500"),
         "--prose-code-color": theme("colors.blue.500"),
       },
     },
     dark: {
       css: {
-        "--prose-base-color": theme("colors.neutral.300"),
-        "--prose-links-color": theme("colors.red.500"),
-        "--prose-strong-color": theme("colors.white"),
         "--prose-headings-color": "var(--prose-strong-color)",
-        "--prose-dividers-color": theme("colors.neutral.700"),
+        "--prose-strong-color": theme("colors.white"),
+        "--prose-base-color": theme("colors.neutral.300"),
         "--prose-quotes-color": theme("colors.neutral.400"),
+        "--prose-captions-color": theme("colors.neutral.400"),
+        "--prose-dividers-color": theme("colors.neutral.700"),
         "--prose-quotes-border-color": theme("colors.neutral.800"),
-        "--prose-captions-color": theme("colors.neutral.500"),
+        "--prose-links-color": theme("colors.red.500"),
         "--prose-code-color": theme("colors.blue.500"),
       },
     },
@@ -216,6 +216,10 @@ module.exports = (theme) => {
               "calc(var(--prose-indent) - var(--prose-quotes-border-width) - 0.5rem)",
             paddingInlineEnd: "var(--prose-indent)",
             marginInlineStart: "0.5rem",
+
+            "b, strong": {
+              color: "inherit",
+            },
           },
 
           figure: {
