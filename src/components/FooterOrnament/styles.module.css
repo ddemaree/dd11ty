@@ -1,7 +1,7 @@
 .endOrnament {
-  --end-ornament-pattern-color: #ddd;
+  --end-ornament-pattern-color: rgb(var(--dd-col-dividers));
   --end-ornament-height: 12px;
-  color: #888;
+  color: rgb(var(--dd-col-light-text));
   display: flex;
   flex-direction: column;
   align-items: center;

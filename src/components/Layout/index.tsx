@@ -10,6 +10,8 @@ type FancyTagProps = HTMLAttributes<HTMLElement> & {
 
 type StackProps = FancyTagProps & {
   direction?: "row" | "column";
+  justifyItems?: "start" | "center" | "end" | "stretch";
+  alignItems?: "start" | "center" | "end" | "stretch";
   gap?: number | string;
   noGap?: boolean;
 };
@@ -19,6 +21,8 @@ export const Stack: FunctionComponentFactory<StackProps> = (_props = {}) => {
     as = "div",
     className: _className,
     direction = "row",
+    justifyItems = "center",
+    alignItems = "center",
     gap = 2,
     children,
     ...props

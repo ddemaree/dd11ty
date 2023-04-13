@@ -16,7 +16,7 @@ function BlogPost({ post }: { post: WordpressPost }) {
     <article key={post.slug} className="@container/post-card">
       <Link href={`/post/${post.slug}`}>
         <h2
-          className="title text-black font-semibold text-4xl/none"
+          className="title text-4xl/none font-semibold text-dd-text-bold"
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
       </Link>
@@ -42,13 +42,13 @@ function BlogPost({ post }: { post: WordpressPost }) {
       {postIsVeryLong && (
         <>
           <div
-            className="text-xl/smart my-3 max-w-[44ch]"
+            className="my-3 max-w-[44ch] text-xl/smart"
             dangerouslySetInnerHTML={{ __html: post.excerpt }}
           />
           <div>
             <Link
               href={blogPostUrl(post.slug)}
-              className=" text-red-500 font-semibold"
+              className=" font-semibold text-red-500"
             >
               Read post <FontAwesomeIcon size="sm" icon={faChevronRight} />
             </Link>
@@ -84,7 +84,7 @@ export function Pagination({
   }
 
   return (
-    <div className="pagination flex flex-wrap justify-between @md:justify-center gap-4 py-12 [font-size:1.5rem] font-semibold">
+    <div className="pagination flex flex-wrap justify-between gap-4 py-12 font-semibold [font-size:1.5rem] @md:justify-center">
       {previousPage ? (
         <Link
           href={pageUrl(previousPage)}
@@ -117,10 +117,10 @@ export default function BlogPostIndex({
 }): JSX.Element {
   return (
     <VStack className="py-[clamp(1.5rem,5vw,3rem)]">
-      <section className="flex flex-col gap-y-10 w-inset max-w-content mx-auto">
+      <section className="mx-auto flex w-inset max-w-content flex-col gap-y-10">
         {posts.map((post, index) => (
           <Fragment key={index}>
-            {index > 0 && <hr className="border-slate-200 my-8" />}
+            {index > 0 && <hr className="my-8" />}
             <BlogPost key={post.slug} post={post} />
           </Fragment>
         ))}

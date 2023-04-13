@@ -7,10 +7,9 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { siteUrl } from "@lib/urls";
 import SiteContainer from "@/app/SiteContainer";
 import ClipPaths from "@components/ClipPaths";
+import { ThemeProvider, ThemeScript } from "@components/Theme";
 import MainNavigation from "./MainNavigation";
 import "../styles/blog.css";
-import Script from "next/script";
-import DarkModeScript from "@components/DarkModeScript";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl("/", true)),
@@ -44,16 +43,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-US" data-theme={""}>
+    <html suppressHydrationWarning lang="en-US" data-theme={""}>
       <head>
-        <DarkModeScript />
+        <ThemeScript />
       </head>
-      <body className="bg-stone-50 dark:bg-stone-950 text-stone-700 dark:text-stone-200">
-        <SiteContainer>
-          <MainNavigation />
-          {children}
-        </SiteContainer>
-        <ClipPaths />
+      <body className="theme-light dark:theme-dark">
+        <ThemeProvider>
+          <SiteContainer>
+            <MainNavigation />
+            {children}
+          </SiteContainer>
+          <ClipPaths />
+        </ThemeProvider>
       </body>
     </html>
   );

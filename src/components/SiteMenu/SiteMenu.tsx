@@ -1,20 +1,23 @@
 "use client";
 
+import _ from "lodash";
 import { useEffect, useRef, useState, MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 import useMediaQuery from "@lib/hooks/useMediaQuery";
-import menuItems from "./menus";
-import _ from "lodash";
 import useCurrentSiteSection from "@lib/hooks/useCurrentSiteSection";
+import { ThemeMenu, ThemeSelector } from "@components/Theme";
+
 import MenuItemsWrapper from "./MenuItemsWrapper";
 import BasicNavLink, { MobileNavLink } from "./BasicNavLink";
 import MenuToggleButton from "./MenuToggleButton";
 import MenuSidebar from "./MenuSidebar";
+import menuItems from "./menus";
+import { useClientReady } from "@components/Theme/ThemeScript";
 
 export const SiteMenu = () => {
-  const [clientReady, setClientReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const clientReady = useClientReady();
   const _isSmallScreen = useMediaQuery("(max-width: 550px)", false);
   const containerRef = useRef(null);
 
@@ -26,10 +29,6 @@ export const SiteMenu = () => {
   }
 
   useEffect(() => {
-    setClientReady(true);
-  }, []);
-
-  useEffect(() => {
     document.documentElement.classList.toggle("overflow-hidden", menuOpen);
   }, [menuOpen]);
 
@@ -39,10 +38,10 @@ export const SiteMenu = () => {
       ref={containerRef}
       whileHover={menuOpen ? "open" : ["closed", "hover"]}
       initial={false}
-      className="z-40 [--sidebar-width:min(100vw,340px)]"
+      className="z-40 [--sidebar-width:100vw]"
     >
       {!_isSmallScreen && (
-        <div className="hidden sm:flex menu-not-mobile gap-4">
+        <div className="menu-not-mobile hidden items-center gap-4 sm:flex">
           <ul className="contents">
             {menuItems.main.map((item, index) => (
               <li key={index} className="contents">
@@ -54,12 +53,13 @@ export const SiteMenu = () => {
               </li>
             ))}
           </ul>
+          <ThemeMenu />
         </div>
       )}
       {clientReady && _isSmallScreen && (
         <>
           <motion.div
-            className="inset-0 fixed bg-black/50 backdrop-blur"
+            className="fixed inset-0 bg-black/50 backdrop-blur"
             variants={{
               open: {
                 display: "block",
@@ -73,7 +73,7 @@ export const SiteMenu = () => {
               },
             }}
           />
-          <MenuSidebar menuOpen={menuOpen} />
+          <MenuSidebar />
           <MenuItemsWrapper menuOpen={menuOpen}>
             {menuItems.main.map((item, index) => (
               <MobileNavLink
@@ -82,6 +82,16 @@ export const SiteMenu = () => {
                 isActive={activeSection === item.slug}
               />
             ))}
+            <div className="flex-1"></div>
+            <motion.div
+              className="py-6 text-2xl"
+              variants={{
+                open: { opacity: 1, y: 0 },
+                closed: { opacity: 0, y: 20 },
+              }}
+            >
+              <ThemeSelector variant="row" />
+            </motion.div>
           </MenuItemsWrapper>
           <MenuToggleButton toggle={toggleMenuOpen} />
         </>

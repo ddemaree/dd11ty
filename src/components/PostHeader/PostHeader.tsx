@@ -18,16 +18,16 @@ export default function PostHeader({
 }) {
   return (
     <header className="post-header w-full max-w-content px-inset py-8 md:py-10">
-      <VStack className="post-header-inner @container/post-header mx-auto text-center">
-        <h1 className="balance-text font-medium text-stone-950 text-4xl/none text-[clamp(30px,9vw,44px)]">
+      <VStack className="post-header-inner mx-auto text-center @container/post-header">
+        <h1 className="balance-text text-4xl/none text-[clamp(30px,9vw,44px)] font-medium text-dd-text-bold">
           <Balancer>{title}</Balancer>
         </h1>
         {subtitle && (
-          <div className="balance-text post-header__subtitle text-stone-500 dark:text-stone-400 text-2xl leading-snug mt-3">
+          <div className="balance-text post-header__subtitle mt-3 text-2xl leading-snug text-stone-500 dark:text-stone-400">
             <Balancer>{subtitle}</Balancer>
           </div>
         )}
-        <div className="font-semibold uppercase mt-4 text-lg">
+        <div className="mt-4 text-lg font-semibold uppercase">
           {!isDraft && date && <DisplayDate dateString={date} />}
           {isDraft && (
             <span>

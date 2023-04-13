@@ -8,6 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faCheckCircle } from "@fortawesome/sharp-solid-svg-icons";
 import { TestContent } from "@components/ColorTests";
 
+import postcss from "postcss";
+import postcssJs from "postcss-js";
+
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config.cjs";
 import PostHeader from "@components/PostHeader";
@@ -88,11 +91,35 @@ function blackContrast(color: string | chroma.Color) {
   // return textLum / blackLum;
 }
 
+function colorsToCSS() {
+  const cssObj = Object.entries(COLORS).reduce((acc, [mode, colors]) => {
+    acc[`.theme-${mode}`] = Object.entries(colors).reduce(
+      (acc, [key, value]) => {
+        return {
+          ...acc,
+          [`--dd-col-${_.kebabCase(key)}`]: chroma(value).rgb().join(" "),
+        };
+      },
+      {}
+    );
+
+    return acc;
+  }, {});
+
+  postcss()
+    .process(cssObj, { parser: postcssJs })
+    .then((result) => {
+      console.log(result.css);
+    });
+}
+
 export default function TestPage() {
   const [contrastMode, setContrastMode] = useState<ContrastMode>("black");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("swatches");
 
   const currentColors = contrastMode === "white" ? COLORS.light : COLORS.dark;
+
+  console.log(colorsToCSS());
 
   const cssVars = Object.entries(currentColors).reduce(
     (acc, [key, value]) => ({

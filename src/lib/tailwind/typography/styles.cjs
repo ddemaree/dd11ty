@@ -49,7 +49,7 @@ module.exports = (theme) => {
           "--dd-layout-padding-block": "1.5rem",
           "--dd-layout-padding-inline": "clamp(1rem, 5.5vw, 2.5rem)",
           "--prose-grid-inset": "minmax(var(--dd-layout-padding-inline), 4rem)",
-          color: "var(--prose-base-color)",
+          color: theme("colors.dd.text.DEFAULT"),
           display: "grid",
           fontSize: "var(--prose-base-font-size)",
           fontFamily: "var(--prose-base-font-family)",
@@ -139,7 +139,7 @@ module.exports = (theme) => {
           },
 
           a: {
-            color: "var(--prose-links-color)",
+            color: "rgb(var(--dd-col-link))",
             textDecoration: "underline",
             fontWeight: "var(--prose-links-font-weight, 500)",
             textUnderlineOffset: "0.15em",

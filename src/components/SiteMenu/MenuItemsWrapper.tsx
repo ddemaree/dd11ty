@@ -20,7 +20,7 @@ const MenuItemsWrapper = ({ children, menuOpen }: MenuItemsWrapperProps) => {
     <AnimatePresence>
       {menuOpen && (
         <motion.ul
-          className="absolute flex flex-col gap-4 justify-center p-6 w-[var(--sidebar-width)] right-0 bottom-16 top-0"
+          className="absolute flex flex-col gap-4 justify-start pt-24 p-6 w-[var(--sidebar-width)] right-0 bottom-16 top-0"
           variants={itemVariants}
           initial={"closed"}
           exit={"closed"}

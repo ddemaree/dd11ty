@@ -66,7 +66,7 @@ export default async function BlogPostPage({
   return (
     <VStack as="article">
       <PostHeader {...{ title, date, subtitle, image: featuredImage }} />
-      <main className="prose dark:prose-dark">
+      <main className="prose">
         <Content />
       </main>
       <FooterOrnament />

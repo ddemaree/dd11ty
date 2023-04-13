@@ -1,14 +1,11 @@
 import { motion, Variants } from "framer-motion";
 
-export default function MenuSidebar({
-  menuOpen = false,
-}: {
-  menuOpen: boolean;
-}) {
+export default function MenuSidebar() {
   const sidebarVariants: Variants = {
     open: {
       clipPath: `circle(1800px at 300px 40px)`,
-      bottom: "0px",
+      // bottom: "0px",
+      inset: "0px",
       position: "fixed",
       height: "100dvh",
       opacity: 1,
@@ -36,7 +33,7 @@ export default function MenuSidebar({
 
   return (
     <motion.div
-      className="top-0 right-0 w-[var(--sidebar-width)] shadow-md bg-red-400 dark:bg-red-800"
+      className="right-0 top-0 w-[--sidebar-width] bg-red-400 shadow-md dark:bg-red-800"
       variants={sidebarVariants}
     />
   );

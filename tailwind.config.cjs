@@ -52,6 +52,19 @@ module.exports = {
     extend: {
       colors: {
         ...ddColorTokens,
+        dd: {
+          text: {
+            DEFAULT: "rgb(var(--dd-col-text) / <alpha-value>)",
+            light: "rgb(var(--dd-col-light-text) / <alpha-value>)",
+            bold: "rgb(var(--dd-col-bold-text) / <alpha-value>)",
+          },
+          background: {
+            DEFAULT: "rgb(var(--dd-col-background) / <alpha-value>)",
+          },
+          link: {
+            DEFAULT: "rgb(var(--dd-col-link) / <alpha-value>)",
+          },
+        },
       },
       fontSize: {
         title: `clamp(2rem, 10vmin, 3rem)`,
@@ -131,8 +144,6 @@ module.exports = {
       }
     ),
     plugin(function ({ addVariant, matchVariant }) {
-      // addVariant("desc", ":where(& *)");
-
       matchVariant(
         "desc",
         (value) => {
