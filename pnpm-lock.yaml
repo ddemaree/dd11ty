@@ -28,9 +28,6 @@ dependencies:
   '@headlessui/react':
     specifier: ^1.7.13
     version: 1.7.13(react-dom@18.2.0)(react@18.2.0)
-  '@nanostores/react':
-    specifier: ^0.4.1
-    version: 0.4.1(nanostores@0.7.4)(react@18.2.0)
   '@next/mdx':
     specifier: ^13.2.4
     version: 13.3.0
@@ -43,18 +40,6 @@ dependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.8
     version: 0.5.9(tailwindcss@3.3.1)
-  '@types/lodash':
-    specifier: ^4.14.191
-    version: 4.14.192
-  '@types/luxon':
-    specifier: ^3.1.0
-    version: 3.3.0
-  '@types/mdx':
-    specifier: ^2.0.3
-    version: 2.0.4
-  '@types/react-dom':
-    specifier: 18.0.10
-    version: 18.0.10
   '@vercel/edge':
     specifier: ^0.2.1
     version: 0.2.7
@@ -124,9 +109,6 @@ dependencies:
   luxon:
     specifier: ^3.1.1
     version: 3.3.0
-  nanostores:
-    specifier: ^0.7.4
-    version: 0.7.4
   next:
     specifier: 13.3.0
     version: 13.3.0(@babel/core@7.21.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.61.0)
@@ -195,12 +177,27 @@ devDependencies:
   '@types/fontfaceobserver':
     specifier: ^2.1.0
     version: 2.1.0
+  '@types/lodash':
+    specifier: ^4.14.191
+    version: 4.14.192
+  '@types/luxon':
+    specifier: ^3.1.0
+    version: 3.3.0
+  '@types/mdx':
+    specifier: ^2.0.3
+    version: 2.0.4
   '@types/node':
     specifier: 18.15.3
     version: 18.15.3
+  '@types/postcss-js':
+    specifier: ^4.0.0
+    version: 4.0.0
   '@types/react':
     specifier: 18.0.26
     version: 18.0.26
+  '@types/react-dom':
+    specifier: 18.0.10
+    version: 18.0.10
   '@types/twitter-text':
     specifier: ^3.1.5
     version: 3.1.5
@@ -2469,18 +2466,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@nanostores/react@0.4.1(nanostores@0.7.4)(react@18.2.0):
-    resolution: {integrity: sha512-lsv0CYrMxczbXtoV/mxFVEoL/uVjEjseoP89srO/5yNAOkJka+dSFS7LYyWEbuvCPO7EgbtkvRpO5V+OztKQOw==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      nanostores: ^0.7.0
-      react: '>=18.0.0'
-    dependencies:
-      nanostores: 0.7.4
-      react: 18.2.0
-      use-sync-external-store: 1.2.0(react@18.2.0)
-    dev: false
-
   /@next/env@13.3.0:
     resolution: {integrity: sha512-AjppRV4uG3No7L1plinoTQETH+j2F10TEnrMfzbTUYwze5sBUPveeeBAPZPm8OkJZ1epq9OyYKhZrvbD6/9HCQ==}
     dev: false
@@ -2974,11 +2959,11 @@ packages:
 
   /@types/lodash@4.14.192:
     resolution: {integrity: sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==}
-    dev: false
+    dev: true
 
   /@types/luxon@3.3.0:
     resolution: {integrity: sha512-uKRI5QORDnrGFYgcdAVnHvEIvEZ8noTpP/Bg+HeUzZghwinDlIS87DEenV5r1YoOF9G4x600YsUXLWZ19rmTmg==}
-    dev: false
+    dev: true
 
   /@types/mdast@3.0.11:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
@@ -2992,7 +2977,7 @@ packages:
 
   /@types/mdx@2.0.4:
     resolution: {integrity: sha512-qCYrNdpKwN6YO6FVnx+ulfqifKlE3lQGsNhvDaW9Oxzyob/cRLBJWow8GHBBD4NxQ7BVvtsATgLsX0vZAWmtrg==}
-    dev: false
+    dev: true
 
   /@types/minimatch@5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
@@ -3024,6 +3009,12 @@ packages:
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
+
+  /@types/postcss-js@4.0.0:
+    resolution: {integrity: sha512-ieu0u7T7jnUCFmXcf8JzoJ3/1U5NI3ZYpfX5zW2td0x/BqVQrpCQ6uOY9Ef/0WJuIjc9OCtdfYF/JE7MGax2TA==}
+    dependencies:
+      postcss: 8.4.21
+    dev: true
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
@@ -8803,11 +8794,6 @@ packages:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-
-  /nanostores@0.7.4:
-    resolution: {integrity: sha512-MBeUVt7NBcXqh7AGT+KSr3O0X/995CZsvcP2QEMP+PXFwb07qv3Vjyq+EX0yS8f12Vv3Tn2g/BvK/OZoMhJlOQ==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    dev: false
 
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}

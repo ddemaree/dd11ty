@@ -22,9 +22,9 @@ The 'arc' option is only valid if I detect Arc's CSS variables
 export default function ThemeMenu() {
   const clientReady = useClientReady();
 
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const [arrowElement, setArrowElement] = useState(null);
+  const [referenceElement, setReferenceElement] = useState<HTMLButtonElement>();
+  const [popperElement, setPopperElement] = useState<HTMLDivElement>();
+  const [arrowElement, setArrowElement] = useState<HTMLDivElement>();
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: "bottom-start",
     modifiers: [
@@ -41,7 +41,7 @@ export default function ThemeMenu() {
             <Popover.Button
               suppressHydrationWarning
               className="h-10 w-10"
-              ref={setReferenceElement}
+              ref={(e) => setReferenceElement(e as HTMLButtonElement)}
             >
               <CurrentThemeIcon />
               <span className="sr-only">Color theme</span>
@@ -53,11 +53,14 @@ export default function ThemeMenu() {
             >
               <Popover.Panel
                 className="absolute flex w-max flex-col rounded-md bg-stone-200 p-2 dark:bg-stone-800"
-                ref={setPopperElement}
+                ref={(e) => setPopperElement(e as HTMLDivElement)}
                 style={styles.popper}
                 {...attributes.popper}
               >
-                <div ref={setArrowElement} style={styles.arrow} />
+                <div
+                  ref={(e) => setArrowElement(e as HTMLDivElement)}
+                  style={styles.arrow}
+                />
                 <ThemeSelector variant={"menu"} />
               </Popover.Panel>
             </Transition>
