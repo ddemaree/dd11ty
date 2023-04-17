@@ -1,36 +1,28 @@
-"use client";
-
 import _ from "lodash";
-import { useEffect, useRef, useState, MouseEvent } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 import useMediaQuery from "@lib/hooks/useMediaQuery";
-import useCurrentSiteSection from "@lib/hooks/useCurrentSiteSection";
-import { ThemeMenu, ThemeSelector } from "@components/Theme";
-
-import MenuItemsWrapper from "./MenuItemsWrapper";
-import BasicNavLink, { MobileNavLink } from "./BasicNavLink";
-import MenuToggleButton from "./MenuToggleButton";
-import MenuSidebar from "./MenuSidebar";
+import { useSiteStore } from "@/lib/siteStore";
 import menuItems from "./menus";
-import { useClientReady } from "@components/Theme/ThemeScript";
+import { NavItem } from "./NavItem";
+import { MobileMenu } from "./MobileMenu";
+import { ThemeMenu } from "../Theming";
 
-export const SiteMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const clientReady = useClientReady();
-  const _isSmallScreen = useMediaQuery("(max-width: 550px)", false);
-  const containerRef = useRef(null);
+export const SiteMenu = ({
+  mobileBreakpoint = "640px",
+}: {
+  mobileBreakpoint?: string;
+}) => {
+  const { menuOpen } = useSiteStore();
 
-  const activeSection = useCurrentSiteSection();
+  const _isSmallScreen = useMediaQuery(
+    `(max-width: ${mobileBreakpoint})`,
+    false
+  );
+  const containerRef = React.useRef(null);
 
-  function toggleMenuOpen(e: MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    setMenuOpen(!menuOpen);
-  }
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("overflow-hidden", menuOpen);
-  }, [menuOpen]);
+  const activeSection = null;
 
   return (
     <motion.nav
@@ -44,58 +36,18 @@ export const SiteMenu = () => {
         <div className="menu-not-mobile hidden items-center gap-4 sm:flex">
           <ul className="contents">
             {menuItems.main.map((item, index) => (
-              <li key={index} className="contents">
-                <BasicNavLink
-                  key={`menu-main-${index}`}
-                  item={item}
-                  isActive={activeSection === item.slug}
-                />
-              </li>
+              <NavItem
+                key={index}
+                itemClassName="contents"
+                item={item}
+                isActive={activeSection === item.slug}
+              />
             ))}
           </ul>
           <ThemeMenu />
         </div>
       )}
-      {clientReady && _isSmallScreen && (
-        <>
-          <motion.div
-            className="fixed inset-0 bg-black/50 backdrop-blur"
-            variants={{
-              open: {
-                display: "block",
-                opacity: 1,
-                pointerEvents: "auto",
-              },
-              closed: {
-                display: "none",
-                opacity: 0,
-                pointerEvents: "none",
-              },
-            }}
-          />
-          <MenuSidebar />
-          <MenuItemsWrapper menuOpen={menuOpen}>
-            {menuItems.main.map((item, index) => (
-              <MobileNavLink
-                item={item}
-                key={`menu-mobile-${index}`}
-                isActive={activeSection === item.slug}
-              />
-            ))}
-            <div className="flex-1"></div>
-            <motion.div
-              className="py-6 text-2xl"
-              variants={{
-                open: { opacity: 1, y: 0 },
-                closed: { opacity: 0, y: 20 },
-              }}
-            >
-              <ThemeSelector variant="row" />
-            </motion.div>
-          </MenuItemsWrapper>
-          <MenuToggleButton toggle={toggleMenuOpen} />
-        </>
-      )}
+      {_isSmallScreen && <MobileMenu activeSection={activeSection || ""} />}
     </motion.nav>
   );
 };

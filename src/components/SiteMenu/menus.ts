@@ -1,14 +1,8 @@
-import {
+import type {
   IconName,
   IconFamily,
   IconLookup,
 } from "@fortawesome/fontawesome-svg-core";
-import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import {
-  faHomeHeart,
-  faNewspaper,
-  faUserNinja,
-} from "@fortawesome/sharp-solid-svg-icons";
 
 export type SiteSection = "home" | "about" | "blog";
 
@@ -21,6 +15,14 @@ export interface MenuItem {
   hidden?: boolean;
 }
 
+import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
+import {
+  faHomeHeart,
+  faNewspaper,
+  faUserNinja,
+} from "@fortawesome/sharp-solid-svg-icons";
+
 function defineMenuItem(itemData: MenuItem) {
   return itemData;
 }
@@ -29,7 +31,7 @@ function defineMenuSet(items: MenuItem[]) {
   return items;
 }
 
-const menuItems = {
+export const menuItems = {
   main: defineMenuSet([
     defineMenuItem({
       title: "Home",
@@ -69,5 +71,4 @@ export default menuItems;
 
 export type MenuItemSet = typeof menuItems;
 export type MenuKey = keyof MenuItemSet;
-
-type SectionNames = typeof menuItems[MenuKey][number]["slug"];
+export type SectionNames = (typeof menuItems)[MenuKey][number]["slug"];

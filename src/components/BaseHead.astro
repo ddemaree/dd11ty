@@ -1,0 +1,68 @@
+---
+import { resolveMetadata } from "@/lib/metadata";
+import type { Metadata } from "@/types/metadata";
+
+import { Meta, TwitterMetadata, OpenGraphMetadata, IconsMetadata } from "./Metadata";
+
+export interface Props {
+  metadata: Metadata;
+}
+
+const defaultDescription = `A middle-aged man with a passion for Legos and keyboards.`
+
+const defaultMetadata: Metadata = {
+  // authors: [{ name: "David Demaree", url: "https://demaree.me" }],
+  // creator: "David Demaree",
+  title: {
+    default: `David Demaree's site`,
+    template: `%s | David Demaree's site`,
+  },
+  icons: [
+    {
+      rel: "icon",
+      url: "/icon.svg",
+      type: "image/svg+xml",
+    },
+  ],
+  description: defaultDescription,
+  openGraph: {
+    siteName: "David Demaree's website",
+    locale: "en_US",
+    type: "website",
+    description: defaultDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@ddemaree",
+    site: "@ddemaree",
+    description: defaultDescription,
+    images: [
+      {
+        url: "/opengraph-image/default.png",
+        alt: "David Demaree's website",
+      },
+    ],
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed",
+    },
+  }
+};
+
+const { metadata: _metadata = {} } = Astro.props;
+
+const metadata = resolveMetadata(defaultMetadata, _metadata);
+
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{metadata.title !== null && metadata.title.absolute ? (
+  <title>{metadata.title.absolute}</title>
+) : null}
+<Meta name="description" content={metadata.description} />
+<Meta name="keywords" content={metadata.keywords?.join(", ")} />
+<Meta name="color-scheme" content={metadata.colorScheme} />
+<TwitterMetadata twitter={metadata.twitter} />
+<OpenGraphMetadata openGraph={metadata.openGraph} />
+<IconsMetadata icons={metadata.icons} />

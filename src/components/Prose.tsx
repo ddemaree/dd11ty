@@ -1,5 +1,3 @@
-"use client";
-
 import clsx from "clsx";
 import { PropsWithChildren, forwardRef, HTMLProps } from "react";
 

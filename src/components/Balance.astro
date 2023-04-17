@@ -1,0 +1,77 @@
+---
+import hyperid from 'hyperid';
+const genID = hyperid();
+
+const SYMBOL_KEY = '__wrap_b';
+const SYMBOL_OBSERVER_KEY = '__wrap_o';
+const IS_SERVER = typeof window === 'undefined';
+
+interface WrapperElement extends HTMLElement {
+  [SYMBOL_OBSERVER_KEY]?: ResizeObserver | undefined
+}
+
+type RelayoutFn = (
+  id: string | number,
+  ratio: number,
+  wrapper: WrapperElement | null
+) => void
+
+declare global {
+  interface Window {
+    [SYMBOL_KEY]: RelayoutFn
+  }
+}
+
+const relayout: RelayoutFn = (id, ratio, wrapper) => {
+  wrapper =
+    (wrapper || document.querySelector<WrapperElement>(`[data-br="${id}"]`)) as WrapperElement
+  
+  if(!wrapper) return;
+  
+  const container = wrapper.parentElement as HTMLElement
+
+  const update = (width: number) => (wrapper!.style.maxWidth = width + 'px')
+
+  // Reset wrapper width
+  wrapper.style.maxWidth = ''
+
+  // Get the initial container size
+  const width = container.clientWidth
+  const height = container.clientHeight
+
+  // Synchronously do binary search and calculate the layout
+  let lower: number = width / 2 - 0.25
+  let upper: number = width + 0.5
+  let middle: number
+
+  if (width) {
+    while (lower + 1 < upper) {
+      middle = Math.round((lower + upper) / 2)
+      update(middle)
+      if (container.clientHeight === height) {
+        upper = middle
+      } else {
+        lower = middle
+      }
+    }
+
+    // Update the wrapper width
+    update(upper * ratio + width * (1 - ratio))
+  }
+
+  // Create a new observer if we don't have one.
+  // Note that we must inline the key here as we use `toString()` to serialize
+  // the function.
+  if (!wrapper['__wrap_o']) {
+    ;(wrapper['__wrap_o'] = new ResizeObserver(() => {
+      self.__wrap_b(0, +wrapper.dataset.brr, wrapper)
+    })).observe(container)
+  }
+}
+
+const RELAYOUT_STR = relayout.toString()
+
+const uid = genID();
+---
+<span class="inline-block [text-decoration:inherit] align-top" data-br={uid} data-brr="1"><slot /></span>
+<script is:inline set:html={`self.${SYMBOL_KEY}=${RELAYOUT_STR};self.${SYMBOL_KEY}("${uid}",1)`} />

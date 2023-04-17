@@ -1,0 +1,39 @@
+@use "sass:math";
+
+$arrowSize: 10px;
+$arrowPosition: (-1 * math.div($arrowSize, 2));
+
+.arrow,
+.arrow::before {
+  position: absolute;
+  width: $arrowSize;
+  height: $arrowSize;
+  background: inherit;
+}
+
+.arrow {
+  visibility: hidden;
+}
+
+.arrow::before {
+  visibility: visible;
+  content: "";
+  transform: rotate(45deg);
+  border: inherit;
+}
+
+[data-popper-placement^="top"] > .arrow {
+  bottom: $arrowPosition;
+}
+
+[data-popper-placement^="bottom"] > .arrow {
+  top: $arrowPosition;
+}
+
+[data-popper-placement^="left"] > .arrow {
+  right: $arrowPosition;
+}
+
+[data-popper-placement^="right"] > .arrow {
+  left: $arrowPosition;
+}

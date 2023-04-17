@@ -1,14 +1,49 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 import {
   faGithub,
   faLinkedin,
   faMastodon,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { faFeed } from "@fortawesome/sharp-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFeed, faPaperPlane } from "@fortawesome/sharp-solid-svg-icons";
+
 import clsx, { ClassValue } from "clsx";
-import Link from "next/link";
+
+type MyLink = {
+  title: string;
+  href: string;
+  icon?: IconProp;
+  hidden?: boolean;
+};
+
+export const myLinks = new Map<string, MyLink>([
+  [
+    "twitter",
+    { title: "Twitter", href: "https://twitter.com/ddemaree", icon: faTwitter },
+  ],
+  [
+    "mastodon",
+    { title: "Mastodon", href: "https://me.dm/@ddemaree", icon: faMastodon },
+  ],
+  [
+    "linkedin",
+    {
+      title: "LinkedIn",
+      href: "https://linkedin.com/in/ddemaree",
+      icon: faLinkedin,
+    },
+  ],
+  [
+    "github",
+    { title: "GitHub", href: "https://github.com/ddemaree", icon: faGithub },
+  ],
+  ["rss", { title: "RSS", href: "/feed", icon: faFeed }],
+]);
+
+type MyLinksMap = typeof myLinks;
 
 function MyLinksItem({
   title,
@@ -30,7 +65,7 @@ function MyLinksItem({
 
   return (
     <li className={itemClassValue}>
-      <Link href={href} className={linkClassValue}>
+      <a href={href} className={linkClassValue}>
         {icon && (
           <FontAwesomeIcon
             icon={icon}
@@ -39,7 +74,7 @@ function MyLinksItem({
           />
         )}
         <span className={clsx(!showLabel && "sr-only")}>{title}</span>
-      </Link>
+      </a>
     </li>
   );
 }
@@ -54,10 +89,14 @@ type MyLinksVariants = keyof typeof myVariants;
 
 export default function MyLinks({
   className,
+  itemClassName,
+  linkClassName,
   variant = "default",
   showLabels = true,
 }: {
   className?: ClassValue;
+  itemClassName?: ClassValue;
+  linkClassName?: ClassValue;
   variant?: null | MyLinksVariants;
   showLabels?: boolean;
 }) {
@@ -66,43 +105,17 @@ export default function MyLinks({
   return (
     <div className={classValue}>
       <ul className="contents">
-        {/* <MyLinksItem
-          title="david@demaree.me"
-          href="mailto:david@demaree.me?subject=sup"
-          icon={faPaperPlane}
-          showLabel={showLabels}
-          // itemClass="grow w-full"
-        /> */}
-        <MyLinksItem
-          title="Twitter"
-          href="https://twitter.com/ddemaree"
-          icon={faTwitter}
-          showLabel={showLabels}
-        />
-        <MyLinksItem
-          title="Mastodon"
-          href="https://me.dm/@ddemaree"
-          icon={faMastodon}
-          showLabel={showLabels}
-        />
-        <MyLinksItem
-          title="LinkedIn"
-          href="https://linkedin.com/in/ddemaree"
-          icon={faLinkedin}
-          showLabel={showLabels}
-        />
-        <MyLinksItem
-          title="GitHub"
-          href="https://github.com/ddemaree"
-          icon={faGithub}
-          showLabel={showLabels}
-        />
-        <MyLinksItem
-          title="RSS"
-          href="/feed"
-          icon={faFeed}
-          showLabel={showLabels}
-        />
+        {[...myLinks.entries()].map(([key, link]) => (
+          <MyLinksItem
+            key={key}
+            title={link.title}
+            href={link.href}
+            icon={link.icon}
+            showLabel={showLabels}
+            itemClass={itemClassName}
+            linkClass={linkClassName}
+          />
+        ))}
       </ul>
     </div>
   );

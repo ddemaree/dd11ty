@@ -4,7 +4,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
 const ddTypographyPlugin = require("./src/lib/tailwind/typography/index.cjs");
-const ddColorTokens = require("./src/styles/tokens/tailwindColors.cjs");
+// const ddColorTokens = require("./src/styles/tokens/tailwindColors.cjs");
 
 const resetSelectors = ["p", "h1", "h2", "h3", "h4", "h5", "h6", "figure"];
 const resets = {};
@@ -36,7 +36,7 @@ function mapToCSSVars(prefix, tokens) {
 module.exports = {
   darkMode: ["class", '[data-theme="dark"]'],
   important: true,
-  content: ["./src/**/*.{html,js,jsx,md,mdx,ts,tsx}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     supports: {
       cq: "container-type: inline-size",
@@ -50,22 +50,6 @@ module.exports = {
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
     }),
     extend: {
-      colors: {
-        ...ddColorTokens,
-        dd: {
-          text: {
-            DEFAULT: "rgb(var(--dd-col-text) / <alpha-value>)",
-            light: "rgb(var(--dd-col-light-text) / <alpha-value>)",
-            bold: "rgb(var(--dd-col-bold-text) / <alpha-value>)",
-          },
-          background: {
-            DEFAULT: "rgb(var(--dd-col-background) / <alpha-value>)",
-          },
-          link: {
-            DEFAULT: "rgb(var(--dd-col-link) / <alpha-value>)",
-          },
-        },
-      },
       fontSize: {
         title: `clamp(2rem, 10vmin, 3rem)`,
       },
@@ -144,6 +128,8 @@ module.exports = {
       }
     ),
     plugin(function ({ addVariant, matchVariant }) {
+      // addVariant("desc", ":where(& *)");
+
       matchVariant(
         "desc",
         (value) => {
