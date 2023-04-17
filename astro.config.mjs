@@ -8,13 +8,17 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   experimental: {
-    assets: true
+    assets: true,
   },
   output: "server",
   adapter: vercel({
-    analytics: true
+    analytics: true,
   }),
-  integrations: [tailwind({
-    applyBaseStyles: false
-  }), react(), mdx()]
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
+    mdx(),
+  ],
 });
