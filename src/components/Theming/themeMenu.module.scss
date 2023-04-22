@@ -1,5 +1,16 @@
 @use "sass:math";
 
+.menuPanel {
+  color: rgb(var(--dd-col-menu-text));
+  background-color: rgb(var(--dd-col-menu-background));
+}
+
+.menuOption {
+  &:hover {
+    background-color: rgb(var(--dd-col-menu-hover-background));
+  }
+}
+
 $arrowSize: 10px;
 $arrowPosition: (-1 * math.div($arrowSize, 2));
 

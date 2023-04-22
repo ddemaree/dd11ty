@@ -16,6 +16,7 @@ import clsx from "clsx";
 import React from "react";
 
 import themeMenuStyles from "./themeMenu.module.scss";
+const styles = themeMenuStyles;
 import useClientReady from "@/lib/hooks/useClientReady";
 
 export const CheckIcon = () => (
@@ -94,7 +95,8 @@ export const ThemeRadioOption = ({
     <RadioGroup.Option
       value={value}
       className={clsx(
-        "cursor-pointer select-none rounded-md p-2 hover:bg-[--dd-col-theme-hover-bg] gap-2 leading-none pr-[40px] relative w-full flex"
+        themeMenuStyles.menuOption,
+        "cursor-pointer select-none rounded-md p-2 gap-2 leading-none pr-[40px] relative w-full flex"
       )}
     >
       {({ checked }) => (
@@ -172,7 +174,7 @@ export function ThemeMenu() {
           enterTo="scale-y-100 opacity-1"
         >
           <Popover.Panel
-            className="absolute flex w-max flex-col rounded-md p-2 bg-[--dd-col-theme-menu-bg] text-[--dd-col-theme-menu-text]"
+            className={clsx(themeMenuStyles.menuPanel, "absolute flex w-max flex-col rounded-md p-2")}
             ref={(e) => setPopperElement(e as HTMLDivElement)}
             style={styles.popper}
             {...attributes.popper}

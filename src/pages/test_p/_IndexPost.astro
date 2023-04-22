@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { title, date  } = post.data;
+const { Content, remarkPluginFrontmatter } = await post.render();
+const { readingTime } = remarkPluginFrontmatter;
+
+---
+<article>
+  <h1>{title}</h1>
+  <time>{date}</time>
+  <div>{readingTime.text}</div>
+  {readingTime.minutes <= 8 && <div class="prose">
+    <Content />
+  </div>}
+</article>

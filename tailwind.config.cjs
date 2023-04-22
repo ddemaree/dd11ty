@@ -1,10 +1,9 @@
-/** @type {import('tailwindcss').Config} */
 const { reduce, isArray } = require("lodash");
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
 const ddTypographyPlugin = require("./src/lib/tailwind/typography/index.cjs");
-// const ddColorTokens = require("./src/styles/tokens/tailwindColors.cjs");
+const ddColorsPlugin = require("./src/lib/tailwind/colors/index.cjs");
 
 const resetSelectors = ["p", "h1", "h2", "h3", "h4", "h5", "h6", "figure"];
 const resets = {};
@@ -33,6 +32,31 @@ function mapToCSSVars(prefix, tokens) {
   );
 }
 
+const ddThemeColors = {
+  dd: {
+    background: `rgb(var(--dd-col-background) / <alpha-value>)`,
+    text: {
+      DEFAULT: `rgb(var(--dd-col-text) / <alpha-value>)`,
+      bold: `rgb(var(--dd-col-bold-text) / <alpha-value>)`,
+      light: `rgb(var(--dd-col-light-text) / <alpha-value>)`,
+    },
+    link: {
+      DEFAULT: `rgb(var(--dd-col-link) / <alpha-value>)`,
+    },
+    code: {
+      DEFAULT: `rgb(var(--dd-col-code) / <alpha-value>)`,
+      background: `rgb(var(--dd-col-code-background) / <alpha-value>)`,
+    },
+    dividers: `rgb(var(--dd-col-dividers) / <alpha-value>)`,
+    blockquote: {
+      DEFAULT: `rgb(var(--dd-col-blockquote) / <alpha-value>)`,
+      border: `rgb(var(--dd-col-blockquote-border) / <alpha-value>)`,
+    },
+  }
+};
+
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class", '[data-theme="dark"]'],
   important: true,
@@ -44,12 +68,14 @@ module.exports = {
     },
     fontFamily: ({ theme }) => ({
       sans: ["soehne-web", ...defaultTheme.fontFamily.sans],
-      // sans: "var(--font--mona-sans)",
       serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
     }),
     extend: {
+      // colors: {
+      //   ...ddThemeColors,
+      // },
       fontSize: {
         title: `clamp(2rem, 10vmin, 3rem)`,
       },
@@ -79,6 +105,7 @@ module.exports = {
     },
   },
   plugins: [
+    ddColorsPlugin,
     ddTypographyPlugin,
 
     require("@tailwindcss/container-queries"),

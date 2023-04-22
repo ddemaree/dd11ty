@@ -1,0 +1,25 @@
+---
+import { getEntryBySlug } from "astro:content";
+import SiteLayout from "@/components/SiteLayout.astro";
+import PostHeader from "@/components/Blog/PostHeader.astro";
+
+const { slug } = Astro.params;
+
+const post = await getEntryBySlug("blog", slug as any);
+
+if(!post) {
+  Astro.response.status = 404;
+  throw new Error("Not found");
+}
+
+const { title, date } = post.data;
+const { Content } = await post.render();
+---
+<SiteLayout>
+  <article class=" stack">
+    <PostHeader title={title} date={date} />
+    <main class="prose">
+      <Content />
+    </main>
+  </article>
+</SiteLayout>
