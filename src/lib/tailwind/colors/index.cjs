@@ -75,8 +75,14 @@ function colorSchemeToCSS(colorScheme) {
 
 const ddColorsPlugin = plugin(({ addBase, addComponents, theme }) => {
   const componentsMap = {
-    '.theme-light': {...colorSchemeToCSS(lightTheme)},
-    '.theme-dark': {...colorSchemeToCSS(darkTheme)},
+    '.theme-light': { 
+      colorScheme: 'light',
+      ...colorSchemeToCSS(lightTheme)
+    },
+    '.theme-dark': {
+      colorScheme: 'dark',
+      ...colorSchemeToCSS(darkTheme)
+    },
   };
   
   addComponents(componentsMap);

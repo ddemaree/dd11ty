@@ -3,6 +3,7 @@ import vercel from "@astrojs/vercel/serverless";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
+import lightningcss from 'vite-plugin-lightningcss';
 
 import { rehypePlugins, remarkPlugins } from "./src/lib/remark";
 
@@ -32,4 +33,11 @@ export default defineConfig({
     react(),
     mdx(),
   ],
+  vite: {
+    plugins: [
+      lightningcss({
+        browserslist: '>= 0.25%',
+      }),
+    ],
+  },
 });

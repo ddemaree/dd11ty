@@ -59,11 +59,32 @@
 
 // Custom tweet markup
 @layer components {
+
+  .theme-light {
+    --tweets-background-color: oklch(97% 0.01 230.56);
+    --tweets-border-color: oklch(82% 0.02 230.56);
+    --tweets-author-name-color: currentColor;
+    --tweets-content-color: currentColor;
+    --tweets-author-handle-color: oklch(54% 0.06 230.56);
+    --tweets-footer-color: oklch(54% 0.06 230.56);
+    --tweets-date-color: var(--tweets-footer-color);
+  }
+
+  // oklch(61.68% 0.1169 230.56)
+  .theme-dark {
+    --tweets-background-color: oklch(20% 0.005 230.56);
+    --tweets-border-color: oklch(30% 0.02 230.56);
+    --tweets-author-name-color: currentColor;
+    --tweets-author-handle-color: oklch(70% 0.06 230.56);
+    --tweets-content-color: currentColor;
+    --tweets-footer-color: oklch(70% 0.06 230.56);
+    --tweets-date-color: var(--tweets-footer-color);
+  }
+
   .dd-embed.dd-embed-tweet {
     @apply font-sans;
     background-color: var(--tweets-background-color);
-    background-color: oklch(20% 0.01 230);
-    border-color: var(--tweets-border-color, oklch(38% 0.02 230));
+    border-color: var(--tweets-border-color);
     border-style: solid;
     border-width: 1px;
     border-radius: var(--tweets-border-radius, 0.5em);
@@ -110,7 +131,7 @@
     .tweet-author-handle {
       font-size: 0.8em;
       font-weight: 400;
-      color: oklch(70% 0.06 230);
+      color: var(--tweets-author-handle-color);
       display: block;
       margin-block-start: 0.1em;
     }
@@ -140,7 +161,6 @@
 
     .tweet-date {
       color: var(--tweets-date-color);
-      color: oklch(70% 0.06 230);
       text-decoration: none;
       text-transform: uppercase; 
     }
