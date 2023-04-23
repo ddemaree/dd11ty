@@ -5,10 +5,10 @@ excerpt: >-
   An AI luddite stops worrying and learns to have fun making weird stuff with
   robots.
 subtitle: ''
-cover_url: https://img.demaree.me/upload/v1664123356/bitsandletters-assets/ddemaree_skeleton_typing_a_letter_to_his_wife_b12ed4df-adc1-427f-9ff4-1f812a5577cc.png
+cover: ./cover-monkeys-typewriters.png
 ---
 <figure class="alignwide">
-  <img src="https://img.demaree.me/upload/v1664123356/bitsandletters-assets/ddemaree_skeleton_typing_a_letter_to_his_wife_b12ed4df-adc1-427f-9ff4-1f812a5577cc.png" alt="Skeleton typing a letter to his wife" width="1024" height="1024" />
+  <img src="./cover-monkeys-typewriters.png" alt="Skeleton typing a letter to his wife" width="1024" height="1024" />
   <figcaption>"Skeleton typing a letter to his wife"</figcaption>
 </figure>
 

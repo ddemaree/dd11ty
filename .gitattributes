@@ -8,3 +8,5 @@ src/content/blog/where-the-web-fonts-go/screenshot-transmit-webfonts.png filter=
 src/content/blog/where-the-web-fonts-go/screenshot-webfont-code-nova.png filter=lfs diff=lfs merge=lfs -text
 src/content/blog/no-more-masters/cover-unsplash-river.jpg filter=lfs diff=lfs merge=lfs -text
 src/content/blog/no-more-masters/screenshot-github-readme.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/monkeys-typewriters/cover-monkeys-typewriters.png filter=lfs diff=lfs merge=lfs -text
+src/assets/dd-stitch-transparent.png filter=lfs diff=lfs merge=lfs -text
