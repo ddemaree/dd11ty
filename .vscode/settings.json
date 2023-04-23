@@ -7,11 +7,27 @@
   "emmet.excludeLanguages": [],
   "tailwindCSS.emmetCompletions": true,
   "files.exclude": {
+    "**/.astro": true,
+    "**/.vercel": true,
     "**/resources": true
   },
   "files.watcherExclude": {
-    "**/.next": true
+    "**/.astro": true,
+    "**/.next": true,
+    "**/.vercel": true
   },
   "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.4/node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "search.useGlobalIgnoreFiles": true,
+  "explorer.fileNesting.enabled": true,
+  "prettier.bracketSameLine": true,
+  "prettier.insertPragma": true,
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/.hg/**",
+    "**/.svn/**",
+    "**/.astro/**"
+  ],
+  "mdx.experimentalLanguageServer": true
 }
