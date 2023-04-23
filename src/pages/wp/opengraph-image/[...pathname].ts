@@ -3,7 +3,7 @@ import ImageTest from "@/components/ImageTest";
 import DDIcon from "@/components/DDIcon";
 import type { ImageAPIRoute } from "@/types/image-generation";
 
-import { getPostImage } from "./_getWPPostImage";
+import { getPostImage } from "./_getPostImage";
 
 const content = {
   type: "div",
@@ -22,7 +22,7 @@ export const get: ImageAPIRoute = async ({ params: { pathname } }) => {
   pathname = pathname.replace(/\.[a-z]+\/?$/, "");
 
   try {
-    if (pathname.startsWith("wp/post/")) {
+    if (pathname.startsWith("post/")) {
       const [_, slug] = pathname.split("/");
       const postImageResponse = await getPostImage(slug);
       return postImageResponse;

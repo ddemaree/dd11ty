@@ -33,11 +33,14 @@ export default defineConfig({
     react(),
     mdx(),
   ],
-  vite: {
-    plugins: [
-      lightningcss({
-        browserslist: '>= 0.25%',
-      }),
-    ],
-  },
+  // vite: {
+  //   plugins: [
+  //     lightningcss({
+  //       browserslist: "last 2 versions",
+  //       drafts: {
+  //         nesting: true,
+  //       }
+  //     }),
+  //   ],
+  // },
 });

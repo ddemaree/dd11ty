@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.test-with-oklch {
+  --test-color-var: oklch(20% 0.5 128);
+  color: oklch(80% 0.5 128);
+  background-color: var(--test-color-var);
+}
+
 /* 
 @import "./tokens/tokens.css";
 @import "@wordpress/block-library/build-style/style.css";
@@ -57,7 +63,6 @@
   }
 }
 
-// Custom tweet markup
 @layer components {
 
   .theme-light {
@@ -70,7 +75,6 @@
     --tweets-date-color: var(--tweets-footer-color);
   }
 
-  // oklch(61.68% 0.1169 230.56)
   .theme-dark {
     --tweets-background-color: oklch(20% 0.005 230.56);
     --tweets-border-color: oklch(30% 0.02 230.56);
@@ -99,7 +103,7 @@
     padding: 1em;
     row-gap: 1rem;
 
-    * {
+    & * {
       margin: unset;
       font-weight: unset;
     }
@@ -147,7 +151,7 @@
       font-weight: 400;
       color: var(--tweets-content-color, currentColor);
 
-      a {
+      & a {
         color: inherit;
       }
     }

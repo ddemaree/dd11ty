@@ -1,0 +1,10 @@
+src/content/blog/no-more-masters/screenshot-github-default-branch.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/no-more-masters/screenshot-github-header.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/where-the-web-fonts-go/screenshot-do-panel.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/2021-wfh-desk-setup/2009-05-desk-armitage-ave.jpg filter=lfs diff=lfs merge=lfs -text
+src/content/blog/where-the-web-fonts-go/cover-why-fonts-matter.jpg filter=lfs diff=lfs merge=lfs -text
+src/content/blog/no-more-masters/screenshot-netlify.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/where-the-web-fonts-go/screenshot-transmit-webfonts.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/where-the-web-fonts-go/screenshot-webfont-code-nova.png filter=lfs diff=lfs merge=lfs -text
+src/content/blog/no-more-masters/cover-unsplash-river.jpg filter=lfs diff=lfs merge=lfs -text
+src/content/blog/no-more-masters/screenshot-github-readme.png filter=lfs diff=lfs merge=lfs -text
