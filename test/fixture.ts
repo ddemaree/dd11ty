@@ -1,3 +1,5 @@
+/** @format */
+
 /// <reference types="vitest" />
 
 import path from "path";
@@ -10,10 +12,10 @@ interface MarkdownFixture {
 }
 
 export const test = testWithFixture.extend<MarkdownFixture>({
-  markdowns: async ({ }, use) => {
+  markdowns: async ({}, use) => {
     let mdFixtureMap: MarkdownMap = {};
 
-    let _mdFiles = await import.meta.glob("./data/*.md", {
+    let _mdFiles = await import.meta.glob("./data/*.{md,html}", {
       eager: true,
       as: "raw",
     });

@@ -21,7 +21,7 @@
   "search.useGlobalIgnoreFiles": true,
   "explorer.fileNesting.enabled": true,
   "prettier.bracketSameLine": true,
-  "prettier.insertPragma": true,
+  "prettier.insertPragma": false,
   "tailwindCSS.files.exclude": [
     "**/.git/**",
     "**/node_modules/**",

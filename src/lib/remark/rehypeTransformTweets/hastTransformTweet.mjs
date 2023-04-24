@@ -1,6 +1,9 @@
+/** @format */
+
 import { select } from "hast-util-select";
 import { toText } from "hast-util-to-text";
 import { fromHtml } from "hast-util-from-html";
+import { toHtml } from "hast-util-to-html";
 import { h } from "hastscript";
 import twtxt from "twitter-text";
 // import { DateTime } from "luxon";
@@ -8,7 +11,7 @@ import twtxt from "twitter-text";
 /**
  * Transform's WordPress's Twitter embed markup (which is just a wrapper around the default oEmbed output) into a JS-free embed, to be styled by the website.
  *
- * @param {import('hast').Element} node
+ * @param {import('hast').Element | import('hast').Root} node
  * @returns
  */
 export default function hastTransformTweet(node) {
@@ -50,16 +53,7 @@ export default function hastTransformTweet(node) {
   }
 
   if (twQuote) {
-    twText = toText(twQuote);
-    twHTML = twtxt.autoLink(twText);
-
-    let twHTMLStruct = fromHtml(`<div class="tw-text">${twHTML}</div>`, {
-      fragment: true,
-    });
-
-    if (twHTMLStruct) {
-      twStruct = select(".tw-text", twHTMLStruct).children;
-    }
+    twStruct = twQuote.children;
   }
 
   const twBlockquote = select("blockquote.twitter-tweet", node); //.children[1];

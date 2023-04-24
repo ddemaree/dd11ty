@@ -66,7 +66,7 @@ We went three places last year, all within 2 hours of home: the Hudson Valley (f
   <figure><img src="https://res.cloudinary.com/demaree/image/upload/w_1200/s3/2021/2020-in-review/2020-in-review-33.jpg" width="600" height="600" /></figure>
 </figure>
 
-We did almost all our pandemic dining-out during our Catskills trip (and all of it was outdoors). The best thing I ate this year was a burger and onion rings from [Phoenicia Diner](http://phoeniciadiner.com/), pictured below. In our house these last few months, "support our local economy" has become a euphemism for "order takeout" — we've eagerly supported [Jackie & Son](https://jackieandson.com), [Miti Miti Latin Street Food](https://www.mitimitinj.com), [BGR](https://bgrtheburgerjoint.com), [The Red Cadillac](https://www.theredcadillacnj.com), [Arturo's](https://arturosnj.com) and [The Able Baker](https://theablebaker.com/).
+We did almost all our pandemic dining-out during our Catskills trip (and all of it was outdoors). The best thing I ate this year was a burger and onion rings from [Phoenicia Diner](http://phoeniciadiner.com/), pictured below. In our house these last few months, "support our local economy" has become a euphemism for "order takeout" — we've eagerly supported [Jackie & Son](https://jackieandson.com), [Miti Miti Latin Street Food](https://www.mitimitinj.com), [BGR](https://bgrtheburgerjoint.com), [The Red Cadillac](https://www.theredcadillacnj.com), [Arturo's](https://arturosnj.com) and [The Able Baker](https://theablebaker.com/).
 
 <figure class="gallery-grid wide-width">
   <figure>
@@ -128,11 +128,11 @@ One lightbulb moment I had this week: I miss writing technical posts. I did publ
 
 Like a lot of folks, I made the mistake of trying to "use" the pandemic as an opportunity to take on side projects. On May 20, I wrote:
 
-> Like a lot of people, I started the lockdown times thinking I’d finally have time to take on and finish some side projects. First I thought I’d make that to-do list app I’ve always dreamed of making, then I thought I’d make my own headless CMS app. Most recently I’ve re-stacked and re-designed my personal site/blog for the millionth time.
+> Like a lot of people, I started the lockdown times thinking I'd finally have time to take on and finish some side projects. First I thought I'd make that to-do list app I've always dreamed of making, then I thought I'd make my own headless CMS app. Most recently I've re-stacked and re-designed my personal site/blog for the millionth time.
 
 I've now re-done this site on Gatsby, Next.js, Eleventy, and now Hugo, backed by Markdown files, WordPress, Contentful, and Ghost.
 
-My wife is a knitter; she knits whenever there's some down time, to pass the time. A nice thing about knitting is that you can practice a skill, and you get a sweater or hat out of it, an object whose purpose and use is simple and well-understood. The act of coding is, for me, a lot like knitting — the only problem is that you don't end up with a hat, you end up with software or a web site. People need warm, handmade hats; I'm not sure anyone needs handmade software.
+My wife is a knitter; she knits whenever there's some down time, to pass the time. A nice thing about knitting is that you can practice a skill, and you get a sweater or hat out of it, an object whose purpose and use is simple and well-understood. The act of coding is, for me, a lot like knitting — the only problem is that you don't end up with a hat, you end up with software or a web site. People need warm, handmade hats; I'm not sure anyone needs handmade software.
 
 I was feeling bad about myself for obsessively re-coding the same website so many times, but then it hit me: it's really fun to learn and try new tools, and each of these has tiny flaws that made them hard to fully accept. (Though my latest choice — Hugo — seems solid enough that it might stick.)
 
@@ -144,7 +144,7 @@ Maybe I'll pick one of those side projects back up — I rather liked the little
 
 It can be hard to remember anything good related to U.S. politics in a week when right-wing goons stormed the U.S. Capitol in the name of the sitting president, and everyone is waiting for another shoe to drop.
 
-But all this is happening because, two and a half months ago, we elected Joe Biden to the presidency. That day when it became real — Saturday, November 7 — was as indelible in a good way as last Wednesday was in a horrible way, a spontaneous explosion of honking car horns, cheering people, and good vibes across America and around the world. It helped that the weather was _gorgeous_ here in New Jersey.
+But all this is happening because, two and a half months ago, we elected Joe Biden to the presidency. That day when it became real — Saturday, November 7 — was as indelible in a good way as last Wednesday was in a horrible way, a spontaneous explosion of honking car horns, cheering people, and good vibes across America and around the world. It helped that the weather was _gorgeous_ here in New Jersey.
 
 <figure class="wide-width dd-block-image">
   <img src="https://res.cloudinary.com/demaree/image/upload/w_1200,h_1000,c_fill/s3/2021/2020-in-review/2020-in-review-54.jpg" width="800" height="667" />

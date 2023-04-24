@@ -6,7 +6,7 @@ As a developer I spend a lot of time thinking about names, categories, and relat
 
 Most of the internet — well, the product-designing, software-developing internet, anyway — has linked to Zach Holman's latest blog post about [Google+, Twitter lists, and the self-organization that Zach calls "shit work"](http://zachholman.com/posts/shit-work/). In a nutshell: Google+ and Twitter offer you the freedom to subdivide your social circle (or, in Twitter's case, your circle of friends, major pop stars, minor famous television personalities…) into arbitrary, named groups:
 
-> The idea behind Twitter Lists was that users would carefully cultivate lists on Twitter of different accounts they’re following (or not following). These could be divided into lists like Family, Friends, Coworkers, People I Find Mildly Attractive, People To Murder, People I Find Mildly Attractive And Want To Murder, and so on.
+> The idea behind Twitter Lists was that users would carefully cultivate lists on Twitter of different accounts they're following (or not following). These could be divided into lists like Family, Friends, Coworkers, People I Find Mildly Attractive, People To Murder, People I Find Mildly Attractive And Want To Murder, and so on.
 
 People do spend a lot of time thinking about their relationships to other people, and implicitly categorizing them.
 

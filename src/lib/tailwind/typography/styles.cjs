@@ -1,3 +1,5 @@
+/** @format */
+
 module.exports = (theme) => {
   const modifiers = {
     light: {
@@ -26,7 +28,7 @@ module.exports = (theme) => {
         "--prose-code-color": theme("colors.blue.500"),
       },
     },
-    'dd-theme': {
+    "dd-theme": {
       css: {
         color: `rgb(var(--dd-col-text))`,
 
@@ -41,14 +43,14 @@ module.exports = (theme) => {
         ":is(h1, h2, h3, h4, h5, h6)": {
           color: `rgb(var(--dd-col-bold-text))`,
         },
-        
+
         hr: {
           borderColor: "currentColor",
           color: `rgb(var(--dd-col-dividers))`,
         },
-          
+
         blockquote: {
-          borderInlineStartColor: `rgb(var(--dd-col-blockquote-border))`,
+          borderInlineStartColor: `rgb(var(--dd-col-blockquote) / 0.3)`,
           color: `rgb(var(--dd-col-blockquote))`,
         },
 
@@ -63,8 +65,8 @@ module.exports = (theme) => {
         pre: {
           color: `rgb(var(--dd-col-code))`,
         },
-      }
-    }
+      },
+    },
   };
 
   return {
@@ -178,7 +180,6 @@ module.exports = (theme) => {
 
           a: {
             textDecoration: "underline",
-            fontWeight: "var(--prose-links-font-weight, 500)",
             textUnderlineOffset: "0.15em",
             textDecorationThickness: "1px",
           },
@@ -186,7 +187,6 @@ module.exports = (theme) => {
           ":where(b, strong)": {
             fontWeight: "var(--prose-strong-font-weight, 600)",
           },
-
 
           ":is(h1, h2, h3, h4, h5, h6)": {
             fontFamily: "var(--prose-headings-font-family)",
@@ -264,20 +264,20 @@ module.exports = (theme) => {
               height: "auto",
               width: "100%",
             },
-          },
 
-          figcaption: {
-            fontFamily: "var(--prose-captions-font-family)",
-            fontSize: "0.875em",
-            lineHeight: 1.375,
-            marginBlockStart: "1em",
-            marginBlockEnd: 0,
-            maxWidth: "60ch",
-            textAlign: "center",
-            paddingInline: "var(--dd-layout-padding-inline)",
+            figcaption: {
+              fontFamily: "var(--prose-captions-font-family)",
+              fontSize: "0.875em",
+              lineHeight: 1.375,
+              marginBlockStart: "1em",
+              marginBlockEnd: 0,
+              maxWidth: "60ch",
+              textAlign: "center",
+              paddingInline: "var(--dd-layout-padding-inline)",
 
-            "*": {
-              color: "inherit",
+              "*": {
+                color: "inherit",
+              },
             },
           },
 

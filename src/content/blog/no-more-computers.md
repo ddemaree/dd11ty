@@ -18,7 +18,7 @@ It's not just that filesystems are ubiquitous. From a technical standpoint, espe
 
 Which isn't to say people really understand filesystems, [as Rob Foster pointed out on his blog recently][nd]:
 
-> These days, tech support calls involve questions of how to do stuff these folks like to do. Because they can now actually use their computers instead of simply restarting them, I’m able to better see how they use them. And the one commonality I’ve seen is that no one knows how to use the file system.
+> These days, tech support calls involve questions of how to do stuff these folks like to do. Because they can now actually use their computers instead of simply restarting them, I'm able to better see how they use them. And the one commonality I've seen is that no one knows how to use the file system.
 >
 > Unfortunately for the average person, the file system is so complex that everything outside of the desktop and the documents folder appears to be a vast labyrinth which most likely hides booby traps and minotaurs.
 
@@ -30,7 +30,7 @@ The genius of Apple's approach to file management in iPhone OS is to make this w
 
 But, to quote Apple's _iPad Programming Guide_,
 
-> [&hellip;]it is important to remember that although you can manipulate files in your iPad applications, files should never be a focal part of your application. There are no open and save panels in iPhone OS for a very good reason. The save panel in particular implies that it is the user’s responsibility to save all data, but this is not the model that iPhone applications should ever use. Instead, applications should save data incrementally to prevent the loss of that data when the application quits or is interrupted by the system. To do this, your application must take responsibility for managing the creation and saving the user’s content at appropriate times.
+> [&hellip;]it is important to remember that although you can manipulate files in your iPad applications, files should never be a focal part of your application. There are no open and save panels in iPhone OS for a very good reason. The save panel in particular implies that it is the user's responsibility to save all data, but this is not the model that iPhone applications should ever use. Instead, applications should save data incrementally to prevent the loss of that data when the application quits or is interrupted by the system. To do this, your application must take responsibility for managing the creation and saving the user's content at appropriate times.
 
 In other words, except in cases when you're sending or receiving a document to another user (i.e. via e-mail), files and folders are as much developers' concern as the Cocoa framework or the processor architecture. And even in the e-mail case, users are not to be exposed to arbitrary _files_ so much as meaningful _documents_.
 

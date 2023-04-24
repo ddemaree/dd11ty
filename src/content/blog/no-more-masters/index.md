@@ -29,7 +29,7 @@ People have to live in a Git-based world, and Git does not make that easy. Folks
 
 Like I said, my book mentions `master` a lot. (Like, *a lot* a lot.) It seems likely that within the next few years this will seem like a really stale choice, so I am talking to the awesome team at A Book Apart about updating <cite>Git for Humans</cite>' text and examples to favor `main` as the default branch name. 
 
-They’re pretty busy, and there’s still a pandemic happening, so no ETA on when a book update might ship. But it's in the works!
+They're pretty busy, and there's still a pandemic happening, so no ETA on when a book update might ship. But it's in the works!
 
 For now let's start with what you need to do to start new projects out on a `main` branch if your tools don't yet treat that as a default.
 
@@ -112,7 +112,7 @@ Sadly, Git doesn't have any such thing as "branch redirects," and though GitHub 
 
 So you may want to replace your old `master` with an "orphan" branch, which (as the name implies) is a branch/commit with no parent, completely detached from the rest of your Git repo's history. 
 
-We’ll name this new orphan branch `no-masters`. To start, we call on `git checkout --orphan`, which asks Git to start a new branch but intentionally forget anything about your former head commit. This is similar to if you were starting over with a brand-new repo.
+We'll name this new orphan branch `no-masters`. To start, we call on `git checkout --orphan`, which asks Git to start a new branch but intentionally forget anything about your former head commit. This is similar to if you were starting over with a brand-new repo.
 
 ```bash
 git checkout --orphan no-masters
