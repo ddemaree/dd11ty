@@ -44,6 +44,7 @@
     "fathom-client": "^3.5.0",
     "feed": "^4.2.2",
     "framer-motion": "^10.12.2",
+    "glob": "^10.2.2",
     "hast-util-from-html": "^1.0.1",
     "hast-util-is-javascript": "^2.0.0",
     "hast-util-select": "^5.0.5",
