@@ -8,7 +8,7 @@ export const get: APIRoute = async ({ request }) => {
   const sampleEntry = await getEntryBySlug("blog", "monkeys-typewriters");
   const sampleEntryImg = sampleEntry.data.cover;
 
-  const entries = await fs.readdir("./dist");
+  const entries = await fs.readdir("./dist/chunks");
 
   const out = {
     entries,
