@@ -1,9 +1,8 @@
 import { defineConfig } from "astro/config";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
-import lightningcss from 'vite-plugin-lightningcss';
 
 import { rehypePlugins, remarkPlugins } from "./src/lib/remark";
 
@@ -22,7 +21,7 @@ export default defineConfig({
       allowDangerousHtml: true,
     },
   },
-  output: "server",
+  output: "static",
   adapter: vercel({
     analytics: true,
   }),
@@ -33,14 +32,4 @@ export default defineConfig({
     react(),
     mdx(),
   ],
-  // vite: {
-  //   plugins: [
-  //     lightningcss({
-  //       browserslist: "last 2 versions",
-  //       drafts: {
-  //         nesting: true,
-  //       }
-  //     }),
-  //   ],
-  // },
 });

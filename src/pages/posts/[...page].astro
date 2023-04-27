@@ -1,11 +1,41 @@
 ---
-import { getCollection, getEntryBySlug, CollectionEntry } from 'astro:content';
+import type { PaginateFunction, Page } from 'astro';
+import { getCollection, CollectionEntry } from 'astro:content';
+
 import SiteLayout from '@/components/SiteLayout.astro';
 import IndexPost from './_IndexPost.astro';
+import { createPagination } from "./_Pagination";
 
-const allBlogPosts = await getCollection('blog');
-allBlogPosts.sort((a, b) => a.data.date > b.data.date ? -1 : 1);
+
+type BlogPage = Page<CollectionEntry<"blog">>;
+type Props = { page: BlogPage };
+
+export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction }) => {
+
+  const allBlogPosts = await getCollection('blog');
+  allBlogPosts.sort((a, b) => a.data.date > b.data.date ? -1 : 1);
+
+  return paginate(allBlogPosts, { pageSize: 8 });
+});
+
+const { page } = Astro.props as Props;
+const Pagination = createPagination(page);
+
 ---
-<SiteLayout>
-  {allBlogPosts.map((post: CollectionEntry<"blog">) => <IndexPost post={post} />)}
+<SiteLayout mainClass="grid-inset gap-y-8 justify-items-center pt-[max(2rem,calc(7vw-2rem))]">
+
+  {page.data.map((post: CollectionEntry<"blog">, index: number) => <>
+    {index > 0 && <hr class="w-full max-w-content border-dd-dividers my-12" />}
+    <IndexPost post={post} />
+  </>)}
+
+  <Pagination.Wrapper className="max-w-content w-full my-8 text-2xl/none">
+    <Pagination.Link previous>
+      Previous
+      <Pagination.PrevIcon />
+    </Pagination.Link>
+    <Pagination.Link></Pagination.Link>
+    <!-- {page.url.prev ? <a href={page.url.prev}>Previous</a> : <span></span>}
+    {page.url.next ? <a href={page.url.next}>Next</a> : <span></span>} -->
+  </Pagination.Wrapper>
 </SiteLayout>

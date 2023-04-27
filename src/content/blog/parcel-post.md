@@ -1,19 +1,11 @@
 ---
 title: Simpler Web Hacking with Parcel
-slug: parcel-post
-date: 2021-01-18T13:29:54-05:00
+date: 2021-01-18
 excerpt: Recapturing the magic of early web development with modern tools
-description: Recapturing the magic of early web development with modern tools
-tags:
-  - Web Development
-  - JavaScript
-  - React
-  - Coding
-featured_image: "https://images.unsplash.com/photo-1544967082-d9d25d867d66"
 ---
 
 <figure class="wide-width dd-block-image">
-<img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=1800&h=1200" width="900" height="600" />
+  <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=1800&h=1200" width="900" height="600" alt="wtf" />
 </figure>
 
 I dunno about you, but I've been missing the old days when we could try out some new web technique or think through some code by just opening up an editor, making a fresh `index.html`, and getting to work.
@@ -22,13 +14,11 @@ I'm generally a fan of frameworks that let you get to work with a bare minimum o
 
 This is a rare feeling these days; in order to give developers the power to make powerful, scalable web apps, it feels like we've neglected or even forgotten how to make web _pages_. I miss the simplicity and immediacy — the feeling of _magic_ — that made web development so fun when I was starting out.
 
-[Next.js](nextjs.org) has some of this magic. It's a React-based app framework that uses file and directory names to set up URL routes; given a file named `about/index.js`, Next will create a web page whose URL is `/about`. This isn't _quite_ the old web I loved in the 2000s, because React is involved. That file isn't a web page, it's a JavaScript file that exports a component, and there are things that are stupidly hard to do without layering on ever more libraries and boilerplate. But what's nice about Next is that once you install it and its dependencies, you can just create a couple of files, run `next dev`, and you're off to the races.
+[Next.js](https://nextjs.org) has some of this magic. It's a React-based app framework that uses file and directory names to set up URL routes; given a file named `about/index.js`, Next will create a web page whose URL is `/about`. This isn't _quite_ the old web I loved in the 2000s, because React is involved. That file isn't a web page, it's a JavaScript file that exports a component, and there are things that are stupidly hard to do without layering on ever more libraries and boilerplate. But what's nice about Next is that once you install it and its dependencies, you can just create a couple of files, run `next dev`, and you're off to the races.
 
----- 
+This weekend I wanted to play around with [Chroma.js](https://gka.github.io/chroma.js/), a library for manipulating colors and scales. I started out trying it in CodePen and Glitch — both great tools for trying things out — but found myself wanting to write code in my favorite editor, not a browser. 
 
-This weekend I wanted to play around with [Chroma.js](https://gka.github.io/chroma.js/), a library for manipulating colors and scales. I started out trying it in CodePen and Glitch — both great tools for trying things out — but found myself wanting to write code in [my favorite editor](https://nova.app), not a browser. 
-
-[Parcel](parceljs.org) made it possible for me to have my cake and eat it too — to write code like I was building a totally local, static web page, but enjoy all the benefits of modern build tools.
+[Parcel](https://parceljs.org) made it possible for me to have my cake and eat it too — to write code like I was building a totally local, static web page, but enjoy all the benefits of modern build tools.
 
 Parcel's website describes it as “a compiler for all your code, regardless of the language or toolchain…  (it) takes all of your files and dependencies, transforms them, and merges them together into a smaller set of output files that can be used to run your code.” All of which is true, but I think obscures the most important part: Parcel does all of this with little or no setup, configuration, or boilerplate code.
 
@@ -40,7 +30,7 @@ But what's _really_ great about Parcel is that it's a Webpack-like tool that can
 
 Take an HTML document like this:
 
-```html {hl_lines=[5,10]}
+```html
 <!-- index.html -->
 <html>
   <head>
@@ -67,7 +57,7 @@ Reading your HTML, Parcel will see that it depends on two other assets — `styl
 
 What's more, these don't have to be plain CSS or JS files. If you want to use (say) Sass and TypeScript, you could do this and it will Just Work:
 
-```html {hl_lines=[5,10]}
+```html
 <!-- index.html -->
 <html>
   <head>

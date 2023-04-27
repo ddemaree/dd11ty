@@ -1,11 +1,11 @@
 module.exports = {
   plugins: [
-    require('tailwindcss/nesting'),
-    require('tailwindcss'),
-    require('autoprefixer'),
-    require('postcss-preset-env')({
-      browsers: "last 2 versions"
+    require("tailwindcss/nesting"),
+    require("tailwindcss"),
+    // require("autoprefixer"),
+    require("postcss-preset-env")({
+      browsers: "last 2 versions",
+      features: { "nesting-rules": false },
     }),
-    // require('cssnano'),
   ],
 };

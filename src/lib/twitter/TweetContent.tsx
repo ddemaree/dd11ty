@@ -1,5 +1,4 @@
 import { uniqueId } from "lodash";
-// import Image from "next/image";
 import Tweet from "./Tweet";
 
 export default function TweetContent({ parts = [], quoteLevel = 0 }) {
@@ -54,8 +53,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
             <a
               key={key}
               className="font-medium hover:underline"
-              href={`https://twitter.com/${part.username}`}
-            >
+              href={`https://twitter.com/${part.username}`}>
               @{part.username}
             </a>
           );
@@ -80,8 +78,7 @@ export default function TweetContent({ parts = [], quoteLevel = 0 }) {
             <a
               key={key}
               href={part.url}
-              className="flex flex-col rounded-lg overflow-hidden border border-gray-200 group"
-            >
+              className="flex flex-col rounded-lg overflow-hidden border border-gray-200 group">
               {image && (
                 <img
                   alt={`Tweet image for ${part.title}`}

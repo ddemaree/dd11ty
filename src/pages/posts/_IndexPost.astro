@@ -1,23 +1,40 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { format, formatISO } from 'date-fns'
+import Balance from '@/components/Balance.astro';
 
 export interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
-const { title, date  } = post.data;
+const { title, date, excerpt } = post.data;
 const { Content, remarkPluginFrontmatter } = await post.render();
 const { readingTime } = remarkPluginFrontmatter;
 
+// Function to find out if a given date is more than a year ago
+const isOlderThanAYear = (date: Date) => {
+  const now = new Date();
+  const year = 1000 * 60 * 60 * 24 * 365;
+  return now.getTime() - date.getTime() > year;
+};
+
 ---
-<article>
-  <h1>
-    <a href={`/post/${post.slug}`}>{title}</a>
-  </h1>
-  <time>{date}</time>
-  <div>{readingTime.text}</div>
-  {readingTime.minutes <= 8 && <div class="prose">
+<article class="contents">
+  <header class="[grid-column:2/-2] max-w-content w-full grid gap-2">
+    <h1 class="text-4xl/none font-medium font-[roslindale-variable-display] [font-variation-settings:'wdth'_89]">
+      <a href={`/post/${post.slug}`} class="hover:underline">
+        <Balance>{title}</Balance>
+      </a>
+    </h1>
+    {excerpt && <p class="text-xl/tight text-dd-text-light"><Balance>{excerpt}</Balance></p>}
+    <div class="flex gap-2 text-dd-text-light">
+      <time>{format(date, isOlderThanAYear(date) ? "LLL d, y" : "LLL d")}</time>
+      <span>•</span>
+      <span>{readingTime.text}</span>
+    </div>
+  </header>
+  {readingTime.minutes <= 8 && <div class="prose [grid-column:1/-1]">
     <Content />
   </div>}
 </article>

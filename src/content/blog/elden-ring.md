@@ -2,6 +2,7 @@
 title: Because I Could Not Stop For Death
 date: 2022-05-14
 excerpt: How I learned to stop worrying and love "Elden Ring"
+cover_url: https://img.demaree.me/upload/bitsandletters-assets/IMG_4374.jpg
 ---
 Having fought and wandered and grinded for over 75 hours, I finally approach the only open door to Leyndell, Royal Capital and home of the Erdtree, to find it blocked by magic fog and a horse-mounted soldier-knight-dragon thingy—the Draconic Tree Sentinel.
 

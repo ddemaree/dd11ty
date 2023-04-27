@@ -98,21 +98,23 @@ export default function hastTransformTweet(node) {
       "data-tweet-username": twHandle,
     },
     [
-      "\n  ",
-      headerNode,
-      "\n  ",
-      h("div", {}, [
-        "\n    ",
-        h("p", { className: ["tweet-content"] }, twStruct),
-        "\n    ",
-        h("footer", { className: ["tweet-footer"] }, [
-          h("a", { href: twUrl?.toString(), className: ["tweet-date"] }, [
-            twDate,
-          ]),
-        ]),
+      h("div", { className: ["tweet-wrapper"] }, [
         "\n  ",
+        headerNode,
+        "\n  ",
+        h("div", {}, [
+          "\n    ",
+          h("p", { className: ["tweet-content"] }, twStruct),
+          "\n    ",
+          h("footer", { className: ["tweet-footer"] }, [
+            h("a", { href: twUrl?.toString(), className: ["tweet-date"] }, [
+              twDate,
+            ]),
+          ]),
+          "\n  ",
+        ]),
+        "\n",
       ]),
-      "\n",
     ]
   );
 

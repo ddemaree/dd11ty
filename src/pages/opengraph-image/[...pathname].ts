@@ -4,6 +4,17 @@ import DDIcon from "@/components/DDIcon";
 import type { ImageAPIRoute } from "@/types/image-generation";
 
 import { getPostImage } from "./_getWPPostImage";
+import { CollectionEntry, getCollection } from "astro:content";
+import { getStaticPostImage } from "./_getMDPostImage";
+
+export const getStaticPaths = async () => {
+  const allBlogPosts = await getCollection("blog");
+  return allBlogPosts.map((p: CollectionEntry<"blog">) => ({
+    params: {
+      pathname: `post/${p.slug}.png`,
+    },
+  }));
+};
 
 const content = {
   type: "div",
@@ -15,7 +26,7 @@ const content = {
   },
 };
 
-export const get: ImageAPIRoute = async ({ params: { pathname } }) => {
+export const get: ImageAPIRoute = async ({ request, params: { pathname } }) => {
   if (!pathname) pathname = "default.png";
 
   // Remove file extension and/or trailing slash
@@ -29,6 +40,11 @@ export const get: ImageAPIRoute = async ({ params: { pathname } }) => {
     }
   } catch (error) {
     console.error(error);
+  }
+
+  if (pathname.startsWith("post/")) {
+    const slug = pathname.replace(/^post\//, "");
+    return getStaticPostImage(slug, request);
   }
 
   const soehneFontData = await fetch(
