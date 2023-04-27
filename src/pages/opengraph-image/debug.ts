@@ -10,7 +10,7 @@ export const get: APIRoute = async ({ request, params }) => {
   const sampleEntryImg = sampleEntry.data.cover;
 
   // const entries = await fs.readdir("./");
-  const entries = await glob("./**/*.{jpg,png}");
+  const entries = await glob("/var/task/**/*.{jpg,png}");
 
   const out = {
     entries,
