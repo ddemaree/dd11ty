@@ -11,11 +11,13 @@ export const get: APIRoute = async ({ request, params }) => {
 
   // const entries = await fs.readdir("./");
   const entries = await glob("/var/task/**/*.{jpg,png}");
+  const currentFile = import.meta.url;
 
   const out = {
     entries,
     sampleEntryImg,
     rootPath,
+    currentFile,
   };
 
   return new Response(JSON.stringify(out, null, 2), {
