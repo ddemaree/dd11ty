@@ -3,29 +3,27 @@ import type { Metadata } from "@/types/metadata";
 import { type CollectionEntry, getCollection, getEntryBySlug } from "astro:content";
 import { decode } from "html-entities";
 
-import { blogPostUrl } from "@/lib/urls";
+import { blogPostUrl } from "@/utils";
 import SiteLayout from "@/components/SiteLayout.astro";
 import PostHeader from "@/components/Blog/PostHeader.astro";
 import FooterOrnament from "@/components/FooterOrnament";
 
-export const getStaticPaths = (async () => {
-
-  const allBlogPosts = await getCollection('blog');
-  return allBlogPosts.map((p: CollectionEntry<"blog">) => ({
-    params: {
-      slug: p.slug
-    },
-    props: {
-      post: p
-    }
-  }));
-});
-
+// export const getStaticPaths = (async () => {
+//   const allBlogPosts = await getCollection('blog');
+//   return allBlogPosts.map((p: CollectionEntry<"blog">) => ({
+//     params: {
+//       slug: p.slug
+//     },
+//     props: {
+//       post: p
+//     }
+//   }));
+// });
 
 const { slug } = Astro.params;
-const { post } = Astro.props;
+// const { post } = Astro.props;
 
-// const post = await getEntryBySlug("blog", slug as any);
+const post = await getEntryBySlug("blog", slug as any);
 
 if(!slug || !post) {
   Astro.response.status = 404;

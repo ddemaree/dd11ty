@@ -1,4 +1,4 @@
-import { isDataUri, isWPProdURL } from "@lib/urls";
+import { isDataUri, isWPProdURL } from "@/utils";
 import type { Root, Element } from "hast";
 import { select } from "hast-util-select";
 import isUndefined from "lodash/isUndefined";

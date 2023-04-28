@@ -1,7 +1,7 @@
 import type { WordpressPost } from "@/lib/wordpress";
 import DisplayDate from "../DisplayDate";
 import Prose from "../Prose";
-import { blogPostUrl } from "@/lib/urls";
+import { blogPostUrl } from "@/utils";
 import { faChevronRight } from "@fortawesome/sharp-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
@@ -49,8 +49,7 @@ export function BlogPost({ post }: { post: WordpressPost }) {
           <div>
             <a
               href={blogPostUrl(post.slug)}
-              className=" font-semibold text-red-500"
-            >
+              className=" font-semibold text-red-500">
               Read post <FontAwesomeIcon size="sm" icon={faChevronRight} />
             </a>
           </div>
@@ -89,8 +88,7 @@ export function Pagination({
       {previousPage ? (
         <a
           href={pageUrl(previousPage)}
-          className={paginationClasses("previous")}
-        >
+          className={paginationClasses("previous")}>
           &larr; Newer
         </a>
       ) : (

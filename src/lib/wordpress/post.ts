@@ -1,4 +1,4 @@
-import { blogPostUrl } from "@lib/urls";
+import { blogPostUrl } from "@/utils";
 import { DateTime } from "luxon";
 import { WordpressPost, WordpressRestPost } from "./types";
 import { decode } from "html-entities";
