@@ -1,0 +1,75 @@
+@import url("https://fonts.demaree.me/tiempos");
+@import url("https://fonts.demaree.me/soehne");
+@import url("https://fonts.demaree.me/soehne-mono");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./tokens/tokens.css";
+@import "@wordpress/block-library/build-style/style.css";
+
+@layer components {
+  .theme-light {
+    --dd-col-background: 250 250 249;
+    --dd-col-text: 41 37 36;
+    --dd-col-bold-text: 12 10 9;
+    --dd-col-light-text: 87 83 78;
+    --dd-col-link: 216 44 52;
+    --dd-col-code: 37 99 235;
+    --dd-col-code-background: 241 245 249;
+    --dd-col-dividers: 231 229 228;
+    --dd-col-blockquote: 87 83 78;
+    --dd-col-blockquote-border: 226 232 240;
+  }
+  .theme-dark {
+    --dd-col-background: 12 10 9;
+    --dd-col-text: 204 201 199;
+    --dd-col-bold-text: 245 245 244;
+    --dd-col-light-text: 155 152 150;
+    --dd-col-link: 255 84 81;
+    --dd-col-code: 96 165 250;
+    --dd-col-code-background: 15 23 42;
+    --dd-col-dividers: 41 37 36;
+    --dd-col-blockquote: 148 163 184;
+    --dd-col-blockquote-border: 30 41 59;
+  }
+}
+
+@layer base {
+  body {
+    background-color: rgb(var(--dd-col-background));
+    color: rgb(var(--dd-col-text));
+  }
+  /* a {
+    color: rgb(var(--dd-col-link));
+  }
+  a:hover {
+    color: rgb(var(--dd-col-link));
+  }
+  a:active {
+    color: rgb(var(--dd-col-link));
+  }
+  a:focus {
+    color: rgb(var(--dd-col-link));
+  }
+  a:visited {
+    color: rgb(var(--dd-col-link));
+  }
+  a:link {
+    color: rgb(var(--dd-col-link));
+  } */
+  blockquote {
+    border-color: rgb(var(--dd-col-blockquote-border));
+    color: rgb(var(--dd-col-blockquote));
+  }
+  code {
+    color: rgb(var(--dd-col-code));
+  }
+  pre code {
+    background-color: rgb(var(--dd-col-code-background));
+  }
+  hr {
+    border-color: rgb(var(--dd-col-dividers));
+  }
+}

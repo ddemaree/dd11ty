@@ -1,0 +1,16 @@
+{
+  "emmet.includeLanguages": {
+    "markdown": "markdownreact",
+    "astro-markdown": "html",
+    "javascript": "javascriptreact"
+  },
+  "emmet.excludeLanguages": [],
+  "tailwindCSS.emmetCompletions": true,
+  "files.exclude": {
+    "**/resources": true
+  },
+  "files.watcherExclude": {
+    "**/.next": true
+  },
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

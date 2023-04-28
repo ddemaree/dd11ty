@@ -1,0 +1,5 @@
+@use "sass:math";
+
+:root {
+  --post-header-spacing: clamp(48px, #{math.floor(320 / 28)}vw, 64px);
+}

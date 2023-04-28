@@ -1,0 +1,46 @@
+/**
+ * Do not edit directly
+ * Generated on Sat, 18 Mar 2023 17:18:23 GMT
+ */
+
+:root {
+  --size-font-large: 2rem; /* the large size of the font */
+  --size-font-medium: 1rem; /* the medium size of the font */
+  --size-font-small: 0.75rem; /* the small size of the font */
+  --color-base-green-90: #003a00;
+  --color-base-green-70: #007200;
+  --color-base-green-50: #009a00;
+  --color-base-green-30: #52bb52;
+  --color-base-green-10: #bbe5bb;
+  --color-base-blue-90: #01344e;
+  --color-base-blue-70: #02679b;
+  --color-base-blue-50: #118bca;
+  --color-base-blue-30: #5bafdb;
+  --color-base-blue-10: #bddff0;
+  --color-base-red-90: #5e1619;
+  --color-base-red-70: #a9272c;
+  --color-base-red-50: #ea484f;
+  --color-base-red-30: #f6848f;
+  --color-base-red-10: #fbcfd3;
+  --color-base-neutral-90: #272727;
+  --color-base-neutral-70: #595959;
+  --color-base-neutral-50: #848484;
+  --color-base-neutral-30: #a6a6a6;
+  --color-base-neutral-10: #d7d7d7;
+  --size-font-base: var(--size-font-medium); /* the base size of the font */
+  --color-font-dark-code: var(--color-base-blue-30);
+  --color-font-dark-links: var(--color-base-red-30);
+  --color-font-dark-high-emphasis: var(--color-base-neutral-10);
+  --color-font-dark-low-emphasis: var(--color-base-neutral-50);
+  --color-font-dark-base: var(--color-base-neutral-30);
+  --color-font-light-code: var(--color-base-blue-50);
+  --color-font-light-links: var(--color-base-red-50);
+  --color-font-light-high-emphasis: var(--color-base-neutral-90);
+  --color-font-light-low-emphasis: var(--color-base-neutral-50);
+  --color-font-light-base: var(--color-base-neutral-70);
+  --color-font-code: var(--color-font-light-code);
+  --color-font-links: var(--color-font-light-links);
+  --color-font-high-emphasis: var(--color-font-light-high-emphasis);
+  --color-font-low-emphasis: var(--color-font-light-low-emphasis);
+  --color-font-base: var(--color-font-light-base);
+}

@@ -1,0 +1,1 @@
+export { faDDLogo } from "./faDDLogo";
