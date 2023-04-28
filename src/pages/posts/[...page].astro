@@ -10,6 +10,8 @@ import { createPagination } from "./_Pagination";
 type BlogPage = Page<CollectionEntry<"blog">>;
 type Props = { page: BlogPage };
 
+export const prerender = true;
+
 export const getStaticPaths = (async ({ paginate }: { paginate: PaginateFunction }) => {
 
   const allBlogPosts = await getCollection('blog');
