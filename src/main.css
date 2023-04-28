@@ -1,0 +1,202 @@
+@import url("https://fonts.demaree.me/tiempos");
+@import url("https://fonts.demaree.me/soehne");
+@import url("https://fonts.demaree.me/soehne-mono");
+@import url("https://fonts.demaree.me/roslindale/v2");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.test-with-oklch {
+  --test-color-var: oklch(20% 0.5 128);
+  color: oklch(80% 0.5 128);
+  background-color: var(--test-color-var);
+}
+
+/* 
+@import "./tokens/tokens.css";
+@import "@wordpress/block-library/build-style/style.css";
+ */
+
+/* @layer components {
+  .theme-light {
+    --dd-col-background: 250 250 249;
+    --dd-col-text: 41 37 36;
+    --dd-col-bold-text: 12 10 9;
+    --dd-col-light-text: 87 83 78;
+    --dd-col-link: 216 44 52;
+    --dd-col-code: 37 99 235;
+    --dd-col-code-background: 241 245 249;
+    --dd-col-dividers: 231 229 228;
+    --dd-col-blockquote: 87 83 78;
+    --dd-col-blockquote-border: 226 232 240;
+
+    --dd-col-theme-menu-bg: theme("colors.stone.200");
+    --dd-col-theme-menu-text: theme("colors.stone.950");
+    --dd-col-theme-hover-bg: theme("colors.stone.500" / 0.1);
+    --dd-col-theme-active-bg: theme("colors.red.600" / 0.4);
+  }
+  .theme-dark {
+    --dd-col-background: 12 10 9;
+    --dd-col-text: 204 201 199;
+    --dd-col-bold-text: 245 245 244;
+    --dd-col-light-text: 155 152 150;
+    --dd-col-link: 255 84 81;
+    --dd-col-code: 96 165 250;
+    --dd-col-code-background: 15 23 42;
+    --dd-col-dividers: 41 37 36;
+    --dd-col-blockquote: 148 163 184;
+    --dd-col-blockquote-border: 30 41 59;
+
+    --dd-col-theme-menu-bg: theme("colors.stone.700");
+    --dd-col-theme-menu-text: theme("colors.stone.50");
+    --dd-col-theme-hover-bg: theme("colors.stone.100" / 0.1);
+    --dd-col-theme-active-bg: theme("colors.red.600");
+  }
+} */
+
+@layer components {
+  .stack {
+    @apply flex flex-col items-center justify-center gap-4;
+  }
+  .row {
+    @apply flex flex-row flex-wrap items-center justify-center gap-4;
+  }
+}
+
+@layer components {
+  .theme-light {
+    --tweets-background-color: oklch(97% 0.01 230.56);
+    --tweets-border-color: oklch(82% 0.02 230.56);
+    --tweets-author-name-color: currentColor;
+    --tweets-content-color: currentColor;
+    --tweets-author-handle-color: oklch(54% 0.06 230.56);
+    --tweets-footer-color: oklch(54% 0.06 230.56);
+    --tweets-date-color: var(--tweets-footer-color);
+  }
+
+  .theme-dark {
+    --tweets-background-color: oklch(20% 0.005 230.56);
+    --tweets-border-color: oklch(30% 0.02 230.56);
+    --tweets-author-name-color: currentColor;
+    --tweets-author-handle-color: oklch(70% 0.06 230.56);
+    --tweets-content-color: currentColor;
+    --tweets-footer-color: oklch(70% 0.06 230.56);
+    --tweets-date-color: var(--tweets-footer-color);
+  }
+
+  .grid-inset {
+    --dd-layout-padding-inline: clamp(1rem, 5.5vw, 2.5rem);
+    --prose-grid-inset: minmax(var(--dd-layout-padding-inline), 4rem);
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr calc(100% - (var(--dd-layout-padding-inline) * 2))
+      1fr;
+    grid-auto-flow: row;
+
+    & > * {
+      grid-column: 2 / span 1;
+    }
+
+    /* "[full-start] 1fr [wide-start] var(--prose-grid-inset) [content-start] min( calc(100% - (var(--dd-layout-padding-inline) * 2)), var(--width-content) ) [content-end] var(--prose-grid-inset) [wide-end] 1fr [full-end]", */
+  }
+
+  .dd-embed.dd-embed-tweet {
+    --tweet-avatar-size: 2rem;
+    container-type: inline-size;
+    max-width: 580px;
+  }
+
+  .dd-embed.dd-embed-tweet .tweet-wrapper {
+    @apply font-sans;
+    background-color: var(--tweets-background-color);
+    border-color: var(--tweets-border-color);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: var(--tweets-border-radius, 0.5em);
+
+    display: grid !important;
+    column-gap: 1rem;
+    grid-auto-flow: row;
+    grid-template-columns: var(--tweet-avatar-size) 1fr;
+    grid-template-rows: auto auto;
+    line-height: 1.4;
+    padding: 1em;
+    row-gap: 1rem;
+
+    & * {
+      margin: unset;
+      font-weight: unset;
+    }
+
+    & > * {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    & .tweet-header,
+    & .tweet-header a {
+      display: contents;
+      color: inherit;
+    }
+
+    & .tweet-header {
+      line-height: 1.2;
+    }
+
+    .tweet-author-img {
+      clip-path: url(#squircleClip);
+      align-self: start;
+      grid-column: 1/2;
+      grid-row: 1/-1;
+    }
+
+    .tweet-author-handle {
+      font-size: 0.8em;
+      font-weight: 400;
+      color: var(--tweets-author-handle-color);
+      display: block;
+      margin-block-start: 0.1em;
+    }
+
+    .tweet-author-name {
+      font-size: 1em;
+      font-weight: 600;
+      color: var(--tweets-author-name-color, currentColor);
+    }
+
+    .tweet-content {
+      font-size: 1em;
+      font-weight: 400;
+      color: var(--tweets-content-color, currentColor);
+
+      & a {
+        color: inherit;
+      }
+    }
+
+    .tweet-footer {
+      font-size: 0.8em;
+      font-weight: 400;
+      color: var(--tweets-footer-color, currentColor);
+      margin-block-start: theme("spacing.6");
+    }
+
+    .tweet-date {
+      color: var(--tweets-date-color);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    @container (min-inline-size: 480px) {
+      --tweet-avatar-size: 3rem;
+
+      & > * {
+        grid-column: 2 / -1;
+      }
+    }
+  }
+}

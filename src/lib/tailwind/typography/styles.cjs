@@ -1,3 +1,5 @@
+/** @format */
+
 module.exports = (theme) => {
   const modifiers = {
     light: {
@@ -26,6 +28,45 @@ module.exports = (theme) => {
         "--prose-code-color": theme("colors.blue.500"),
       },
     },
+    "dd-theme": {
+      css: {
+        color: `rgb(var(--dd-col-text))`,
+
+        a: {
+          color: `rgb(var(--dd-col-link))`,
+        },
+
+        ":not(a, blockquote, thead th, figcaption) :is(b, strong)": {
+          color: `rgb(var(--dd-col-bold-text))`,
+        },
+
+        ":is(h1, h2, h3, h4, h5, h6)": {
+          color: `rgb(var(--dd-col-bold-text))`,
+        },
+
+        hr: {
+          borderColor: "currentColor",
+          color: `rgb(var(--dd-col-dividers))`,
+        },
+
+        blockquote: {
+          borderInlineStartColor: `rgb(var(--dd-col-blockquote) / 0.3)`,
+          color: `rgb(var(--dd-col-blockquote))`,
+        },
+
+        figcaption: {
+          color: `rgb(var(--dd-col-light-text))`,
+        },
+
+        "*:not(a, blockquote, thead th, figcaption) > code": {
+          color: `rgb(var(--dd-col-code))`,
+        },
+
+        pre: {
+          color: `rgb(var(--dd-col-code))`,
+        },
+      },
+    },
   };
 
   return {
@@ -43,13 +84,12 @@ module.exports = (theme) => {
     },
     DEFAULT: {
       css: [
-        modifiers.light.css,
+        modifiers["dd-theme"].css,
         {
           // Nesting this with a & wraps the root level .prose class in a :where()
           "--dd-layout-padding-block": "1.5rem",
           "--dd-layout-padding-inline": "clamp(1rem, 5.5vw, 2.5rem)",
           "--prose-grid-inset": "minmax(var(--dd-layout-padding-inline), 4rem)",
-          color: theme("colors.dd.text.DEFAULT"),
           display: "grid",
           fontSize: "var(--prose-base-font-size)",
           fontFamily: "var(--prose-base-font-family)",
@@ -139,9 +179,7 @@ module.exports = (theme) => {
           },
 
           a: {
-            color: "rgb(var(--dd-col-link))",
             textDecoration: "underline",
-            fontWeight: "var(--prose-links-font-weight, 500)",
             textUnderlineOffset: "0.15em",
             textDecorationThickness: "1px",
           },
@@ -150,13 +188,8 @@ module.exports = (theme) => {
             fontWeight: "var(--prose-strong-font-weight, 600)",
           },
 
-          ":not(a, blockquote, thead th, figcaption) :is(b, strong)": {
-            color: "var(--prose-strong-color)",
-          },
-
           ":is(h1, h2, h3, h4, h5, h6)": {
             fontFamily: "var(--prose-headings-font-family)",
-            color: "var(--prose-headings-color)",
             fontWeight: "var(--prose-headings-font-weight, 600)",
             letterSpacing: "-0.01ch",
             lineHeight: 1.1,
@@ -198,19 +231,15 @@ module.exports = (theme) => {
           },
 
           hr: {
-            borderColor: "currentColor",
             borderTopWidth: "2px",
-            color: "var(--prose-dividers-color)",
             maxWidth: "calc(var(--w-content) * 0.7)",
             justifySelf: "center",
             width: "100%",
           },
 
           blockquote: {
-            borderInlineStartColor: "var(--prose-quotes-border-color)",
             borderInlineStartStyle: "solid",
             borderInlineStartWidth: "var(--prose-quotes-border-width)",
-            color: "var(--prose-quotes-color)",
             fontFamily: "var(--prose-quotes-font-family)",
             paddingInlineStart:
               "calc(var(--prose-indent) - var(--prose-quotes-border-width) - 0.5rem)",
@@ -235,21 +264,20 @@ module.exports = (theme) => {
               height: "auto",
               width: "100%",
             },
-          },
 
-          figcaption: {
-            color: "var(--prose-captions-color)",
-            fontFamily: "var(--prose-captions-font-family)",
-            fontSize: "0.875em",
-            lineHeight: 1.375,
-            marginBlockStart: "1em",
-            marginBlockEnd: 0,
-            maxWidth: "60ch",
-            textAlign: "center",
-            paddingInline: "var(--dd-layout-padding-inline)",
+            figcaption: {
+              fontFamily: "var(--prose-captions-font-family)",
+              fontSize: "0.875em",
+              lineHeight: 1.375,
+              marginBlockStart: "1em",
+              marginBlockEnd: 0,
+              maxWidth: "60ch",
+              textAlign: "center",
+              paddingInline: "var(--dd-layout-padding-inline)",
 
-            "*": {
-              color: "inherit",
+              "*": {
+                color: "inherit",
+              },
             },
           },
 
@@ -257,16 +285,11 @@ module.exports = (theme) => {
             fontFamily: "var(--prose-code-font-family)",
           },
 
-          "*:not(a, blockquote, thead th, figcaption) > code": {
-            color: "var(--prose-code-color)",
-          },
-
           "*:not(pre) code": {
             fontWeight: "var(--prose-inline-code-font-weight, 400)",
           },
 
           pre: {
-            color: "var(--prose-code-color)",
             fontFamily: "var(--prose-code-font-family)",
             fontWeight: 400,
             overflowX: "auto",
@@ -286,13 +309,8 @@ module.exports = (theme) => {
 
           // Top level code blocks
           "> pre:not([class~='language']) > code": {
-            // backgroundColor: `var(--prose-code-background-color, ${theme(
-            //   "colors.neutral.100"
-            // )})`,
             display: "block",
             fontSize: "0.875em",
-            // padding: "1em",
-            // borderRadius: theme("borderRadius.md"),
           },
 
           "> pre[class~='language'] > code": {
@@ -326,90 +344,6 @@ module.exports = (theme) => {
                 objectFit: "cover",
                 width: "100%",
               },
-            },
-          },
-
-          // Custom tweet markup
-          ".dd-embed-tweet": {
-            backgroundColor: "var(--tweets-background-color)",
-            borderColor: `var(--tweets-border-color, currentColor)`,
-            borderStyle: "solid",
-            borderWidth: "1px",
-            borderRadius: `var(--tweets-border-radius, ${
-              theme("borderRadius.md") || "0.5em"
-            })`,
-            color: "var(--tweets-content-color)",
-            columnGap: `var(--tweets-column-gap, 1rem)`,
-            display: "grid",
-            fontFamily: `var(--tweets-font-family, ${
-              theme("fontFamily.sans") || "system-ui"
-            })`,
-            gridAutoFlow: "row",
-            gridTemplateColumns: `var(--tweets-img-size, ${theme(
-              "spacing.16"
-            )} 1fr)`,
-            gridTemplateRows: `var(--tweets-img-size, auto 1fr)`,
-            maxWidth: "var(--tweets-max-width, 580px)",
-            lineHeight: 1.4,
-            padding: "var(--tweets-padding, 1em)",
-            rowGap: `var(--tweets-row-gap, 1rem)`,
-
-            "*": {
-              margin: "unset",
-            },
-
-            "> * ": {
-              gridColumn: "2 / -1",
-              width: "100%",
-            },
-
-            "& .tweet-header, & .tweet-header a": {
-              display: "contents",
-            },
-
-            ".tweet-header": {
-              lineHeight: 1.2,
-            },
-
-            ".tweet-author-img": {
-              clipPath: "url(#squircleClip)",
-              alignSelf: "start",
-              gridColumn: "1/2",
-              gridRow: "1/-1",
-              height: `var(--tweets-img-size, ${theme("spacing.16")})`,
-              width: `var(--tweets-img-size, ${theme("spacing.16")})`,
-            },
-
-            ".tweet-author-handle": {
-              color: "var(--tweets-handle-color)",
-              fontSize: "0.8em",
-              marginBlockStart: "0.125em",
-            },
-
-            ".tweet-author-name": {
-              color: "var(--tweets-name-color)",
-              fontWeight: 600,
-            },
-
-            ".tweet-content": {
-              color: "var(--tweets-content-color)",
-
-              a: {
-                color: "var(--tweets-links-color, inherit)",
-              },
-            },
-
-            ".tweet-footer": {
-              color: "var(--tweets-footer-color)",
-              fontSize: "var(--tweets-footer-font-size, 0.75em)",
-              marginBlockStart: theme("spacing.4"),
-              opacity: "0.6",
-            },
-
-            ".tweet-date": {
-              color: "var(--tweets-date-color)",
-              textDecoration: "none",
-              textTransform: "uppercase",
             },
           },
         },
