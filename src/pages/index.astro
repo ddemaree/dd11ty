@@ -12,6 +12,8 @@ import Text from "./_homeContent.mdx";
 import type { Metadata } from "@/types/metadata";
 import { Image } from "astro:assets";
 
+export const prerender = true;
+
 const metadata: Metadata = {
   alternates: {
     canonical: siteUrl("/", true),

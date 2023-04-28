@@ -1,20 +1,20 @@
 import { ImageResponse } from "@vercel/og";
-import ImageTest from "@/components/ImageTest";
-import DDIcon from "@/components/DDIcon";
 import type { ImageAPIRoute } from "@/types/image-generation";
-
-import { getPostImage } from "./_getWPPostImage";
 import { CollectionEntry, getCollection } from "astro:content";
+
+import DDIcon from "@/components/DDIcon";
+import ImageTest from "./ImageTest";
 import { getStaticPostImage } from "./_getMDPostImage";
 
-export const getStaticPaths = async () => {
-  const allBlogPosts = await getCollection("blog");
-  return allBlogPosts.map((p: CollectionEntry<"blog">) => ({
-    params: {
-      pathname: `post/${p.slug}.png`,
-    },
-  }));
-};
+// export const prerender = true;
+// export const getStaticPaths = async () => {
+//   const allBlogPosts = await getCollection("blog");
+//   return allBlogPosts.map((p: CollectionEntry<"blog">) => ({
+//     params: {
+//       pathname: `post/${p.slug}.png`,
+//     },
+//   }));
+// };
 
 const content = {
   type: "div",
@@ -32,19 +32,9 @@ export const get: ImageAPIRoute = async ({ request, params: { pathname } }) => {
   // Remove file extension and/or trailing slash
   pathname = pathname.replace(/\.[a-z]+\/?$/, "");
 
-  try {
-    if (pathname.startsWith("wp/post/")) {
-      const [_, slug] = pathname.split("/");
-      const postImageResponse = await getPostImage(slug);
-      return postImageResponse;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-
   if (pathname.startsWith("post/")) {
     const slug = pathname.replace(/^post\//, "");
-    return getStaticPostImage(slug, request);
+    return getStaticPostImage(slug, request) as Promise<ImageResponse>;
   }
 
   const soehneFontData = await fetch(
