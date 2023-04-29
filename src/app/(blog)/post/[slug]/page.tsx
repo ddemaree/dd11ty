@@ -4,7 +4,7 @@ import { getAllPosts, getSinglePost, WordpressPost } from "@lib/wordpress";
 import { wpToReact } from "@lib/wordpress/transformGutenberg";
 
 import { decode } from "html-entities";
-import { blogPostUrl } from "@lib/urls";
+import { blogPostUrl } from "@/utils";
 
 import { VStack } from "@components/Layout";
 import PostHeader from "@components/PostHeader";

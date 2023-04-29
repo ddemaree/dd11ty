@@ -3,9 +3,8 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import clsx from "clsx";
-import { useTheme } from "./ThemeScript";
 import { Stack } from "@components/Layout";
-import { type ColorTheme } from ".";
+import { type ColorTheme, useTheme } from ".";
 import {
   CheckIcon,
   DarkThemeIcon,
@@ -71,9 +70,9 @@ export function ThemeSelector({ variant = "menu" }: ThemeSelectorProps) {
       <RadioGroup.Option
         value={value}
         className={clsx(
-          "cursor-pointer select-none rounded-md p-2 hover:bg-red-500/10 aria-checked:bg-red-500/50 gap-2 leading-none",
+          "cursor-pointer select-none gap-2 rounded-md p-2 leading-none hover:bg-red-500/10 aria-checked:bg-red-500/50",
           variant === "row" &&
-            "w-16 flex-1 grid grid-rows-[1.5rem_auto] items-center justify-items-center py-3",
+            "grid w-16 flex-1 grid-rows-[1.5rem_auto] items-center justify-items-center py-3",
           variant === "menu" &&
             "grid grid-cols-[1.5rem_1fr_2rem] items-center justify-items-start"
         )}
@@ -94,7 +93,7 @@ export function ThemeSelector({ variant = "menu" }: ThemeSelectorProps) {
       onChange={setTheme}
       className={clsx(`variant-${variant}`)}
     >
-      <RadioGroup.Label className="block text-base font-medium mb-4 w-full text-center [.variant-menu_&]:sr-only">
+      <RadioGroup.Label className="mb-4 block w-full text-center text-base font-medium [.variant-menu_&]:sr-only">
         Select color theme
       </RadioGroup.Label>
       <div
@@ -102,7 +101,7 @@ export function ThemeSelector({ variant = "menu" }: ThemeSelectorProps) {
           "flex gap-1",
           variant === "menu" && "flex-col",
           variant === "row" &&
-            "justify-center border border-black/20 dark:border-white/20 rounded-md"
+            "justify-center rounded-md border border-black/20 dark:border-white/20"
         )}
       >
         <ThemeRadioOption value="system">

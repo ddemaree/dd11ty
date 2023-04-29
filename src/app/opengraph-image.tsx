@@ -39,7 +39,5 @@ export default async function og() {
     }
   );
 
-  console.log("Test whether this is called");
-
   return resp;
 }

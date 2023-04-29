@@ -1,4 +1,4 @@
-import { useTheme } from "./ThemeScript";
+import { useTheme } from ".";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,

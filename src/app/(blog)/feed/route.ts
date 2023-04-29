@@ -1,5 +1,5 @@
 import { getFeed, getFeedObj } from "@lib/feeds";
-import { blogPostUrl } from "@lib/urls";
+import { blogPostUrl } from "@/utils";
 import { getAllPosts } from "@lib/wordpress";
 
 export async function GET(request: Request) {

@@ -1,7 +1,7 @@
 import { Feed } from "feed";
 import _ from "lodash";
 import { DateTime } from "luxon";
-import { blogPostUrl, siteUrl } from "./urls";
+import { blogPostUrl, siteUrl } from "@/utils";
 import { getAllPosts } from "./wordpress";
 
 export function getFeedObj() {

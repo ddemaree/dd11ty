@@ -1,6 +1,6 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { Resize } from "@cloudinary/url-gen/actions";
-import { ensureURL } from "./urls";
+import { ensureURL } from "@/utils";
 
 const cloudinary = new Cloudinary({
   cloud: {
@@ -46,10 +46,10 @@ const ASSET_TYPES = {
 } as const;
 
 type AssetType = keyof typeof ASSET_TYPES;
-type AssetValue = typeof ASSET_TYPES[AssetType][number];
+type AssetValue = (typeof ASSET_TYPES)[AssetType][number];
 
 const DELIVERY_TYPES = ["upload", "fetch", "twitter_name"] as const;
-type DeliveryType = typeof DELIVERY_TYPES[number];
+type DeliveryType = (typeof DELIVERY_TYPES)[number];
 
 function isAssetType(type: string | AssetValue) {
   const allTypes = Object.values(ASSET_TYPES).flat() as (string | AssetValue)[];

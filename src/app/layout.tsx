@@ -9,7 +9,7 @@ import SiteContainer from "@/app/SiteContainer";
 import { ThemeProvider, ThemeScript } from "@/components/Theme";
 import MainNavigation from "./MainNavigation";
 
-import "../styles/main.css";
+import "../main.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl("/", true)),
@@ -60,7 +60,7 @@ export default function RootLayout({
   );
 }
 
-export default function ClipPaths() {
+function ClipPaths() {
   return (
     <svg width="10" height="10" viewBox="0 0 10 10">
       <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">

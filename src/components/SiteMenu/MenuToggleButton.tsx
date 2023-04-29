@@ -16,8 +16,6 @@ const MenuToggleButton = ({
 }: {
   toggle: MouseEventHandler<HTMLButtonElement>;
 }) => {
-  console.log(toggle);
-
   return (
     <button
       className="relative z-50 flex h-12 w-12 select-none place-content-center place-items-center rounded-full bg-transparent"

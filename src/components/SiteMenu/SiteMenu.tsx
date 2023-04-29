@@ -13,7 +13,7 @@ import BasicNavLink, { MobileNavLink } from "./BasicNavLink";
 import MenuToggleButton from "./MenuToggleButton";
 import MenuSidebar from "./MenuSidebar";
 import menuItems from "./menus";
-import { useClientReady } from "@components/Theme/ThemeScript";
+import { useClientReady } from "@components/Theme/ThemeContext";
 
 export const SiteMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);

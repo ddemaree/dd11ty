@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ThemeSelector } from "./ThemeSelector";
 import { CurrentThemeIcon } from "./ThemeIcons";
-import { useClientReady } from "./ThemeScript";
+import { useClientReady } from "./ThemeContext";
 import { usePopper } from "react-popper";
 
 /* 
