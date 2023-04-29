@@ -1,26 +1,23 @@
-import type { FunctionComponent, HTMLAttributes } from "react";
 import type { Metadata } from "next";
 
 import Image from "next/image";
+import Balance from "react-wrap-balancer";
+import { matches } from "hast-util-select";
+import clsx from "clsx";
 
+import getPage from "@lib/wordpress/getPage";
 import { siteUrl } from "@/utils";
 import { Stack } from "@components/Layout";
 import MyLinks from "@components/MyLinks";
-import Balance from "react-wrap-balancer";
 
 import imgDavidStitch from "./dd-stitch-transparent.png";
 import Text from "./homeContent.mdx";
 import styles from "./styles.module.css";
-import getPage from "@lib/wordpress/getPage";
+
 import {
   wpToReact,
-  type ComponentOptions,
   type ElementProps,
 } from "@lib/wordpress/transformGutenberg";
-
-import { matches } from "hast-util-select";
-
-import clsx from "clsx";
 
 export const metadata: Metadata = {
   alternates: {
@@ -30,7 +27,6 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const page = await getPage("home");
-  // console.log(page);
 
   const components = {
     p: (props: ElementProps<HTMLParagraphElement>) => (
@@ -39,7 +35,9 @@ export default async function HomePage() {
       </p>
     ),
     ul: ({ node, children, ...props }: ElementProps<HTMLUListElement>) => (
-      <ul className="flex flex-row gap-[1em]">{children}</ul>
+      <ul className="flex flex-row items-center justify-center gap-[1em]">
+        {children}
+      </ul>
     ),
     path: ({ node, ...props }: ElementProps<SVGPathElement>) => (
       <path fill="currentColor" {...props} />
