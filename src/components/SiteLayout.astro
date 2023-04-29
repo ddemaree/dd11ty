@@ -1,0 +1,23 @@
+---
+import { ClassValue, clsx } from "clsx";
+import BaseLayout, { type Props as LayoutProps } from "./BaseLayout.astro";
+import SiteFooter, { type Props as FooterProps } from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+
+export type Props = LayoutProps & FooterProps & {
+  mainClass?: ClassValue;
+  mainWrapper?: boolean;
+}
+
+const { mainWrapper = true, showLinks = true } = Astro.props;
+---
+<BaseLayout metadata={Astro.props.metadata} section={Astro.props.section}>
+  <div class="grid grid-cols-1 grid-rows-[auto_1fr_auto] min-h-screen">
+    <SiteHeader />
+    {mainWrapper && <main class={clsx(Astro.props.mainClass)}>
+      <slot />
+    </main>}
+    {!mainWrapper && <slot />}
+    <SiteFooter showLinks={showLinks} />
+  </div>
+</BaseLayout>

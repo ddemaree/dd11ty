@@ -1,0 +1,96 @@
+---
+import '@/main.css';
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
+import type { Metadata } from '@/types/metadata';
+import type { SiteSection } from './SiteMenu';
+
+import BaseHead from './BaseHead.astro';
+import ClipPaths from './ClipPaths';
+
+export interface Props {
+  section?: SiteSection;
+  metadata?: Metadata;
+}
+
+const { metadata = {} } = Astro.props;
+---
+<html lang="en-US">
+	<head>
+		<BaseHead metadata={metadata} />
+    <slot name="head" />
+    <script is:inline>
+      const COOKIE_NAME = `dd-theme`;
+
+      const savedTheme = localStorage.getItem(COOKIE_NAME) || "system";
+
+      window.DD = window.DD || {
+        setTheme: function(theme, persist = true) {
+          this.theme = theme;
+
+          if(theme === "system") {
+            theme = window.DD.getComputedSystemTheme();
+            if(persist) {
+              this.userThemeSelection = "system";
+              localStorage.removeItem(COOKIE_NAME);
+            }
+          } else if(persist) {
+            this.userThemeSelection = theme;
+            localStorage.setItem(COOKIE_NAME, theme);
+          }
+
+          document.documentElement.setAttribute("data-theme", theme);
+        },
+        getDarkModeQuery: function() {
+          if(!window.matchMedia) return null;
+          if(this._mq) return this._mq;
+          
+          this._mq = window.matchMedia(
+      "(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)");
+
+          return this._mq;
+        },
+        getComputedSystemTheme: function() {
+          if (this.getDarkModeQuery() && this.getDarkModeQuery().matches) {
+            return "dark";
+          } else {
+            return "light";
+          }
+        },
+        userThemeSelection: savedTheme,
+        theme: "system",
+        systemTheme: null,
+        arcAvailable: false,
+      };
+
+      window.DD.systemTheme = window.DD.getComputedSystemTheme();
+      window.DD.setTheme(savedTheme, false);
+    </script>
+    <script>
+      import store, { watchSystemTheme } from "@/lib/siteStore";
+
+      // Monkey patch the setTheme function to also update the nanostore
+      const _setTheme: typeof window.DD.setTheme = window.DD.setTheme;
+      window.DD.setTheme = function(theme, persist = true) {
+        _setTheme(theme, persist);
+        store.setKey("theme", theme);
+      };
+
+      // Watch for changes to the system theme
+      watchSystemTheme((theme) => {
+        window.DD.systemTheme = theme;
+        if(window.DD.userThemeSelection === "system") {
+          window.DD.setTheme(theme, false);
+        }
+      });
+    </script>
+	</head>
+
+  <body class="theme-light dark:theme-dark">
+    <slot />
+    <ClipPaths />
+	</body>
+</html>

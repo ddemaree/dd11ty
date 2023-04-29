@@ -1,11 +1,10 @@
-import type { Element } from "hast";
-
+import { VFile } from "vfile";
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeStringify from "rehype-stringify";
-import rehypeReact, { type Options } from "rehype-react";
+import rehypeReact from "rehype-react";
 
-import { createElement, Fragment, HTMLAttributes, SVGAttributes } from "react";
+import { createElement, Fragment } from "react";
 import rehypeTransformGutenberg from "./rehypeGutenberg";
 
 function rehypeProcessor() {
@@ -24,25 +23,11 @@ export default async function transformGutenberg(src: string): Promise<string> {
   return out.toString("utf-8");
 }
 
-const defaultOptions: Options = {
-  createElement,
-  Fragment,
-  passNode: true,
-};
-
-export type ComponentOptions = (typeof defaultOptions)["components"];
-
-export type ElementProps<T> =
-  | (HTMLAttributes<T> & { node?: Element })
-  | (SVGAttributes<T> & { node?: Element });
-
-export async function wpToReact(
-  src: string,
-  components: ComponentOptions = undefined
-) {
-  const opts = { ...defaultOptions, components };
-
-  const processor = rehypeProcessor().use(rehypeReact, opts as Options);
+export async function wpToReact(src: string) {
+  const processor = rehypeProcessor().use(rehypeReact, {
+    createElement,
+    Fragment,
+  });
 
   const out = await processor.process(sanitizeInput(src));
   return () => out.result;

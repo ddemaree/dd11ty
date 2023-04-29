@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
   "cleanUrls": true,
   "headers": [
     {
@@ -10,6 +11,28 @@
           "value": "Sec-CH-Prefers-Color-Scheme"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/p/:slug",
+      "destination": "/post/:slug",
+      "permanent": false
+    },
+    {
+      "source": "/p/okrs-the-complete-guide",
+      "destination": "/2023/okrs-the-complete-guide",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/.well-known/webfinger",
+      "destination": "/api/webfinger"
+    },
+    {
+      "source": "/_preview/:parentId/:id/:type/:status/:nonce",
+      "destination": "/_preview?parent=:parentId&id=:id&type=:type&status=:status&n=:nonce"
     }
   ]
 }

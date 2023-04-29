@@ -47,9 +47,12 @@ type ImageUrlOptions = {
 };
 
 /* 
+
 imageURL(origSrcURL, {width: 1350, aspectRatio: 4/5, quality: 60})
+
 imageSrcset(origSrcURL, {maxWidth: 1350, aspectRatio: 4/5})
 */
+
 export function imageUrl(srcUrl: URL | string, opts: ImageUrlOptions = {}) {
   const _url = ensureURL(srcUrl);
   opts = { width: 300, height: 240, ...opts };

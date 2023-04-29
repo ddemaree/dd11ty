@@ -74,7 +74,6 @@ export class WordpressRestClient {
       method,
       body,
       headers,
-      next: { revalidate: 1 },
     }).then(async (r) => {
       let _data = await r.json();
 
@@ -120,8 +119,9 @@ export class WordpressRestClient {
   }
 
   private getWpAuthString() {
-    const username = process.env["WP_USER"];
-    const password = process.env["WP_PASSWORD"];
+    const username = import.meta.env["WP_USER"] || process.env["WP_USER"];
+    const password =
+      import.meta.env["WP_PASSWORD"] || process.env["WP_PASSWORD"];
 
     if (!username || !password) {
       return null;

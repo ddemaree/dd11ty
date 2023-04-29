@@ -4,6 +4,28 @@ import { DateTime } from "luxon";
 import { blogPostUrl, siteUrl } from "@/utils";
 import { getAllPosts } from "./wordpress";
 
+const FeedFormats = ["rss", "json", "atom"] as const;
+type FeedFormat = (typeof FeedFormats)[number];
+
+type FeedFormatDefinition = {
+  contentType: string;
+  method: "rss2" | "json1" | "atom1";
+};
+
+const feedFormatDefinitions = new Map<FeedFormat, FeedFormatDefinition>([
+  ["rss", { contentType: "application/rss+xml", method: "rss2" }],
+  ["json", { contentType: "application/json", method: "json1" }],
+  ["atom", { contentType: "application/atom+xml", method: "atom1" }],
+]);
+
+export function getFeedFormatDefinition(
+  feedSlug: FeedFormat
+): FeedFormatDefinition {
+  return (
+    feedFormatDefinitions.get(feedSlug) || feedFormatDefinitions.get("rss")!
+  );
+}
+
 export function getFeedObj() {
   return new Feed({
     copyright: `©${new Date().getFullYear()} David Demaree, all rights reserved`,

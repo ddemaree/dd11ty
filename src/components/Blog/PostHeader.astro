@@ -1,0 +1,55 @@
+---
+import _ from 'lodash';
+import Balance from '../Balance.astro';
+import DisplayDate from '../DisplayDate';
+import { format } from 'date-fns';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  date: string | Date;
+  isDraft?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  date,
+  isDraft = false,
+} = Astro.props;
+
+let dateString: string = "";
+
+if(_.isDate(date)) {
+  dateString = format(date, "MMMM d, yyyy")
+} else if(_.isString(date)) {
+  dateString = date;
+}
+
+---
+<header class="post-header w-full max-w-content px-inset py-8 md:py-10">
+  <div class="post-header-inner mx-auto text-center @container/post-header">
+    <h1 class="balance-text text-4xl/none text-[clamp(30px,9vw,44px)] font-medium text-dd-text-bold">
+      <Balance>{title}</Balance>
+    </h1>
+    {subtitle && (
+      <div class="balance-text post-header__subtitle mt-3 text-2xl leading-snug text-stone-500 dark:text-stone-400" data-balance>
+        <Balance>{subtitle}</Balance>
+      </div>
+    )}
+    <div class="mt-4 text-lg font-semibold uppercase">
+      {!isDraft && date && dateString}
+      {isDraft && (
+        <span>
+          <span class="text-red-400">Draft</span>
+          {date && (
+            <>
+              {" — "}
+              {dateString}
+            </>
+          )}
+        </span>
+      )}
+    </div>
+  </div>
+</header>

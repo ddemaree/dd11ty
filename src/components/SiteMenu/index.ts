@@ -1,4 +1,10 @@
-import SiteMenu from "./SiteMenu";
-import menus, { SiteSection } from "./menus";
+export type {
+  SiteSection,
+  SectionNames,
+  MenuItem,
+  MenuItemSet,
+  MenuKey,
+} from "./menus";
 
-export { menus, SiteMenu, type SiteSection };
+export { menuItems } from "./menus";
+export { SiteMenu } from "./SiteMenu";

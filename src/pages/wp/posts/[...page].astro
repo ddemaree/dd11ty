@@ -1,0 +1,34 @@
+---
+import SiteLayout from "@/components/SiteLayout.astro";
+import BlogPostIndex from "@/components/Blog";
+import { getAllPosts } from "@/lib/wordpress";
+import transformGutenberg from "@/lib/wordpress/transformGutenberg";
+import type { Metadata } from "@/types/metadata";
+
+const page = parseInt(Astro.props.page || "1");
+
+const title = page > 1 ? `Blog posts - Page ${page}` : "Blog posts";
+
+const metadata: Metadata = {
+  title,
+  description: "Notes from the desk of David Demaree. Writing about tech, business, digital culture, and whatever else crosses my mind.",
+}
+
+const { posts, totalPages } = await getAllPosts({ page });
+if (!posts) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found'
+  });
+}
+
+await Promise.all(
+  posts.map((p) => {
+    return p.render(transformGutenberg);
+  })
+);
+
+---
+<SiteLayout metadata={metadata}>
+  <BlogPostIndex posts={posts} pageNum={page} totalPages={totalPages} />
+</SiteLayout>

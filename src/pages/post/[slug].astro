@@ -1,0 +1,75 @@
+---
+import type { Metadata } from "@/types/metadata";
+import { type CollectionEntry, getCollection, getEntryBySlug } from "astro:content";
+import { decode } from "html-entities";
+
+import { blogPostUrl } from "@/utils";
+import SiteLayout from "@/components/SiteLayout.astro";
+import PostHeader from "@/components/Blog/PostHeader.astro";
+import FooterOrnament from "@/components/FooterOrnament";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const allBlogPosts = await getCollection('blog');
+  return allBlogPosts.map((p: CollectionEntry<"blog">) => ({
+    params: {
+      slug: p.slug
+    },
+    props: {
+      post: p
+    }
+  }));
+});
+
+const { slug } = Astro.params;
+const { post } = Astro.props;
+
+// const post = await getEntryBySlug("blog", slug as any);
+
+if(!slug || !post) {
+  Astro.response.status = 404;
+  throw new Error("Not found");
+}
+
+const { title, excerpt, date } = post.data;
+const { Content } = await post.render();
+
+const metadata: Metadata = {
+  title: decode(title),
+  description: decode(excerpt),
+  openGraph: {
+    title: decode(title),
+    description: decode(excerpt),
+    authors: ["David Demaree"],
+    type: "article",
+    publishedTime: date.toISOString(),
+    images: [
+      {
+        url: `/opengraph-image/post/${slug}.png`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: `/opengraph-image/post/${slug}.png`,
+      },
+    ],
+  },
+  alternates: {
+    canonical: blogPostUrl(slug, true),
+  },
+}
+
+---
+<SiteLayout metadata={metadata}>
+  <article class="stack">
+    <PostHeader title={title} date={date} subtitle={excerpt} />
+    <main class="prose">
+      <Content />
+    </main>
+    <FooterOrnament />
+  </article>
+</SiteLayout>

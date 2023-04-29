@@ -2,10 +2,8 @@ const { reduce, isArray } = require("lodash");
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
-const {
-  typographyPlugin,
-  colorsPlugin,
-} = require("./src/lib/tailwind/index.cjs");
+const ddTypographyPlugin = require("./src/lib/tailwind/typography/index.cjs");
+const ddColorsPlugin = require("./src/lib/tailwind/colors/index.cjs");
 
 const resetSelectors = ["p", "h1", "h2", "h3", "h4", "h5", "h6", "figure"];
 const resets = {};
@@ -54,8 +52,9 @@ const ddThemeColors = {
       DEFAULT: `rgb(var(--dd-col-blockquote) / <alpha-value>)`,
       border: `rgb(var(--dd-col-blockquote-border) / <alpha-value>)`,
     },
-  },
+  }
 };
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -106,8 +105,9 @@ module.exports = {
     },
   },
   plugins: [
-    colorsPlugin,
-    typographyPlugin,
+    ddColorsPlugin,
+    ddTypographyPlugin,
+
     require("@tailwindcss/container-queries"),
 
     plugin(function ({ addVariant, theme }) {

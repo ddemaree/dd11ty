@@ -1,12 +1,18 @@
+import React from "react";
 import { svgPathData } from "@lib/icons/faDDLogo";
+
+import type { SVGAttributes } from "react";
+
+type DDIconProps = SVGAttributes<SVGElement> & {
+  size?: string;
+  color?: string;
+};
 
 export default function DDIcon({
   size = "1.5em",
   color = "currentColor",
-}: {
-  size?: string;
-  color?: string;
-}) {
+  ...props
+}: DDIconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -19,6 +25,7 @@ export default function DDIcon({
         width: size,
         height: size,
       }}
+      {...props}
     >
       <path fill={color} d={svgPathData}></path>
     </svg>

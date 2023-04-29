@@ -1,0 +1,27 @@
+---
+import { faDDLogo } from "@lib/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SiteMenu } from "./SiteMenu";
+
+// Loading the mobile screen from Tailwind here so that we don't
+// accidentally load all of Tailwind into client JS.
+import defaultTheme from "tailwindcss/defaultTheme";
+const mobileScreen = defaultTheme.screens.sm;
+
+const { pathname } = Astro.url
+---
+<header
+  id="nav-parent"
+  class="grid h-20 grid-cols-[auto,1fr] items-center gap-8 px-inset"
+>
+  <div>
+    <a href="/">
+      <FontAwesomeIcon icon={faDDLogo} size="2x" />
+      <span class="sr-only">David Demaree</span>
+    </a>
+  </div>
+
+  <div class="flex items-center justify-end gap-3">
+    <SiteMenu mobileBreakpoint={mobileScreen} client:load />
+  </div>
+</header>
