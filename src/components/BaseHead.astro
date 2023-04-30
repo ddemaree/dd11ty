@@ -2,13 +2,18 @@
 import { resolveMetadata } from "@/lib/metadata";
 import type { Metadata } from "@/types/metadata";
 
-import { Meta, TwitterMetadata, OpenGraphMetadata, IconsMetadata } from "./Metadata";
+import {
+  Meta,
+  TwitterMetadata,
+  OpenGraphMetadata,
+  IconsMetadata,
+} from "./Metadata";
 
 export interface Props {
   metadata: Metadata;
 }
 
-const defaultDescription = `A middle-aged man with a passion for Legos and keyboards.`
+const defaultDescription = `A middle-aged man with a passion for Legos and keyboards.`;
 
 const defaultMetadata: Metadata = {
   // authors: [{ name: "David Demaree", url: "https://demaree.me" }],
@@ -47,19 +52,21 @@ const defaultMetadata: Metadata = {
     types: {
       "application/rss+xml": "/feed",
     },
-  }
+  },
 };
 
 const { metadata: _metadata = {} } = Astro.props;
 
 const metadata = resolveMetadata(defaultMetadata, _metadata);
-
 ---
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-{metadata.title !== null && metadata.title.absolute ? (
-  <title>{metadata.title.absolute}</title>
-) : null}
+{
+  metadata.title !== null && metadata.title.absolute ? (
+    <title>{metadata.title.absolute}</title>
+  ) : null
+}
 <Meta name="description" content={metadata.description} />
 <Meta name="keywords" content={metadata.keywords?.join(", ")} />
 <Meta name="color-scheme" content={metadata.colorScheme} />

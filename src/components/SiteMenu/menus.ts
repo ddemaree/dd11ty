@@ -18,6 +18,7 @@ export interface MenuItem {
 import { faMastodon, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 import {
+  faFeed,
   faHomeHeart,
   faNewspaper,
   faUserNinja,
@@ -64,6 +65,11 @@ export const menuItems = {
       href: "https://me.dm/@ddemaree",
       icon: faMastodon,
     },
+    {
+      title: "RSS feed",
+      href: "/feed",
+      icon: faFeed
+    }
   ]),
 } as const;
 

@@ -20,6 +20,9 @@
   "explorer.fileNesting.enabled": true,
   "prettier.bracketSameLine": true,
   "prettier.insertPragma": false,
+  "prettier.documentSelectors": ["**/*.{astro,js,jsx,ts,tsx}"],
+  "prettier.enableDebugLogs": true,
+  "prettier.prettierPath": "./node_modules/prettier",
   "tailwindCSS.files.exclude": [
     "**/.git/**",
     "**/node_modules/**",
@@ -27,5 +30,7 @@
     "**/.svn/**",
     "**/.astro/**"
   ],
-  "mdx.experimentalLanguageServer": true
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
