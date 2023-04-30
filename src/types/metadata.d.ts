@@ -175,6 +175,7 @@ type TwitterApp = TwitterMetadata & {
   card: "app";
   app: TwitterAppDescriptor;
 };
+
 export type TwitterAppDescriptor = {
   id: {
     iphone?: string | number;

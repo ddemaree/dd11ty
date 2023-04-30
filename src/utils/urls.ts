@@ -1,11 +1,3 @@
-// import { isString } from "lodash";
-// import cloudinary from "./cloudinary";
-
-// export function getBaseSiteURL(): string {
-//   return import.meta.env.PROD
-//     ? "https://demaree.me/"
-//     : "http://localhost:3000/";
-// }
 
 export function siteUrl(path: string = "", canonical: boolean = false) {
   const hostname =

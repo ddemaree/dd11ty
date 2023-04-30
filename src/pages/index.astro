@@ -20,69 +20,15 @@ const metadata: Metadata = {
   },
 };
 
-import { HomeParagraph } from "@/components/Home";
+import { HomeParagraph, Heading } from "@/components/Home";
 const components = {
-	p: HomeParagraph
-}
-
-// export default async function HomePage() {
-//   const components = {
-//     p: (props: HTMLAttributes<HTMLParagraphElement>) => (
-//       <p className="balance-text [text-wrap:balance]">
-//         <Balance>{props.children}</Balance>
-//       </p>
-//     ),
-//   };
-//   return (
-//     <Stack
-//       as="main"
-//       direction="column"
-//       className={
-//         "pb-20 px-inset align-middle self-center justify-self-center @container/intro w-full max-w-3xl"
-//       }
-//     >
-//       <figure className={`${styles.fadeMask} w-max min-w-[100px]`}>
-//         <Image
-//           src={imgDavidStitch}
-//           alt="A man in a ridiculous hat"
-//           className="dark:mix-blend-multiply dark:opacity-70"
-//           width={240}
-//           priority
-//         />
-//       </figure>
-//       <Stack direction="column" className="gap-[2rem]">
-//         <div class="prose dark:prose-dark prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
-//           <Text components={components} />
-//         </div>
-//         <MyLinks
-//           className="flex gap-4 justify-center"
-//           variant={null}
-//           showLabels={false}
-//         />
-//       </Stack>
-//     </Stack>
-//   );
-// }
-
-
+	p: HomeParagraph,
+	h1: Heading,
+	h2: Heading
+};
 ---
 <SiteLayout mainWrapper={false} metadata={metadata} showLinks={false}>
-	<main class="stack gap-8 pb-20 px-inset align-middle self-center justify-self-center @container/intro w-full max-w-3xl">
-		<figure class="fade-mask w-max min-w-[100px]">
-			<Image
-				src={imgDavidStitch}
-				width={240}
-				alt="A middle-aged man in a ridiculous hat" 
-			  class="dark:mix-blend-multiply dark:opacity-70 w-full"
-			/>
-		</figure>
-		<div class="prose dark:prose-dark prose-h1:m-0 prose-h1:-mt-[0.125em] prose-h1:text-5xl/none flex flex-col items-center text-center [--prose-flow-spacing-normal:1ex]">
-			<Text components={components} />
-		</div>
-		<MyLinks
-			variant={null}
-			className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-2xl max-w-[410px]" />
-	</main>
+	<main></main>
 </SiteLayout>
 
 <style>

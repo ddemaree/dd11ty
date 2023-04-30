@@ -17,5 +17,5 @@
     "src/**/*.astro",
     "src/types/**/*.ts"
   ],
-  "exclude": ["node_modules", ".astro", "dist"]
+  "exclude": ["node_modules", ".astro", "dist", ".vercel"]
 }

@@ -1,4 +1,3 @@
-// import path from "../../../shared/lib/isomorphic/path";
 import type {
   AlternateLinkDescriptor,
   FieldResolver,
@@ -15,6 +14,7 @@ import type {
   ResolvedTwitterMetadata,
   Twitter,
 } from "@/types/metadata";
+
 import path from "path";
 import { resolveTitle } from "./resolveTitle";
 
