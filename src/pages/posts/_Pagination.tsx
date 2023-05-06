@@ -23,13 +23,9 @@ type PaginationProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>> & {
   page: BlogPage;
 };
 
-type LinkProps = Omit<
-  PropsWithChildren<HTMLAttributes<HTMLAnchorElement>>,
-  "href"
-> & {
+type LinkProps = Omit<HTMLAttributes<HTMLAnchorElement>, "href"> & {
   page: BlogPage;
-  previous?: boolean;
-  next?: boolean;
+  rel: "prev" | "next" | "first" | "last";
 };
 
 const Icon = ({ icon, fixedWidth = true, ...props }: IconProps) => (
@@ -54,13 +50,10 @@ function Wrapper({ page, children, className, ...props }: PaginationProps) {
   );
 }
 
-function Link({
-  page,
-  previous: isPrevious,
-  next: isNext,
-  children,
-  ...props
-}: LinkProps) {
+function Link({ page, children, rel, ...props }: LinkProps) {
+  const isPrevious = rel === "prev";
+  const isNext = rel === "next";
+
   if (!page.url.prev && isPrevious) {
     return <span className="prev-placeholder"></span>;
   }
@@ -68,7 +61,14 @@ function Link({
     return <span className="next-placeholder"></span>;
   }
 
-  return <a {...props}>{children}</a>;
+  const href = (isPrevious && page.url.prev) || (isNext && page.url.next);
+  if (!href) return null;
+
+  return (
+    <a href={href} rel={rel} {...props}>
+      {children}
+    </a>
+  );
 }
 
 export const Pagination = {
@@ -77,7 +77,38 @@ export const Pagination = {
 };
 
 export function createPagination(page: BlogPage) {
+  function Pagination({
+    className,
+    ...props
+  }: Omit<HTMLAttributes<HTMLDivElement>, "role">) {
+    if (page.url.prev === "/posts") {
+      page.url.prev = "/";
+    }
+
+    return (
+      <nav role="toolbar" className={clsx(className)} {...props}>
+        <Link
+          page={page}
+          rel="prev"
+          className="row h-12 gap-[0.35em] rounded-lg border border-dd-text/20 px-4 text-xl hover:border-dd-text/30 hover:bg-dd-text/10"
+        >
+          <PrevIcon size="sm" />
+          <span>Previous</span>
+        </Link>
+        <Link
+          page={page}
+          rel="next"
+          className="row h-12 gap-[0.35em] rounded-lg border border-dd-text/20 px-4 text-xl hover:border-dd-text/30 hover:bg-dd-text/10"
+        >
+          <NextIcon size="sm" className="sm:order-last" />
+          <span>Next</span>
+        </Link>
+      </nav>
+    );
+  }
+
   return {
+    Pagination,
     Wrapper: (props: Omit<PaginationProps, "page">) => (
       <Wrapper {...props} page={page} />
     ),

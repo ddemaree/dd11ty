@@ -21,6 +21,7 @@ import {
   faFeed,
   faHomeHeart,
   faNewspaper,
+  faPaperPlane,
   faUserNinja,
 } from "@fortawesome/sharp-solid-svg-icons";
 
@@ -41,17 +42,23 @@ export const menuItems = {
       slug: "home",
     }),
     defineMenuItem({
-      title: "About",
+      title: "About Me",
       href: "/about",
       icon: faUserNinja,
       slug: "about",
-      hidden: true,
+      hidden: false,
     }),
     defineMenuItem({
-      title: "Blog",
+      title: "Archive",
       href: "/posts",
       icon: faNewspaper,
       slug: "blog",
+    }),
+    defineMenuItem({
+      title: "Contact",
+      href: "/contact",
+      icon: faPaperPlane,
+      slug: "contact",
     }),
   ]),
   social: defineMenuSet([
@@ -68,8 +75,8 @@ export const menuItems = {
     {
       title: "RSS feed",
       href: "/feed",
-      icon: faFeed
-    }
+      icon: faFeed,
+    },
   ]),
 } as const;
 

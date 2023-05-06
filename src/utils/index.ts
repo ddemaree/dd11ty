@@ -77,3 +77,14 @@ export function removeQueryString(path: string) {
 export function isRemotePath(src: string) {
   return /^(http|ftp|https):?\/\//.test(src) || src.startsWith("data:");
 }
+
+// Function to find out if a given date is more than a year ago
+export const dateOlderThanAYear = (date: Date) => {
+  const now = new Date();
+  const year = 1000 * 60 * 60 * 24 * 365;
+  return now.getTime() - date.getTime() > year;
+};
+
+export const readingTimeIsShort = (minutes: number) => {
+  return minutes <= 7;
+};

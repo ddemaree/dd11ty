@@ -67,8 +67,8 @@ module.exports = {
       "no-cq": "not (container-type: inline-size)",
     },
     fontFamily: ({ theme }) => ({
-      sans: ["soehne-web", ...defaultTheme.fontFamily.sans],
-      serif: ["tiempos-text", ...defaultTheme.fontFamily.serif],
+      sans: ["degular-variable", "soehne-web", ...defaultTheme.fontFamily.sans],
+      serif: ["loretta-variable", "tiempos-text", ...defaultTheme.fontFamily.serif],
       mono: ["soehne-mono-web", ...defaultTheme.fontFamily.mono],
       "serif-headline": ["tiempos-headline", ...defaultTheme.fontFamily.serif],
     }),

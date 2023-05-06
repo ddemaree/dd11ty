@@ -1,46 +1,67 @@
 ---
+import { getCollection } from "astro:content";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDoubleRight } from "@fortawesome/sharp-solid-svg-icons";
 import SiteLayout from "@/components/SiteLayout.astro";
+import NewIndexPost from "./posts/_NewIndexPost.astro";
 
-import { siteUrl } from "@/utils";
-import { Stack } from "@components/Layout";
-import MyLinks from "@components/MyLinks";
-import Balance from "@components/Balance.astro";
-
-import imgDavidStitch from "@/assets/dd-stitch-transparent.png";
-import Text from "./_homeContent.mdx";
-// import styles from "./styles.module.css";
-import type { Metadata } from "@/types/metadata";
-import { Image } from "astro:assets";
-
-export const prerender = true;
-
-const metadata: Metadata = {
-  alternates: {
-    canonical: siteUrl("/", true),
-  },
-};
-
-import { HomeParagraph, Heading } from "@/components/Home";
-const components = {
-	p: HomeParagraph,
-	h1: Heading,
-	h2: Heading
-};
+const posts = await getCollection("blog");
+const latestPosts = posts
+  .sort((a, b) => (a.data.date > b.data.date ? -1 : 1))
+  .slice(0, 5);
 ---
-<SiteLayout mainWrapper={false} metadata={metadata} showLinks={false}>
-	<main></main>
+
+<SiteLayout bodyClass="bg-[oklch(99.5%_0.02_75)]">
+  <main class="homeGrid">
+    <section class="space-y-6 font-[loretta-variable] font-medium text-2xl/snug pt-[clamp(1rem,5vw,3rem)]">
+      <h2 class="font-[larken] text-5xl/none before:content-['#'] flex gap-2 md:gap-[1ch] md:before:ml-[-2ch] before:text-red-500 relative md:before:absolute">Hi, I'm David.</h2>
+      <p>I am a professional speaker, author, coach and trainer. I help people to develop their public speaking skills. I coach executives and managers on how to lead with greater impact and presence.</p>
+      <p>I love to travel, am passionate about photography and enjoy writing. ​</p>
+    </section>
+    <section class="w-full stack gap-8">
+      <h2 class="w-full text-5xl/none mb-4 font-[larken]">Latest blog posts</h2>
+      {latestPosts.map((post) => <NewIndexPost post={post} />)}
+      <div class="w-full">
+        <a href="/posts" class="row group inline-flex gap-[0.5em] font-[degular-variable] [font-variation-settings:'wght'_620,'wdth'_199] text-xl/none rounded-full border-dd-text/20 border h-12 px-4 hover:bg-dd-text/5">
+          <span class="font-medium group-hover:underline"
+            >Read more in the archives</span
+          >
+          <FontAwesomeIcon icon={faChevronDoubleRight} size="xs"/>
+        </a>
+      </div>
+    </section>
+  </main>
 </SiteLayout>
 
 <style>
-.fade-mask {
-	mask-image: linear-gradient(
-		to bottom,
-		rgb(0 0 0 / 1),
-		rgb(0 0 0 / 1) 72%,
-		rgb(0 0 0 / 0) 88%,
-		rgb(0 0 0 / 0)
-	);
-	z-index: -10;
-	margin-bottom: -10%;
+
+.homeGrid {
+  --hg-padding: clamp(1.5rem, 7.5vw, 2rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 4rem;
+  width: 100%;
+  max-width: calc(720px + (var(--hg-padding) * 2));
+  padding: clamp(1.5rem, 7.5vw, 2rem);
 }
+
+:global(.homeGradient) {
+  --lines-color: oklch(92% 0.52 85 / 0.6);
+  --lines-alt-color: oklch(92% 0.52 225 / 0.6);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    var(--lines-color) 8px,
+    var(--lines-color) 16px
+  ), repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    var(--lines-alt-color) 8px,
+    var(--lines-alt-color) 16px
+  );
+}
+
+
 </style>

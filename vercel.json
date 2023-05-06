@@ -29,10 +29,6 @@
     {
       "source": "/.well-known/webfinger",
       "destination": "/api/webfinger"
-    },
-    {
-      "source": "/_preview/:parentId/:id/:type/:status/:nonce",
-      "destination": "/_preview?parent=:parentId&id=:id&type=:type&status=:status&n=:nonce"
     }
   ]
 }

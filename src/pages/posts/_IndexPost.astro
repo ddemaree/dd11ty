@@ -1,7 +1,7 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { format, formatISO } from 'date-fns'
-import Balance from '@/components/Balance.astro';
+import type { CollectionEntry } from "astro:content";
+import { format, formatISO } from "date-fns";
+import Balance from "@/components/Balance.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -19,22 +19,38 @@ const isOlderThanAYear = (date: Date) => {
   return now.getTime() - date.getTime() > year;
 };
 
+const postIsShort = (minutes: number) => {
+  return minutes <= 7;
+};
 ---
+
 <article class="contents">
-  <header class="[grid-column:2/-2] max-w-content w-full grid gap-2">
-    <h1 class="text-4xl/none font-medium font-[roslindale-variable-display] [font-variation-settings:'wdth'_89]">
+  <header
+    class="flex w-full max-w-[540px] flex-col gap-2 py-8 text-center [grid-column:2/-2]"
+  >
+    <h1 class="text-4xl/none font-medium">
       <a href={`/post/${post.slug}`} class="hover:underline">
-        <Balance>{title}</Balance>
+        <Balance ratio={1}>{title}</Balance>
       </a>
     </h1>
-    {excerpt && <p class="text-xl/tight text-dd-text-light"><Balance>{excerpt}</Balance></p>}
-    <div class="flex gap-2 text-dd-text-light">
+    {
+      excerpt && (
+        <p class="text-dd-text-light text-xl/tight">
+          <Balance ratio={0.7}>{excerpt}</Balance>
+        </p>
+      )
+    }
+    <div class="row gap-2 text-dd-text-light">
       <time>{format(date, isOlderThanAYear(date) ? "LLL d, y" : "LLL d")}</time>
       <span>•</span>
       <span>{readingTime.text}</span>
     </div>
   </header>
-  {readingTime.minutes <= 8 && <div class="prose [grid-column:1/-1]">
-    <Content />
-  </div>}
+  {
+    postIsShort(readingTime.minutes) && (
+      <div class="prose prose-headings:font-['degular-variable'] font-['loretta-variable'] [font-weight:320] [grid-column:1/-1]">
+        <Content />
+      </div>
+    )
+  }
 </article>

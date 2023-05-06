@@ -71,8 +71,8 @@ export function BasicNavLink({
         <FontAwesomeIcon
           icon={_iconLookup}
           fixedWidth
-          size="sm"
-          className=" opacity-60"
+          size="xs"
+          className=" opacity-40"
         />
         <span className="font-semibold">{title}</span>
       </span>

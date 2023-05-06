@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { blogPostUrl, dateOlderThanAYear } from "@/utils";
+import { format } from "date-fns";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { date } = post.data;
+const { remarkPluginFrontmatter } = await post.render();
+const { readingTime } = remarkPluginFrontmatter;
+---
+
+<article class="w-full">
+  <h3 class="text-2xl/none font-[degular-variable] [font-variation-settings:'wght'_700]">
+    <a href={blogPostUrl(post.slug)} class="hover:underline"
+      >{post.data.title}</a
+    >
+  </h3>
+  {
+    post.data.excerpt && (
+      <p class="font-[loretta-variable] text-lg text-dd-text-bold/70 mt-1">{post.data.excerpt}</p>
+    )
+  }
+  <p class="text-dd-text-bold/70 font-[degular-variable] mt-1">
+    <time>{format(date, dateOlderThanAYear(date) ? "LLL d, y" : "LLL d")}</time>
+    <span>•</span>
+    <span>{readingTime.text}</span>
+  </p>
+</article>
